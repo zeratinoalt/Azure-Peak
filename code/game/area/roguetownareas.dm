@@ -360,3 +360,11 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_dusk = null
 	droning_sound_night = null
 	first_time_text = "DEATHS PRECIPICE"
+
+/area/rogue/indoors/coffin
+	name = "The Coffin"
+	first_time_text = "THE COFFIN"
+	deathsight_message = "a coffin filled with sorrow"
+
+/area/rogue/indoors/coffin/can_craft_here()
+	return FALSE

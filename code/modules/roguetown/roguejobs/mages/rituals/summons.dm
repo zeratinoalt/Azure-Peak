@@ -453,7 +453,7 @@
 		if(!do_after(user, 2 SECONDS, target = leyline))
 			to_chat(user, span_warning("The ritual is interrupted!"))
 			for(var/datum/beam/B in active_beams)
-				B.End()
+				B.Destroy()
 			return FALSE
 
 	// Re-check that the summoning matrix still exists after the chant

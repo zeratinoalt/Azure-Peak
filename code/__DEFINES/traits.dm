@@ -286,6 +286,7 @@
 #define TRAIT_FOOD_STIPEND "Vomitorium-known"
 #define TRAIT_HEART_OF_VENGEANCE "Heart of Vengeance"
 #define TRAIT_WILDHUNT "Wild Hunt"
+#define TRAIT_SELFLOATHING "Self-loathing"
 
 // If you want description to show up you gotta have the trait name defined BEFORE this lol
 

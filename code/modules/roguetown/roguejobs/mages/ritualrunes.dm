@@ -831,13 +831,13 @@ GLOBAL_LIST(teleport_runes)
 		if(!do_after(user, 5 SECONDS, target = src))
 			to_chat(user, span_warning("The ritual is interrupted! The leyline connection collapses."))
 			for(var/datum/beam/B in active_beams)
-				B.End()
+				B.Destroy()
 			fail_invoke()
 			return
 
 	// Clean up any remaining beams
 	for(var/datum/beam/B in active_beams)
-		B.End()
+		B.Destroy()
 
 	// --- Set cooldown on source leyline only (destination stays open to avoid griefing) ---
 	source_leyline.set_teleport_cooldown()

@@ -105,23 +105,27 @@
 	max_blade_int = 300
 	wdefense = 5
 	var/behead = FALSE
-	var/memorialprecession = FALSE
+	var/memorialprocession = FALSE
 	var/requiem = FALSE
-	var/color = "#33096e"
-	var/beam_color = color
+	var/beam_color = "#33096e"
 	var/combo_sounds = list('sound/combat/hits/bladed/fusedcut (1).ogg', 'sound/combat/hits/bladed/fusedcut (2).ogg', 'sound/combat/hits/bladed/fusedcut (3).ogg')
 	var/hits = 1 // how many hits the combo has
+	var/obj/item/held_weapon = /obj/item/rogueweapon/sword/sabre/longing
+/*below code is structured as the following:
+first check to see if spells have been enabled
+then try_[spellname] 
+then the actual combo 
+//basic proc flow is the following
+/../afterattack -> try_[spellname] -> [spellname]_start + [spellname]_pick_target -> [spellname] -> [spellname]_end
 
-//below is structured like the following *\
-first check to see if spells have been enabled *\
-then try_[spellname] *\
-then the actual combo
+the spells always attack one target, but its possible to chain a bunch of attacks together thats multi-hit and multi-target.
+i'm not doing it here because i actually want this pr to be merged */
 
 /obj/item/rogueweapon/sword/sabre/longing/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(behead)
 		INVOKE_ASYNC(src, PROC_REF(try_behead), user, target)
-	else if(memorialprecession)
-		INVOKE_ASYNC(src, PROC_REF(try_memorialprecession), user, target)
+	else if(memorialprocession)
+		INVOKE_ASYNC(src, PROC_REF(try_memorialprocession), user, target)
 	else if(requiem)
 		INVOKE_ASYNC(src, PROC_REF(try_requiem), user, target)
 	. = ..()
@@ -137,7 +141,7 @@ then the actual combo
 		trail.visuals.color = beam_color
 
 /// Shared hit helper: sound, visual effect
-/obj/item/rogueweapon/sword/sabre/longing/proc/combohit(mob/living/user, mob/living/target, list/weapon_data, effect_type)
+/obj/item/rogueweapon/sword/sabre/longing/proc/combohit(mob/living/user, mob/living/target, effect_type)
 	if(QDELETED(user) || QDELETED(target))
 		return
 	playsound(user, combo_sounds, 40, TRUE)
@@ -145,29 +149,7 @@ then the actual combo
 	if(effect_type)
 		new effect_type(get_turf(target))
 
-/obj/item/rogueweapon/sword/sabre/longing/proc/behead_dashthrough(mob/living/user, mob/living/target, heavy) //two strikes. summons 1 mob
-	var/victim = target
-	var/damage = 45
-	var/effect_type = heavy ? /obj/effect/temp_visual/smash_effect/violetdark : /obj/effect/temp_visual/dir_setting/slash/violetdark
-	hits = 2
-	for(var/i in 1 to hits)
-		if(QDELETED(src) || QDELETED(user) || QDELETED(target))
-			return
-		// Dash through target to the other side
-		var/turf/dest = get_ranged_target_turf_direct(user, target, get_dist(user, target) + 2)
-		if(!dest)
-			dest = get_turf(target)
-		combo_dash_to(user, dest, target, beam_color)
-		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CHOP, spell_name = "Behead")
-		combohit(user, target, weapon_data, effect_type)
-		if(heavy)
-			shake_camera(target, 1, 2)
-		sleep(0.3 SECONDS)
-
-
-// memorial shit below
-
-/obj/item/rogueweapon/sword/sabre/longing/proc/try_memorialprecession(mob/living/user, mob/living/target) //get targets 4 memorial
+/obj/item/rogueweapon/sword/sabre/longing/proc/try_behead(mob/living/user, mob/living/target) //get targets 4 behead
 	var/list/targets = list()
 	for(var/mob/living/L in range(4, user))
 		if(L == user)
@@ -182,19 +164,19 @@ then the actual combo
 		to_chat(user, span_warning("There are no enemies nearby!"))
 		return
 
-	memorialprecession_start(user, targets)
+	behead_start(user, targets)
 
 	var/list/all_targets = targets.Copy()
 
 	for(var/i in 1 to hits)
-		var/mob/living/target = memorialprecession_pick_target(targets)
+		target = behead_pick_target(targets)
 		if(!target)
 			break
-		memorialprecession(user, targets)
+		behead(user, targets)
 
-	memorialprecession_end(user, all_targets)
+	behead_end(user, all_targets)
 
-/obj/item/rogueweapon/sword/sabre/midsomber/proc/memorialprecession_start(mob/living/user, list/targets) // it just stuns the targets for the cutscene
+/obj/item/rogueweapon/sword/sabre/longing/proc/behead_start(mob/living/user, list/targets) // it just stuns the targets for the cutscene
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 	user.status_flags |= GODMODE
 	user.Stun(60 SECONDS, ignore_canstun = TRUE)
@@ -207,7 +189,7 @@ then the actual combo
 			S.toggle_ai(AI_OFF)
 
 /// Picks a valid living target from the list, removing dead/deleted ones. Returns null if none remain.
-/obj/item/rogueweapon/sword/sabre/midsomber/proc/memorialprocession_pick_target(list/targets)
+/obj/item/rogueweapon/sword/sabre/longing/proc/behead_pick_target(list/targets)
 	var/mob/living/target = pick(targets)
 	if(QDELETED(target) || target.stat == DEAD)
 		targets -= target
@@ -218,10 +200,95 @@ then the actual combo
 			return null
 	return target
 
-/obj/item/rogueweapon/sword/sabre/longing/proc/memorialprecession(mob/living/user, list/targets) //3 strikes, multi-target. summons 3 mobs
+/obj/item/rogueweapon/sword/sabre/longing/proc/behead(mob/living/user, mob/living/target, def_zone, heavy) //two strikes. summons 1 mob
+	var/victim = target
+	var/damage = 45
+	var/effect_type = heavy ? /obj/effect/temp_visual/smash_effect/violetdark : /obj/effect/temp_visual/dir_setting/slash/violetdark
+	hits = 2
+	for(var/i in 1 to hits)
+		if(QDELETED(src) || QDELETED(user) || QDELETED(target))
+			return
+		// Dash through target to the other side
+		var/turf/dest = get_ranged_target_turf_direct(user, target, get_dist(user, target) + 2)
+		if(!dest)
+			dest = get_turf(target)
+		combo_dash_to(user, dest, target, beam_color)
+		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CHOP, spell_name = "Behead")
+		combohit(user, target, effect_type)
+		if(heavy)
+			shake_camera(target, 1, 2)
+		sleep(0.3 SECONDS)
+
+/obj/item/rogueweapon/sword/sabre/longing/proc/behead_end(mob/living/user, list/targets)
+	user.status_flags &= ~GODMODE
+	user.AdjustStun(-60 SECONDS, ignore_canstun = TRUE)
+	user.anchored = FALSE
+	REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
+
+	for(var/mob/living/L in targets)
+		L.AdjustStun(-60 SECONDS, ignore_canstun = TRUE)
+		REMOVE_TRAIT(L, TRAIT_MUTE, TIMESTOP_TRAIT)
+		if(isanimal(L))
+			var/mob/living/simple_animal/S = L
+			S.toggle_ai(initial(S.AIStatus))
+	behead = FALSE
+
+// memorial shit below
+
+/obj/item/rogueweapon/sword/sabre/longing/proc/try_memorialprocession(mob/living/user, mob/living/target) //get targets 4 memorial
+	var/list/targets = list()
+	for(var/mob/living/L in range(4, user))
+		if(L == user)
+			continue
+		if(L.status_flags & GODMODE)
+			continue
+		if(L.stat == DEAD)
+			continue
+		targets += L
+
+	if(!LAZYLEN(targets))
+		to_chat(user, span_warning("There are no enemies nearby!"))
+		return
+
+	memorialprocession_start(user, targets)
+
+	var/list/all_targets = targets.Copy()
+
+	for(var/i in 1 to hits)
+		target = memorialprocession_pick_target(targets)
+		if(!target)
+			break
+		memorialprocession(user, targets)
+
+	memorialprocession_end(user, all_targets)
+
+/obj/item/rogueweapon/sword/sabre/longing/proc/memorialprocession_start(mob/living/user, list/targets) // it just stuns the targets for the cutscene
+	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
+	user.status_flags |= GODMODE
+	user.Stun(60 SECONDS, ignore_canstun = TRUE)
+	user.anchored = TRUE
+	for(var/mob/living/L in targets)
+		L.Stun(60 SECONDS, ignore_canstun = TRUE)
+		walk(L, 0)
+		if(isanimal(L))
+			var/mob/living/simple_animal/S = L
+			S.toggle_ai(AI_OFF)
+
+/// Picks a valid living target from the list, removing dead/deleted ones. Returns null if none remain.
+/obj/item/rogueweapon/sword/sabre/longing/proc/memorialprocession_pick_target(list/targets)
+	var/mob/living/target = pick(targets)
+	if(QDELETED(target) || target.stat == DEAD)
+		targets -= target
+		if(!LAZYLEN(targets))
+			return null
+		target = pick(targets)
+		if(QDELETED(target))
+			return null
+	return target
+
+/obj/item/rogueweapon/sword/sabre/longing/proc/memorialprocession(mob/living/user, mob/living/target, def_zone) //3 strikes, 1 target. summons 3 mobs
 	var/victim = target
 	var/damage = 60
-	var/effect_type = heavy ? /obj/effect/temp_visual/smash_effect/violetdark : /obj/effect/temp_visual/dir_setting/slash/violetdark
 	var/turf/range_pos = get_ranged_target_turf_direct(target, user, 3)
 	hits = 3
 	if(range_pos && get_dist(user, target) != 3)
@@ -234,11 +301,135 @@ then the actual combo
 		if(!dest)
 			dest = get_turf(target)
 		combo_dash_to(user, dest, target, beam_color)
-		combohit(user, target, weapon_data, /obj/effect/temp_visual/slice/violetdark)
-		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CUT, spell_name = "Memorial Precession")
+		combohit(user, target, /obj/effect/temp_visual/slice/violetdark)
+		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CHOP, spell_name = "Memorial Precession")
 		sleep(0.4 SECONDS)
 
+/obj/item/rogueweapon/sword/sabre/longing/proc/memorialprocession_end(mob/living/user, list/targets)
+	user.status_flags &= ~GODMODE
+	user.AdjustStun(-60 SECONDS, ignore_canstun = TRUE)
+	user.anchored = FALSE
+	REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 
-/obj/item/rogueweapon/sword/sabre/longing/proc/requiem(mob/living/user, mob/living/target)
-holy fuck this is gonna be so complicated
+	for(var/mob/living/L in targets)
+		L.AdjustStun(-60 SECONDS, ignore_canstun = TRUE)
+		REMOVE_TRAIT(L, TRAIT_MUTE, TIMESTOP_TRAIT)
+		if(isanimal(L))
+			var/mob/living/simple_animal/S = L
+			S.toggle_ai(initial(S.AIStatus))
+	memorialprocession = FALSE
 
+//defines for objects that requiem uses
+
+/obj/effect/temp_visual/coffin
+	name = "coffin"
+	icon_state = "coffin"
+	duration = INFINITY
+
+/obj/effect/decal/cleanable/blood/gibs/up/coffin
+	color = "#33096e"
+
+//finally, requiem time
+
+/obj/item/rogueweapon/sword/sabre/longing/proc/try_requiem(mob/living/user, mob/living/target) //get targets 4 memorial
+	var/list/targets = list()
+	for(var/mob/living/L in range(4, user))
+		if(L == user)
+			continue
+		if(L.status_flags & GODMODE)
+			continue
+		if(L.stat == DEAD)
+			continue
+		targets += L
+
+	if(!LAZYLEN(targets))
+		to_chat(user, span_warning("There are no enemies nearby!"))
+		return
+
+	requiem_start(user, targets)
+
+	var/list/all_targets = targets.Copy()
+
+	for(var/i in 1 to hits)
+		target = requiem_pick_target(targets)
+		if(!target)
+			break
+		requiem(user, targets)
+
+	requiem_end(user, all_targets)
+
+/obj/item/rogueweapon/sword/sabre/longing/proc/requiem_start(mob/living/user, list/targets) // it just stuns the targets for the cutscene
+	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
+	user.status_flags |= GODMODE
+	user.Stun(60 SECONDS, ignore_canstun = TRUE)
+	user.anchored = TRUE
+	for(var/mob/living/L in targets)
+		L.Stun(60 SECONDS, ignore_canstun = TRUE)
+		walk(L, 0)
+		if(isanimal(L))
+			var/mob/living/simple_animal/S = L
+			S.toggle_ai(AI_OFF)
+
+/// Picks a valid living target from the list, removing dead/deleted ones. Returns null if none remain.
+/obj/item/rogueweapon/sword/sabre/longing/proc/requiem_pick_target(list/targets)
+	var/mob/living/target = pick(targets)
+	if(QDELETED(target) || target.stat == DEAD)
+		targets -= target
+		if(!LAZYLEN(targets))
+			return null
+		target = pick(targets)
+		if(QDELETED(target))
+			return null
+	return target
+
+/obj/item/rogueweapon/sword/sabre/longing/proc/requiem(mob/living/user, mob/living/target, def_zone, heavy) //lets kill this guy bruh
+	var/area/rogue/indoors/coffin/thecoffin = GLOB.areas_by_type[/area/rogue/indoors/coffin]
+	var/victim = target
+	var/damage = 60
+	var/turf/victimspawnpoint
+	var/turf/storedvictimturf = get_turf(victim)
+	var/obj/effect/temp_visual/coffin/coffin_target
+	var/pull_distance = 5
+	hits = 7
+
+	for(var/obj/effect/decal/cleanable/blood/gibs/up/coffin/body in thecoffin)
+		victimspawnpoint = get_turf(body)
+
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+
+	playsound(user, 'sound/foley/requiemstart.ogg', 40)
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		H.throw_at(user, pull_distance, 1, H, FALSE)
+		coffin_target = new /obj/effect/temp_visual/coffin(storedvictimturf)
+		var/datum/beam/chain = user.Beam(coffin_target,icon_state="chain")
+		playsound(user, 'sound/foley/requiemhit.ogg', 40)
+		do_teleport(victim, victimspawnpoint)
+		qdel(chain)
+	for(var/i in 1 to hits)
+		if(QDELETED(src) || QDELETED(user) || QDELETED(coffin_target))
+			return
+		var/turf/dest = get_step(coffin_target.loc, pick(GLOB.cardinals))
+		if(!dest)
+			dest = get_turf(coffin_target)
+		combo_dash_to(user, dest, coffin_target, beam_color)
+		combohit(user, coffin_target, /obj/effect/temp_visual/slice/violetdark)
+		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CHOP, spell_name = "Requiem")
+		sleep(0.15 SECONDS)
+	sleep(0.2 SECONDS)
+	do_teleport(victim, storedvictimturf)
+
+/obj/item/rogueweapon/sword/sabre/longing/proc/requiem_end(mob/living/user, list/targets) //holy fuck are we done?
+	user.status_flags &= ~GODMODE
+	user.AdjustStun(-60 SECONDS, ignore_canstun = TRUE)
+	user.anchored = FALSE
+	REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
+
+	for(var/mob/living/L in targets)
+		L.AdjustStun(-60 SECONDS, ignore_canstun = TRUE)
+		REMOVE_TRAIT(L, TRAIT_MUTE, TIMESTOP_TRAIT)
+		if(isanimal(L))
+			var/mob/living/simple_animal/S = L
+			S.toggle_ai(initial(S.AIStatus))
+	requiem = FALSE

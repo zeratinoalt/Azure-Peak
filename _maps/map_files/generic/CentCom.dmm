@@ -673,6 +673,9 @@
 /obj/item/rogueweapon/mace/steel,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"bG" = (
+/turf/closed/wall/mineral/rogue/stone,
+/area/rogue/indoors/coffin)
 "bX" = (
 /turf/closed/mineral/rogue/bedrock,
 /area/rogue)
@@ -968,6 +971,26 @@
 "uj" = (
 /turf/open/floor/rogue/greenstone/glyph1,
 /area/rogue/indoors/eventarea)
+"uZ" = (
+/obj/effect/decal/cleanable/blood/gibs/old{
+	color = "#33096e"
+	},
+/obj/effect/decal/cleanable/blood/gibs/down{
+	pixel_y = -4;
+	pixel_x = -9;
+	color = "#33096e"
+	},
+/obj/effect/decal/cleanable/blood/gibs/body{
+	pixel_x = 9;
+	dir = 2;
+	pixel_y = -3;
+	color = "#33096e"
+	},
+/obj/effect/decal/cleanable/blood/gibs/up/coffin{
+	pixel_y = 8
+	},
+/turf/open/floor/rogue/blocks,
+/area/rogue/indoors/coffin)
 "va" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/ravoxarena)
@@ -2012,9 +2035,9 @@ MY
 MY
 MY
 MY
-MY
-MY
-MY
+bG
+bG
+bG
 MY
 MY
 MY
@@ -2142,9 +2165,9 @@ MY
 MY
 MY
 MY
-MY
-MY
-MY
+bG
+uZ
+bG
 MY
 MY
 MY
@@ -2272,9 +2295,9 @@ MY
 MY
 MY
 MY
-MY
-MY
-MY
+bG
+bG
+bG
 MY
 MY
 MY

@@ -428,7 +428,7 @@
 		if(!do_after(user, 2 SECONDS, target = target))
 			to_chat(user, span_warning("The binding is interrupted!"))
 			for(var/datum/beam/B in active_beams)
-				B.End()
+				B.Destroy()
 			return FALSE
 
 	if(binding)
