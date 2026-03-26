@@ -27,6 +27,7 @@
 	var/chant
 	var/last_melee_gain = 0
 	var/melee_gain_cooldown = 2 SECONDS
+	var/stack_effect = "default"
 
 /datum/status_effect/buff/arcyne_momentum/on_apply()
 	. = ..()
@@ -118,15 +119,26 @@
 	update_visuals()
 	update_alert()
 	update_spell_buttons()
-	if(old_stacks < 3 && stacks >= 3)
-		to_chat(owner, span_notice("Arcyne force gathers within me!"))
-		playsound(get_turf(owner), 'sound/magic/charging.ogg', 30, TRUE)
-	if(old_stacks < 6 && stacks >= 6)
-		to_chat(owner, span_warning("Release! I must ACT NOW!"))
-		playsound(get_turf(owner), 'sound/magic/charged.ogg', 50, TRUE)
-	if(old_stacks < overcharge_threshold && stacks >= overcharge_threshold)
-		to_chat(owner, span_boldwarning("POWER! POWER! POWER! UNLEASH! UNLEASH! UNLEASH!"))
-		playsound(get_turf(owner), 'sound/magic/charged.ogg', 70, TRUE)
+	if(stack_effect = default)
+		if(old_stacks < 3 && stacks >= 3)
+			to_chat(owner, span_notice("Arcyne force gathers within me!"))
+			playsound(get_turf(owner), 'sound/magic/charging.ogg', 30, TRUE)
+		if(old_stacks < 6 && stacks >= 6)
+			to_chat(owner, span_warning("Release! I must ACT NOW!"))
+			playsound(get_turf(owner), 'sound/magic/charged.ogg', 50, TRUE)
+		if(old_stacks < overcharge_threshold && stacks >= overcharge_threshold)
+			to_chat(owner, span_boldwarning("POWER! POWER! POWER! UNLEASH! UNLEASH! UNLEASH!"))
+			playsound(get_turf(owner), 'sound/magic/charged.ogg', 70, TRUE)
+	if(stack_effect = erlking) // change this later
+		if(old_stacks < 3 && stacks >= 3)
+			to_chat(owner, span_notice("I'll rip you apart.."))
+			playsound(get_turf(owner), 'sound/foley/equip/coffingrab.ogg', 30, TRUE)
+		if(old_stacks < 6 && stacks >= 6)
+			to_chat(owner, span_warning("This howling noise... Must be the tempest."))
+			playsound(get_turf(owner), 'sound/foley/equip/coffingrab.ogg', 50, TRUE)
+		if(old_stacks < overcharge_threshold && stacks >= overcharge_threshold)
+			to_chat(owner, span_boldwarning("..Prepare for your execution...! "))
+			playsound(get_turf(owner), 'sound/foley/equip/coffingrab.ogg', 70, TRUE)
 
 /datum/status_effect/buff/arcyne_momentum/proc/consume_stacks(amount)
 	var/consumed = min(stacks, amount)
