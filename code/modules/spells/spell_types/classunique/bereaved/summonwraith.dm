@@ -1,5 +1,5 @@
 /obj/effect/proc_holder/spell/invoked/summonwraith
-	name = "Summon Revenants"
+	name = "Summon Wraiths"
 	desc = "Draw upon your past and summon the revenants bound to your coffin to fight with you. \
 	These revenants cannot be commanded and lash out against anyone that isn't you."
 	clothes_req = FALSE
@@ -8,7 +8,7 @@
 	range = 7
 	sound = list('sound/foley/beheadstart.ogg')
 	releasedrain = 40
-	chargetime = 2 SECONDS //yeah so you can counter the spawns by just having a lamp on you
+	chargetime = 2 SECONDS //you can just counter these guys by being.. indoors. or the town lol
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	charging_slowdown = 1

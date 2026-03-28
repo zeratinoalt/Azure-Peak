@@ -78,13 +78,11 @@
 /datum/intent/sword/thrust/longing
 	hitsound = list('sound/combat/hits/bladed/fusedthrust (1).ogg', 'sound/combat/hits/bladed/fusedthrust (2).ogg', 'sound/combat/hits/bladed/fusedthrust (3).ogg')
 
-/datum/intent/sword/cut/zwei/longing
-	hitsound = list('sound/combat/hits/bladed/fusedcut (1).ogg', 'sound/combat/hits/bladed/fusedcut (2).ogg', 'sound/combat/hits/bladed/fusedcut (3).ogg')
 
 /obj/item/rogueweapon/sword/sabre/longing
 	name = "Fused Blade of Ruined Possibilities"
 	desc = "A manifestation of the Bereaved's heartbreak."
-	possible_item_intents = list(/datum/intent/sword/cut/longing, /datum/intent/sword/thrust/longing, /datum/intent/sword/cut/zwei/longing, /datum/intent/sword/cut/zwei/sweep)
+	possible_item_intents = list(/datum/intent/sword/cut/longing, /datum/intent/sword/thrust/longing, /datum/intent/sword/cut/zwei/sweep)
 	//design intent - uhhhh. one handed greatsword is cool? and it allows 4 the user to have the coffin in the other hand
 	force = 30
 	parrysound = list(
@@ -114,6 +112,6 @@
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.5,"sx" = -15,"sy" = -13,"nx" = -8,"ny" = -8,"wx" = -8,"wy" = -10,"ex" = 10,"ey" = -11,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 90,"sturn" = -90,"wturn" = -80,"eturn" = 81,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+				return list("shrink" = 0.5,"sx" = -15,"sy" = -13,"nx" = 3,"ny" = -15,"wx" = -8,"wy" = -10,"ex" = 10,"ey" = -11,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 90,"sturn" = -90,"wturn" = -80,"eturn" = 81,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("onback")
 				return list("shrink" = 0.5,"sx" = 1,"sy" = -1,"nx" = 1,"ny" = -1,"wx" = 4,"wy" = -1,"ex" = -1,"ey" = -1,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
