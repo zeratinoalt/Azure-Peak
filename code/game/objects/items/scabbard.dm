@@ -174,7 +174,7 @@
 
 	invalid_blades = list(
 		/obj/item/rogueweapon/huntingknife/idagger/stake,
-		/obj/item/rogueweapon/huntingknife/idagger/silver/stake)
+		/obj/item/rogueweapon/huntingknife/idagger/silver/stake,)
 
 /obj/item/rogueweapon/scabbard/sheath/getonmobprop(tag)
 	..()
@@ -409,7 +409,8 @@
 	invalid_blades = list(
 		/obj/item/rogueweapon/sword/long/exe,
 		/obj/item/rogueweapon/sword/long/martyr,
-		/obj/item/rogueweapon/sword/long/exe/berserk
+		/obj/item/rogueweapon/sword/long/exe/berserk,
+		/obj/item/rogueweapon/sword/sabre/longing
 	)
 
 	force = 7

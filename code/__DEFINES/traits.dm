@@ -287,6 +287,7 @@
 #define TRAIT_HEART_OF_VENGEANCE "Heart of Vengeance"
 #define TRAIT_WILDHUNT "Wild Hunt"
 #define TRAIT_SELFLOATHING "Self-loathing"
+#define TRAIT_AFFECTION_AND_HATRED "Affection and Hatred"
 
 // If you want description to show up you gotta have the trait name defined BEFORE this lol
 
@@ -524,6 +525,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_HEART_OF_VENGEANCE = span_info("I am intertwined with this fused blade.. It responds to my call, and my call alone."),
 	TRAIT_WILDHUNT = span_info("I knew not when I gained the ability to command loyalty of the dead.. I suppose my transformation was inevitable."),
 	TRAIT_SELFLOATHING = span_info("This Dullahan.. It is an extension of myself, and hears only myself."),
+	TRAIT_AFFECTION_AND_HATRED = span_info("A woman whispered in my head. She gave me my blade, my armor, my strength - so that I may forever carry this Heartbreak."),
 ))
 
 // trait accessor defines
