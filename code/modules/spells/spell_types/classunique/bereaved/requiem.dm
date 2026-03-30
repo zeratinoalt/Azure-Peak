@@ -33,7 +33,6 @@ Requires 7 momentum, overcharge does nothing.*/
 	var/empowered_momentum = 10
 	var/telegraph_delay = TELEGRAPH_HIGH_IMPACT
 	var/beam_color = COLOR_VIOLET_DARK
-	var/hits = 6
 	var/combo_sounds = list ('sound/combat/hits/bladed/fusedthrust (1).ogg', 'sound/combat/hits/bladed/fusedcut (2).ogg', 'sound/combat/hits/bladed/fusedthrust (3).ogg')
 	var/base_damage = 40
 	var/empowered_mult = 1
@@ -89,8 +88,8 @@ Requires 7 momentum, overcharge does nothing.*/
 		if(!dest)
 			dest = get_turf(victim)
 		requiem_dash_to(user, dest, victim, beam_color)
+		H.emote("attack", forced = TRUE)
 		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CUT, spell_name = "Requiem")
-		H.emote("attackgrunt", forced = TRUE)
 		playsound(H, pick(combo_sounds), 80, FALSE)
 		sleep(0.3 SECONDS)
 
@@ -102,7 +101,6 @@ Requires 7 momentum, overcharge does nothing.*/
 		requiem_dash_to(user, dest, victim, beam_color)
 		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CUT, spell_name = "Requiem")
 		playsound(H, pick(combo_sounds), 80, FALSE)
-		H.emote("attackgrunt", forced = TRUE)
 		sleep(0.3 SECONDS)
 
 		if(!victim|| !user) //third hit
@@ -112,7 +110,6 @@ Requires 7 momentum, overcharge does nothing.*/
 			dest = get_turf(victim)
 		requiem_dash_to(user, dest, victim, beam_color)
 		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CUT, spell_name = "Requiem")
-		H.emote("attackgrunt", forced = TRUE)
 		playsound(H, pick(combo_sounds), 80, FALSE)
 		playsound(H, 'sound/foley/requiemhit.ogg', 80, TRUE)
 		sleep(0.3 SECONDS)
@@ -124,7 +121,6 @@ Requires 7 momentum, overcharge does nothing.*/
 			dest = get_turf(victim)
 		requiem_dash_to(user, dest, victim, beam_color)
 		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CUT, spell_name = "Requiem")
-		H.emote("attackgrunt", forced = TRUE)
 		playsound(H, pick(combo_sounds), 80, FALSE)
 		sleep(0.3 SECONDS)
 
@@ -135,7 +131,6 @@ Requires 7 momentum, overcharge does nothing.*/
 			dest = get_turf(victim)
 		requiem_dash_to(user, dest, victim, beam_color)
 		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CUT, spell_name = "Requiem")
-		H.emote("attackgrunt", forced = TRUE)
 		playsound(H, pick(combo_sounds), 80, FALSE)
 		playsound(H, 'sound/foley/requiemhit.ogg', 80, TRUE)
 		sleep(0.3 SECONDS)
@@ -147,7 +142,7 @@ Requires 7 momentum, overcharge does nothing.*/
 			dest = get_turf(victim)
 		requiem_dash_to(user, dest, victim, beam_color)
 		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CUT, spell_name = "Requiem")
-		H.emote("attackgrunt", forced = TRUE)
+		H.emote("attack", forced = TRUE)
 		playsound(H, pick(combo_sounds), 80, FALSE)
 		sleep(0.3 SECONDS)
 

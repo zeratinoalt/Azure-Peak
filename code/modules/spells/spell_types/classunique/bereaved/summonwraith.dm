@@ -1,6 +1,7 @@
 /obj/effect/proc_holder/spell/invoked/summonwraith
-	name = "Summon Wraiths"
-	desc = "Draw upon your past and summon the revenants bound to your coffin to fight with you. \
+	name = "Echos of the Manor"
+	desc = "Draw upon your past and summon beings bound to your coffin to fight for you. \
+	These are not actual undead, merely magic molded and twisted by your subconscious.\
 	These revenants cannot be commanded and lash out against anyone that isn't you."
 	clothes_req = FALSE
 	action_icon = 'icons/mob/actions/classuniquespells/erlking.dmi'
@@ -34,7 +35,7 @@
 	if(!isopenturf(T))
 		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
 		return FALSE
-	user.say("No repose shall await us.")
+	user.say("Heed my call, O' wretched manor!")
 	var/spirit_roll
 
 	for(var/i = 1 to to_spawn)

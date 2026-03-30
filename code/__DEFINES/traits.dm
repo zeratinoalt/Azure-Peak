@@ -284,10 +284,10 @@
 #define TRAIT_MASTER_CARPENTER "Master Carpenter"
 #define TRAIT_MASTER_MASON "Master Masonry"
 #define TRAIT_FOOD_STIPEND "Vomitorium-known"
-#define TRAIT_HEART_OF_VENGEANCE "Heart of Vengeance"
 #define TRAIT_WILDHUNT "Wild Hunt"
 #define TRAIT_SELFLOATHING "Self-loathing"
 #define TRAIT_AFFECTION_AND_HATRED "Affection and Hatred"
+#define TRAIT_RESENTMENT "Resentment"
 
 // If you want description to show up you gotta have the trait name defined BEFORE this lol
 
@@ -522,10 +522,10 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_FOOD_STIPEND = span_notice("The creachers of the vomitorium know my touch, and will pull costs for their products directly from the treasury for me."),
 	TRAIT_STANDARD_BEARER = span_info("The banner is my lifeline. Just as I am to it. The retinue know to rally around me, so long as I keep it safe."),
 	TRAIT_FOG_WARDED = span_info("I am protected from Necra's deadly fog. The revenants won't find me... for now."),
-	TRAIT_HEART_OF_VENGEANCE = span_info("I am intertwined with this fused blade.. It responds to my call, and my call alone."),
 	TRAIT_WILDHUNT = span_info("I knew not when I gained the ability to command loyalty of the dead.. I suppose my transformation was inevitable."),
 	TRAIT_SELFLOATHING = span_info("This Dullahan.. It is an extension of myself, and hears only myself."),
-	TRAIT_AFFECTION_AND_HATRED = span_info("A woman whispered in my head. She gave me my blade, my armor, my strength - so that I may forever carry this Heartbreak."),
+	TRAIT_AFFECTION_AND_HATRED = span_info("I heard a voice, whilst I was sinking in my memories. She promised me raw strength, and the means to slay that fetid manor - if only I promised to take revenge."),
+	TRAIT_RESENTMENT = span_info("The Manor saw it fit to never dress me in clothing that would betray my boorish, common birth. I suppose I cannot help but agree."),
 ))
 
 // trait accessor defines

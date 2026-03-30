@@ -63,7 +63,6 @@ Always FFs.*/
 		return
 	H.say("...I'll gouge out your contemptuous eyes.")
 	playsound(H, 'sound/foley/beheadstart.ogg', 80, TRUE)
-	H.emote("attackgrunt", forced = TRUE)
 	sleep(telegraph_delay)
 
 	// Check and consume momentum for empowerment
@@ -96,4 +95,5 @@ Always FFs.*/
 		behead_dash_to(user, dest, victim, beam_color)
 		arcyne_strike(user, victim, held_weapon, damage, def_zone, BCLASS_CUT, spell_name = "Beheading")
 		playsound(H, pick(combo_sounds), 80, FALSE)
+		H.emote("attack", forced = TRUE)
 		sleep(0.3 SECONDS)
