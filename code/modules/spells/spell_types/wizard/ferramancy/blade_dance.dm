@@ -138,7 +138,7 @@
 
 /obj/effect/blade_dance_zone/Destroy()
 	if(caster_beam)
-		caster_beam.End()
+		caster_beam.Destroy()
 		caster_beam = null
 	if(source_spell)
 		source_spell.end_dance()

@@ -13,7 +13,7 @@
 	maximum_possible_slots = 1
 	class_select_category = CLASS_CAT_BATTLEMAGE
 	category_tags = list(CTAG_WRETCH)
-	traits_applied = list(TRAIT_ARCYNE_T2, TRAIT_WILDHUNT, TRAIT_SELFLOATHING, TRAIT_AFFECTION_AND_HATRED, TRAIT_RESENTMENT)
+	traits_applied = list(TRAIT_ARCYNE, TRAIT_WILDHUNT, TRAIT_SELFLOATHING, TRAIT_AFFECTION_AND_HATRED, TRAIT_RESENTMENT)
 	subclass_stats = list(
 		STATKEY_STR = 1,
 		STATKEY_PER = 2, //seven cuz like.. yeah.
@@ -49,11 +49,10 @@
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpot = 1,	
 	)
 
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/recall_weapon)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/empower_weapon)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/bind_weapon)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
+	H.mind.AddSpell(new /datum/action/cooldown/spell/recall_weapon)
+	H.mind.AddSpell(new /datum/action/cooldown/spell/empower_weapon)
+	H.mind.AddSpell(new /datum/action/cooldown/spell/bind_weapon)
+	H.mind.AddSpell(new /datum/action/cooldown/spell/mending)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/withstand)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/summonwraith)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/beheading)
