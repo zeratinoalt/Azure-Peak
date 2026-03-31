@@ -30,6 +30,7 @@
 		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/swimming = SKILL_LEVEL_NOVICE,
 		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/riding = SKILL_LEVEL_JOURNEYMAN,
 	)
 
 /datum/outfit/job/roguetown/wretch/bereaved/pre_equip(mob/living/carbon/human/H)
