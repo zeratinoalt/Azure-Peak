@@ -8,7 +8,7 @@ Always FFs.*/
 	name = "Beheading"
 	desc = "Harness your bereavement, targetting a single person and delivering two strikes. \
 		There is a noticeable delay before attacking. \
-		Requires 2 momentum, overcharging doubles damage. \
+		Requires 2 momentum, overcharging (3+) doubles damage. \
 		Cannot be blocked."
 	clothes_req = FALSE
 	range = 7
@@ -29,11 +29,13 @@ Always FFs.*/
 	xp_gain = FALSE
 	var/delay = 10
 	var/base_damage = 40
-	var/momentum_cost = 2
+	var/momentum_cost = 3
 	var/empowered_mult = 2
 	var/beam_color = COLOR_VIOLET_DARK
 	var/combo_sounds = list ('sound/combat/hits/bladed/fusedthrust (1).ogg', 'sound/combat/hits/bladed/fusedcut (2).ogg', 'sound/combat/hits/bladed/fusedthrust (3).ogg')
 	var/telegraph_delay = TELEGRAPH_DODGEABLE
+	var/min_momentum = 2
+
 
 ///dash helper - uses forcemove but i think it should be fine
 /obj/effect/proc_holder/spell/invoked/beheading/proc/behead_dash_to(mob/living/user, turf/destination, mob/living/target, beam_color)
@@ -44,6 +46,18 @@ Always FFs.*/
 	var/datum/beam/trail = origin.Beam(user, "1-full", time = 2)
 	if(trail && beam_color)
 		trail.visuals.color = beam_color
+
+/obj/effect/proc_holder/spell/invoked/beheading/can_cast(mob/user = usr, feedback = TRUE)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/H = user
+	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	if(!M || M.stacks < min_momentum)
+		return FALSE
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/beheading/cast(list/targets, mob/user = usr)
 	var/mob/living/carbon/human/H = user
@@ -57,6 +71,12 @@ Always FFs.*/
 		revert_cast()
 		return
 
+	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	if(!M || M.stacks < min_momentum)
+		to_chat(H, span_warning("Not enough momentum! I need at least [min_momentum] stacks!"))
+		revert_cast()
+		return
+
 	if(!HAS_TRAIT(H, TRAIT_AFFECTION_AND_HATRED))
 		to_chat(H, span_warning("I swing, yet my blade does not respond..!"))
 		revert_cast()
@@ -67,7 +87,7 @@ Always FFs.*/
 
 	// Check and consume momentum for empowerment
 	var/empowered = FALSE
-	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
 	if(M && M.stacks >= momentum_cost)
 		M.consume_stacks(momentum_cost)
 		empowered = TRUE

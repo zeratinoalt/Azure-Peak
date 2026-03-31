@@ -5,9 +5,9 @@
 	name = "Call Dullahan"
 	desc = "Call upon your Dullahan, mounting them. \
 		Dash, perform a small, weak AOE, and then mount. \
-		The spell simply brings your Dullahan to you if one already exists. \
-		Costs two momentum to activate. \
-		The Dullahan is not actual undead, merely a being twisted and molded by your subconscious will.\
+		The spell simply brings another Dullahan to you if one already exists. \
+		Costs two momentum to activate. 3+ to empower, dealing double damage. \
+		The Dullahan is not actual undead, merely magic twisted and molded by your subconscious will.\
 		Can be deflected by Defend stance."
 	clothes_req = FALSE
 	range = 4
@@ -30,11 +30,12 @@
 	glow_intensity = GLOW_INTENSITY_MEDIUM
 	var/base_damage = 15
 	var/empowered_mult = 2
-	var/momentum_cost = 2
+	var/momentum_cost = 3
 	var/area_of_effect = 1 // 1-tile radius = 3x3
 	var/beam_color = COLOR_VIOLET_DARK
 	var/combo_sounds = list ('sound/combat/hits/bladed/fusedthrust (1).ogg', 'sound/combat/hits/bladed/fusedcut (2).ogg', 'sound/combat/hits/bladed/fusedthrust (3).ogg')
 	var/telegraph_delay = TELEGRAPH_SKILLSHOT
+	var/min_momentum = 2
 
 ///dash helper - uses forcemove but i think it should be fine
 /obj/effect/proc_holder/spell/invoked/summondullahan/proc/summon_dash_to(mob/living/user, turf/destination, mob/living/target, beam_color)
@@ -45,6 +46,18 @@
 	var/datum/beam/trail = origin.Beam(user, "1-full", time = 2)
 	if(trail && beam_color)
 		trail.visuals.color = beam_color
+
+/obj/effect/proc_holder/spell/invoked/summondullahan/can_cast(mob/user = usr, feedback = TRUE)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/H = user
+	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	if(!M || M.stacks < min_momentum)
+		return FALSE
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/summondullahan/cast(list/targets, mob/user = usr)
 	var/mob/living/carbon/human/H = user
@@ -63,9 +76,15 @@
 		revert_cast()
 		return
 
+	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	if(!M || M.stacks < min_momentum)
+		to_chat(H, span_warning("Not enough momentum! I need at least [min_momentum] stacks!"))
+		revert_cast()
+		return FALSE
+
 	// Check and consume momentum for empowerment
 	var/empowered = FALSE
-	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
 	if(M && M.stacks >= momentum_cost)
 		M.consume_stacks(momentum_cost)
 		empowered = TRUE
@@ -111,7 +130,8 @@
 	log_combat(H, null, "used Call Dullahan[empowered ? " (empowered)" : ""]")
 
 // horse time
-//if no mountsummoned then we summon a dullahan and attach 
+//i tried to make it so that if a dullahan wasnt summoned in the round - then we spawn one. if there was - then we just teleport the dullahan to the user
+//but idk how to make that, sorry
 	var/mob/living/simple_animal/hostile/retaliate/rogue/dullahan/tame/saddled/mount
 	var/mountsummoned
 	if(!mountsummoned || mount.stat == DEAD)
@@ -121,10 +141,12 @@
 		if(!user.buckled)
 			mount.buckle_mob(user, TRUE)
 		mountsummoned = TRUE
-	else
+/*	else if(mountsummoned)
+		mount == newmount
+		qdel(oldmount)
 		mount.forceMove(user.loc)
 		if(!user.buckled)
-			mount.buckle_mob(user, TRUE)
+			mount.buckle_mob(user, TRUE) */
 
 	return TRUE
 

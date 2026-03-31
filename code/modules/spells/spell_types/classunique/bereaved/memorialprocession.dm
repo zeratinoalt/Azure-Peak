@@ -8,7 +8,7 @@ Requires 4 momentum, overcharge doubles damage.*/
 	name = "Memorial Procession"
 	desc = "Ignite your wrath, targetting a single person and dashing towards them. \
 		Dash, and then strike with an AOE. \
-		Requires 4 momentum, Empowering doubles damage dealt. \
+		Requires 4 momentum, Anything above and double damage is dealt, consuming all stacks. \
 		Simply cast on a target to begin the Procession. \
 		Can be deflected by Defend stance."
 	clothes_req = FALSE
@@ -32,11 +32,12 @@ Requires 4 momentum, overcharge doubles damage.*/
 	glow_intensity = GLOW_INTENSITY_MEDIUM
 	var/base_damage = 40
 	var/empowered_mult = 2
-	var/momentum_cost = 4
+	var/momentum_cost = 5
 	var/area_of_effect = 1 // 1-tile radius = 3x3
 	var/beam_color = COLOR_VIOLET_DARK
 	var/combo_sounds = list ('sound/combat/hits/bladed/fusedthrust (1).ogg', 'sound/combat/hits/bladed/fusedcut (2).ogg', 'sound/combat/hits/bladed/fusedthrust (3).ogg')
 	var/telegraph_delay = TELEGRAPH_SKILLSHOT
+	var/min_momentum = 4
 
 ///dash helper - uses forcemove but i think it should be fine
 /obj/effect/proc_holder/spell/invoked/memorialprocession/proc/memorial_dash_to(mob/living/user, turf/destination, mob/living/target, beam_color)
@@ -47,6 +48,18 @@ Requires 4 momentum, overcharge doubles damage.*/
 	var/datum/beam/trail = origin.Beam(user, "1-full", time = 2)
 	if(trail && beam_color)
 		trail.visuals.color = beam_color
+
+/obj/effect/proc_holder/spell/invoked/memorialprocession/can_cast(mob/user = usr, feedback = TRUE)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/H = user
+	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	if(!M || M.stacks < min_momentum)
+		return FALSE
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/memorialprocession/cast(list/targets, mob/user = usr)
 	var/mob/living/carbon/human/H = user
@@ -65,9 +78,15 @@ Requires 4 momentum, overcharge doubles damage.*/
 		revert_cast()
 		return
 
+	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	if(!M || M.stacks < min_momentum)
+		to_chat(H, span_warning("Not enough momentum! I need at least [min_momentum] stacks!"))
+		revert_cast()
+		return
+
 	// Check and consume momentum for empowerment
 	var/empowered = FALSE
-	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
 	if(M && M.stacks >= momentum_cost)
 		M.consume_stacks(momentum_cost)
 		empowered = TRUE

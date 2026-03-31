@@ -34,7 +34,7 @@ Requires 7 momentum, overcharge does nothing.*/
 	var/telegraph_delay = TELEGRAPH_HIGH_IMPACT
 	var/beam_color = COLOR_VIOLET_DARK
 	var/combo_sounds = list ('sound/combat/hits/bladed/fusedthrust (1).ogg', 'sound/combat/hits/bladed/fusedcut (2).ogg', 'sound/combat/hits/bladed/fusedthrust (3).ogg')
-	var/base_damage = 40
+	var/damage = 40
 	var/empowered_mult = 1
 
 /obj/effect/proc_holder/spell/invoked/requiem/proc/requiem_dash_to(mob/living/user, turf/destination, mob/living/target, beam_color)
@@ -46,6 +46,18 @@ Requires 7 momentum, overcharge does nothing.*/
 	var/datum/beam/trail = origin.Beam(user, "1-full", time = 2)
 	if(trail && beam_color)
 		trail.visuals.color = beam_color
+
+/obj/effect/proc_holder/spell/invoked/requiem/can_cast(mob/user = usr, feedback = TRUE)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/H = user
+	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
+	if(!M || M.stacks < momentum_cost)
+		return FALSE
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/requiem/cast(list/targets, mob/user = usr)
 	var/mob/living/carbon/human/H = user
@@ -64,14 +76,12 @@ Requires 7 momentum, overcharge does nothing.*/
 		revert_cast()
 		return
 
-	var/empowered = FALSE
 	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
-	if(M && M.stacks >= momentum_cost)
-		M.consume_stacks(momentum_cost)
-		empowered = TRUE
-		to_chat(H, span_notice("[momentum_cost] momentum released!"))
+	if(!M || M.stacks < momentum_cost)
+		to_chat(H, span_warning("Not enough momentum! I need at least [momentum_cost] stacks!"))
+		revert_cast()
+		return
 
-	var/damage = empowered ? (base_damage * empowered_mult) : base_damage
 	var/def_zone = H.zone_selected || BODY_ZONE_CHEST
 
 	playsound(H, 'sound/foley/requiemstart.ogg', 80, TRUE)
