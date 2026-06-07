@@ -11,7 +11,7 @@
 		if("pain")
 			used = list('sound/vo/male/crimsondragon/pain1.ogg', 'sound/vo/male/crimsondragon/pain2.ogg', 'sound/vo/male/crimsondragon/pain3.ogg')
 		if("groan")
-			used = list('sound/vo/male/crimsondragon/groan1.ogg', 'sound/vo/male/crimsondragon/groan2.ogg')
+			used = list('sound/vo/male/crimsondragon/groan.ogg', 'sound/vo/male/crimsondragon/groan2.ogg')
 		if("huh")
 			used = list('sound/vo/male/crimsondragon/huh.ogg')
 		if("laugh")
