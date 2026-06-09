@@ -216,3 +216,63 @@
 	// we use this variable to hold the plural name of the current ammo. we shouldn't need a var for this, but dreamchecker is giving me a warning so I have to do it
 	var/current_ammo_name = ""
 
+
+/// change alladis later 
+/obj/item/ego_weapon/city/thumb_east/proc/Reload(amount_to_load, obj/item/stack/thumb_east_ammo/ammo_item, mob/living/carbon/user)
+	// This first section is the reload start. You can cancel it, with the only consequence at this point being that you lose your overheat bonus.
+	playsound(src, reload_start_sound, 90, FALSE, 10)
+	to_chat(user, span_info("You begin loading your [src.name]..."))
+	VentHeat(user)
+	ReturnToNormal(user)
+	busy = TRUE
+	if(do_after(user, reload_start_windup, src, progress = TRUE, interaction_key = "thumb_east_reload", max_interact_count = 1))
+		// If we reached this line, we've started the reload properly now. Being interrupted at this point causes a ReloadFailure(), you will spill the ammo you're loading.
+		// This first block will eject all our spent and unspent ammo if we're using a weapon with SPENT_RELOADEJECT behaviour (the podao).
+		if(spent_ammo_behaviour == SPENT_RELOADEJECT)
+			var/list/all_cartridges = list()
+			all_cartridges |= spent_cartridges
+			all_cartridges |= current_ammo
+			for(var/obj/item/stack/thumb_east_ammo/round in all_cartridges)
+				INVOKE_ASYNC(src, PROC_REF(EjectRound), round, user)
+
+		// This is the actual reload. Each round takes 0.4 seconds to load, so this will at most last 2.4 seconds if you're fully reloading the Podao.
+		// I'm unsure if it's wise because it's pretty obvious when you're reloading, so people might just... shove you and cancel it. Needs some playtesting.
+		// An alternative would be to have a set reload duration and divide it by the amount we're going to load. But that feels weird.
+		// Was also considering giving you a defensive buff while reloading.
+		for(var/i in 1 to amount_to_load)
+			if(do_after(user, (reload_load_windup), src, progress = TRUE, interaction_key = "thumb_east_reload", max_interact_count = 1))
+				var/obj/item/stack/thumb_east_ammo/new_bullet = ammo_item.split_stack(user, 1)
+				if(new_bullet)
+					// We actually store the round INSIDE the weapon. If the weapon is destroyed we'll drop them.
+					new_bullet.forceMove(src)
+					current_ammo += new_bullet
+					current_ammo_type = ammo_item.type
+					current_ammo_name = ammo_item.name
+					playsound(src, reload_load_sound, 90, FALSE, 8)
+					to_chat(user, span_info("You load a [ammo_item.singular_name] into the [src.name]."))
+			// If we reach this else block, it means our reload got interrupted in some way, so we drop the ammo we're trying to load into the weapon and scatter it.
+			else
+				INVOKE_ASYNC(src, PROC_REF(ReloadFailure), ammo_item, user)
+				busy = FALSE
+				return FALSE
+		busy = FALSE
+	else
+		busy = FALSE
+		to_chat(user, span_danger("You abort your reload!"))
+		return FALSE
+
+	// We only reach this part if we successfully loaded the rounds we wanted to load. Play the reload_end_sound with a small delay so it sounds nicer.
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, reload_end_sound, 90, FALSE, 10), 0.2 SECONDS)
+	return TRUE
+
+/// This proc happens if your reloading gets interrupted after you've started loading rounds into the weapon. You spill the ammo you were trying to load on the floor.
+/obj/item/ego_weapon/city/thumb_east/proc/ReloadFailure(obj/item/stack/thumb_east_ammo/ammo_item, mob/living/carbon/user)
+	playsound(src, reload_fail_sound, 100, FALSE, 6)
+	user.visible_message(span_danger("[user] fumbles while reloading, spilling the ammo on the floor!"), span_danger("You fumble while reloading, spilling the ammo on the floor!"))
+	for(var/i in 1 to ammo_item.amount)
+		var/obj/item/stack/thumb_east_ammo/spilled_bullet = ammo_item.split_stack(user, 1)
+		if(spilled_bullet)
+			spilled_bullet.forceMove(user.drop_location())
+			spilled_bullet.throw_at(get_ranged_target_turf(user, pick(GLOB.alldirs), 1), 1, 5, spin = TRUE)
+			spilled_bullet.setDir(pick(GLOB.alldirs))
+			sleep(1)
