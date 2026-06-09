@@ -122,7 +122,7 @@
 /obj/item/dragonmark
 	name = "dragonmark shell"
 	desc = "Powerful propellant shells. These aren't fired at targets, but are instead detonated to provide additional propulsion to swings and stabs of Lingyuese weaponry. Rather expensive to purchase and keep in storage, hence their rarity outside of Lingyue."
-	icon_state = "dragon1"
+	icon_state = "dragon"
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/roguetown/weapons/special/crimdragonshells.dmi'
 	twohands_required = FALSE
@@ -130,15 +130,93 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	grid_width = 32
 	grid_height = 32
-	/// what item does this turn into when it gets spent?
-	var/spent_type = /obj/item/dragonmark/spent
-	// controls how much overheat is generated when spending this shell. it's a decaying flat force increase on non-combo hits that gets cleared on reload
-	// comes in the form of added burn damage
-	// please never make this negative
-	var/heat_generation = 2
 	sellprice = 40
 
-	var/quantity = 6
-	var/plural_name = "spent dragonmark shells"
-	var/base_type
+/obj/item/dragonmark/savage
+	name = "savage dragonmark shell"
+	desc = "Each detonation sounds like the roar of a dragon."
+	icon_state = "dragonslay"
+	w_class = WEIGHT_CLASS_SMALL
+	icon = 'icons/roguetown/weapons/special/crimdragonshells.dmi'
+	twohands_required = FALSE
+	gripped_intents = null
+	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
+	grid_width = 32
+	grid_height = 32
+	sellprice = 60
+
+/obj/item/dragonmark/empty
+	name = "spent dragonmark shell"
+	desc = "Passing embers."
+	icon_state = "e_dragon"
+	sellprice = 20
+
+/obj/item/dragonmark/savage/empty
+	name = "spent savage dragonmark shell"
+	desc = "Violent flame."
+	icon-state = "e_dragonslay"
+	sellprice = 30
+
+
+
+
+
+
+// ! Design Intent Below !
+//underpar in terms of DPS w/o ammo - using ammo makes it very scary.
+//heat decays with each strike - to encourage loading in more shells for sustained fights
+
+/datum/intent/sword/cut/podao
+	hitsound = list('sound/combat/hits/bladed/crimsontiger/slash1.ogg', 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
+
+/datum/intent/sword/cut/zwei/cleave/podao
+	hitsound = list('sound/combat/hits/bladed/crimsontiger/slash1.ogg', 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
+
+/datum/intent/sword/cut/zwei/sweep/podao
+	hitsound = list('sound/combat/hits/bladed/crimsontiger/slash1.ogg', 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
+
+/obj/item/rogueweapon/sword/sabre/podao
+	name = "winged podao"
+	desc = "A one-handed sword with large exhaust ports protruding out of blade's spine. This piece is incredibly expensive & complex to forge - akin to the complexity of a Construct."
+	possible_item_intents = list(/datum/intent/sword/cut/podao, /datum/intent/sword/cut/zwei/cleave/podao, /datum/intent/sword/cut/zwei/sweep/podao)
+	force = 20
+	parrysound = list(
+		'sound/combat/parry/bladed/crimsontiger/parry1.ogg',
+		'sound/combat/parry/bladed/crimsontiger/parry2.ogg',
+		'sound/combat/parry/bladed/crimsontiger/parry3.ogg',
+		)
+	icon = 'icons/roguetown/weapons/special/crimdragonweapon.dmi'
+	icon_state = "podao_closed"
+	pixel_y = -16
+	pixel_x = -16
+	inhand_x_dimension = 64
+	inhand_y_dimension = 64
+	bigboy = TRUE
+	swingsound = PODAOWOOSH
+	wlength = WLENGTH_LONG
+	w_class = WEIGHT_CLASS_BULKY
+	minstr = 9
+	smeltresult = /obj/item/ingot/steel
+	associated_skill = /datum/skill/combat/swords
+	max_blade_int = 300
+	wdefense = 7
+	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
+	wbalance = WBALANCE_NORMAL
+	// number of shells inside
+	var/shells = 6
+	// number of spent shells
+	var/spent = 0
+	// this variable holds a flat force increase that is only applied on basic hits. it increases when ammo is spent, and gets reset on reload or unload
+	// it decays on each hit that isn't part of a combo
+	//! ..aaalso bypasses dodge/parry !
+	var/overheat = 0
+	var/overheat_decay = 1
+	var/busy = FALSE // used to prevent certain actions while reloading or leaping
+	// how long does the reload phase last?
+	var/reload_windup = 0.6 SECONDS
+	// we use this variable to hold the type of the current ammo
+	var/current_ammo_type = null
+	// we use this variable to hold the plural name of the current ammo. we shouldn't need a var for this, but dreamchecker is giving me a warning so I have to do it
+	var/current_ammo_name = ""
 
