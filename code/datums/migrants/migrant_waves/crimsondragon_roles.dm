@@ -147,19 +147,15 @@
 
 /obj/item/dragonmark/empty
 	name = "spent dragonmark shell"
-	desc = "Passing embers."
+	desc = "Firm as a Great Mountain."
 	icon_state = "e_dragon"
 	sellprice = 20
 
 /obj/item/dragonmark/savage/empty
 	name = "spent savage dragonmark shell"
-	desc = "Violent flame."
+	desc = "Hugging Fire, Sitting on Brushwood."
 	icon-state = "e_dragonslay"
 	sellprice = 30
-
-
-
-
 
 
 // ! Design Intent Below !
