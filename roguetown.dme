@@ -3124,7 +3124,6 @@
 #include "code\modules\spells\spell_types\bardic\songbook.dm"
 #include "code\modules\spells\spell_types\bardic\vicious_mockery.dm"
 #include "code\modules\spells\spell_types\classunique\berserker\berserkrage.dm"
-#include "code\modules\spells\spell_types\classunique\crimson dragon\doubleslash.dm"
 #include "code\modules\spells\spell_types\classunique\desertrider\zeybek_momentum.dm"
 #include "code\modules\spells\spell_types\classunique\spellblade\advance.dm"
 #include "code\modules\spells\spell_types\classunique\spellblade\air_strike.dm"

@@ -56,6 +56,7 @@
 	desc = "A silky, thin jacket ontop of an equally thin black shirt. Small, golden studs act as buttons. Pretty absorbant to blunting and slashing, on account of Lingyuese silk being rather tough."
 	icon = 'icons/roguetown/clothing/special/dragon.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
 	icon_state = "crimsondragonshirt"
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
@@ -64,6 +65,7 @@
 	desc = "They say that pants like these are intentionally stained red in order to give off the appearance of blood."
 	icon = 'icons/roguetown/clothing/special/dragon.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
 	icon_state = "crimsondragonpants"
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
@@ -72,6 +74,7 @@
 	desc = "Lingyuese silk. Almost magic in how durabile it is, for how thin-and-stretchy the material actually is. Notoriously hard to source and work with, however."
 	icon = 'icons/roguetown/clothing/special/dragon.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
 	icon_state = "crimsondragongloves"
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
@@ -81,15 +84,6 @@
 	icon = 'icons/roguetown/clothing/special/dragon.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
 	icon_state = "crimsondragonbelt"
-	populate_contents = list(
-		/obj/item/dragonmark,
-		/obj/item/dragonmark,
-		/obj/item/dragonmark,
-		/obj/item/dragonmark,
-		/obj/item/dragonmark/savage,
-		/obj/item/dragonmark/savage,
-	)
-	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/crimdragon
 	name = "leather shoes"
@@ -97,14 +91,13 @@
 	icon = 'icons/roguetown/clothing/special/dragon.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
 	icon_state = "crimsondragonshoes"
-	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/cloak/crimdragon
 	name = "silk overcoat"
 	desc = "A silky coat worn on the back. The wraps around the cuffs isn't real gold - it's simply made out of dyed silk."
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
-	icon_state = "crimsondragoncloak"
-	item_state = "crimsondragoncloak"
+	icon_state = "crimsondragoncoat"
+	item_state = "crimsondragoncoat"
 	icon = 'icons/roguetown/clothing/special/dragon.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
@@ -154,7 +147,7 @@
 /obj/item/dragonmark/savage/empty
 	name = "spent savage dragonmark shell"
 	desc = "Hugging Fire, Sitting on Brushwood."
-	icon-state = "e_dragonslay"
+	icon_state = "e_dragonslay"
 	sellprice = 30
 
 
@@ -203,6 +196,10 @@
 	var/shells = 6
 	// number of spent shells
 	var/spent = 0
+	// whenever or not we're empty - only caused by a reload failure
+	var/empty = FALSE
+	// whenever or not we're currently using savage dragonmarks
+	var/savagemark = FALSE
 	// this variable holds a flat force increase that is only applied on basic hits. it increases when ammo is spent, and gets reset on reload or unload
 	// it decays on each hit that isn't part of a combo
 	//! ..aaalso bypasses dodge/parry !
@@ -216,63 +213,142 @@
 	// we use this variable to hold the plural name of the current ammo. we shouldn't need a var for this, but dreamchecker is giving me a warning so I have to do it
 	var/current_ammo_name = ""
 
+/obj/item/rogueweapon/sword/sabre/podao/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("This weapon has two separate modes, an overheat mechanic, and a reload mechanic.")
+	. += span_info("Using the accopmanying skills found in the bottom left of your screen spends shells, which generates Overheat with each spent shell. Overheat deals unavoidable burn damage to the target, equal to the stack, and decays by one every hit.")
+	. += span_info("Right-clicking the podao will cause you to swap shell-types (between normal Dragonmark and Savage Dragonmark). This grants you access to enhanced skills at the cost of heavily reduced weapon defense & forces you into a Reload.")
+	. += span_info("Using Savage Dragonmark shells comes at the cost of introducing RNG checks into your skills. Failing these checks will massively reduce your damage.")
+	. += span_info("Every skill can boosted by detonating a shell, which increases damage.")
+	. += span_info("Using the podao in-hand will trigger a reload, which can be interrupted. Reloading also resets your Overheat stack.")
 
-/// change alladis later 
-/obj/item/ego_weapon/city/thumb_east/proc/Reload(amount_to_load, obj/item/stack/thumb_east_ammo/ammo_item, mob/living/carbon/user)
-	// This first section is the reload start. You can cancel it, with the only consequence at this point being that you lose your overheat bonus.
-	playsound(src, reload_start_sound, 90, FALSE, 10)
+/obj/item/rogueweapon/sword/sabre/podao/attack_self(mob/user)
+	// this first section is the reload start. you can cancel it, with the only consequence at this point being that you lose your overheat bonus
+	if(busy)
+		return
+	playsound(src, 'sound/foley/crimsondragon/loadstart.ogg', 90, FALSE, 10)
 	to_chat(user, span_info("You begin loading your [src.name]..."))
 	VentHeat(user)
-	ReturnToNormal(user)
 	busy = TRUE
-	if(do_after(user, reload_start_windup, src, progress = TRUE, interaction_key = "thumb_east_reload", max_interact_count = 1))
-		// If we reached this line, we've started the reload properly now. Being interrupted at this point causes a ReloadFailure(), you will spill the ammo you're loading.
-		// This first block will eject all our spent and unspent ammo if we're using a weapon with SPENT_RELOADEJECT behaviour (the podao).
-		if(spent_ammo_behaviour == SPENT_RELOADEJECT)
-			var/list/all_cartridges = list()
-			all_cartridges |= spent_cartridges
-			all_cartridges |= current_ammo
-			for(var/obj/item/stack/thumb_east_ammo/round in all_cartridges)
-				INVOKE_ASYNC(src, PROC_REF(EjectRound), round, user)
 
-		// This is the actual reload. Each round takes 0.4 seconds to load, so this will at most last 2.4 seconds if you're fully reloading the Podao.
-		// I'm unsure if it's wise because it's pretty obvious when you're reloading, so people might just... shove you and cancel it. Needs some playtesting.
-		// An alternative would be to have a set reload duration and divide it by the amount we're going to load. But that feels weird.
-		// Was also considering giving you a defensive buff while reloading.
-		for(var/i in 1 to amount_to_load)
-			if(do_after(user, (reload_load_windup), src, progress = TRUE, interaction_key = "thumb_east_reload", max_interact_count = 1))
-				var/obj/item/stack/thumb_east_ammo/new_bullet = ammo_item.split_stack(user, 1)
-				if(new_bullet)
-					// We actually store the round INSIDE the weapon. If the weapon is destroyed we'll drop them.
-					new_bullet.forceMove(src)
-					current_ammo += new_bullet
-					current_ammo_type = ammo_item.type
-					current_ammo_name = ammo_item.name
-					playsound(src, reload_load_sound, 90, FALSE, 8)
-					to_chat(user, span_info("You load a [ammo_item.singular_name] into the [src.name]."))
-			// If we reach this else block, it means our reload got interrupted in some way, so we drop the ammo we're trying to load into the weapon and scatter it.
-			else
-				INVOKE_ASYNC(src, PROC_REF(ReloadFailure), ammo_item, user)
-				busy = FALSE
-				return FALSE
-		busy = FALSE
+	var/og_icon = initial(icon_state)
+	var/should_close = FALSE
+	if((og_icon == "podao_closed"))
+		should_close = TRUE
+		icon_state = "podao_open"
+
+	if(do_after(user, reload_windup, src, progress = TRUE))
+		// if we reached this line, we've started the reload properly now. being interrupted at this point causes a ReloadFailure(), you will spill the ammo you're loading
+
+		// check how many total shells we have and then eject em all - should always be six but who knows
+		if(!empty)
+			INVOKE_ASYNC(src, PROC_REF(EjectRound), user)
+
+
+		// the actual reload. really simply variable manipulation - just play a sound, set shells to 6 and spent to 0, and turn off empty
+		playsound(src, 'sound/foley/crimsondragon/loading.ogg')
+		spent = 0
+		shells = 6
+		empty = FALSE
+		if(should_close)
+			icon_state = og_icon
+			should_close = FALSE
+		// if we reach this else block - basically our reload got interrupted in some way (either thru being attacked/swapping hands/moving/etc.) so we spawn some shells and scatter it around
+		else
+			playsound(src, 'sound/foley/crimsondragon/ammodrop.ogg', 100, FALSE, 6)
+			user.visible_message(span_danger("[user] fumbles while reloading, spilling shells onto the floor!"), span_danger("You fumble while reloading, spilling the shells onto the floor!"))
+			busy = FALSE
+			if(should_close)
+				icon_state = og_icon
+				should_close = FALSE
+			return FALSE
+	// we only reach this part if we successfully loaded the rounds we wanted to load. play the reload_end_sound with a small delay so it sounds nicer.
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, 'sound/foley/crimsondragon/loadend.ogg', 90, FALSE, 10), 0.2 SECONDS)
+	busy = FALSE
+
+
+//dogshit code but basically: check if we're using savagemarks, then for every shell/spent shell we spawn in a new one & fling it around
+/obj/item/rogueweapon/sword/sabre/podao/proc/EjectRound(mob/living/user)
+	var/ejected_shell
+	var/spent_shell
+
+	if(savagemark)
+		ejected_shell = /obj/item/dragonmark/savage
+		spent_shell = /obj/item/dragonmark/savage/empty
 	else
-		busy = FALSE
-		to_chat(user, span_danger("You abort your reload!"))
-		return FALSE
+		ejected_shell = /obj/item/dragonmark
+		spent_shell = /obj/item/dragonmark/empty
 
-	// We only reach this part if we successfully loaded the rounds we wanted to load. Play the reload_end_sound with a small delay so it sounds nicer.
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, reload_end_sound, 90, FALSE, 10), 0.2 SECONDS)
-	return TRUE
+	// this block is adapted code from actual bullet casings for SS13 guns. we just slightly randomize its pixel offsets and throw it somewhere nearby
+	for(var/i in shells)
+		var/obj/item/dragonmark/shell_to_eject = new(ejected_shell, src)
+		if(ejected_shell)
+			shell_to_eject.pixel_x = shell_to_eject.base_pixel_x + rand(-7, 7)
+			shell_to_eject.pixel_y = shell_to_eject.base_pixel_y + rand (-7, 7)
+			var/turf/destination = get_ranged_target_turf(user, pick(GLOB.alldirs), 1)
+			shell_to_eject.throw_at(destination, rand(1, 2), 6, spin = TRUE)
+			shell_to_eject.setDir(pick(GLOB.alldirs))
 
-/// This proc happens if your reloading gets interrupted after you've started loading rounds into the weapon. You spill the ammo you were trying to load on the floor.
-/obj/item/ego_weapon/city/thumb_east/proc/ReloadFailure(obj/item/stack/thumb_east_ammo/ammo_item, mob/living/carbon/user)
-	playsound(src, reload_fail_sound, 100, FALSE, 6)
-	user.visible_message(span_danger("[user] fumbles while reloading, spilling the ammo on the floor!"), span_danger("You fumble while reloading, spilling the ammo on the floor!"))
-	for(var/i in 1 to ammo_item.amount)
-		var/obj/item/stack/thumb_east_ammo/spilled_bullet = ammo_item.split_stack(user, 1)
-		if(spilled_bullet)
-			spilled_bullet.forceMove(user.drop_location())
-			spilled_bullet.throw_at(get_ranged_target_turf(user, pick(GLOB.alldirs), 1), 1, 5, spin = TRUE)
-			spilled_bullet.setDir(pick(GLOB.alldirs))
-			sleep(1)
+	for(var/s in spent)
+		var/obj/item/dragonmark/spent_shell_to_eject = new(spent_shell, src)
+		if(spent_shell)
+			spent_shell_to_eject.pixel_x = spent_shell_to_eject.base_pixel_x + rand(-7, 7)
+			spent_shell_to_eject.pixel_y = spent_shell_to_eject.base_pixel_y + rand (-7, 7)
+			var/turf/destination = get_ranged_target_turf(user, pick(GLOB.alldirs), 1)
+			spent_shell_to_eject.throw_at(destination, rand(1, 2), 6, spin = TRUE)
+			spent_shell_to_eject.setDir(pick(GLOB.alldirs))
+
+	spent = 0
+	shells = 0
+	empty = TRUE
+	sleep(1)
+
+//resets overheat
+/obj/item/rogueweapon/sword/sabre/podao/proc/VentHeat(mob/living/carbon/human/user)
+	if(overheat > 0)
+		playsound(src, 'sound/items/steamrelease.ogg', 75, FALSE, 4)
+		to_chat(user, span_danger("You vent [src]'s remaining heat to access the internal shell storage!"))
+	overheat = 0
+
+// simple savagemark check and then copy/pasted attack_self code
+/obj/item/rogueweapon/sword/sabre/podao/rmb_self(mob/user)
+	if(busy)
+		return
+	if(!savagemark)
+		savagemark = TRUE
+		to_chat(user, span_danger("I will now use Savage Dragonmark shells."))
+	else
+		savagemark = FALSE
+		to_chat(user, span_danger("I've decided to use normal Dragonmark shells."))
+	playsound(src, 'sound/foley/crimsondragon/loadstart.ogg', 90, FALSE, 10)
+	to_chat(user, span_info("You begin loading your [src.name]..."))
+	VentHeat(user)
+	busy = TRUE
+
+//and now the copy/paste
+	var/og_icon = initial(icon_state)
+	var/should_close = FALSE
+	if((og_icon == "podao_closed"))
+		should_close = TRUE
+		icon_state = "podao_open"
+
+	if(do_after(user, reload_windup, src, progress = TRUE))
+		if(!empty)
+			INVOKE_ASYNC(src, PROC_REF(EjectRound), user)
+		playsound(src, 'sound/foley/crimsondragon/loading.ogg')
+		spent = 0
+		shells = 6
+		empty = FALSE
+		if(should_close)
+			icon_state = og_icon
+			should_close = FALSE
+		else
+			playsound(src, 'sound/foley/crimsondragon/ammodrop.ogg', 100, FALSE, 6)
+			user.visible_message(span_danger("[user] fumbles while reloading, spilling shells onto the floor!"), span_danger("You fumble while reloading, spilling the shells onto the floor!"))
+			busy = FALSE
+			if(should_close)
+				icon_state = og_icon
+				should_close = FALSE
+			return FALSE
+	busy = FALSE
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, 'sound/foley/crimsondragon/loadend.ogg', 90, FALSE, 10), 0.2 SECONDS)
