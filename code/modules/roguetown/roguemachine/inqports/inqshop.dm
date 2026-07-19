@@ -78,6 +78,12 @@
 	maximum = 1
 	marquescost = 12
 
+/datum/inqports/supplies/litany
+	name = "The Archbishop's Litany - Singular Blessing Of Psydonic Weaponry"
+	item_type = /obj/item/inqarticles/litany
+	maximum = 5
+	marquescost = 6
+
 /datum/inqports/supplies/psybuns
 	name = "The 'Otavan Bakery Special' Crate"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/psybuns
@@ -472,9 +478,14 @@
 	marquescost = 12
 
 /datum/inqports/wardrobe/otavansatchel
-	name = "1 Satchel, Otavan Leather"
+	name = "1 Satchel, Otavan"
 	item_type = /obj/item/storage/backpack/rogue/satchel/otavan
 	marquescost = 3
+
+/datum/inqports/wardrobe/otavansatchel/short
+	name = "1 Short Satchel, Otavan"
+	item_type = /obj/item/storage/backpack/rogue/satchel/otavan/short
+	marquescost = 4
 
 /datum/inqports/wardrobe/satchelbelted
 	name = "1 Satchel, Belted"

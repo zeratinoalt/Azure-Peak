@@ -54,6 +54,10 @@
 			parrydelay = num
 	hud_used?.defdelay?.mark_dirty()
 
+/mob/living/proc/changeNext_inCombat(num, override = FALSE)
+	in_combat_until = world.time + num
+	hud_used?.defdelay?.mark_dirty()
+
 /mob/living/proc/changeMaxDodge(num)
 	if(num < 0)
 		if(max_dodge <= MAX_DODGE_FLOOR)
@@ -185,9 +189,9 @@
 //		changeNext_move(CLICK_CD_MELEE)
 //		ShiftMiddleClickOn(A)
 //		return
-//	if(modifiers["shift"] && modifiers["ctrl"])
-//		CtrlShiftClickOn(A)
-//		return
+	if(modifiers["shift"] && modifiers["ctrl"])
+		CtrlShiftClickOn(A)
+		return
 	if(modifiers["shift"] && modifiers["right"])
 		ShiftRightClickOn(A, params)
 		return
@@ -769,7 +773,7 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 /atom/proc/AltClickNoInteract(mob/user, atom/A)
 	var/turf/T = get_turf(A)
 	if(T && user.TurfAdjacent(T))
-		user.client.browserpanel_open_turf(T)
+		user.client.open_listed_turf(T)
 
 /mob/proc/TurfAdjacent(turf/T)
 	return T.Adjacent(src)
@@ -780,6 +784,7 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 */
 /mob/proc/CtrlShiftClickOn(atom/A)
 	A.CtrlShiftClick(src)
+	callout_point(A)
 	return
 
 
@@ -797,7 +802,7 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 //	SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
 	var/turf/T = get_turf(src)
 	if(T && (isturf(loc) || isturf(src)) && user.TurfAdjacent(T))
-		user.client.browserpanel_open_turf(T)
+		user.client.open_listed_turf(T)
 
 /mob/proc/CtrlRightClickOn(atom/A, params)
 	pointed(A)

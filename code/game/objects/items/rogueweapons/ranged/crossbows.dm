@@ -1,9 +1,9 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/get_npc_chargetime(mob/living/user)
-	var/newtime = 40 - (user.get_skill_level(/datum/skill/combat/crossbows) * 4.25) - user.STAPER
+	var/newtime = max(20, reloadtime - user.STASTR - (user.get_skill_level(/datum/skill/combat/crossbows) * 2))
 	if(chambered)
 		newtime *= chambered.charge_time_mult
-	return max(1, newtime)
+	return max(ARCHER_NPC_MIN_CROSSBOW_CHARGETIME, newtime) * ARCHER_NPC_ROF_PENALTY
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	has_item_quality = TRUE
@@ -36,6 +36,7 @@
 	var/hasloadedsprite = FALSE
 	force = 15
 	var/cocked = FALSE
+	var/cock_sound = 'sound/combat/Ranged/crossbow_medium_reload-01.ogg'
 	cartridge_wording = "bolt"
 	load_sound = 'sound/foley/nockarrow.ogg'
 	fire_sound = 'sound/combat/Ranged/crossbow-small-shot-02.ogg'
@@ -409,5 +410,42 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy/relic/marque
 	name = "Epistle"
 	desc = "'I cannot explain what happened in those halls, your eminence..' </br>'..I can only have faith that I did the right thing.'"
+
+//
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/staker
+	name = "staker"
+	desc = "An unorthodoxic relative to the Otavan slurbow, rarely seen beyond the grasp of those who've dedicated their lyves to smiting \
+	evyl. Unlike a traditional crossbow, the staker - as the name'd imply - exclusively fires blessed stakes, capable of piercing even the \
+	toughest nitecreecher-hides from afar. </br>Purported to've originally been crafted by one of Grenzelhoft's finest monster hunters."
+	icon_state = "lesserstaker0"
+	item_state = "lesserstaker"
+	possible_item_intents = list(/datum/intent/shoot/crossbow/slurbow, /datum/intent/arc/crossbow/slurbow, /datum/intent/buttstroke)
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/staker
+	chargingspeed = 20
+	damfactor = 1 //No damage malus, as it uses proprietary ammunition.
+	accfactor = 1.3
+	reloadtime = 20
+	force = 15
+	hasloadedsprite = FALSE
+	movingreload = TRUE
+	onehanded = TRUE
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_HIP
+	w_class = WEIGHT_CLASS_SMALL
+	wdefense = 2
+	max_integrity = 100
+	smeltresult = /obj/item/ingot/silver
+	smelt_bar_num = 1
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/staker/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Unlike traditional crossbows, the staker can only load-and-launch shotstakes; a unique munition type.")
+	. += span_info("Regular stakes, silver stakes and sharpened stakes - when brought before a campfire, brazier, or hearth - can be crafted into shotstakes.")
+
+/obj/item/ammo_box/magazine/internal/shot/staker
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/stake
+	caliber = "stake"
+	max_ammo = 1
+	start_empty = TRUE
 
 //

@@ -16,7 +16,7 @@
 	if(!user.has_hand_for_held_index(user.active_hand_index, TRUE)) //we obviously have a hadn, but we need to check for fingers/prosthetics
 		to_chat(user, span_warning("I can't move the fingers."))
 		return
-	if(!istype(src, /obj/item/grabbing) && !istype(src, /obj/item/rogueweapon/werewolf_claw))
+	if(!istype(src, /obj/item/grabbing) && !istype(src, /obj/item/rogueweapon/werewolf_claw) && !istype(src, /obj/item/bodypart)) //Limbs/Claws are fine
 		if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS))
 			to_chat(user, span_warning("...What?"))
 			return
@@ -132,6 +132,10 @@
 	if(force && HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("I don't want to harm other living beings!"))
 		return
+	
+	if(force && user.has_status_effect(/datum/status_effect/debuff/deadite_grace) && M.mind)
+		to_chat(user, span_warning("Ah, Lux... I calm down considerably, but my hunger only increases."))
+		user.remove_status_effect(/datum/status_effect/debuff/deadite_grace)
 
 	if(force && user.rogue_sneaking)
 		user.mob_timers[MT_FOUNDSNEAK] = world.time
@@ -235,30 +239,6 @@
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SUCCESS, M, user)
 	SEND_SIGNAL(M, COMSIG_ITEM_ATTACKED_SUCCESS, src, user)
-	if(user.zone_selected == BODY_ZONE_PRECISE_R_INHAND)
-		var/offh = 0
-		var/obj/item/W = M.held_items[1]
-		if(W)
-			if(!(M.mobility_flags & MOBILITY_STAND))
-				M.throw_item(get_step(M,turn(M.dir, 90)), offhand = offh)
-			else
-				M.dropItemToGround(W)
-			M.visible_message(span_notice("[user] disarms [M]!"), \
-							span_boldwarning("I'm disarmed by [user]!"))
-			return
-
-	if(user.zone_selected == BODY_ZONE_PRECISE_L_INHAND)
-		var/offh = 0
-		var/obj/item/W = M.held_items[2]
-		if(W)
-			if(!(M.mobility_flags & MOBILITY_STAND))
-				M.throw_item(get_step(M,turn(M.dir, 270)), offhand = offh)
-			else
-				M.dropItemToGround(W)
-			M.visible_message(span_notice("[user] disarms [M]!"), \
-							span_boldwarning("I'm disarmed by [user]!"))
-			return
-
 	if(M.attacked_by(src, user))
 		if(user.used_intent == cached_intent)
 			var/tempsound = user.used_intent.hitsound
@@ -531,10 +511,14 @@
 				do_melt = TRUE
 				need_scrap = TRUE
 		if(do_melt)
-			user.visible_message(span_warningbig("[user] begins melting and deforming \the [src] with [I]!"))
-			if(do_after(user, 8 SECONDS, TRUE, same_direction = TRUE, no_interrupt = TRUE))
-				user.visible_message(span_warning("[user] destroys \the [src] with [I]!"))
+			playsound(user, 'sound/surgery/cautery1.ogg', 100)
+			user.visible_message(span_artery("[user] begins melting and deforming \the [src] with [I]!"))
+			var/smelting = user.get_skill_level(/datum/skill/craft/smelting)
+			var/scavenge_speed = (8 - smelting) SECONDS
+			if(do_after(user, scavenge_speed, TRUE, same_direction = TRUE, no_interrupt = TRUE))
+				user.visible_message(span_warning("[user] melts down \the [src] with [I]!"))
 				obj_destruction(need_scrap ? BRUTE : BURN)
+				playsound(user, 'sound/surgery/cautery2.ogg', 100)
 				return
 
 	var/newforce = get_complex_damage(I, user, blade_dulling)
@@ -561,6 +545,12 @@
 	if(newforce > 1)
 		I.take_damage(1, BRUTE, I.d_type)
 
+	try_damage_pushback(user)
+
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_OBJ, I, user)
+	return TRUE
+
+/obj/proc/try_damage_pushback(mob/user)
 	if((obj_flags & CLAMP_BREAK) && !density && !anchored && isturf(loc))
 		var/sfx = 'sound/items/hit_normalobj.ogg'
 		if(isclothing(src))	// Lazy check for fluffy sparks
@@ -584,9 +574,6 @@
 		var/target_turf = get_ranged_target_turf(current_turf, throwdir, dist)
 		playsound(current_turf, sfx, 100, TRUE)
 		throw_at(target_turf, dist, 12, user, FALSE)
-
-	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_OBJ, I, user)
-	return TRUE
 
 /turf/proc/attacked_by(obj/item/I, mob/living/user, multiplier)
 	var/newforce = get_complex_damage(I, user, blade_dulling)
@@ -661,10 +648,6 @@
 		if(BODY_ZONE_PRECISE_STOMACH)
 			return "body"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "body"
-		if(BODY_ZONE_PRECISE_R_INHAND)
-			return "body"
-		if(BODY_ZONE_PRECISE_L_INHAND)
 			return "body"
 	return "body"
 

@@ -256,6 +256,9 @@
 			if(HAS_TRAIT(src, TRAIT_PACIFISM) && I.throwforce)
 				to_chat(src, "<span class='notice'>I set [I] down gently on the ground.</span>")
 				return
+			if(HAS_TRAIT(src, TRAIT_DEADITE)) //Zombies are too stupid to throw things at all...
+				to_chat(src, "<span class='warning'>...What?</span>")
+				return
 
 	if(thrown_thing)
 		if(rogue_sneaking)
@@ -558,22 +561,6 @@
 		if(used < 1)
 			used = 1
 		return used
-
-/mob/living/Stat()
-	..()
-	if(statpanel("Stats"))
-		stat("STR: \Roman [STASTR]")
-		stat("PER: \Roman [STAPER]")
-		stat("INT: \Roman [STAINT]")
-		stat("CON: \Roman [STACON]")
-		stat("WIL: \Roman [STAWIL]")
-		stat("SPD: \Roman [STASPD]")
-		stat("FOR: \Roman [STALUC]")
-		stat("PATRON: [patron]")
-
-/mob/living/carbon/Stat()
-	..()
-	add_abilities_to_panel()
 
 /mob/living/carbon/attack_ui(slot)
 	if(!has_hand_for_held_index(active_hand_index))

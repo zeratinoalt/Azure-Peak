@@ -31,7 +31,11 @@
 
 	if(ishuman(victim))
 		var/mob/living/carbon/human/human_victim = victim
-		if(VDrinker && istype(human_victim.wear_neck, /obj/item/clothing/neck/roguetown/psicross/silver))
+		var/silvercross = FALSE
+		for(var/obj/item/clothing/neck/roguetown/psicross/silver/I in human_victim.contents)
+			silvercross = TRUE
+			break
+		if(VDrinker && silvercross)
 			to_chat(src, span_userdanger("SILVER CROSS! HISSS!!!"))
 			return
 		if(VDrinker && HAS_TRAIT(human_victim, TRAIT_SILVER_BLESSED))
@@ -116,7 +120,7 @@
 
 	if(!victim.clan && victim.mind && ishuman(victim) && VDrinker.generation > GENERATION_THINBLOOD && victim.blood_volume <= BLOOD_VOLUME_BAD)
 		var/datum/antagonist/vampire/vdrinker = mind?.has_antag_datum(/datum/antagonist/vampire)
-		if((vdrinker.max_thralls <= 0) || (isnull(vdrinker.max_thralls || VDrinker.generation == GENERATION_THINBLOOD))) //thin bloods or low level vampires can't make thralls, incase they get past the last check by leveling up off others
+		if((vdrinker.max_thralls <= 0) || (isnull(vdrinker.max_thralls || VDrinker.generation <= GENERATION_THINBLOOD))) //thin bloods or low level vampires can't make thralls, incase they get past the last check by leveling up off others
 			to_chat(src, span_warning("I cannot sire thralls, my blood is too weak!"))
 		else
 			if(vdrinker.thrall_count >= vdrinker.max_thralls) //you've hit your max
@@ -216,8 +220,8 @@
 	mind?.remove_antag_datum(/datum/antagonist/zombie)
 
 	if(client)
-		client.verbs.Remove(GLOB.ghost_verbs)
-		client.update_browserpanel()
+		remove_verb(client, GLOB.ghost_verbs)
+		client.init_verbs()
 
 	visible_message(span_danger("Some dark energy begins to flow from [sire] into [src]..."))
 	visible_message(span_red("[src] rises as a new spawn!"))
