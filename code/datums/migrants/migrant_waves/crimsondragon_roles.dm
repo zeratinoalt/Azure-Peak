@@ -6,7 +6,7 @@
 #define PODAOWOOSH list('sound/foley/crimsondragon/draw.ogg', 'sound/foley/crimsondragon/draw2.ogg')
 
 /datum/migrant_role/crimson_dragon
-	name = "Crimson Dragon"
+	name = "Crimson Tiger"
 	outfit = /datum/outfit/job/roguetown/adventurer/crimson_dragon
 	greet_text = "You are a former officer of Lingyue's military - having long since abandoned your Kazengite overlords. With a bounty on your head placed by the Dynasty, you've now fled to Azure Peak in search of a new life as a mentor. \
 	You hold no allegiences except for yourself and your desire for a challenging fight - though note that you are being hunted."
@@ -47,7 +47,9 @@
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_crimsondragon.ogg'
-	wretch_select_bounty(H)
+
+	if(H.mind)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/doubleslash)
 
 // unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
 
@@ -207,7 +209,7 @@
 	var/overheat_decay = 1
 	var/busy = FALSE // used to prevent certain actions while reloading or leaping
 	// how long does the reload phase last?
-	var/reload_windup = 0.6 SECONDS
+	var/reload_windup = 2 SECONDS
 	// we use this variable to hold the type of the current ammo
 	var/current_ammo_type = null
 	// we use this variable to hold the plural name of the current ammo. we shouldn't need a var for this, but dreamchecker is giving me a warning so I have to do it

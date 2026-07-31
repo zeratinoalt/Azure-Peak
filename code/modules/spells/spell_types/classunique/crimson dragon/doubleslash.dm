@@ -28,12 +28,23 @@
 	spell_tier = 6
 	spell_impact_intensity = SPELL_IMPACT_LOW
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	var/beam_color = BLOOD_COLOR_RED
+	var/base_damage = 40
+	var/blast_damage = 60
+
+/datum/action/cooldown/spell/doubleslash/proc/dash_to(mob/living/owner, turf/destination, mob/living/target, beam_color)
+	var/turf/origin = get_turf(owner)
+	new /obj/effect/temp_visual/decoy/fading/halfsecond(origin, owner)
+	owner.forceMove(destination)
+	owner.dir = get_dir(owner, target)
+	origin.Beam(owner, "flame", time = 2)
+
 
 /datum/action/cooldown/spell/doubleslash/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
-	var/obj/item/rogueweapon/sword/sabre/podao/held_weapon
-
+	var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = H.get_active_held_item()
+	var/deflected = FALSE
 
 	var/mob/living/victim
 	if(isliving(cast_on))
@@ -44,9 +55,50 @@
 	if(!istype(H))
 		return FALSE
 
-	if(H.is_holding(/obj/item/rogueweapon/sword/sabre/podao))
-		if(length(held_weapon.current_ammo) >= 1)
-			to_chat(H, span_warning("Out of shells, reload!"))
-			return FALSE
-	else 
+	if(!istype(held_weapon, /obj/item/rogueweapon/sword/sabre/podao))
 		return FALSE
+
+	if(held_weapon.shells < 1)
+		to_chat(H, span_warning("Out of shells, reload!"))
+		return FALSE
+
+
+	H.visible_message(span_boldwarning("[H] draws his blade, prepare to DEFEND!"))
+	playsound(H, 'sound/foley/crimsondragon/draw.ogg', 80, FALSE)
+	sleep(1.6 SECONDS)
+
+	if(spell_guard_check(victim, FALSE, deflected ? null : owner))
+		if(!deflected)
+			deflected = TRUE
+			owner.Slowdown(2)
+			base_damage = 20
+			blast_damage = 30
+
+	if(isliving(cast_on))
+		if(!victim || !owner) //first hit
+			return
+		var/turf/dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
+		if(!dest)
+			dest = get_turf(victim)
+		dash_to(owner, dest, victim, beam_color)
+		arcyne_strike(owner, victim, base_damage, spell_name = "Double Slash", skip_animation = TRUE, skip_message = TRUE)
+		playsound(H, 'sound/vo/male/crimsondragon/attack4.ogg', 80, FALSE)
+		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
+
+		playsound(H, 'sound/foley/crimsondragon/draw.ogg', 80, FALSE)
+		sleep(1 SECONDS)
+
+		if(!victim|| !owner) //second hit
+			return
+		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
+		if(!dest)
+			dest = get_turf(victim)
+		dash_to(owner, dest, victim, beam_color)
+		arcyne_strike(owner, victim, blast_damage, spell_name = "Double Slash", skip_animation = TRUE, skip_message = TRUE)
+		playsound(H, 'sound/vo/male/crimsondragon/attack7.ogg', 80, FALSE)
+		playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
+		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 80, FALSE)
+
+	held_weapon.spent += 1
+	held_weapon.shells -= 1
+	held_weapon.overheat += 8
