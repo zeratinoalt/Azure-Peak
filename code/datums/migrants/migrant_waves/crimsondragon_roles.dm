@@ -50,7 +50,7 @@
 
 	if(H.mind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/doubleslash)
-
+		H.mind.AddSpell(new /datum/action/cooldown/spell/tripleslash)
 // unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/crimdragon
@@ -354,3 +354,10 @@
 			return FALSE
 	busy = FALSE
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, 'sound/foley/crimsondragon/loadend.ogg', 90, FALSE, 10), 0.2 SECONDS)
+
+
+/obj/item/rogueweapon/sword/sabre/podao/afterattack
+	. = ..()
+	if(overheat > 0)
+		overheat /= overheat_decay
+		target.adjustFireLoss(overheat)
