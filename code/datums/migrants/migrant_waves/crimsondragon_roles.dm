@@ -355,9 +355,3 @@
 	busy = FALSE
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, 'sound/foley/crimsondragon/loadend.ogg', 90, FALSE, 10), 0.2 SECONDS)
 
-
-/obj/item/rogueweapon/sword/sabre/podao/afterattack
-	. = ..()
-	if(overheat > 0)
-		overheat /= overheat_decay
-		target.adjustFireLoss(overheat)

@@ -24,7 +24,7 @@
 	charge_sound = null
 	cooldown_time = 15 SECONDS
 	spell_color = GLOW_COLOR_FIRE
-
+	glow_intensity = GLOW_INTENSITY_HIGH
 
 	associated_skill = /datum/skill/combat/swords
 	spell_tier = 6
@@ -61,12 +61,12 @@
 	H.visible_message(span_danger("[H] draws his blade, prepare to DEFEND!"))
 	playsound(H, 'sound/foley/crimsondragon/draw.ogg', 80, FALSE)
 	sleep(1 SECONDS)
-	playsound(H, 'sound/foley/crimsondragon/draw.ogg', 80, FALSE)
+	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
 
 	if(spell_guard_check(victim, FALSE, deflected ? null : owner))
 		if(!deflected)
 			deflected = TRUE
-			owner.OffBalance(30)
+			H.OffBalance(30)
 			base_damage = 20
 
 	sleep(0.6 SECONDS)
@@ -74,7 +74,8 @@
 	if(isliving(cast_on))
 		if(!victim || !owner) //first hit
 			return
-		var/turf/dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
+		var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
+		var/turf/dest = get_ranged_target_turf_direct_old(owner, victim, get_dist(owner, victim) + 2)
 		if(!dest)
 			dest = get_turf(victim)
 		if(held_weapon.shells >= 1)
@@ -85,7 +86,9 @@
 		else
 			base_damage = 40
 		dash_to(owner, get_turf(victim), victim)
-		arcyne_strike(owner, victim, base_damage, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
+		owner.face_atom(victim)
+		owner.update_icon()
+		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
 
 		sleep(1 SECONDS)
 		playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
@@ -98,15 +101,17 @@
 			held_weapon.overheat += 8
 		else
 			base_damage = 40
-		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
+		dest = get_ranged_target_turf_direct_old(owner, victim, get_dist(owner, victim) + 2)
 		if(!dest)
 			dest = get_turf(victim)
 		dash_to(owner, dest, victim)
-		arcyne_strike(owner, victim, base_damage, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
+		owner.face_atom(victim)
+		owner.update_icon()
+		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/attack6.ogg', 80, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
 
-		sleep(0.3 SECONDS)
+		sleep(1 SECONDS)
 
 		if(held_weapon.shells >= 1) //third
 			held_weapon.spent += 1
@@ -115,6 +120,9 @@
 			held_weapon.overheat += 8
 		else
 			base_damage = 40
-		arcyne_strike(owner, victim, base_damage, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
+		dash_to(owner, get_turf(victim), victim)
+		owner.face_atom(victim)
+		owner.update_icon()
+		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/special1.ogg', 80, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)

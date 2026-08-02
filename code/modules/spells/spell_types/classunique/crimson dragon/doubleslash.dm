@@ -70,18 +70,21 @@
 	if(spell_guard_check(victim, FALSE, deflected ? null : owner))
 		if(!deflected)
 			deflected = TRUE
-			owner.OffBalance(30)
+			H.OffBalance(30)
 			base_damage = 20
 			blast_damage = 30
 
 	if(isliving(cast_on))
 		if(!victim || !owner) //first hit
 			return
+		var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
 		var/turf/dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
 		if(!dest)
 			dest = get_turf(victim)
 		dash_to(owner, dest, victim)
-		arcyne_strike(owner, victim, base_damage, spell_name = "Double Slash", skip_animation = TRUE, skip_message = TRUE)
+		owner.face_atom(victim)
+		owner.update_icon()
+		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Double Slash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/attack4.ogg', 80, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash1.ogg', 80, FALSE)
 
@@ -94,11 +97,13 @@
 		if(!dest)
 			dest = get_turf(victim)
 		dash_to(owner, dest, victim)
-		arcyne_strike(owner, victim, blast_damage, spell_name = "Double Slash", skip_animation = TRUE, skip_message = TRUE)
+		owner.face_atom(victim)
+		owner.update_icon()
+		arcyne_strike(owner, victim, held_weapon, blast_damage, def_zone, BCLASS_CUT, spell_name = "Double Slash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/attack7.ogg', 80, FALSE)
 		playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 80, FALSE)
 
-	held_weapon.spent += 1
-	held_weapon.shells -= 1
-	held_weapon.overheat += 8
+		held_weapon.spent += 1
+		held_weapon.shells -= 1
+		held_weapon.overheat += 8
