@@ -51,6 +51,7 @@
 	if(H.mind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/doubleslash)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tripleslash)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/scatterslash)
 // unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/crimdragon

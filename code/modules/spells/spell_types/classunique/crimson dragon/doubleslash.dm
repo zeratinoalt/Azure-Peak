@@ -64,6 +64,7 @@
 		to_chat(H, span_warning("Out of shells, reload!"))
 		return FALSE
 
+	H.status_flags |= GODMODE
 
 	H.visible_message(span_danger("[H] draws his blade, prepare to DEFEND!"))
 	playsound(H, 'sound/foley/crimsondragon/draw.ogg', 80, FALSE)
@@ -111,3 +112,5 @@
 		held_weapon.spent += 1
 		held_weapon.shells -= 1
 		held_weapon.overheat += 8
+
+	H.status_flags &= ~GODMODE

@@ -1382,7 +1382,6 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	if(howner)
 		howner.Immobilize(delay)
 		howner.apply_status_effect(/datum/status_effect/debuff/clickcd, delay)
-		howner
 		var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = iparent
 		shells_spent = held_weapon.shells
 		held_weapon.shells = 0

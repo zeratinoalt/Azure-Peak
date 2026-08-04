@@ -58,6 +58,11 @@
 	if(!istype(held_weapon, /obj/item/rogueweapon/sword/sabre/podao))
 		return FALSE
 
+	var/throwtarget = get_edge_target_turf(H, get_dir(H, get_step_away(victim, H)))
+
+	H.status_flags |= GODMODE
+	victim.Immobilize(5.9 SECONDS)
+
 	H.visible_message(span_danger("[H] draws his blade, prepare to DEFEND!"))
 	playsound(H, 'sound/foley/crimsondragon/draw.ogg', 80, FALSE)
 	sleep(1 SECONDS)
@@ -89,6 +94,8 @@
 		owner.face_atom(victim)
 		owner.update_icon()
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
+		playsound(H, 'sound/vo/male/crimsondragon/attack3.ogg', 80, FALSE)
+		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 80, FALSE)
 
 		sleep(1 SECONDS)
 		playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
@@ -110,7 +117,8 @@
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/attack6.ogg', 80, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
-
+		victim.safe_throw_at(throwtarget, CLAMP(1, 2, 3), 1, owner, force = MOVE_FORCE_EXTREMELY_STRONG)
+		shake_camera(victim, 5, 3)
 		sleep(1 SECONDS)
 
 		if(held_weapon.shells >= 1) //third
@@ -126,3 +134,9 @@
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/special1.ogg', 80, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
+		playsound(H, 'sound/foley/crimsondragon/tremorburst.ogg', 80, FALSE)
+		victim.safe_throw_at(throwtarget, CLAMP(1, 2, 3), 1, owner, force = MOVE_FORCE_EXTREMELY_STRONG)
+		shake_camera(victim, 5, 3)
+		victim.Knockdown(2 SECONDS)
+
+	H.status_flags &= ~GODMODE
