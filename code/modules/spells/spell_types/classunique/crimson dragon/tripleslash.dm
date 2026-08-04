@@ -75,7 +75,7 @@
 		if(!victim || !owner) //first hit
 			return
 		var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
-		var/turf/dest = get_ranged_target_turf_direct_old(owner, victim, get_dist(owner, victim) + 2)
+		var/turf/dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
 		if(!dest)
 			dest = get_turf(victim)
 		if(held_weapon.shells >= 1)
@@ -101,7 +101,7 @@
 			held_weapon.overheat += 8
 		else
 			base_damage = 40
-		dest = get_ranged_target_turf_direct_old(owner, victim, get_dist(owner, victim) + 2)
+		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
 		if(!dest)
 			dest = get_turf(victim)
 		dash_to(owner, dest, victim)

@@ -23,7 +23,9 @@
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = null
 	cooldown_time = 15 SECONDS
-	spell_color = GLOW_INTENSITY_MEDIUM
+	spell_color = GLOW_COLOR_FIRE
+	glow_intensity = GLOW_INTENSITY_MEDIUM
+
 
 	associated_skill = /datum/skill/combat/swords
 	spell_tier = 6
@@ -65,7 +67,9 @@
 
 	H.visible_message(span_danger("[H] draws his blade, prepare to DEFEND!"))
 	playsound(H, 'sound/foley/crimsondragon/draw.ogg', 80, FALSE)
-	sleep(1.6 SECONDS)
+	sleep(1 SECONDS)
+	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
+	sleep(0.6 SECONDS)
 
 	if(spell_guard_check(victim, FALSE, deflected ? null : owner))
 		if(!deflected)

@@ -1360,3 +1360,75 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	howner.regenerate_icons()
 	playsound(W.loc, 'sound/foley/waterenter.ogg', 100)
 
+/datum/special_intent/podao_cleave
+	name = "Podao Cleave"
+	desc = "Slams your podao down into the ground, detonating every shell and creating a shockwave that scales with the number of shells detonated."
+	tile_coordinates = list(list(0,0), list(1,0), list(1,-1),list(1,-2),list(0,-2),list(-1,-2),list(-1,-1),list(-1,0))
+	post_icon_state = "sweep_fx"
+	pre_icon_state = "trap"
+	sfx_pre_delay = 'sound/foley/crimsondragon/prep.ogg'
+	respect_adjacency = FALSE
+	delay = 0.7 SECONDS
+	cooldown = 25 SECONDS
+	var/slow_init = 2
+	var/exposed_init = 3 SECONDS
+	var/offbalanced_init = 1.5 SECONDS
+	var/knockdown = 2 SECONDS
+	var/immobilize_init = 1 SECONDS
+	var/dam = 20
+	var/shells_spent = 0
+
+/datum/special_intent/podao_cleave/on_create()
+	if(howner)
+		howner.Immobilize(delay)
+		howner.apply_status_effect(/datum/status_effect/debuff/clickcd, delay)
+		howner
+		var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = iparent
+		shells_spent = held_weapon.shells
+		held_weapon.shells = 0
+
+/datum/special_intent/podao_cleave/apply_hit(turf/T)
+	for(var/mob/living/L in get_hearers_in_view(0, T))
+		if(L != howner)
+	
+			if(L.mobility_flags & MOBILITY_STAND)
+
+				addtimer(CALLBACK(src, PROC_REF(apply_effect), L), 0.1 SECONDS)	//We need to count them all up first so this is an unfortunate (& janky) requirement.
+	..()																		//An alternative could be a spatial grid count from howner called once.
+
+///This will apply the actual effect, as we need some way to count all the mobs in the zone first.
+/datum/special_intent/podao_cleave/proc/apply_effect(mob/living/victim)
+	var/newslow = slow_init + shells_spent	//Slows take an int and applies its own logic in the Slowdown proc itself. Do NOT use SECONDS for slows.
+	var/newexposed = exposed_init + (shells_spent SECONDS)
+	var/newoffb = offbalanced_init + (shells_spent SECONDS)
+	var/newimmob = immobilize_init + (shells_spent SECONDS)
+
+	var/throwtarget = get_edge_target_turf(howner, get_dir(howner, get_step_away(victim, howner)))
+
+	apply_generic_weapon_damage(victim, dam * shells_spent, "blunt", BODY_ZONE_CHEST, bclass = BCLASS_BLUNT, no_pen = TRUE)
+	switch(shells_spent)
+		if(1)
+			victim.Slowdown(newslow)
+		if(2)
+			victim.Slowdown(newslow)
+			victim.Immobilize(newimmob)
+			victim.apply_status_effect(/datum/status_effect/debuff/exposed, newexposed)
+		if(3)
+			victim.Slowdown(newslow)
+			victim.Immobilize(newimmob)
+			victim.apply_status_effect(/datum/status_effect/debuff/exposed, newexposed)
+			victim.Knockdown(knockdown)
+			victim.drop_all_held_items()
+		if(4 to 9)
+			victim.Slowdown(newslow)
+			victim.Immobilize(newimmob)
+			victim.apply_status_effect(/datum/status_effect/debuff/exposed, newexposed)
+			victim.Knockdown(knockdown)
+			victim.drop_all_held_items()
+			victim.OffBalance(newoffb)
+			victim.Stun(5 SECONDS)
+	if(shells_spent < 3)
+		playsound(howner, 'sound/foley/crimsondragon/slam.ogg', 100, TRUE)
+	else
+		playsound(howner, 'sound/foley/crimsondragon/slam-then-reel.ogg', 100, TRUE)
+	victim.safe_throw_at(throwtarget, CLAMP(1, 5, shells_spent), 1, howner, force = MOVE_FORCE_EXTREMELY_STRONG)

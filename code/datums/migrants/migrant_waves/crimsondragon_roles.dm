@@ -214,6 +214,8 @@
 	var/current_ammo_type = null
 	// we use this variable to hold the plural name of the current ammo. we shouldn't need a var for this, but dreamchecker is giving me a warning so I have to do it
 	var/current_ammo_name = ""
+	special = /datum/special_intent/podao_cleave
+
 
 /obj/item/rogueweapon/sword/sabre/podao/get_mechanics_examine(mob/user)
 	. = ..()
