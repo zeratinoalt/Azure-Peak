@@ -35,7 +35,7 @@
 	new /obj/effect/temp_visual/decoy/fading/halfsecond(origin, owner)
 	owner.forceMove(destination)
 	owner.dir = get_dir(owner, target)
-	origin.Beam(owner, "flame", time = 2)
+	origin.Beam(owner, "flame", time = 50)
 
 
 /datum/action/cooldown/spell/scatterslash/cast(atom/cast_on)
@@ -111,6 +111,7 @@
 		H.visible_message(span_warning("[H] slams down the podao onto [victim]'s shoulder!"))
 		playsound(H, 'sound/vo/male/crimsondragon/attack3.ogg', 100, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 100, FALSE)
+		new /obj/effect/temp_visual/crim_dragon/large/right_to_left(get_turf(victim))
 		shake_camera(victim, 5, 3)
 
 		sleep(0.6 SECONDS) // ! test !
@@ -135,13 +136,14 @@
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Blasting Scatterslash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/attack6.ogg', 100, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 100, FALSE)
+		new /obj/effect/temp_visual/crim_dragon/large/left_to_right(get_turf(victim))
 		H.visible_message(span_warning("[H] slams down the podao onto [victim]'s shoulder - missing the neck!"))
 		victim.safe_throw_at(throwtarget, CLAMP(1, 2, 3), 1, owner, force = MOVE_FORCE_EXTREMELY_STRONG)
 		shake_camera(victim, 5, 3)
 
 		//end second
 
-		sleep(1 SECONDS)
+		sleep(0.5 SECONDS)
 
 		playsound(H, 'sound/foley/crimsondragon/prep.ogg', 100, FALSE)
 		sleep(0.2 SECONDS)
@@ -155,7 +157,7 @@
 			base_damage = 20
 			if(deflected)
 				base_damage = 10
-		sleep(0.3 SECONDS)
+		sleep(0.8 SECONDS)
 		dash_to(owner, get_turf(victim), victim)
 		owner.face_atom(victim) 
 		owner.update_icon()
@@ -164,6 +166,8 @@
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
 		playsound(H, 'sound/foley/crimsondragon/tremorburst.ogg', 100, FALSE)
 		shake_camera(victim, 5, 3)
+		new /obj/effect/temp_visual/crim_dragon/large/right_to_left(get_turf(victim))
+		new /obj/effect/temp_visual/crim_dragon/large/upright_boom(get_turf(victim))
 		H.visible_message(span_warning("[H] crushes the podao into [victim]'s shoulder, sending them flying!"))
 		victim.safe_throw_at(throwtarget, CLAMP(1, 2, 5), 1, owner, force = MOVE_FORCE_EXTREMELY_STRONG)
 		victim.Knockdown(2 SECONDS)
