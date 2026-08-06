@@ -63,8 +63,8 @@
 		to_chat(H, span_warning("Out of shells, reload!"))
 		return FALSE
 
-	for(var/obj/structure/fluff/tanglecleaver/anchor in thearena)
-		tangleanchor = get_turf(anchor)
+//	for(var/obj/structure/fluff/tanglecleaver/anchor in thearena)
+//		tangleanchor = get_turf(anchor)
 
 	var/throwtarget = get_edge_target_turf(H, get_dir(H, get_step_away(victim, H)))
 
@@ -72,7 +72,7 @@
 
 	dash_to(owner, tangleanchor, tangleanchor)
 
-	new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(get_turf(victim))
+
 
 	H.say("I'maboutta drop somethin' big on y'all! Don't let it kill y'all now and spoil the fun~!!")
 	playsound(H, 'sound/foley/crimsondragon/dropsumbigonyall.ogg', 80, FALSE)
@@ -87,7 +87,15 @@
 
 	base_damage = TANGLECLEAVER_BASE_DAMAGE
 
+	new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(get_turf(victim))
 
+	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
+	sleep (0.3 SECONDS)
+	playsound(H, 'sound/foley/crimsondragon/tanglewhrr.ogg', 80, FALSE)
+	sleep (0.5 SECONDS)
+	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
+	playsound(H, 'sound/vo/male/crimsondragon/special1.ogg', 120, FALSE)
+	sleep (1 SECONDS)
 
 /obj/structure/fluff/tanglecleaver
 	icon = 'icons/roguetown/rav/obj/flags.dmi'
@@ -142,7 +150,7 @@
 	var/mob/living/carbon/human/H = user
 	var/totalnumb = 0
 	var/str = H.get_stat(STAT_STRENGTH)
-	var/end = H.get_stat(STAT_ENDURANCE)
+	var/end = H.get_stat(STAT_CONSTITUTION)
 
 	totalnumb = str + end
 	if(totalnumb >= 30)
