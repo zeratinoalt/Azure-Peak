@@ -9,7 +9,8 @@
 /obj/effect/temp_visual/crim_dragon/warning/scatterslash
 	duration = 20
 
-
+/obj/effect/temp_visual/crim_dragon/warning/tanglecleaver
+	duration = 60
 
 /obj/effect/temp_visual/crim_dragon/large
 	icon = 'icons/effects/64x64.dmi'
@@ -20,6 +21,7 @@
 	duration = 35
 	pixel_x = -16
 	pixel_y = -16
+	fade_time = 35
 
 /obj/effect/temp_visual/crim_dragon/large/right_to_left
 	icon = 'icons/effects/64x64.dmi'
@@ -42,3 +44,5 @@
 	icon = 'icons/effects/64x64.dmi'
 	icon_state = "upright boom"
 	duration = 10
+	fade_time = 10
+
