@@ -35,7 +35,7 @@
 	new /obj/effect/temp_visual/decoy/fading/halfsecond(origin, owner)
 	owner.forceMove(destination)
 	owner.dir = get_dir(owner, target)
-	origin.Beam(owner, "flame", time = 50)
+	origin.Beam(owner, "flame", time = 2)
 
 
 /datum/action/cooldown/spell/scatterslash/cast(atom/cast_on)

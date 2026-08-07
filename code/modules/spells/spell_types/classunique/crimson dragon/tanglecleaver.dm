@@ -45,13 +45,27 @@
 	var/mob/living/carbon/human/H = owner
 	var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = H.get_active_held_item()
 
-	var/turf/tangleanchor
+//	var/turf/tangleanchor
+
+	var/slashdir = list(/obj/effect/temp_visual/crim_dragon/large/right_to_left, /obj/effect/temp_visual/crim_dragon/large/left_to_right, /obj/effect/temp_visual/crim_dragon/large/low_left_to_right, /obj/effect/temp_visual/crim_dragon/large/low_right_to_left)
+
 
 	var/mob/living/victim
+
+
 	if(isliving(cast_on))
+
+		if(!victim || !owner)
+			return
 		victim = cast_on
+	var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
+	var/turf/dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 1)
+	if(!dest)
+		dest = get_turf(victim)
 	if(victim == owner)
 		return FALSE
+
+
 
 	if(!istype(H))
 		return FALSE
@@ -63,14 +77,15 @@
 		to_chat(H, span_warning("Out of shells, reload!"))
 		return FALSE
 
-//	for(var/obj/structure/fluff/tanglecleaver/anchor in thearena)
-//		tangleanchor = get_turf(anchor)
 
-	var/throwtarget = get_edge_target_turf(H, get_dir(H, get_step_away(victim, H)))
+
+	//	for(var/obj/structure/fluff/tanglecleaver/anchor in thearena)
+	//		tangleanchor = get_turf(anchor)
+
 
 	H.visible_message(span_userdanger("[H] stops for a moment, dashing towards the top of the arena..."))
 
-	dash_to(owner, tangleanchor, tangleanchor)
+	//	dash_to(owner, tangleanchor, tangleanchor)
 
 
 
@@ -96,6 +111,25 @@
 	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
 	playsound(H, 'sound/vo/male/crimsondragon/special1.ogg', 120, FALSE)
 	sleep (1 SECONDS)
+
+	dash_to(owner, dest, victim)
+
+
+	var/turf/T = get_turf(victim)
+	if(!T)
+		return FALSE
+	var/pickslash = pick(slashdir)
+	playsound(H, 'sound/foley/crimsondragon/slam.ogg', 120, FALSE)
+	for(var/mob/living/target in range(4, T))
+		if(target == owner)
+			continue
+		var/throwtarget = get_edge_target_turf(H, get_dir(H, get_step_away(target, H)))
+		new pickslash(get_turf(target))
+		arcyne_strike(owner, target, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Tanglecleaver", skip_animation = TRUE, skip_message = TRUE)
+		target.safe_throw_at(throwtarget, CLAMP(1, 2, 5), 1, owner, force = MOVE_FORCE_EXTREMELY_STRONG)
+
+
+
 
 /obj/structure/fluff/tanglecleaver
 	icon = 'icons/roguetown/rav/obj/flags.dmi'
@@ -132,16 +166,15 @@
 
 /datum/status_effect/buff/tanglecheck/proc/process_attack(mob/living/carbon/human/parent, mob/living/carbon/human/attacker, mob/living/carbon/human/defender)
 	var/obj/item/I = defender.get_active_held_item()
-	var/checksucceed = FALSE
-	defender.tanglecheck(attacker, I, null)
+	var/checksucceed = defender.tanglecheck(attacker, I, null)
 	if(checksucceed == TRUE)
-		TANGLECLEAVER_BASE_DAMAGE = TANGLECLEAVER_BASE_DAMAGE / 2
 		playsound(defender, 'sound/foley/crimsondragon/yallarefiringmeup.ogg')
 		sleep(4.7 SECONDS)
+		return TANGLECLEAVER_BASE_DAMAGE / 2
 	else
 		playsound(defender, 'sound/foley/crimsondragon/tuckeredout.ogg')
 		sleep(2 SECONDS)
-	return TANGLECLEAVER_BASE_DAMAGE
+		return TANGLECLEAVER_BASE_DAMAGE
 
 /mob/living/carbon/human/proc/tanglecheck(mob/user, obj/item/IM, obj/item/IU) //user = attacker 
 	if(!ishuman(user))
@@ -158,3 +191,5 @@
 	else
 		checksucceed = FALSE
 	return checksucceed
+
+

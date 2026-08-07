@@ -21,7 +21,7 @@
 	duration = 35
 	pixel_x = -16
 	pixel_y = -16
-	fade_time = 35
+	fade_time = 10
 
 /obj/effect/temp_visual/crim_dragon/large/right_to_left
 	icon = 'icons/effects/64x64.dmi'
