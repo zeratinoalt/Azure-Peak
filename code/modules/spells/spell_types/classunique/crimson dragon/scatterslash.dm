@@ -67,6 +67,7 @@
 
 
 	H.status_flags |= GODMODE
+	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
 
 	sleep(2.7 SECONDS)
 
@@ -165,6 +166,7 @@
 		playsound(H, 'sound/vo/male/crimsondragon/special2.ogg', 120, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
 		playsound(H, 'sound/foley/crimsondragon/tremorburst.ogg', 100, FALSE)
+		playsound(H, 'sound/foley/crimsondragon/gibs.ogg', 100, FALSE)
 		shake_camera(victim, 5, 3)
 		new /obj/effect/temp_visual/crim_dragon/large/right_to_left(get_turf(victim))
 		new /obj/effect/temp_visual/crim_dragon/large/upright_boom(get_turf(victim))
@@ -173,4 +175,5 @@
 		victim.Knockdown(2 SECONDS)
 
 	H.status_flags &= ~GODMODE
+	REMOVE_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
 

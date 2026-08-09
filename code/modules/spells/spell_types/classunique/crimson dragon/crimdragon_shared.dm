@@ -10,7 +10,7 @@
 	duration = 20
 
 /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver
-	duration = 60
+	duration = 92.5
 
 /obj/effect/temp_visual/crim_dragon/large
 	icon = 'icons/effects/64x64.dmi'
@@ -45,4 +45,12 @@
 	icon_state = "upright boom"
 	duration = 10
 	fade_time = 10
+	pixel_y = 0
 
+/obj/effect/temp_visual/crim_dragon/large/tanglecleaver
+	icon = 'icons/effects/64x64.dmi'
+	icon_state = "tanglecleaver"
+
+/obj/effect/temp_visual/crim_dragon/large/tanglecleaver/Initialize()
+	dir = pick(GLOB.cardinals)
+	..()

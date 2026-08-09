@@ -37,7 +37,7 @@
 	new /obj/effect/temp_visual/decoy/fading/halfsecond(origin, owner)
 	owner.forceMove(destination)
 	owner.dir = get_dir(owner, target)
-	origin.Beam(owner, "flame", time = 50)
+	origin.Beam(owner, "flame", time = 2)
 
 
 /datum/action/cooldown/spell/tanglecleaver/cast(atom/cast_on)
@@ -47,19 +47,16 @@
 
 //	var/turf/tangleanchor
 
-	var/slashdir = list(/obj/effect/temp_visual/crim_dragon/large/right_to_left, /obj/effect/temp_visual/crim_dragon/large/left_to_right, /obj/effect/temp_visual/crim_dragon/large/low_left_to_right, /obj/effect/temp_visual/crim_dragon/large/low_right_to_left)
-
+	var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
 
 	var/mob/living/victim
 
 
 	if(isliving(cast_on))
-
-		if(!victim || !owner)
-			return
 		victim = cast_on
-	var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
+
 	var/turf/dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 1)
+
 	if(!dest)
 		dest = get_turf(victim)
 	if(victim == owner)
@@ -77,59 +74,103 @@
 		to_chat(H, span_warning("Out of shells, reload!"))
 		return FALSE
 
+	var/turf/T = get_turf(victim)
+	var/turf/lei_turf = get_turf(H)
+	if(!T)
+		return FALSE
+
+	H.status_flags |= GODMODE
+	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
+
+//	for(var/turf/target in range(3, T))
+//		new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(get_turf(target))
 
 
-	//	for(var/obj/structure/fluff/tanglecleaver/anchor in thearena)
-	//		tangleanchor = get_turf(anchor)
+	// Stage 1: Center tile
+	new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(T)
+	sleep (0.5 DECISECONDS)
+
+	// Stage 2: First concentric layer (1 tile out)
+	for(var/turf/target in range(1, T))
+		if(!(target in get_hear(1, T)))
+			continue
+		if(get_dist(T, target) != 1)
+			continue
+		new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(target)
+	sleep (0.5 DECISECONDS)
+
+	// Stage 3: Second concentric layer (2 tiles out)
+	for(var/turf/target in range(2, T))
+		if(!(target in get_hear(2, T)))
+			continue
+		if(get_dist(T, target) != 2)
+			continue
+		new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(target)
+	sleep (0.5 DECISECONDS)
+
+	// Stage 4: Third concentric layer (3 tiles out)
+	for(var/turf/target in range(3, T))
+		if(!(target in get_hear(3, T)))
+			continue
+		if(get_dist(T, target) != 3)
+			continue
+		new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(target)
 
 
-	H.visible_message(span_userdanger("[H] stops for a moment, dashing towards the top of the arena..."))
 
-	//	dash_to(owner, tangleanchor, tangleanchor)
+	H.visible_message(span_userdanger("[H] stops for a moment, preparing a stance..."))
+	victim.Immobilize(10.1 SECONDS)
 
-
-
-	H.say("I'maboutta drop somethin' big on y'all! Don't let it kill y'all now and spoil the fun~!!")
+	H.say("I'm 'bouta drop somethin' big on y'all! Don't let it kill y'all now and SPOIL THE FUN!!!")
 	playsound(H, 'sound/foley/crimsondragon/dropsumbigonyall.ogg', 80, FALSE)
 	sleep(4.8 SECONDS)
 
-	H.visible_message(span_userdanger("[H] stands still, a shit-eating grin on his face. Who dares to stop him?"))
-	H.visible_message(span_warningbig("Send your STRONGEST and STURDIEST party member to strike him with a weapon!"))
+	H.visible_message(span_userdanger("[H] stands still, with a shit-eating grin on his face. Get away from [victim]!!"))
 
-	H.apply_status_effect(/datum/status_effect/buff/tanglecheck)
-
-	sleep (6 SECONDS)
+	sleep (1 SECONDS)
 
 	base_damage = TANGLECLEAVER_BASE_DAMAGE
 
-	new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(get_turf(victim))
-
 	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
 	sleep (0.3 SECONDS)
-	playsound(H, 'sound/foley/crimsondragon/tanglewhrr.ogg', 80, FALSE)
+	playsound(H, 'sound/foley/crimsondragon/tanglewhrr.ogg', 100, FALSE)
 	sleep (0.5 SECONDS)
 	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
+	new /obj/effect/temp_visual/crim_dragon/large/upright_boom(get_turf(H))
+	animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+	animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+	for(var/mob/living/target in in_view_range(H, lei_turf))
+		animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+	sleep (1 SECONDS)
+	playsound(H, 'sound/foley/crimsondragon/tanglewhrrend.ogg', 80, FALSE)
+	sleep (0.5 SECONDS)
 	playsound(H, 'sound/vo/male/crimsondragon/special1.ogg', 120, FALSE)
+	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
+	animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+	animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+	new /obj/effect/temp_visual/crim_dragon/large/upright_boom(get_turf(H))
+	for(var/mob/living/target in in_view_range(H, lei_turf))
+		animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 	sleep (1 SECONDS)
 
+
 	dash_to(owner, dest, victim)
-
-
-	var/turf/T = get_turf(victim)
-	if(!T)
-		return FALSE
-	var/pickslash = pick(slashdir)
 	playsound(H, 'sound/foley/crimsondragon/slam.ogg', 120, FALSE)
-	for(var/mob/living/target in range(4, T))
+	playsound(H, 'sound/vo/male/crimsondragon/special2.ogg', 120, FALSE)
+	playsound(H, 'sound/foley/crimsondragon/tremorburst.ogg', 100, FALSE)
+	playsound(H, 'sound/foley/crimsondragon/gibs.ogg', 100, FALSE)
+	new /obj/effect/temp_visual/crim_dragon/large/upright_boom(get_turf(victim))
+	for(var/mob/living/target in range(3, T))
 		if(target == owner)
 			continue
 		var/throwtarget = get_edge_target_turf(H, get_dir(H, get_step_away(target, H)))
-		new pickslash(get_turf(target))
+		new /obj/effect/temp_visual/crim_dragon/large/tanglecleaver(get_turf(target))
 		arcyne_strike(owner, target, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Tanglecleaver", skip_animation = TRUE, skip_message = TRUE)
 		target.safe_throw_at(throwtarget, CLAMP(1, 2, 5), 1, owner, force = MOVE_FORCE_EXTREMELY_STRONG)
+		shake_camera(target, 5, 3)
 
-
-
+	H.status_flags &= ~GODMODE
+	REMOVE_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
 
 /obj/structure/fluff/tanglecleaver
 	icon = 'icons/roguetown/rav/obj/flags.dmi'
@@ -139,57 +180,3 @@
 	blade_dulling = DULLING_BASHCHOP
 	layer = BELOW_MOB_LAYER
 	max_integrity = 0
-
-
-/datum/status_effect/buff/tanglecheck
-	id = "tanglecheck"
-	duration = 6 SECONDS
-	var/dur
-	var/sfx_on_apply = 'sound/foley/ding.ogg'
-
-	alert_type = /atom/movable/screen/alert/status_effect/buff/clash
-
-	mob_effect_icon = 'icons/mob/mob_effects.dmi'
-	mob_effect_icon_state = "eff_feint_bait"
-	mob_effect_layer = MOB_EFFECT_LAYER_GUARD
-
-
-/datum/status_effect/buff/tanglecheck/on_creation(mob/living/new_owner, ...)
-	//!Danger! Zone!
-	//These signals use OVERRIDES and can OVERLAP with anything else using them.
-	//At the moment we have no way of prioritising one signal over the other, it's first-come first-serve. Keep this in mind.
-	RegisterSignal(new_owner, COMSIG_MOB_ITEM_BEING_ATTACKED, PROC_REF(process_attack))
-	RegisterSignal(new_owner, COMSIG_MOB_ITEM_POST_SWINGDELAY_ATTACKED, PROC_REF(process_attack))
-	RegisterSignal(new_owner, COMSIG_MOB_KICKED, PROC_REF(process_attack))
-	RegisterSignal(new_owner, COMSIG_MOB_ATTACKED_BY_HAND, PROC_REF(process_attack))
-
-
-/datum/status_effect/buff/tanglecheck/proc/process_attack(mob/living/carbon/human/parent, mob/living/carbon/human/attacker, mob/living/carbon/human/defender)
-	var/obj/item/I = defender.get_active_held_item()
-	var/checksucceed = defender.tanglecheck(attacker, I, null)
-	if(checksucceed == TRUE)
-		playsound(defender, 'sound/foley/crimsondragon/yallarefiringmeup.ogg')
-		sleep(4.7 SECONDS)
-		return TANGLECLEAVER_BASE_DAMAGE / 2
-	else
-		playsound(defender, 'sound/foley/crimsondragon/tuckeredout.ogg')
-		sleep(2 SECONDS)
-		return TANGLECLEAVER_BASE_DAMAGE
-
-/mob/living/carbon/human/proc/tanglecheck(mob/user, obj/item/IM, obj/item/IU) //user = attacker 
-	if(!ishuman(user))
-		return
-	var/checksucceed = FALSE
-	var/mob/living/carbon/human/H = user
-	var/totalnumb = 0
-	var/str = H.get_stat(STAT_STRENGTH)
-	var/end = H.get_stat(STAT_CONSTITUTION)
-
-	totalnumb = str + end
-	if(totalnumb >= 30)
-		checksucceed = TRUE
-	else
-		checksucceed = FALSE
-	return checksucceed
-
-

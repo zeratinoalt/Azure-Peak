@@ -61,6 +61,7 @@
 	var/throwtarget = get_edge_target_turf(H, get_dir(H, get_step_away(victim, H)))
 
 	H.status_flags |= GODMODE
+	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
 	victim.Immobilize(5.9 SECONDS)
 
 	H.visible_message(span_danger("[H] draws his blade, prepare to DEFEND!"))
@@ -140,3 +141,5 @@
 		victim.Knockdown(2 SECONDS)
 
 	H.status_flags &= ~GODMODE
+	REMOVE_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
+
