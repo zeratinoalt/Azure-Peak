@@ -1,4 +1,4 @@
-#define TANGLECLEAVER_BASE_DAMAGE 160
+
 
 /datum/action/cooldown/spell/tanglecleaver
 	name = "Tanglecleaver"
@@ -29,7 +29,7 @@
 	spell_tier = 6
 	spell_impact_intensity = SPELL_IMPACT_LOW
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
-	var/base_damage = 80
+	var/base_damage = 300
 	var/deflected = FALSE
 
 /datum/action/cooldown/spell/tanglecleaver/proc/dash_to(mob/living/owner, turf/destination, mob/living/target)
@@ -62,8 +62,6 @@
 	if(victim == owner)
 		return FALSE
 
-
-
 	if(!istype(H))
 		return FALSE
 
@@ -81,10 +79,6 @@
 
 	H.status_flags |= GODMODE
 	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
-
-//	for(var/turf/target in range(3, T))
-//		new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(get_turf(target))
-
 
 	// Stage 1: Center tile
 	new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(T)
@@ -121,6 +115,11 @@
 	H.visible_message(span_userdanger("[H] stops for a moment, preparing a stance..."))
 	victim.Immobilize(10.1 SECONDS)
 
+	for(var/mob/living/stuntargets in range(3, T))
+		if(victim)
+			continue
+		stuntargets.Immobilize(5.3 SECONDS)
+
 	H.say("I'm 'bouta drop somethin' big on y'all! Don't let it kill y'all now and SPOIL THE FUN!!!")
 	playsound(H, 'sound/foley/crimsondragon/dropsumbigonyall.ogg', 80, FALSE)
 	sleep(4.8 SECONDS)
@@ -128,8 +127,6 @@
 	H.visible_message(span_userdanger("[H] stands still, with a shit-eating grin on his face. Get away from [victim]!!"))
 
 	sleep (1 SECONDS)
-
-	base_damage = TANGLECLEAVER_BASE_DAMAGE
 
 	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
 	sleep (0.3 SECONDS)
