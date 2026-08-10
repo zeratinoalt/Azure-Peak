@@ -148,7 +148,35 @@
 	new /obj/effect/temp_visual/crim_dragon/large/upright_boom(get_turf(H))
 	for(var/mob/living/target in in_view_range(H, lei_turf))
 		animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
-	sleep (1 SECONDS)
+
+	var/horizontal_difference = victim.x - owner.x
+	var/x_to_offset = 0
+	// We figure out in which horizontal direction we should animate the leap.
+	switch(horizontal_difference)
+		if(0)
+			x_to_offset = 0
+		if(1 to INFINITY)
+			x_to_offset = 32
+		if(-INFINITY to -1)
+			x_to_offset = -32
+	owner.face_atom(victim)
+	animate(owner, 0.4 SECONDS, easing = QUAD_EASING, pixel_y = owner.base_pixel_y + 16, pixel_x = owner.base_pixel_x + x_to_offset, alpha = 0)
+	sleep(0.4 SECONDS)
+	// It's okay if we're on top of the target or next to them, get_ranged_target_turf_direct will just return our own turf anyways.
+	var/turf/landing_zone = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) - 1)
+	// Janky way to leap at someone? Yes, I guess it is. It can always be made into a "dash" like the lunge is, but I think this is better.
+	if(landing_zone.is_blocked_turf(TRUE))
+		landing_zone = get_turf(victim)
+	if(get_dist(owner, landing_zone) > 15)
+		return
+	owner.forceMove(landing_zone)
+	// Make us appear as though we're coming in really fast from the direction of our starting point.
+	owner.pixel_x *= 2.5
+	owner.pixel_x *= -1
+	owner.pixel_y += 16
+	animate(owner, 0.2 SECONDS, easing = QUAD_EASING, pixel_y = owner.base_pixel_y, pixel_x = owner.base_pixel_x, alpha = 255)
+	sleep(0.2 SECONDS)
+
 
 
 	dash_to(owner, dest, victim)
