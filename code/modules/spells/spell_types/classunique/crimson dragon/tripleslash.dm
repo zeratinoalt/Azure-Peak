@@ -29,7 +29,7 @@
 	associated_skill = /datum/skill/combat/swords
 	spell_tier = 6
 	spell_impact_intensity = SPELL_IMPACT_LOW
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	spell_requirements = SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	var/base_damage = 60
 
 /datum/action/cooldown/spell/tripleslash/proc/dash_to(mob/living/owner, turf/destination, mob/living/target)

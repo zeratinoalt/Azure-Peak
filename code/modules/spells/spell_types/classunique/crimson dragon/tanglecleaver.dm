@@ -2,7 +2,7 @@
 
 /datum/action/cooldown/spell/tanglecleaver
 	name = "Tanglecleaver"
-	desc = "cast on victim, after check u strike victim lol"
+	desc = "cast on victim, after a bit u do an aoe on the victim lol"
 	button_icon = 'icons/mob/actions/classuniquespells/crimsondragon.dmi'
 	button_icon_state = "tanglecleaver"
 	sound = 'sound/foley/crimsondragon/draw.ogg'
@@ -28,7 +28,7 @@
 	associated_skill = /datum/skill/combat/swords
 	spell_tier = 6
 	spell_impact_intensity = SPELL_IMPACT_LOW
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	spell_requirements = SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	var/base_damage = 300
 	var/deflected = FALSE
 
@@ -184,7 +184,7 @@
 	playsound(H, 'sound/vo/male/crimsondragon/special2.ogg', 120, FALSE)
 	playsound(H, 'sound/foley/crimsondragon/tremorburst.ogg', 100, FALSE)
 	playsound(H, 'sound/foley/crimsondragon/gibs.ogg', 100, FALSE)
-	new /obj/effect/temp_visual/crim_dragon/large/upright_boom(get_turf(victim))
+	new /obj/effect/temp_visual/crim_dragon/large/second_boom(get_turf(victim))
 	for(var/mob/living/target in range(3, T))
 		if(target == owner)
 			continue

@@ -47,6 +47,12 @@
 	fade_time = 10
 	pixel_y = 0
 
+/obj/effect/temp_visual/crim_dragon/large/second_boom
+	icon = 'icons/effects/64x64.dmi'
+	icon_state = "second boom"
+	duration = 10
+	fade_time = 10
+
 /obj/effect/temp_visual/crim_dragon/large/tanglecleaver
 	icon = 'icons/effects/64x64.dmi'
 	icon_state = "tanglecleaver"
