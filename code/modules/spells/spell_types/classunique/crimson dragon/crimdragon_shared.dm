@@ -60,3 +60,14 @@
 /obj/effect/temp_visual/crim_dragon/large/tanglecleaver/Initialize()
 	dir = pick(GLOB.cardinals)
 	..()
+
+/obj/effect/temp_visual/crim_dragon/large/tigerslayer
+	icon = 'icons/effects/64x64.dmi'
+	icon_state = "tigerslayer"
+
+/obj/effect/temp_visual/crim_dragon/warning/biggest
+	icon = 'icons/effects/224x224.dmi'
+	icon_state = "warning"
+	pixel_x = -96
+	pixel_y = -96
+	duration = 92.5

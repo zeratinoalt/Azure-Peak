@@ -56,6 +56,8 @@
 		return FALSE
 
 	var/throwtarget = get_edge_target_turf(H, get_dir(H, get_step_away(victim, H)))
+	var/turf/lei_turf = get_turf(H)
+
 
 	H.visible_message(span_userdanger("[H] is about to use a TANKBUSTER on [victim], BUFF THE TANK!!!"))
 
@@ -72,6 +74,7 @@
 	sleep(2.7 SECONDS)
 
 	victim.Immobilize(4.8 SECONDS)
+
 
 	playsound(H, 'sound/foley/crimsondragon/draw3.ogg', 80, FALSE)
 	H.visible_message(span_danger("[H] draws his sword, gripping it two hands!"))
@@ -97,17 +100,25 @@
 			held_weapon.spent += 2
 			held_weapon.shells -= 2
 			playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 100, FALSE)
+			animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			for(var/mob/living/target in in_view_range(H, lei_turf))
+				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 			sleep(0.8 SECONDS)
 			playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 100, FALSE)
+			animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			for(var/mob/living/target in in_view_range(H, lei_turf))
+				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 			H.visible_message(span_danger("[H] detonates two shells, [held_weapon.shells] left!"))
 			held_weapon.overheat += 16
 		else
 			base_damage = 20
 			if(deflected)
 				base_damage = 10
-		dash_to(owner, get_turf(victim), victim)
 		owner.face_atom(victim)
 		owner.update_icon()
+		dash_to(owner, get_turf(victim), victim)
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Blasting Scatterslash", skip_animation = TRUE, skip_message = TRUE)
 		H.visible_message(span_warning("[H] slams down the podao onto [victim]'s shoulder!"))
 		playsound(H, 'sound/vo/male/crimsondragon/attack3.ogg', 100, FALSE)
@@ -115,12 +126,16 @@
 		new /obj/effect/temp_visual/crim_dragon/large/right_to_left(get_turf(victim))
 		shake_camera(victim, 5, 3)
 
-		sleep(0.6 SECONDS) // ! test !
+		sleep(0.6 SECONDS)
 		if(held_weapon.shells >= 1) //second hit
 			held_weapon.spent += 1
 			held_weapon.shells -= 1
 			playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 100, FALSE)
 			held_weapon.overheat += 8
+			animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			for(var/mob/living/target in in_view_range(H, lei_turf))
+				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		else
 			base_damage = 20
 			if(deflected)
@@ -131,9 +146,9 @@
 		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
 		if(!dest)
 			dest = get_turf(victim)
-		dash_to(owner, dest, victim)
 		owner.face_atom(victim)
 		owner.update_icon()
+		dash_to(owner, dest, victim)
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Blasting Scatterslash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/attack6.ogg', 100, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 100, FALSE)
@@ -154,14 +169,18 @@
 			held_weapon.shells -= 1
 			playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 100, FALSE)
 			held_weapon.overheat += 8
+			animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			for(var/mob/living/target in in_view_range(H, lei_turf))
+				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		else
 			base_damage = 20
 			if(deflected)
 				base_damage = 10
 		sleep(0.8 SECONDS)
-		dash_to(owner, get_turf(victim), victim)
 		owner.face_atom(victim) 
 		owner.update_icon()
+		dash_to(owner, get_turf(victim), victim)
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Blasting Scatterslash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/special2.ogg', 120, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)

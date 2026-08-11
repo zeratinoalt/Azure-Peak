@@ -124,14 +124,14 @@
 	playsound(H, 'sound/foley/crimsondragon/dropsumbigonyall.ogg', 80, FALSE)
 	sleep(4.8 SECONDS)
 
-	H.visible_message(span_userdanger("[H] stands still, with a shit-eating grin on his face. Get away from [victim]!!"))
+	H.visible_message(span_userdanger("[H] stands still, with a tiger's grin on his face. Get away from [victim]!!"))
 
 	sleep (1 SECONDS)
 
-	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
-	sleep (0.3 SECONDS)
-	playsound(H, 'sound/foley/crimsondragon/tanglewhrr.ogg', 100, FALSE)
+	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
 	sleep (0.5 SECONDS)
+	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 100, FALSE)
+	sleep (0.3 SECONDS)
 	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
 	new /obj/effect/temp_visual/crim_dragon/large/upright_boom(get_turf(H))
 	animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
@@ -178,7 +178,8 @@
 	sleep(0.2 SECONDS)
 
 
-
+	owner.face_atom(victim)
+	owner.update_icon()
 	dash_to(owner, dest, victim)
 	playsound(H, 'sound/foley/crimsondragon/slam.ogg', 120, FALSE)
 	playsound(H, 'sound/vo/male/crimsondragon/special2.ogg', 120, FALSE)
@@ -193,6 +194,9 @@
 		arcyne_strike(owner, target, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Tanglecleaver", skip_animation = TRUE, skip_message = TRUE)
 		target.safe_throw_at(throwtarget, CLAMP(1, 2, 5), 1, owner, force = MOVE_FORCE_EXTREMELY_STRONG)
 		shake_camera(target, 5, 3)
+
+	held_weapon.spent += 6
+	held_weapon.shells -= 6
 
 	H.status_flags &= ~GODMODE
 	REMOVE_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)

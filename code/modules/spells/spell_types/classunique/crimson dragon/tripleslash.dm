@@ -89,11 +89,15 @@
 			held_weapon.shells -= 1
 			playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
 			held_weapon.overheat += 8
+			animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			for(var/mob/living/target in in_view_range(H, lei_turf))
+				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		else
 			base_damage = 40
-		dash_to(owner, get_turf(victim), victim)
 		owner.face_atom(victim)
 		owner.update_icon()
+		dash_to(owner, get_turf(victim), victim)
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/attack3.ogg', 80, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 80, FALSE)
@@ -107,14 +111,18 @@
 			held_weapon.shells -= 1
 			playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
 			held_weapon.overheat += 8
+			animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			for(var/mob/living/target in in_view_range(H, lei_turf))
+				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		else
 			base_damage = 40
 		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
 		if(!dest)
 			dest = get_turf(victim)
-		dash_to(owner, dest, victim)
 		owner.face_atom(victim)
 		owner.update_icon()
+		dash_to(owner, dest, victim)
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/attack6.ogg', 80, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
@@ -127,11 +135,15 @@
 			held_weapon.shells -= 1
 			playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
 			held_weapon.overheat += 8
+			animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+			for(var/mob/living/target in in_view_range(H, lei_turf))
+				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		else
 			base_damage = 40
-		dash_to(owner, get_turf(victim), victim)
 		owner.face_atom(victim)
 		owner.update_icon()
+		dash_to(owner, get_turf(victim), victim)
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Triple Slash", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/vo/male/crimsondragon/special1.ogg', 80, FALSE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
