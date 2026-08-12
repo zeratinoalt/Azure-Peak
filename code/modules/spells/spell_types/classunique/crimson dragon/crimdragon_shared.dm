@@ -55,7 +55,7 @@
 
 /obj/effect/temp_visual/crim_dragon/large/tanglecleaver
 	icon = 'icons/effects/64x64.dmi'
-	icon_state = "tanglecleaver"
+	icon_state = "tangleslash"
 
 /obj/effect/temp_visual/crim_dragon/large/tanglecleaver/Initialize()
 	dir = pick(GLOB.cardinals)

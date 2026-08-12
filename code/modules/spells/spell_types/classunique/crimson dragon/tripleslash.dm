@@ -45,6 +45,8 @@
 	var/mob/living/carbon/human/H = owner
 	var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = H.get_active_held_item()
 	var/deflected = FALSE
+	var/turf/lei_turf = get_turf(H)
+
 
 	var/mob/living/victim
 	if(isliving(cast_on))
@@ -73,7 +75,8 @@
 		if(!deflected)
 			deflected = TRUE
 			H.OffBalance(30)
-			base_damage = 20
+			base_damage = 30
+
 
 	sleep(0.6 SECONDS)
 
@@ -94,7 +97,7 @@
 			for(var/mob/living/target in in_view_range(H, lei_turf))
 				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		else
-			base_damage = 40
+			base_damage /= 2
 		owner.face_atom(victim)
 		owner.update_icon()
 		dash_to(owner, get_turf(victim), victim)
@@ -116,7 +119,7 @@
 			for(var/mob/living/target in in_view_range(H, lei_turf))
 				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		else
-			base_damage = 40
+			base_damage /= 2
 		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
 		if(!dest)
 			dest = get_turf(victim)
@@ -140,7 +143,7 @@
 			for(var/mob/living/target in in_view_range(H, lei_turf))
 				animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		else
-			base_damage = 40
+			base_damage /= 2
 		owner.face_atom(victim)
 		owner.update_icon()
 		dash_to(owner, get_turf(victim), victim)

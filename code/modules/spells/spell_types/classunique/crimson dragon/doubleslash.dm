@@ -47,6 +47,7 @@
 	var/mob/living/carbon/human/H = owner
 	var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = H.get_active_held_item()
 	var/deflected = FALSE
+	var/turf/lei_turf = get_turf(H)
 
 	var/mob/living/victim
 	if(isliving(cast_on))

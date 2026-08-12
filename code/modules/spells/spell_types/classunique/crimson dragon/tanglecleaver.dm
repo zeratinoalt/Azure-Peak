@@ -128,10 +128,10 @@
 
 	sleep (1 SECONDS)
 
-	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
-	sleep (0.5 SECONDS)
-	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 100, FALSE)
+	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
 	sleep (0.3 SECONDS)
+	playsound(H, 'sound/foley/crimsondragon/tanglewhrr.ogg', 100, FALSE)
+	sleep (0.5 SECONDS)
 	playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
 	new /obj/effect/temp_visual/crim_dragon/large/upright_boom(get_turf(H))
 	animate(H, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)

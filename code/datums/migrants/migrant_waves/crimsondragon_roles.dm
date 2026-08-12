@@ -36,12 +36,12 @@
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 
-	H.change_stat(STATKEY_STR, 2)
-	H.change_stat(STATKEY_PER, 2)
-	H.change_stat(STATKEY_INT, 3)
-	H.change_stat(STATKEY_CON, 2)
-	H.change_stat(STATKEY_WIL, 2) 
-	H.change_stat(STATKEY_SPD, -1) // same shit as unknightly journey on account of spawning in w/ a bounty - totally up 4 discussion i just code in cool shit
+	H.change_stat(STATKEY_STR, 5)
+	H.change_stat(STATKEY_PER, 5)
+	H.change_stat(STATKEY_INT, 2)
+	H.change_stat(STATKEY_CON, 8)
+	H.change_stat(STATKEY_WIL, 8) 
+	H.change_stat(STATKEY_SPD, 3)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/crimsondragon()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
@@ -53,6 +53,7 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tripleslash)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/scatterslash)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tanglecleaver)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/tigerslayer)
 // unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/crimdragon
