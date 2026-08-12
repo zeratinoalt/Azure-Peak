@@ -1418,3 +1418,25 @@
 /obj/item/rogueweapon/spear/keep_standard/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
+
+/obj/item/rogueweapon/sword/soldato
+	name = "blasting spear"
+	desc = "What's essentially a metal blade on the end of a maroon, wooden stick. There's a loading port that accepts shells, and an exhaust port that fwips up and down - to support both slashing and stabbing maneuvers. There's a trigger underneath, and pulling it throws the user's arms forward."
+	alt_grips = null
+	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
+	force = 30
+	possible_item_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/sword/strike)
+	gripped_intents = null
+	var/shells = 3
+	special = /datum/special_intent/rifleload
+
+
+/obj/item/rogueweapon/sword/soldato/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
+	if(!istype(target))
+		return FALSE
+	if(shells >= 1)
+		force = 40 //ow
+		shells -= 1
+	else
+		force = 30
+	return FALSE
