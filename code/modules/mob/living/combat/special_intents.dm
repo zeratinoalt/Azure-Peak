@@ -1439,17 +1439,19 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	tile_coordinates = list(list(0,0), list(0,1))
 	post_icon_state = "stab"
 	pre_icon_state = "trap"
-	sfx_post_delay = 'sound/combat/parry/bladed/bladedsmall (3).ogg'
+	sfx_post_delay = 'sound/foley/crimsonminions/reloadfail.ogg'
 	delay = 0.5 SECONDS
 	cooldown = 25 SECONDS
 	stamcost = 20
 	var/dam
 
 /datum/special_intent/piercing_lunge/process_attack()
-	var/obj/item/rogueweapon/W = iparent
+	var/obj/item/rogueweapon/sword/soldato/W = iparent
 	dam = W.force_dynamic * max((1 + (((howner.STASPD - 10) + (howner.STAPER - 10)) / 10)), 0.1)
+	W.shells == 3
+	playsound(src, 'sound/foley/crimsonminions/reloadstart.ogg')
 	. = ..()
-	iparent.shells == 3
+
 
 /datum/special_intent/piercing_lunge/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
@@ -1459,5 +1461,9 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 			if(L.mobility_flags & MOBILITY_STAND)
 				var/hit_zone = get_aimed_zone(L)
 				apply_generic_weapon_damage(L, dam, "stab", hit_zone, bclass = BCLASS_STAB, full_pen = TRUE)	//Ignores armor, applies a stab wound with the weapon force.
+				playsound(T, 'sound/foley/crimsonminions/reloading.ogg')
+				playsound(T, 'sound/foley/crimsonminions/attack.ogg')
 			L.apply_status_effect(/datum/status_effect/debuff/vulnerable, 3 SECONDS)
+			sleep(0.2 SECONDS)
+			playsound(src, 'sound/foley/crimsonminions/reloadend.ogg')
 	..()

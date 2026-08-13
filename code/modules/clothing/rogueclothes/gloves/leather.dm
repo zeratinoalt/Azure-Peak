@@ -164,3 +164,10 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+
+/obj/item/clothing/gloves/roguetown/eastgloves2/soldato
+	name = "black gloves"
+	desc = "Gloves that pair well with a certain uniform."
+	icon_state = "soldatogloves"
+	item_state = "soldatogloves"

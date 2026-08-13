@@ -652,3 +652,10 @@
 	desc = "A pleated cloth headband. It has gained widespread popularity from Valorian nobles travelling with their servants."
 	icon_state = "maidband"
 	body_parts_covered = NONE
+
+
+/obj/item/clothing/head/roguetown/headband/monk/soldato
+	name = "wine-red fedora"
+	desc = "Smells like gunpowder and zigs."
+	icon_state = "soldatohat"
+	color = null

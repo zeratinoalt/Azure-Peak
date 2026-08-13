@@ -75,3 +75,14 @@
 /obj/item/clothing/suit/roguetown/armor/silkcoat/Initialize()
 	. = ..()
 	color = pick(CLOTHING_PURPLE, null,CLOTHING_GREEN, CLOTHING_RED)
+
+
+/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/soldato
+	name = "overcoated uniform"
+	desc = "A weirdly thin, suit-like uniform with a thick, red overcoat. Despite the shirt and pants seemingly being made out of silk - it's still rather robust."
+	icon_state = "soldato"
+	item_state = "soldato"
+	allowed_sex = list(MALE)
+	color = null
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
+	max_integrity = 550

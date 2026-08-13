@@ -64,6 +64,9 @@
 	sleeved = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
 	icon_state = "crimsondragonshirt"
 	allowed_race = NON_DWARVEN_RACE_TYPES
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
+	armor = ARMOR_PLATE_BSTEEL
+	max_integrity = ARMOR_INT_CHEST_PLATE_BLACKSTEEL
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/crimdragon
 	name = "stained silk pants"

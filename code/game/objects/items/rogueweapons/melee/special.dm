@@ -1419,13 +1419,24 @@
 	GLOB.lordcolor -= src
 	return ..()
 
+
+/datum/intent/sword/cut/arming/soldato
+	hitsound = list('sound/foley/crimsonminions/attack.ogg')
+
+/datum/intent/sword/thrust/arming/soldato
+	hitsound = list('sound/foley/crimsonminions/attack.ogg')
+
+	
+
 /obj/item/rogueweapon/sword/soldato
-	name = "blasting spear"
+	name = "blast spear"
 	desc = "What's essentially a metal blade on the end of a maroon, wooden stick. There's a loading port that accepts shells, and an exhaust port that fwips up and down - to support both slashing and stabbing maneuvers. There's a trigger underneath, and pulling it throws the user's arms forward."
 	alt_grips = null
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
+	icon = 'icons/roguetown/weapons/misc32.dmi'
+	icon_state = "soldato_rifle"
 	force = 30
-	possible_item_intents = list(/datum/intent/sword/cut/arming, /datum/intent/sword/thrust/arming, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/arming/soldato, /datum/intent/sword/thrust/arming/soldato, /datum/intent/sword/strike)
 	gripped_intents = null
 	var/shells = 3
 	special = /datum/special_intent/rifleload
@@ -1439,14 +1450,24 @@
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
 	resistance_flags = FLAMMABLE
+	experimental_inhand = FALSE
+	lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/rogue_righthand.dmi'
+
 
 
 /obj/item/rogueweapon/sword/soldato/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
+	var/datum/intent/sword/cut/arming/soldato/slashsound
+	var/datum/intent/sword/thrust/arming/soldato/stabsound
 	if(!istype(target))
 		return FALSE
 	if(shells >= 1)
 		force = 40 //ow
 		shells -= 1
+		slashsound.hitsound = list('sound/foley/crimsonminions/detonationsweep.ogg', 'sound/foley/crimsonminions/detonationfinisher.ogg')
+		stabsound.hitsound = list('sound/foley/crimsonminions/detonationlunge.ogg', 'sound/foley/crimsonminions/detonationfinisher.ogg')
 	else
 		force = 30
+		slashsound.hitsound = list('sound/foley/crimsonminions/attack.ogg')
+		stabsound.hitsound = list('sound/foley/crimsonminions/attack.ogg')
 	return FALSE
