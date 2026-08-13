@@ -123,7 +123,7 @@
 		animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		for(var/mob/living/target in in_view_range(H, lei_turf))
 			animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
-		owner.face_atom(dest)
+		owner.setDir(victim)
 		owner.update_icon()
 		dash_to(owner, dest, victim)
 		for(var/mob/living/target in range(3, T))
@@ -143,7 +143,7 @@
 		animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		for(var/mob/living/target in in_view_range(H, lei_turf))
 			animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
-		owner.face_atom(dest)
+		owner.setDir(dest)
 		owner.update_icon()
 		dash_to(owner, dest, victim)
 		playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 80, FALSE)
@@ -160,9 +160,9 @@
 // ! third hit !
 
 		H.visible_message(span_danger("[H] draws his sword, gripping it two hands!"))
+		owner.setDir(victim)
 		sleep(0.6 SECONDS)
 		playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
-
 		sleep(0.4 SECONDS)
 		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 3)
 		if(!dest)
@@ -180,11 +180,8 @@
 		animate(H.client, pixel_y = 5, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		for(var/mob/living/target in in_view_range(H, lei_turf))
 			animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
-		owner.face_atom(dest)
-		owner.update_icon()
 		dash_to(owner, dest, victim)
-		owner.face_atom(dest)
-		owner.update_icon()
+		owner.setDir(victim)
 		for(var/mob/living/target in range(3, T))
 			arcyne_strike(owner, target, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Tigerslayer", skip_animation = TRUE, skip_message = TRUE)
 			new /obj/effect/temp_visual/crim_dragon/large/tanglecleaver(get_turf(target))
@@ -195,7 +192,7 @@
 		shake_camera(victim, 5, 3)
 
 // ! fourth hit !
-
+		owner.setDir(victim)
 		H.visible_message(span_userdanger("[H] crouches down, preparing to LEAP FORWARD!!"))
 		playsound(H, 'sound/foley/crimsondragon/detonation.ogg', 100, FALSE)
 		sleep (0.5 SECONDS)
@@ -209,11 +206,8 @@
 			animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
 		sleep (0.5 SECONDS)
-		owner.face_atom(dest)
-		owner.update_icon()
+		owner.setDir(victim)
 		dash_to(owner, dest, victim)
-		owner.face_atom(dest)
-		owner.update_icon()
 		for(var/mob/living/target in range(3, T))
 			if(target == owner)
 				continue
@@ -230,16 +224,14 @@
 
 
 		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 1)
-		owner.face_atom(dest)
-		owner.update_icon()
+		owner.setDir(victim)
 
-		owner.face_atom(dest)
-		owner.update_icon()
 		playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
 
 		sleep(0.3 SECONDS)
 
 		dash_to(owner, dest, victim)
+		owner.setDir(victim)
 		H.visible_message(span_userdanger("[H] swings his podao into the chest cavity!"))
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
 		sleep(0.5 SECONDS)
@@ -254,10 +246,9 @@
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Tigerslayer", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash4.ogg', 80, FALSE)
 		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 5)
-		owner.face_atom(dest)
-		owner.update_icon()
+		owner.setDir(dest)
 		dash_to(owner, dest, victim)
-		owner.face_atom(dest)
+		owner.setDir(victim)
 		owner.update_icon()
 		sleep(0.6 SECONDS)
 
