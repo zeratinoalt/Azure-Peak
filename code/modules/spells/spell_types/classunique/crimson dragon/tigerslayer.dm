@@ -1,3 +1,6 @@
+// ! be warned, ye who seeks to port
+// ! shitcode ahead
+
 /datum/action/cooldown/spell/tigerslayer
 	name = "Savage Tigerslayer's Perfected Flurry of Blades"
 	desc = "https://youtu.be/226xMDTU01U?t=134"
@@ -224,7 +227,7 @@
 
 
 		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 1)
-		owner.setDir(victim)
+		owner.setDir(dest)
 
 		playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
 
