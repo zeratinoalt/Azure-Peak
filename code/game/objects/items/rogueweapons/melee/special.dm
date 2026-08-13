@@ -1435,6 +1435,7 @@
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "soldato_rifle"
+	item_state = "soldato_rifle"
 	force = 30
 	possible_item_intents = list(/datum/intent/sword/cut/arming/soldato, /datum/intent/sword/thrust/arming/soldato, /datum/intent/sword/strike)
 	gripped_intents = null

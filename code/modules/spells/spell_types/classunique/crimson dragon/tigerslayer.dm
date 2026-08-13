@@ -54,6 +54,8 @@
 
 	if(isliving(cast_on))
 		victim = cast_on
+	else
+		return FALSE
 
 	var/turf/dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 1)
 
