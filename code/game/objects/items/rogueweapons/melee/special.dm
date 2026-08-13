@@ -1457,17 +1457,20 @@
 
 
 /obj/item/rogueweapon/sword/soldato/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
-	var/datum/intent/sword/cut/arming/soldato/slashsound
-	var/datum/intent/sword/thrust/arming/soldato/stabsound
+	var/datum/intent/used_intent = user.used_intent
 	if(!istype(target))
 		return FALSE
+
 	if(shells >= 1)
 		force = 40 //ow
 		shells -= 1
-		slashsound.hitsound = list('sound/foley/crimsonminions/detonationsweep.ogg', 'sound/foley/crimsonminions/detonationfinisher.ogg')
-		stabsound.hitsound = list('sound/foley/crimsonminions/detonationlunge.ogg', 'sound/foley/crimsonminions/detonationfinisher.ogg')
+		if(used_intent)
+			if(istype(used_intent, /datum/intent/sword/cut/arming/soldato))
+				used_intent.hitsound = list('sound/foley/crimsonminions/detonationsweep.ogg', 'sound/foley/crimsonminions/detonationfinisher.ogg')
+			else if(istype(used_intent, /datum/intent/sword/thrust/arming/soldato))
+				used_intent.hitsound = list('sound/foley/crimsonminions/detonationlunge.ogg', 'sound/foley/crimsonminions/detonationfinisher.ogg')
 	else
 		force = 30
-		slashsound.hitsound = list('sound/foley/crimsonminions/attack.ogg')
-		stabsound.hitsound = list('sound/foley/crimsonminions/attack.ogg')
+		if(used_intent && (istype(used_intent, /datum/intent/sword/cut/arming/soldato) || istype(used_intent, /datum/intent/sword/thrust/arming/soldato)))
+			used_intent.hitsound = list('sound/foley/crimsonminions/attack.ogg')
 	return FALSE

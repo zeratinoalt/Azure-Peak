@@ -64,9 +64,9 @@
 	sleeved = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
 	icon_state = "crimsondragonshirt"
 	allowed_race = NON_DWARVEN_RACE_TYPES
-	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
+	body_parts_covered = COVERAGE_FULL_BODY_ACTUAL
 	armor = ARMOR_PLATE_BSTEEL
-	max_integrity = ARMOR_INT_CHEST_PLATE_BLACKSTEEL
+	max_integrity = 3000
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/crimdragon
 	name = "stained silk pants"
@@ -196,7 +196,7 @@
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
 	max_blade_int = 300
-	wdefense = 7
+	wdefense = 15
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'
 	wbalance = WBALANCE_NORMAL

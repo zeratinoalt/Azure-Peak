@@ -1439,24 +1439,22 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	tile_coordinates = list(list(0,0), list(0,1))
 	post_icon_state = "stab"
 	pre_icon_state = "trap"
-	sfx_post_delay = 'sound/foley/crimsonminions/reloadfail.ogg'
-	delay = 0.5 SECONDS
+	sfx_post_delay = 'sound/foley/crimsonminions/reloadstart.ogg'
+	delay = 0.3 SECONDS
 	cooldown = 25 SECONDS
 	stamcost = 20
 	var/dam
 
-/datum/special_intent/piercing_lunge/process_attack()
+/datum/special_intent/rifleload/process_attack()
 	var/obj/item/rogueweapon/sword/soldato/W = iparent
 	dam = W.force_dynamic * max((1 + (((howner.STASPD - 10) + (howner.STAPER - 10)) / 10)), 0.1)
-	W.shells == 3
-	playsound(src, 'sound/foley/crimsonminions/reloadstart.ogg')
+	W.shells = 3
 	. = ..()
 
 
-/datum/special_intent/piercing_lunge/apply_hit(turf/T)
+/datum/special_intent/rifleload/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-	
 			L.stamina_add(30)	//Drains ~20 stamina from target; attrition warfare.
 			if(L.mobility_flags & MOBILITY_STAND)
 				var/hit_zone = get_aimed_zone(L)

@@ -1,5 +1,5 @@
 // ! be warned, ye who seeks to port
-// ! shitcode ahead
+// ! for the gates of hell seek to swallow you whole should you ctrl + c & ctrl + v
 
 /datum/action/cooldown/spell/tigerslayer
 	name = "Savage Tigerslayer's Perfected Flurry of Blades"
@@ -135,6 +135,7 @@
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Tigerslayer", skip_animation = TRUE, skip_message = TRUE)
 		playsound(H, 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 80, FALSE)
 		H.visible_message(span_warning("[H] slams the podao down with one hand!"))
+		owner.setDir(victim)
 		sleep(1 SECONDS)
 
 // ! second hit !
@@ -209,8 +210,8 @@
 			animate(target.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 2)
 		sleep (0.5 SECONDS)
-		owner.setDir(victim)
 		dash_to(owner, dest, victim)
+		owner.setDir(victim)
 		for(var/mob/living/target in range(3, T))
 			if(target == owner)
 				continue
