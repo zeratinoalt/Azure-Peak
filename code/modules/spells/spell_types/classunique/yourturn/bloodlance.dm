@@ -13,7 +13,7 @@
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_MINOR_PROJECTILE
 
-	invocations = list("|..Here, try and dodge this.|")
+	invocations = list("|..Try and dodge this, Constance.|")
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
