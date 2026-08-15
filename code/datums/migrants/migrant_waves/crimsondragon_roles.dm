@@ -46,6 +46,7 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/crimsondragon()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_VENGEANCE, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_crimsondragon.ogg'
 
 	if(H.mind)
@@ -54,6 +55,7 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/scatterslash)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tanglecleaver)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tigerslayer)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/blood_lance)
 // unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/crimdragon

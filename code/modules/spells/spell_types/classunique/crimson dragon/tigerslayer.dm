@@ -85,6 +85,8 @@
 	new /obj/effect/temp_visual/crim_dragon/warning/biggest(T)
 
 	H.visible_message(span_userdanger("[H] stops for a moment, preparing a stance..."))
+	for(var/mob/living/dings in range(7, T))
+		dings.playsound_local(dings, 'sound/foley/ding.ogg', 100, FALSE)
 	victim.Immobilize(10.1 SECONDS)
 
 	H.say("I'm 'bouta drop somethin' big on y'all! Don't let it kill y'all now and SPOIL THE FUN!!!")
@@ -98,8 +100,6 @@
 		if(victim)
 			continue
 		stuntargets.Immobilize(10.1 SECONDS)
-
-
 
 	H.say("Y'all don't go on huntin' tigers without preparin' yerselves TO GET CHOMPED 'TWEEN ONE OF 'EM JAWS!!!")
 	playsound(H, 'sound/foley/crimsondragon/huntingtigerschompedclaws.ogg', 80, FALSE)
