@@ -5,13 +5,18 @@
 
 #define PODAOWOOSH list('sound/foley/crimsondragon/draw.ogg', 'sound/foley/crimsondragon/draw2.ogg')
 
-/datum/migrant_role/crimson_dragon
-	name = "Crimson Tiger"
+/datum/job/roguetown/crimson_dragon
+	title = "Crimson Tiger"
+	faction = "Station"
+	total_positions = 0
+	spawn_positions = 0
 	outfit = /datum/outfit/job/roguetown/adventurer/crimson_dragon
-	greet_text = "You are a former officer of Lingyue's military - having long since abandoned your Kazengite overlords. With a bounty on your head placed by the Dynasty, you've now fled to Azure Peak in search of a new life as a mentor. \
-	You hold no allegiences except for yourself and your desire for a challenging fight - though note that you are being hunted."
 	allowed_sexes = list(MALE, FEMALE)
 	forbidden_races = list(RACES_SMALL, RACES_CONSTRUCT, RACES_DESPISED)
+	tutorial = "boss fight :)."
+
+	cmode_music = 'sound/music/combat_crimsondragon.ogg'
+
 
 /datum/outfit/job/roguetown/adventurer/crimson_dragon/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -46,8 +51,8 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/crimsondragon()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_VENGEANCE, TRAIT_GENERIC)
-	H.cmode_music = 'sound/music/combat_crimsondragon.ogg'
+	ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 
 	if(H.mind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/doubleslash)
@@ -56,6 +61,8 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tanglecleaver)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tigerslayer)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/blood_lance)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/strangler)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bind)
 // unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/crimdragon
@@ -174,11 +181,14 @@
 /datum/intent/sword/cut/zwei/sweep/podao
 	hitsound = list('sound/combat/hits/bladed/crimsontiger/slash1.ogg', 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
 
+/datum/intent/sword/chop/cleave/podao 
+	hitsound = list('sound/combat/hits/bladed/crimsontiger/slash1.ogg', 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
+
 /obj/item/rogueweapon/sword/sabre/podao
 	name = "winged podao"
 	desc = "A one-handed sword with large exhaust ports protruding out of blade's spine. This piece is incredibly expensive & complex to forge - akin to the complexity of a Construct."
-	possible_item_intents = list(/datum/intent/sword/cut/podao, /datum/intent/sword/cut/zwei/cleave/podao, /datum/intent/sword/cut/zwei/sweep/podao)
-	force = 20
+	possible_item_intents = list(/datum/intent/sword/cut/podao, /datum/intent/sword/cut/zwei/cleave/podao, /datum/intent/sword/cut/zwei/sweep/podao, /datum/intent/sword/chop/cleave/podao)
+	force = 40
 	parrysound = list(
 		'sound/combat/parry/bladed/crimsontiger/parry1.ogg',
 		'sound/combat/parry/bladed/crimsontiger/parry2.ogg',
@@ -197,7 +207,8 @@
 	minstr = 9
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
-	max_blade_int = 300
+	max_blade_int = 700
+	max_integrity = 700
 	wdefense = 15
 	lefthand_file = 'icons/mob/inhands/weapons/roguebig_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguebig_righthand.dmi'

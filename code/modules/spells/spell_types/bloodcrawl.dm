@@ -32,4 +32,4 @@
 		start_recharge()
 		return
 	revert_cast()
-	to_chat(user, span_warning("I are unable to blood crawl!"))
+	to_chat(user, span_warning("I'm unable to blood crawl!"))

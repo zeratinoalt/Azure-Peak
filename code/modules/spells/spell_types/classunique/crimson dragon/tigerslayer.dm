@@ -260,6 +260,8 @@
 
 // ! final hit
 
+	owner.setDir(victim)
+	owner.update_icon()
 	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
 	sleep (0.3 SECONDS)
 	playsound(H, 'sound/foley/crimsondragon/tanglewhrr.ogg', 100, FALSE)

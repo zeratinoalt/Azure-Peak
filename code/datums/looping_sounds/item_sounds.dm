@@ -93,3 +93,9 @@
 	mid_length = 0
 	volume = 0
 	extra_range = 0
+
+/datum/looping_sound/fleshy
+	mid_sounds = list('sound/foley/sewflesh.ogg')
+	mid_length = 550
+	volumte = 70
+	extra_range = 10

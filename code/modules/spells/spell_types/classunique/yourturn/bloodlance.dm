@@ -1,8 +1,8 @@
 /datum/action/cooldown/spell/blood_lance
-	button_icon = 'icons/mob/actions/mage_ferramancy.dmi'
+	button_icon = 'icons/mob/actions/classuniquespells/yourturn.dmi'
 	name = "Blood Lance"
-	desc = "Summon three lances made out of blood that track a target, before hurling it at them.."
-	button_icon_state = "arcyne_lance"
+	desc = "Summon three lances made out of blood that track a target, before hurling it at them."
+	button_icon_state = "spears"
 	sound = 'sound/foley/bleed_apply.ogg'
 	spell_color = GLOW_COLOR_VAMPIRIC
 	glow_intensity = GLOW_INTENSITY_MEDIUM
@@ -19,7 +19,7 @@
 	charge_time = CHARGETIME_POKE
 	charge_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
-	charge_sound = 'sound/magic/chargingold2.ogg'
+	charge_sound = 'sound/magic/chargingblood.ogg'
 	cooldown_time = 5.5 SECONDS
 
 	associated_skill = /datum/skill/magic/blood

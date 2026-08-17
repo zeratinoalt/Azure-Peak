@@ -1263,7 +1263,7 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 /datum/special_intent/dagger_dash
 	name = "Dagger Dash"
 	desc = "Become quicker on your feet and pass through other beings for a short time. Boost scales with worn armor."
-	cooldown = 90 SECONDS
+	cooldown = 30 SECONDS
 	stamcost = 25
 
 /datum/special_intent/dagger_dash/process_attack()

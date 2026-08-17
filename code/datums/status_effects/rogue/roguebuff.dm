@@ -2198,7 +2198,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/dagger_dash
 	effectedstats = list(STATKEY_SPD = 1)
 	status_type = STATUS_EFFECT_UNIQUE
-	duration = 3 SECONDS
+	duration = 10 SECONDS
 	mob_effect_icon_state = "eff_daggerboost"
 	mob_effect_layer = MOB_EFFECT_LAYER_DBOOST
 
@@ -2211,7 +2211,7 @@
 	highest_ac = H.highest_ac_worn()
 	switch(highest_ac)
 		if(ARMOR_CLASS_NONE)
-			duration = 5 SECONDS
+			duration = 15 SECONDS
 			spd_bonus = 4
 		if(ARMOR_CLASS_LIGHT)
 			duration = 4 SECONDS

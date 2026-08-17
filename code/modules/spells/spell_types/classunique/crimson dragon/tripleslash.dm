@@ -66,7 +66,8 @@
 	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
 	victim.Immobilize(5.9 SECONDS)
 
-	H.visible_message(span_danger("[H] draws his blade, prepare to DEFEND!"))
+	H.visible_message(span_danger("[H] draws his blade, looking towards [victim]!"))
+	to_chat(victim, span_userdanger("DEFEND!!!"))
 	playsound(H, 'sound/foley/crimsondragon/draw.ogg', 80, FALSE)
 	sleep(1 SECONDS)
 	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)
