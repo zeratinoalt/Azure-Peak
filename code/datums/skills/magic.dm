@@ -13,7 +13,7 @@
 
 /datum/skill/magic/blood
 	name = "Hemomancy"
-	desc = "Affects Vampiric weapons, and Vampiric Disciplines."
+	desc = "The manipulation of blood."
 	expert_name = "Sorcerer"
 
 /datum/skill/magic/arcane

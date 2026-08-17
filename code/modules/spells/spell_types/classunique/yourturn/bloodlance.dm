@@ -4,9 +4,8 @@
 	desc = "Summon three lances made out of blood that track a target, before hurling it at them.."
 	button_icon_state = "arcyne_lance"
 	sound = 'sound/foley/bleed_apply.ogg'
-	spell_color = GLOW_COLOR_METAL
+	spell_color = GLOW_COLOR_VAMPIRIC
 	glow_intensity = GLOW_INTENSITY_MEDIUM
-	attunement_school = ASPECT_NAME_FERRAMANCY
 
 	cast_range = SPELL_RANGE_PROJECTILE
 
@@ -17,14 +16,13 @@
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
-	weapon_cast_penalized = TRUE
 	charge_time = CHARGETIME_POKE
 	charge_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/chargingold2.ogg'
 	cooldown_time = 5.5 SECONDS
 
-	associated_skill = /datum/skill/magic/arcane
+	associated_skill = /datum/skill/magic/blood
 	spell_tier = 6
 	spell_impact_intensity = SPELL_IMPACT_MEDIUM
 
