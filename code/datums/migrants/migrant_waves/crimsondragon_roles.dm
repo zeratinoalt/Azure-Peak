@@ -55,14 +55,13 @@
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 
 	if(H.mind)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/secondphase)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/doubleslash)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tripleslash)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/scatterslash)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tanglecleaver)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tigerslayer)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/blood_lance)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/strangler)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bind)
 // unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/crimdragon

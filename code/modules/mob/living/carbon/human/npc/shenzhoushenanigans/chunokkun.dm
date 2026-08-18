@@ -1,6 +1,6 @@
 GLOBAL_LIST_INIT(crimsonminion_aggro, world.file2list("strings/rt/crimsonminionlines.txt"))
 
-/mob/living/carbon/human/species/human/northern/crimsonminion
+/mob/living/carbon/human/species/human/northern/chunokkun
 	ai_controller = /datum/ai_controller/human_npc
 	d_intent = INTENT_PARRY
 	faction = list(FACTION_CRIMSON_DRAGON, FACTION_STATION)
@@ -9,36 +9,39 @@ GLOBAL_LIST_INIT(crimsonminion_aggro, world.file2list("strings/rt/crimsonminionl
 	blood_toll_bucket = STATS_KILLED_GRONNMEN
 
 
-/mob/living/carbon/human/species/human/northern/crimsonminion/Initialize()
+/mob/living/carbon/human/species/human/northern/chunokkun/Initialize()
 	. = ..()
 	set_species(/datum/species/human/northern)
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
 
 
-/mob/living/carbon/human/species/human/northern/crimsonminion/after_creation()
+/mob/living/carbon/human/species/human/northern/chunokkun/after_creation()
 	..()
 	AddComponent(/datum/component/ai_aggro_system)
-	SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.crimsonminion_aggro, TRUE)
-	job = "Jintao"
+	SEND_SIGNAL(src, COMSIG_MOB_MODIFY_AGGRO_LINES, GLOB.chunokkun_aggro, TRUE)
+	job = "Ch'unokkun"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LEECHIMMUNE, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_BREADY, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NPC_EXAMINE, TRAIT_GENERIC)
-	AddComponent(/datum/component/npc_death_line, GLOB.npc_death_lines_crimsonminion, 100)
-	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/northern/crimsonminion)
+	AddComponent(/datum/component/npc_death_line, GLOB.npc_death_lines_chunokkun, 100)
+	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/northern/chunokkun)
 	src.grant_language(/datum/language/lingyuese)
-	gender = pick(MALE)
+	gender = pick(MALE, FEMALE)
 	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
 	var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
-	var/hairm = pick(list(/datum/sprite_accessory/hair/head/cia,
-						/datum/sprite_accessory/hair/head/medfade,
-						/datum/sprite_accessory/hair/head/highfade))
-	var/beard = pick(list(/datum/sprite_accessory/hair/facial/croppedfullbeard,
-						/datum/sprite_accessory/hair/facial/shaved,
-						/datum/sprite_accessory/hair/facial/stubble,
-						/datum/sprite_accessory/hair/facial/fiveoclock))
+	var/hairf = pick(list(/datum/sprite_accessory/hair/head/himecut,
+						/datum/sprite_accessory/hair/head/countryponytailalt,
+						/datum/sprite_accessory/hair/head/stacy,
+						/datum/sprite_accessory/hair/head/kusanagi_alt))
+	var/hairm = pick(list(/datum/sprite_accessory/hair/head/ponytailwitcher,
+						/datum/sprite_accessory/hair/head/dave,
+						/datum/sprite_accessory/hair/head/emo,
+						/datum/sprite_accessory/hair/head/sabitsuki,
+						/datum/sprite_accessory/hair/head/sabitsuki_ponytail))
+	var/beard = /datum/sprite_accessory/hair/facial/croppedfullbeard
 	//Random voices, this can probably be more random-ish but it'll do for now
 	var/voice_choice = rand(1, 4)
 	switch(voice_choice)
@@ -57,7 +60,8 @@ GLOBAL_LIST_INIT(crimsonminion_aggro, world.file2list("strings/rt/crimsonminionl
 	if(gender == MALE)
 		new_hair.set_accessory_type(hairm, null, src)
 		new_facial.set_accessory_type(beard, null, src)
-
+	else
+		new_hair.set_accessory_type(hairf, null, src)
 
 	var/haircolor_choice = rand(1, 4)
 	switch(haircolor_choice)
@@ -103,13 +107,13 @@ GLOBAL_LIST_INIT(crimsonminion_aggro, world.file2list("strings/rt/crimsonminionl
 	if(organ_eyes)
 		organ_eyes.eye_color = "#131313" //Souless greytider look
 		organ_eyes.accessory_colors = "#131313#131313"
-	real_name = pick(world.file2list("strings/rt/names/human/crimsonminion.txt"))
+	real_name = pick(world.file2list("strings/rt/names/human/chunokkun.txt"))
 	update_hair()
 	update_body()
 	src.regenerate_icons() //Fixes the weird body but lets check performance first
 
-
-/datum/outfit/job/roguetown/human/species/human/northern/crimsonminion/pre_equip(mob/living/carbon/human/H)
+//ok we need to fix allathis
+/datum/outfit/job/roguetown/human/species/human/northern/chunokkun/pre_equip(mob/living/carbon/human/H)
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/soldato
 	pants = /obj/item/clothing/under/roguetown/tights/formalfancy
 	head = /obj/item/clothing/head/roguetown/headband/monk/soldato

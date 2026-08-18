@@ -1,5 +1,7 @@
 GLOBAL_LIST_INIT(npc_death_lines, world.file2list("strings/rt/npc_death_lines.txt"))
 GLOBAL_LIST_INIT(npc_death_lines_goblin, world.file2list("strings/rt/npc_death_lines_goblin.txt"))
+GLOBAL_LIST_INIT(npc_death_lines_crimsonminion, world.file2list("strings/rt/npc_death_lines_crimsonminion.txt"))
+GLOBAL_LIST_INIT(npc_death_lines_chunokkun, world.file2list("strings/rt/npc_death_lines_chunokkun.txt"))
 
 /// Makes an NPC say a dying line when killed.
 /// Uses the global npc_death_lines list by default, or pass a custom list.

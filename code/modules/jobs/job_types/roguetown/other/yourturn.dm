@@ -17,7 +17,7 @@
 	pants = /obj/item/clothing/under/roguetown/skirt/courtphysician/yourturn
 	armor = /obj/item/clothing/suit/roguetown/shirt/courtphysician/female/yourturn
 	shoes = /obj/item/clothing/shoes/courtphysician/female
-	mask = /obj/item/clothing/mask/rogue/spectacles/inq
+	mask = /obj/item/clothing/mask/rogue/spectacles/inq_lesser_summoned/yourturn
 	beltr = /obj/item/rogueweapon/scabbard/sword/strap
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -66,6 +66,11 @@
 	body_parts_covered = COVERAGE_FULL_BODY_ACTUAL
 	armor = ARMOR_PLATE_BSTEEL
 	max_integrity = 3000
+	slot_flags = ITEM_SLOT_ARMOR
+
+/obj/item/clothing/mask/rogue/spectacles/inq_lesser_summoned/yourturn
+	name = "red-stained glasses"
+	desc = "It's your turn, now."
 
 /datum/intent/sword/cut/sabre/yourturn
 	hitsound = list('sound/foley/yourturn/goodbye_attack.ogg', 'sound/foley/yourturn/attack2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
