@@ -17,6 +17,7 @@
 	pants = /obj/item/clothing/under/roguetown/skirt/courtphysician/yourturn
 	armor = /obj/item/clothing/suit/roguetown/shirt/courtphysician/female/yourturn
 	shoes = /obj/item/clothing/shoes/courtphysician/female
+	mask = /obj/item/clothing/mask/rogue/spectacles/inq
 	beltr = /obj/item/rogueweapon/scabbard/sword/strap
 	belt = /obj/item/storage/belt/rogue/leather/black
 	backr = /obj/item/storage/backpack/rogue/satchel
@@ -49,6 +50,7 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/blood_lance)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/strangler)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/bloodcrawl)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/companionship)
 
 /obj/item/clothing/gloves/roguetown/eastgloves2/yourturn
 	name = "sanguine gloves"

@@ -97,5 +97,5 @@
 /datum/looping_sound/fleshy
 	mid_sounds = list('sound/foley/sewflesh.ogg')
 	mid_length = 550
-	volumte = 70
+	volume = 70
 	extra_range = 10

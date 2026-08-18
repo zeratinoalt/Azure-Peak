@@ -55,7 +55,7 @@
 		sleep(3 SECONDS)
 
 /obj/effect/temp_visual/blood_tentacle
-	name = "blood tendril"
+	name = "strangler"
 	desc = "A tendril made out of blood. Why are you looking at this-- focus on the fight!"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "blood_tendril_spawn"
@@ -97,7 +97,7 @@
 	var/hit_something = FALSE
 
 	for(var/mob/living/L in view(0, src))
-		if(L == spawner || L.stat == DEAD)
+		if(L == spawner || L.stat == DEAD || HAS_TRAIT(L, TRAIT_VENGEANCE))
 			continue
 		var/zone = pick(BODY_ZONE_CHEST, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 		visible_message(span_danger("[src] grabs hold of [L], blood seeping through the armor!"))
