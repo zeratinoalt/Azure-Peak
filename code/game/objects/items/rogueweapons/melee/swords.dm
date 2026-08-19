@@ -2137,13 +2137,17 @@
 // kazengite content
 // Stronger offense less defense sword meant to be paired w/ scabbard for parrying
 /obj/item/rogueweapon/sword/sabre/mulyeog
-	force = 25
+	force = 30
 	name = "hwando" // From Korean Hwangdo - Lit. Military Sword / Sabre, noted for less curves than a Japanese katana.
 	desc = "A foreign single-edged sword used by cut-throats & thugs. There's a red tassel on the hilt, said to bring about good fortune."
 	sheathe_icon = "mulyeog"
 	icon_state = "eastsword1"
 	smeltresult = /obj/item/ingot/steel
 	wdefense = 3
+	max_integrity = 200
+	sharpness_mod = 2
+	sellprice = 50
+	special = /datum/special_intent/limbguard
 
 /obj/item/rogueweapon/sword/sabre/mulyeog/rumahench
 	name = "ruma hwando"

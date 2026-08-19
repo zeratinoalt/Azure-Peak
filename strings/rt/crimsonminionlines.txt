@@ -1,5 +1,5 @@
 ,l EYE'S UP, BOYS!
-,l Don't let them reach the Tiger.
+,l Don't let them reach the Tiger!
 ,l Shit, the Ch'unokkun are back!
 ,l Hold on - I'm almost out of shells-..!
 ,l More of them-?! Really?!!
@@ -15,6 +15,6 @@
 ,l The fuck - is that a Tenner?!
 ,l Shit, why is the Holy See here?!
 ,l FOCUS! GET YOUR HEAD IN THE GAME, BOYS!!
-,l Hold the line, as commanded by the Tiger...
+,l Hold the line!
 ,l You've gotta be fucking kidding me...!
-,l Don't get distracted - it's for the Tiger!
+,l Don't get distracted!

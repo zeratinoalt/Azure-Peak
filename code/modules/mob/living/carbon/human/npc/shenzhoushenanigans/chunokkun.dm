@@ -1,4 +1,4 @@
-GLOBAL_LIST_INIT(crimsonminion_aggro, world.file2list("strings/rt/crimsonminionlines.txt"))
+GLOBAL_LIST_INIT(chunokkun_aggro, world.file2list("strings/rt/chunokkunlines.txt"))
 
 /mob/living/carbon/human/species/human/northern/chunokkun
 	ai_controller = /datum/ai_controller/human_npc
@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(crimsonminion_aggro, world.file2list("strings/rt/crimsonminionl
 	ADD_TRAIT(src, TRAIT_NPC_EXAMINE, TRAIT_GENERIC)
 	AddComponent(/datum/component/npc_death_line, GLOB.npc_death_lines_chunokkun, 100)
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/human/northern/chunokkun)
-	src.grant_language(/datum/language/lingyuese)
+	src.grant_language(/datum/language/kazengunese)
 	gender = pick(MALE, FEMALE)
 	var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
 	var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
@@ -114,11 +114,13 @@ GLOBAL_LIST_INIT(crimsonminion_aggro, world.file2list("strings/rt/crimsonminionl
 
 //ok we need to fix allathis
 /datum/outfit/job/roguetown/human/species/human/northern/chunokkun/pre_equip(mob/living/carbon/human/H)
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/soldato
+	armor = /obj/item/clothing/suit/roguetown/armor/basiceast/chunokkun
 	pants = /obj/item/clothing/under/roguetown/tights/formalfancy
-	head = /obj/item/clothing/head/roguetown/headband/monk/soldato
-	gloves = /obj/item/clothing/gloves/roguetown/eastgloves2/soldato
-	r_hand = /obj/item/rogueweapon/sword/soldato
+	head = /obj/item/clothing/head/roguetown/roguehood/hierophant/chunokkun
+	mask = /obj/item/clothing/mask/rogue/blindfold/fake/chunokkun
+	gloves = /obj/item/clothing/gloves/roguetown/eastgloves2
+	r_hand = /obj/item/rogueweapon/sword/sabre/mulyeog
+	l_hand = /obj/item/rogueweapon/scabbard/sword/kazengun
 	shoes = /obj/item/clothing/shoes/roguetown/boots
 	H.STASPD = 12
 	H.STACON = 10
@@ -126,9 +128,26 @@ GLOBAL_LIST_INIT(crimsonminion_aggro, world.file2list("strings/rt/crimsonminionl
 	H.STAPER = 12
 	H.STAINT = 8
 	H.STASTR = 10
-	H.adjust_skillrank(/datum/skill/combat/polearms, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
+
+
+/obj/item/clothing/suit/roguetown/armor/basiceast/chunokkun
+	color = "#2b292e"
+
+/obj/item/clothing/head/roguetown/roguehood/hierophant/chunokkun
+	name = "padded headscarf"
+	desc = "A scarf that's actually made out of the binding rope Ch'unokkun use to restrain their hunts."
+	naledicolor = FALSE
+	color = GLOW_COLOR_CRIMSON
+	icon_state = "hijab_t"
+	adjustable = CANT_CADJUST
+	toggle_icon_state = FALSE
+	flags_inv = null
+
+/obj/item/clothing/mask/rogue/blindfold/fake/chunokkun
+	color = GLOW_COLOR_CRIMSON
