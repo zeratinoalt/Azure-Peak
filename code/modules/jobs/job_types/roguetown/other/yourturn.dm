@@ -60,6 +60,9 @@
 	desc = "Why does she have to be the shining moon, for everyone else? I-.. I don't want to be left behind."
 	armor = ARMOR_LEATHER
 	max_integrity = 3000
+	icon = 'icons/roguetown/clothing/special/bosses.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/sleeves_bosses.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/bosses.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/courtphysician/female/yourturn
 	desc = "..Maybe then, I'll find peace."
@@ -67,6 +70,10 @@
 	armor = ARMOR_PLATE_BSTEEL
 	max_integrity = 3000
 	slot_flags = ITEM_SLOT_ARMOR
+	icon = 'icons/roguetown/clothing/special/bosses.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/sleeves_bosses.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/bosses.dmi'
+
 
 /obj/item/clothing/mask/rogue/spectacles/inq_lesser_summoned/yourturn
 	name = "red-stained glasses"
@@ -89,7 +96,7 @@
 /obj/item/rogueweapon/sword/sabre/yourturn
 	name = "Your Turn"
 	desc = "It's too late to take things back."
-	icon = 'icons/roguetown/weapons/swords64.dmi'
+	icon = 'icons/roguetown/weapons/special/bosses.dmi'
 	pixel_y = -16
 	pixel_x = -16
 	inhand_x_dimension = 64

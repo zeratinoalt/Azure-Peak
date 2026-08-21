@@ -1433,7 +1433,7 @@
 	desc = "What's essentially a metal blade on the end of a maroon, wooden stick. There's a loading port that accepts shells, and an exhaust port that fwips up and down - to support both slashing and stabbing maneuvers. There's a trigger underneath, and pulling it throws the user's arms forward."
 	alt_grips = null
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_BACK
-	icon = 'icons/roguetown/weapons/misc32.dmi'
+	icon = 'icons/roguetown/weapons/special/bossesandminions32.dmi'
 	icon_state = "soldato_rifle"
 	item_state = "soldato_rifle"
 	force = 30
