@@ -180,13 +180,13 @@
 /datum/intent/sword/cut/zwei/sweep/podao
 	hitsound = list('sound/combat/hits/bladed/crimsontiger/slash1.ogg', 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
 
-/datum/intent/sword/chop/cleave/podao 
+/datum/intent/sword/chop/long/podao 
 	hitsound = list('sound/combat/hits/bladed/crimsontiger/slash1.ogg', 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
 
 /obj/item/rogueweapon/sword/sabre/podao
 	name = "winged podao"
 	desc = "A one-handed sword with large exhaust ports protruding out of blade's spine. This piece is incredibly expensive & complex to forge - akin to the complexity of a Construct."
-	possible_item_intents = list(/datum/intent/sword/cut/podao, /datum/intent/sword/cut/zwei/cleave/podao, /datum/intent/sword/cut/zwei/sweep/podao, /datum/intent/sword/chop/cleave/podao)
+	possible_item_intents = list(/datum/intent/sword/cut/podao, /datum/intent/sword/cut/zwei/cleave/podao, /datum/intent/sword/cut/zwei/sweep/podao, /datum/intent/sword/chop/long/podao)
 	force = 40
 	parrysound = list(
 		'sound/combat/parry/bladed/crimsontiger/parry1.ogg',

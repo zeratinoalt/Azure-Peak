@@ -44,8 +44,12 @@
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = H.get_active_held_item()
+	var/turf/anchorturf
+	var/area/rogue/outdoors/woods/north/thearena = GLOB.areas_by_type[/area/rogue/outdoors/woods/north]
+	for(var/obj/structure/tangleanchor/anchor in thearena)
+		anchorturf = get_turf(anchor)
 
-//	var/turf/tangleanchor
+
 
 	var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
 
@@ -75,6 +79,9 @@
 	var/turf/T = get_turf(victim)
 	var/turf/lei_turf = get_turf(H)
 	if(!T)
+		return FALSE
+
+	if(!anchorturf)
 		return FALSE
 
 	H.status_flags |= GODMODE
@@ -110,9 +117,8 @@
 			continue
 		new /obj/effect/temp_visual/crim_dragon/warning/tanglecleaver(target)
 
-
-
-	H.visible_message(span_userdanger("[H] stops for a moment, preparing a stance..."))
+	H.visible_message(span_userdanger("[H] dashes to the top of the arena, preparing a stance..."))
+	dash_to(owner, anchorturf, victim)
 	victim.Immobilize(10.1 SECONDS)
 
 	for(var/mob/living/stuntargets in range(3, T))

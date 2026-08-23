@@ -71,3 +71,13 @@
 	pixel_x = -96
 	pixel_y = -96
 	duration = 92.5
+
+/obj/structure/tangleanchor
+	name = ""
+	desc = ""
+	icon = 'icons/mob/mob.dmi'
+	icon_state = "marker-red"
+	density = FALSE
+	mouse_opacity = 0
+	opacity = FALSE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF

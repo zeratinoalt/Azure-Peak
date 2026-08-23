@@ -36,7 +36,7 @@
 	var/turf/origin = get_turf(owner)
 	new /obj/effect/temp_visual/decoy/fading/halfsecond(origin, owner)
 	owner.forceMove(destination)
-	owner.dir = get_dir(owner, target)
+	owner.setDir(target)
 	origin.Beam(owner, "flame", time = 2)
 
 /datum/action/cooldown/spell/tigerslayer/cast(atom/cast_on)

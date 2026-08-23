@@ -73,7 +73,7 @@
 				I.blade_int = I.max_blade_int
 
 	if(!(user.mobility_flags & MOBILITY_STAND))
-		target.set_resting(FALSE)
+		user.set_resting(FALSE)
 	user.say("That's more like it... Y'all are firin' me up!!")
 	playsound(user, 'sound/foley/crimsondragon/yallarefiringmeup.ogg', 80, FALSE)
 

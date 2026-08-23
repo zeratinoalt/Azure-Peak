@@ -5,7 +5,7 @@
 	icon = null
 	density = FALSE
 	mouse_opacity = 0
-	opacity = TRUE
+	opacity = FALSE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
 	var/status_effect_theme = /datum/status_effect/buff/combat_theme
