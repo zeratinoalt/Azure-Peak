@@ -30,3 +30,61 @@
 
 	spell_requirements = SPELL_REQUIRES_HUMAN
 
+	spell_requirements = SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	var/base_damage = 300
+	var/deflected = FALSE
+
+/datum/action/cooldown/spell/slashseries/proc/dash_to(mob/living/owner, turf/destination, mob/living/target)
+	var/turf/origin = get_turf(owner)
+	new /obj/effect/temp_visual/decoy/fading/halfsecond(origin, owner)
+	owner.forceMove(destination)
+	owner.dir = get_dir(owner, target)
+	origin.Beam(owner, "flame", time = 2)
+
+
+/datum/action/cooldown/spell/slashseries/cast(atom/cast_on)
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = H.get_active_held_item()
+	var/turf/anchorturf
+	var/area/rogue/outdoors/woods/north/thearena = GLOB.areas_by_type[/area/rogue/outdoors/woods/north]
+	for(var/obj/structure/tangleanchor/anchor in thearena)
+		anchorturf = get_turf(anchor)
+
+
+
+	var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
+
+	var/mob/living/victim
+
+
+	if(isliving(cast_on))
+		victim = cast_on
+
+	var/turf/dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 1)
+
+	if(!dest)
+		dest = get_turf(victim)
+	if(victim == owner)
+		return FALSE
+
+	if(!istype(H))
+		return FALSE
+
+	if(!istype(held_weapon, /obj/item/rogueweapon/sword/sabre/podao))
+		return FALSE
+
+	if(held_weapon.shells < 6)
+		to_chat(H, span_warning("Out of shells, reload!"))
+		return FALSE
+
+	var/turf/T = get_turf(victim)
+	var/turf/lei_turf = get_turf(H)
+	if(!T)
+		return FALSE
+
+	if(!anchorturf)
+		return FALSE
+
+	H.status_flags |= GODMODE
+	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)

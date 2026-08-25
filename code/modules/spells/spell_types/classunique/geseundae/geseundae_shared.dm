@@ -65,3 +65,13 @@
 
 /obj/structure/geseundae_attack_anchor/aoe
 	icon_state = "marker-blue"
+
+/obj/structure/geseundae_attack_anchor/teleanchor
+	name = ""
+	desc = ""
+	icon = 'icons/mob/mob.dmi'
+	icon_state = "marker-red"
+	density = FALSE
+	mouse_opacity = 0
+	opacity = FALSE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF

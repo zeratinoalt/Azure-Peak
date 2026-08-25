@@ -1782,7 +1782,8 @@
 		/datum/sprite_accessory/hair/head/nest,
 		/datum/sprite_accessory/hair/head/strand,
 		/datum/sprite_accessory/hair/head/sodden,
-		/datum/sprite_accessory/hair/head/lizbeth
+		/datum/sprite_accessory/hair/head/lizbeth,
+		/datum/sprite_accessory/hair/head/geseundae
 		)
 
 /datum/customizer_choice/bodypart_feature/hair/head/humanoid/get_random_accessory(datum/customizer_entry/entry, datum/preferences/prefs)

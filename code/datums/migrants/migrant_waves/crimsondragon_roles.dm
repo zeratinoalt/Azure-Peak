@@ -102,8 +102,8 @@
 	icon_state = "crimsondragonbelt"
 
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/crimdragon
-	name = "leather shoes"
-	desc = "Short, leather píxié. Usually associated with nobility."
+	name = "leather píxié"
+	desc = "Short, leather shoes. Usually associated with nobility."
 	icon = 'icons/roguetown/clothing/special/dragon.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/dragon.dmi'
 	icon_state = "crimsondragonshoes"
