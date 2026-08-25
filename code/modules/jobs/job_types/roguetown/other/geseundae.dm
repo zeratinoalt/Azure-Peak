@@ -21,7 +21,6 @@
 	beltr = /obj/item/rogueweapon/scabbard/sword/strap
 	belt = /obj/item/storage/belt/rogue/leather/black/geseundae
 	mouth = /obj/item/clothing/neck/roguetown/collar/geseundae
-	mask = /obj/item/clothing/mask/rogue/geseundae
 	l_hand = /obj/item/rogueweapon/sword/sabre/geseundae
 
 	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
