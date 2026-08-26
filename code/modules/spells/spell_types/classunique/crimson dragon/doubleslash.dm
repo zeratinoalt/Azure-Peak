@@ -68,6 +68,7 @@
 	H.status_flags |= GODMODE
 
 	H.visible_message(span_danger("[H] draws his blade, prepare to DEFEND!"))
+	new /obj/effect/temp_visual/crim_dragon/warning(get_turf(victim))
 	playsound(H, 'sound/foley/crimsondragon/draw.ogg', 80, FALSE)
 	sleep(1 SECONDS)
 	playsound(H, 'sound/foley/crimsondragon/prep.ogg', 80, FALSE)

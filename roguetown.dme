@@ -3150,6 +3150,7 @@
 #include "code\modules\spells\spell_types\classunique\geseundae\falloftheblade.dm"
 #include "code\modules\spells\spell_types\classunique\geseundae\geseundae_shared.dm"
 #include "code\modules\spells\spell_types\classunique\geseundae\rendingarts.dm"
+#include "code\modules\spells\spell_types\classunique\geseundae\slashseries.dm"
 #include "code\modules\spells\spell_types\classunique\hierophant\leyline_circle.dm"
 #include "code\modules\spells\spell_types\classunique\shared_bossfights\secondphase.dm"
 #include "code\modules\spells\spell_types\classunique\shared_bossfights\themespawners.dm"

@@ -92,7 +92,7 @@
 	H.say("I'm 'bouta drop somethin' big on y'all! Don't let it kill y'all now and SPOIL THE FUN!!!")
 	playsound(H, 'sound/foley/crimsondragon/dropsumbigonyall.ogg', 80, FALSE)
 	H.visible_message(span_userdanger("[H] is about to hit [victim] with an insanely powerful attack!!"))
-	H.visible_message(span_userdanger("Stack within the boundary surrounding [victim], to divide the damage!!!"))
+	H.visible_message(span_userdanger("Stack within the boundary surrounding [victim] to divide the damage!!!"))
 
 	sleep(6 SECONDS)
 

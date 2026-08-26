@@ -1393,7 +1393,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "Jo" = (
-/obj/structure/geseundae_attack_anchor/secondslash,
+/obj/structure/geseundae_attack_anchor_secondslash,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors)
 "Ka" = (
@@ -1841,7 +1841,7 @@
 /turf/open/floor/rogue/hay,
 /area/rogue/indoors)
 "Wx" = (
-/obj/structure/geseundae_attack_anchor/aoe,
+/obj/structure/geseundae_attack_anchor_aoe,
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors)
 "WK" = (
@@ -5872,7 +5872,7 @@ Wx
 eF
 eF
 eF
-eF
+Wx
 eF
 eF
 yK
@@ -6019,7 +6019,7 @@ Cf
 gX
 Eq
 eF
-eF
+Wx
 eF
 eF
 eF
@@ -6096,15 +6096,15 @@ Cf
 QR
 Jo
 eF
+eF
+eF
+eF
+eF
+eF
+eF
 Wx
 eF
 eF
-eF
-eF
-eF
-eF
-eF
-Wx
 eF
 yK
 oa
@@ -6252,7 +6252,7 @@ Jo
 eF
 eF
 eF
-eF
+Wx
 eF
 eF
 eF
@@ -6330,7 +6330,7 @@ eF
 eF
 eF
 eF
-Wx
+eF
 eF
 eF
 eF
@@ -6411,7 +6411,7 @@ eF
 eF
 eF
 eF
-eF
+Wx
 eF
 eF
 yK

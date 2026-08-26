@@ -17,6 +17,9 @@
 	invocations = list("...I shall cut them down... 'ere I am devoured.")
 	invocation_type = INVOCATION_SHOUT
 
+	click_to_activate = TRUE
+	self_cast_possible = TRUE
+
 	charge_required = TRUE
 	charge_time = CHARGETIME_POKE
 	charge_drain = 1
@@ -31,8 +34,8 @@
 	spell_requirements = SPELL_REQUIRES_HUMAN
 
 	spell_requirements = SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
-	var/base_damage = 300
-	var/deflected = FALSE
+	var/base_damage = 80
+	var/hitsounds = list('sound/foley/geseundae/hit1.ogg', 'sound/foley/geseundae/hit2.ogg', 'sound/foley/geseundae/hit3.ogg', 'sound/foley/geseundae/hit4.ogg', 'sound/foley/geseundae/hit5.ogg')
 
 /datum/action/cooldown/spell/slashseries/proc/dash_to(mob/living/owner, turf/destination, mob/living/target)
 	var/turf/origin = get_turf(owner)
@@ -41,50 +44,52 @@
 	owner.dir = get_dir(owner, target)
 	origin.Beam(owner, "flame", time = 2)
 
-
 /datum/action/cooldown/spell/slashseries/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
-	var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = H.get_active_held_item()
+	var/locked_zone = owner.zone_selected || BODY_ZONE_CHEST
+	var/obj/item/rogueweapon/sword/sabre/geseundae/held_weapon = owner.get_active_held_item()
 	var/turf/anchorturf
-	var/area/rogue/outdoors/woods/north/thearena = GLOB.areas_by_type[/area/rogue/outdoors/woods/north]
-	for(var/obj/structure/tangleanchor/anchor in thearena)
+	var/list/first_slashing_turfs = list()
+	var/list/second_slashing_turfs = list()
+
+	for(var/obj/structure/geseundae_attack_anchor/anchor in GLOB.gesanchor1)
 		anchorturf = get_turf(anchor)
+		var/turf/dest = get_ranged_target_turf(anchorturf, SOUTH, 12)
+		new /obj/effect/temp_visual/geseundaedecoy(anchorturf)
+
+		var/list/first_hit = getline(anchorturf, dest)
+		first_slashing_turfs += first_hit
+		for(var/turf/path_turf in first_hit)
+			new /obj/effect/temp_visual/geseundae/warning(path_turf, H)
+
+	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, first_slashing_turfs), 3 SECONDS)
+
+	sleep(1.5 SECONDS)
+
+	for(var/obj/structure/geseundae_attack_anchor_secondslash/anchor in GLOB.gesanchor2)
+		anchorturf = get_turf(anchor)
+		var/turf/dest = get_ranged_target_turf(anchorturf, SOUTH, 12)
+
+		var/list/second_hit = getline(anchorturf, dest)
+		second_slashing_turfs += second_hit
+		for(var/turf/path_turf in second_hit)
+			new /obj/effect/temp_visual/geseundae/warning(path_turf, H)
+
+	second_slashing_turfs -= first_slashing_turfs
+	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, second_slashing_turfs), 3 SECONDS)
+
+
+/datum/action/cooldown/spell/slashseries/proc/execute_path_strikes(mob/living/carbon/human/user, obj/item/weapon, def_zone, list/slashturfs)
+	if(!user || QDELETED(user))
+		return
+	for(var/turf/path_turf in slashturfs)
+		for(var/mob/living/target in path_turf)
+			if(target == user)
+				continue
+			arcyne_strike(user, target, weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Slash Series", skip_animation = TRUE, skip_message = TRUE)
+			playsound(target, pick(hitsounds), 100, FALSE)
+		new /obj/effect/temp_visual/geseundae/large(path_turf)
 
 
 
-	var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
-
-	var/mob/living/victim
-
-
-	if(isliving(cast_on))
-		victim = cast_on
-
-	var/turf/dest = get_ranged_target_turf_direct(owner, victim, get_dist(owner, victim) + 1)
-
-	if(!dest)
-		dest = get_turf(victim)
-	if(victim == owner)
-		return FALSE
-
-	if(!istype(H))
-		return FALSE
-
-	if(!istype(held_weapon, /obj/item/rogueweapon/sword/sabre/podao))
-		return FALSE
-
-	if(held_weapon.shells < 6)
-		to_chat(H, span_warning("Out of shells, reload!"))
-		return FALSE
-
-	var/turf/T = get_turf(victim)
-	var/turf/lei_turf = get_turf(H)
-	if(!T)
-		return FALSE
-
-	if(!anchorturf)
-		return FALSE
-
-	H.status_flags |= GODMODE
-	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)

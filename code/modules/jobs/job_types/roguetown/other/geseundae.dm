@@ -42,11 +42,7 @@
 
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bind)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/doubleslash)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/tripleslash)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/scatterslash)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/tanglecleaver)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/tigerslayer)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/slashseries)
 // unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/shadowpants/geseundae
