@@ -3,10 +3,10 @@
 
 
 /datum/action/cooldown/spell/slashseries
-	button_icon = 'icons/mob/actions/classuniquespells/yourturn.dmi'
+	button_icon = 'icons/mob/actions/classuniquespells/geseundae.dmi'
 	name = "Slash Series"
 	desc = "Spawn copies of yourself at the top of the arena, which make alternating slashes in an 8x1 tile range."
-	button_icon_state = "companionship"
+	button_icon_state = "slashseries"
 	sound = 'sound/foley/geseundae/drawspecial.ogg'
 
 	cast_range = SPELL_RANGE_PROJECTILE
@@ -25,7 +25,7 @@
 	charge_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/foley/geseundae/drawloop.ogg'
-	cooldown_time = 5.5 SECONDS
+	cooldown_time = 1 MINUTES
 
 	associated_skill = /datum/skill/combat/swords
 	spell_tier = 6
@@ -37,11 +37,11 @@
 	var/base_damage = 80
 	var/hitsounds = list('sound/foley/geseundae/hit1.ogg', 'sound/foley/geseundae/hit2.ogg', 'sound/foley/geseundae/hit3.ogg', 'sound/foley/geseundae/hit4.ogg', 'sound/foley/geseundae/hit5.ogg')
 
-/datum/action/cooldown/spell/slashseries/proc/dash_to(mob/living/owner, turf/destination, mob/living/target)
+/datum/action/cooldown/spell/slashseries/proc/dash_to(mob/living/owner, turf/destination)
 	var/turf/origin = get_turf(owner)
 	new /obj/effect/temp_visual/decoy/fading/halfsecond(origin, owner)
 	owner.forceMove(destination)
-	owner.dir = get_dir(owner, target)
+	owner.setDir(SOUTH)
 	origin.Beam(owner, "flame", time = 2)
 
 /datum/action/cooldown/spell/slashseries/cast(atom/cast_on)
@@ -63,6 +63,9 @@
 		for(var/turf/path_turf in first_hit)
 			new /obj/effect/temp_visual/geseundae/warning(path_turf)
 
+	for(var/mob/living/dings in range(13, H))
+		dings.playsound_local(dings, 'sound/foley/geseundae/drawspecial2.ogg', 100, FALSE)
+
 	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, first_slashing_turfs), 3 SECONDS)
 
 	sleep(1.5 SECONDS)
@@ -76,6 +79,9 @@
 		second_slashing_turfs += second_hit
 		for(var/turf/path_turf in second_hit)
 			new /obj/effect/temp_visual/geseundae/warning(path_turf)
+
+	for(var/mob/living/dings in range(13, H))
+		dings.playsound_local(dings, 'sound/foley/geseundae/drawspecial2.ogg', 100, FALSE)
 
 	second_slashing_turfs -= first_slashing_turfs
 	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, second_slashing_turfs), 3 SECONDS)

@@ -56,8 +56,8 @@ GLOBAL_LIST_EMPTY(gesanchor2)
 /obj/structure/geseundae_attack_anchor
 	name = ""
 	desc = ""
-	icon = 'icons/mob/mob.dmi'
-	icon_state = "marker-red"
+	icon = null
+	icon_state = ""
 	density = FALSE
 	mouse_opacity = 0
 	opacity = FALSE
@@ -70,8 +70,8 @@ GLOBAL_LIST_EMPTY(gesanchor2)
 /obj/structure/geseundae_attack_anchor_secondslash
 	name = ""
 	desc = ""
-	icon = 'icons/mob/mob.dmi'
-	icon_state = "marker"
+	icon = null
+	icon_state = ""
 	density = FALSE
 	mouse_opacity = 0
 	opacity = FALSE
