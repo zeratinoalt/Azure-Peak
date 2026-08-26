@@ -43,7 +43,7 @@
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/slashseries)
-// unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
+		H.mind.AddSpell(new /datum/action/cooldown/spell/ripplingcuts)
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/shadowpants/geseundae
 	name = "???"

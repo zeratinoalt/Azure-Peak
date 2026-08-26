@@ -62,6 +62,8 @@
 	layer = BELOW_MOB_LAYER
 	var/mob/living/spawner
 	var/timer_id
+	var/hitsound = 'sound/foley/bleed.ogg'
+	var/hittext = "The strangler grabs hold of a victim, blood seeping through their armor!"
 
 /obj/effect/temp_visual/blood_tentacle/Initialize(mapload, mob/living/new_spawner)
 	. = ..()
@@ -100,10 +102,10 @@
 		if(L == spawner || L.stat == DEAD || HAS_TRAIT(L, TRAIT_VENGEANCE))
 			continue
 		var/zone = pick(BODY_ZONE_CHEST, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-		visible_message(span_danger("[src] grabs hold of [L], blood seeping through the armor!"))
+		visible_message(span_danger(hittext))
 		L.apply_damage(30, BRUTE, zone, 0)
 		L.Stun(50)
-		playsound(L, 'sound/foley/bleed.ogg', 80, TRUE)
+		playsound(L, hitsound, 80, TRUE)
 		hit_something = TRUE
 	if(!hit_something)
 		retract()

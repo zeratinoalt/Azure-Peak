@@ -8,13 +8,14 @@
 	desc = "Spawn copies of yourself at the top of the arena, which make alternating slashes in an 8x1 tile range."
 	button_icon_state = "slashseries"
 	sound = 'sound/foley/geseundae/drawspecial.ogg'
+	spell_color = GLOW_COLOR_GESEUNDAE
 
 	cast_range = SPELL_RANGE_PROJECTILE
 
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_SB_MOBILITY
 
-	invocations = list("...I shall cut them down... 'ere I am devoured.")
+	invocations = list("I shall cut them down... 'ere I am devoured!")
 	invocation_type = INVOCATION_SHOUT
 
 	click_to_activate = TRUE
@@ -25,7 +26,7 @@
 	charge_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/foley/geseundae/drawloop.ogg'
-	cooldown_time = 1 MINUTES
+	cooldown_time = 20 MINUTES
 
 	associated_skill = /datum/skill/combat/swords
 	spell_tier = 6
@@ -61,10 +62,12 @@
 		var/list/first_hit = getline(anchorturf, dest)
 		first_slashing_turfs += first_hit
 		for(var/turf/path_turf in first_hit)
-			new /obj/effect/temp_visual/geseundae/warning(path_turf)
+			new /obj/effect/temp_visual/geseundae/warning/short(path_turf)
 
 	for(var/mob/living/dings in range(13, H))
 		dings.playsound_local(dings, 'sound/foley/geseundae/drawspecial2.ogg', 100, FALSE)
+
+	H.visible_message(span_userdanger("[H] creates copies of himself, raising the blade!"))
 
 	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, first_slashing_turfs), 3 SECONDS)
 
@@ -81,7 +84,7 @@
 			new /obj/effect/temp_visual/geseundae/warning(path_turf)
 
 	for(var/mob/living/dings in range(13, H))
-		dings.playsound_local(dings, 'sound/foley/geseundae/drawspecial2.ogg', 100, FALSE)
+		dings.playsound_local(dings, 'sound/foley/geseundae/drawspecial.ogg', 100, FALSE)
 
 	second_slashing_turfs -= first_slashing_turfs
 	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, second_slashing_turfs), 3 SECONDS)
@@ -90,6 +93,7 @@
 /datum/action/cooldown/spell/slashseries/proc/execute_path_strikes(mob/living/carbon/human/user, obj/item/weapon, def_zone, list/slashturfs)
 	if(!user || QDELETED(user))
 		return
+	user.visible_message(span_userdanger("[user] fells the sword!"))
 	for(var/turf/path_turf in slashturfs)
 		for(var/mob/living/target in path_turf)
 			if(target == user)

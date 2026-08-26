@@ -2,6 +2,7 @@
 //order is: temp visuals -> attack anchors
 GLOBAL_LIST_EMPTY(gesanchor1)
 GLOBAL_LIST_EMPTY(gesanchor2)
+GLOBAL_LIST_EMPTY(gesaoeanchor)
 
 /obj/effect/temp_visual/geseundaedecoy
 	desc = ""
@@ -28,7 +29,8 @@ GLOBAL_LIST_EMPTY(gesanchor2)
 	layer = HUD_LAYER
 	plane = ABOVE_LIGHTING_PLANE
 
-
+/obj/effect/temp_visual/geseundae/warning/short
+	duration = 15
 
 /obj/effect/temp_visual/geseundae/warning/big
 	icon = 'icons/effects/160x160.dmi'
@@ -90,6 +92,10 @@ GLOBAL_LIST_EMPTY(gesanchor2)
 	mouse_opacity = 0
 	opacity = FALSE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+
+/obj/structure/geseundae_attack_anchor_secondslash/Initialize()
+	. = ..()
+	GLOB.gesaoeanchor += src
 
 /obj/structure/geseundae_attack_teleanchor
 	name = ""
