@@ -56,12 +56,12 @@
 	for(var/obj/structure/geseundae_attack_anchor/anchor in GLOB.gesanchor1)
 		anchorturf = get_turf(anchor)
 		var/turf/dest = get_ranged_target_turf(anchorturf, SOUTH, 12)
-		new /obj/effect/temp_visual/geseundaedecoy(anchorturf)
+		new /obj/effect/temp_visual/geseundaedecoy(anchorturf, H)
 
 		var/list/first_hit = getline(anchorturf, dest)
 		first_slashing_turfs += first_hit
 		for(var/turf/path_turf in first_hit)
-			new /obj/effect/temp_visual/geseundae/warning(path_turf, H)
+			new /obj/effect/temp_visual/geseundae/warning(path_turf)
 
 	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, first_slashing_turfs), 3 SECONDS)
 
@@ -70,11 +70,12 @@
 	for(var/obj/structure/geseundae_attack_anchor_secondslash/anchor in GLOB.gesanchor2)
 		anchorturf = get_turf(anchor)
 		var/turf/dest = get_ranged_target_turf(anchorturf, SOUTH, 12)
+		new /obj/effect/temp_visual/geseundaedecoy(anchorturf, H)
 
 		var/list/second_hit = getline(anchorturf, dest)
 		second_slashing_turfs += second_hit
 		for(var/turf/path_turf in second_hit)
-			new /obj/effect/temp_visual/geseundae/warning(path_turf, H)
+			new /obj/effect/temp_visual/geseundae/warning(path_turf)
 
 	second_slashing_turfs -= first_slashing_turfs
 	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, second_slashing_turfs), 3 SECONDS)
