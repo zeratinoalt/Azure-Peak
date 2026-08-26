@@ -1,5 +1,3 @@
-
-
 /datum/action/cooldown/spell/tanglecleaver
 	name = "Tanglecleaver"
 	desc = "cast on victim, after a bit u do an aoe on the victim lol"
