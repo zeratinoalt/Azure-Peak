@@ -27,7 +27,7 @@
 	. += span_info("Right-click an unlocked door to lock it.")
 	. += span_info("Most keys can only open a specific type of door.")
 
-/obj/item/roguekey/Initialize()
+/obj/item/roguekey/Initialize(mapload)
 	. = ..()
 	if(lockid)
 		if(GLOB.lockids[lockid])
@@ -118,7 +118,7 @@
 	lockid = "lord"
 	visual_replacement = /obj/item/roguekey/royal
 
-/obj/item/roguekey/lord/Initialize()
+/obj/item/roguekey/lord/Initialize(mapload)
 	. = ..()
 	if(SSroguemachine.key)
 		qdel(src)
@@ -218,6 +218,13 @@
 	desc = "This is the court wizard's key. It watches you..."
 	icon_state = "eyekey"
 	lockid = "mage"
+
+/obj/item/roguekey/seneschal
+	name = "seneschal's key"
+	desc = "Dusted, oiled, and well-maintained!"
+	icon_state = "sidefolk"
+	lockid = "seneschal"
+
 
 /obj/item/roguekey/manor/knight
 	name = "retinue bedroom I key"
@@ -454,12 +461,6 @@
 //////////////
 // BURGHERS //
 //////////////
-
-/obj/item/roguekey/crier
-	name = "crier's key"
-	desc = "This key should open and close the crier's office."
-	icon_state = "cheesekey"
-	lockid = "crier"
 
 /obj/item/roguekey/crafterguild
 	name = "guild's key"
@@ -965,7 +966,7 @@
 
 /obj/item/roguekey/custom/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/rogueweapon/hammer))
-		var/input = (input(user, "What would you name this key?", "", "") as text)
+		var/input = sanitize(input(user, "What would you name this key?", "", "") as text)
 		if(input)
 			name = input + " key"
 			to_chat(user, span_notice("You rename the key to [name]."))
@@ -1102,4 +1103,4 @@
 			if(src.holdname)
 				KE.name = src.holdname
 			to_chat(user, span_notice("You add [src] to [K]."))
-			qdel(src)	
+			qdel(src)

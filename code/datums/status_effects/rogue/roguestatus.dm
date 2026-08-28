@@ -57,7 +57,7 @@
 	if(newdur)
 		duration = newdur
 	. = ..()
-	
+
 /datum/status_effect/swingdelay/on_apply()
 	. = ..()
 	owner.swing_state = TRUE
@@ -69,6 +69,7 @@
 	icon_state = "swingdelay"
 
 /datum/status_effect/swingdelay/penalty
+	id = "swingdelay_penalty"
 	alert_type = /atom/movable/screen/alert/status_effect/swingdelay/penalty
 	mob_effect_icon_state = "eff_swingdelay_penalty"
 
@@ -104,6 +105,14 @@
 	desc = "THEY WILL JAB ME AND INTERRUPT THE ATTACK YOU GOBLINBRAINED WRETCH! LOOK AT THE ENEMY!!!"
 	icon_state = "swingdelay_disrupt"
 
+/datum/status_effect/swingdelay/penalty/committed
+	id = "swingdelay_committed"
+
+/datum/status_effect/swingdelay/penalty/committed/on_creation(mob/living/new_owner, newdur, apply_slow = FALSE)
+	if(apply_slow)
+		var/spd_mod = 10 - new_owner.get_true_stat(STATKEY_SPD)
+		effectedstats = list(STATKEY_SPD = spd_mod)
+	. = ..()
 
 // This is used to make sure we cannot do stealth mechanics mid-combat.
 /datum/status_effect/stealth_revealed

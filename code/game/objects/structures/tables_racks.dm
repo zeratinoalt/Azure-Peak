@@ -60,9 +60,6 @@
 	qdel(src)
 	new /obj/structure/table/wood(A)
 
-/obj/structure/table/attack_paw(mob/user)
-	return attack_hand(user)
-
 /obj/structure/table/attack_hand(mob/living/user)
 	if(user.m_intent == MOVE_INTENT_SNEAK)
 		var/turf/T = get_turf(src)
@@ -105,25 +102,11 @@
 				user.stop_pulling()
 	return ..()
 
-/obj/structure/table/attack_right(mob/user)
-	var/obj/item/held = user.get_active_held_item()
-	var/obj/item/rogueweapon/bakers_peel/peel
-	if(istype(held, /obj/item/rogueweapon/bakers_peel))
-		peel = held
-		if(peel.unload_onto_table(src, user))
-			return TRUE
-	held = user.get_inactive_held_item()
-	if(istype(held, /obj/item/rogueweapon/bakers_peel))
-		peel = held
-		if(peel.unload_onto_table(src, user))
-			return TRUE
-	return ..()
-
 /obj/structure/table/proc/hideinside(mob/living/user)
 	if(user.in_combat_until > world.time)
 		return
 	var/sneak_level = user.get_skill_level(/datum/skill/misc/sneaking) || 0
-	var/sneaktime = max(10, 45 - (sneak_level * 5))	// 1.5 seconds at Legendary. 
+	var/sneaktime = max(10, 45 - (sneak_level * 5))	// 1.5 seconds at Legendary.
 	if(user.loc == src)
 		unhide(user)
 		return
@@ -131,6 +114,8 @@
 		to_chat(user, span_warning("Someone is already hiding under [src]!"))
 		return
 	if(!do_after(user, sneaktime, src))
+		return
+	if(!QDELETED(src) && !isturf(loc))//prevents folding tables from nullspacing people
 		return
 	user.forceMove(src)
 	occupied = TRUE
@@ -319,7 +304,7 @@
 	climb_offset = 10
 	buildstack = /obj/item/grown/log/tree/small
 
-/obj/structure/table/wood/crafted/Initialize()
+/obj/structure/table/wood/crafted/Initialize(mapload)
 	. = ..()
 	icon_state = "tablewood1"
 
@@ -516,7 +501,7 @@
 		/obj/structure/table/wood/fancy/royalblue)
 	var/smooth_icon = 'icons/obj/smooth_structures/fancy_table.dmi' // see Initialize()
 
-/obj/structure/table/wood/fancy/Initialize()
+/obj/structure/table/wood/fancy/Initialize(mapload)
 	. = ..()
 	// Needs to be set dynamically because table smooth sprites are 32x34,
 	// which the editor treats as a two-tile-tall object. The sprites are that
@@ -647,9 +632,6 @@
 				W.pixel_y = initial(W.pixel_y) + CLAMP(pixel_y + text2num(click_params["icon-y"]) - 16, pixel_y + -(world.icon_size/2), pixel_y + world.icon_size/2)
 				return 1
 
-/obj/structure/rack/attack_paw(mob/living/user)
-	attack_hand(user)
-
 
 
 /obj/structure/rack/rogue
@@ -714,7 +696,7 @@
 	buckle_requires_restraints = 1
 	var/mob/living/carbon/human/patient = null
 
-/obj/structure/table/optable/Initialize()
+/obj/structure/table/optable/Initialize(mapload)
 	. = ..()
 
 /obj/structure/table/optable/tablepush(mob/living/user, mob/living/pushed_mob)

@@ -73,7 +73,7 @@
 			mod = min(default_delay, skill_delay)
 
 	var/spdchange = (10-get_effective_speed())*SPEED_MOVSPD_MOD
-	//spdchange = clamp(spdchange, -0.5, 1)  //Previous clamp when MOVSPD_MOD was at 0.1
+	//spdchange = clamp(spdchange, -0.5, 1)	//Previous clamp when MOVSPD_MOD was at 0.1
 	mod = mod+spdchange
 	add_movespeed_modifier(MOVESPEED_ID_MOB_WALK_RUN_CONFIG_SPEED, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
 
@@ -83,9 +83,9 @@
 
 /mob/living/proc/update_turf_movespeed(turf/open/T)
 	if(isopenturf(T))
-		var/usedslow = T.get_slowdown(src)
-		if(HAS_TRAIT(src, TRAIT_TRAM_MOVER))
-			usedslow = 0
+		var/usedslow = 0
+		if(!HAS_TRAIT(src, TRAIT_TRAM_MOVER))
+			usedslow = T.get_slowdown(src)
 		if(usedslow != 0)
 			add_movespeed_modifier(MOVESPEED_ID_LIVING_TURF_SPEEDMOD, update=TRUE, priority=100, multiplicative_slowdown=usedslow, movetypes=GROUND)
 		else

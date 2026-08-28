@@ -16,8 +16,9 @@ GLOBAL_LIST_INIT(psyvault_aggro, world.file2list("strings/rt/psyvaultaggrolines.
 
 
 
-/mob/living/carbon/human/species/lizardfolk/psy_vault_guard/Initialize()
+/mob/living/carbon/human/species/lizardfolk/psy_vault_guard/Initialize(mapload)
 	. = ..()
+	gender = pick(MALE, FEMALE)
 	set_species(/datum/species/lizardfolk)
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
 	transform = transform.Scale(1.25, 1.25)
@@ -66,33 +67,9 @@ GLOBAL_LIST_INIT(psyvault_aggro, world.file2list("strings/rt/psyvaultaggrolines.
 	update_overlays()
 	var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
 	head.sellprice = HEAD_BOUNTY_LIZARDMAN
-
-	var/voice_choice = rand(1, 12)
-	switch(voice_choice)
-		if(1)
-			src.voice_color = "0bb1e4"
-		if(2)
-			src.voice_color = "d30c0c"
-		if(3)
-			src.voice_color = "4d4afc"
-		if(4)
-			src.voice_color = "da40c0"
-		if(5)
-			src.voice_color = "51e251"
-		if(6)
-			src.voice_color = "a059cf"
-		if(7)
-			src.voice_color = "8700c5"
-		if(8)
-			src.voice_color = "cfc886"
-		if(9)
-			src.voice_color = "ff9100"
-		if(10)
-			src.voice_color = "a0a0a0"
-		if(11)
-			src.voice_color = "797979"
-		if(12)
-			src.voice_color = "ff5e00"
+	random_voice_NPC()
+	random_eye_color_NPC()
+	src.regenerate_icons() //Fixes the weird body but lets check performance first
 
 
 /datum/outfit/job/roguetown/human/species/lizardfolk/psy_vault_guard/pre_equip(mob/living/carbon/human/H)
@@ -109,14 +86,14 @@ GLOBAL_LIST_INIT(psyvault_aggro, world.file2list("strings/rt/psyvaultaggrolines.
 	H.STALUC = 13
 	H.grant_language(/datum/language/otavan)
 	//skill Stuff
-	H.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE) //NPCs do not get these skills unless a mind takes them over, hopefully in the future someone can fix
-	H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE) //NPCs do not get these skills unless a mind takes them over, hopefully in the future someone can fix
+	H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
+	H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)
 	ADD_TRAIT(H, TRAIT_NIGHT_VISION, TRAIT_GENERIC)
 	//Clothing Stuff
 	if(prob(20))

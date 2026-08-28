@@ -27,14 +27,14 @@
 // T0 - Enkindle - Undivided Ignition. //
 /////////////////////////////////////////
 
-/datum/action/cooldown/spell/astrata/ignition/undivided
+/datum/action/cooldown/spell/miracle/ignition/undivided
 	name = "Enkindle"
 	background_icon = 'icons/mob/actions/undividedmiracles.dmi'
 	button_icon = 'icons/mob/actions/undividedmiracles.dmi'
 	button_icon_state = "enkindle"
 	spell_color = GLOW_COLOR_UNDIVIDED
 
-	cast_range = SPELL_RANGE_GROUND - 2
+	cast_range = SPELL_RANGE_AURA - 1
 
 	primary_resource_cost = SPELLCOST_MIRACLE_MINOR + 5
 
@@ -70,7 +70,6 @@
 
 	charge_required = TRUE
 	charge_time = 1 SECONDS
-	charge_drain = 0
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/holycharging.ogg'
 	cooldown_time = 2 MINUTES
@@ -79,7 +78,7 @@
 
 /datum/action/cooldown/spell/undivided/recuperation/cast(atom/cast_on)
 	. = ..()
-	var/const/energytoregen = 50
+	var/const/energytoregen = 100
 
 	var/mob/living/carbon/human/H = owner
 	if(!istype(H))
@@ -91,10 +90,10 @@
 		show_visible_message(owner, "You can only cast this on living beings.")
 		return FALSE
 	if (spelltarget == H)
-		spelltarget.energy_add(energytoregen * (owner.get_skill_level(associated_skill)))//200 for templar, 300 for acolyte
+		spelltarget.energy_add((energytoregen * (owner.get_skill_level(associated_skill))) / 2)//You only get half
 		spelltarget.apply_status_effect(/datum/status_effect/buff/recuperation)
 		show_visible_message(owner, "<font color='cyan'>As [owner] intones the incantation, vibrant flames swirl around them.", "<font color='cyan'>As you intone the incantation, vibrant flames swirl around you. You feel refreshed.")
-	else if (H.energy > (energytoregen * 2))
+	else if (H.energy > (energytoregen))
 		owner.energy_add(-(energytoregen * (owner.get_skill_level(associated_skill))))
 		spelltarget.energy_add((energytoregen * (owner.get_skill_level(associated_skill))) * 2)
 		spelltarget.apply_status_effect(/datum/status_effect/buff/recuperation/other)
@@ -138,7 +137,7 @@
 #undef RECUPERATION_BASE_FILTER
 
 ///////////////////
-// T1 - Miracle  //
+// T1 - Miracle	//
 ///////////////////
 
 /datum/action/cooldown/spell/miracle/heal/undivided
@@ -201,7 +200,7 @@
 	.=..()
 
 /datum/status_effect/buff/twinned_gaze/on_apply()
-	// Reset base values because the miracle can 
+	// Reset base values because the miracle can
 	// now actually be recast at high enough skill and during day time
 	// This is a safeguard because buff code makes my head hurt
 	duration = 20 SECONDS
@@ -263,7 +262,7 @@
 
 	charge_required = TRUE
 	charge_time = 1 SECONDS
-	charge_drain = 0
+	hold_drain = 0
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/holycharging.ogg'
 	cooldown_time = 2 MINUTES
@@ -306,7 +305,7 @@
 				return TRUE
 
 /datum/stressevent/perseverance
-	timer = 2 MINUTES 
+	timer = 2 MINUTES
 	stressadd = -4 //Should be enough to offset the bleed
 	desc = span_undivided("A mere respite from the horrors.")
 
@@ -334,31 +333,30 @@
 	var/choosing_bundle = FALSE
 	var/chosen_bundle
 	var/list/miracle_generalist_bundle = list(
-		/datum/action/cooldown/spell/noc/inspiration::name					= /datum/action/cooldown/spell/noc/inspiration,
-		/datum/action/cooldown/spell/darkvision/miracle/undivided::name		= /datum/action/cooldown/spell/darkvision/miracle/undivided,
-		/datum/action/cooldown/spell/noc/invisibility::name					= /datum/action/cooldown/spell/noc/invisibility,
-		/obj/effect/proc_holder/spell/targeted/blesscrop::name				= /obj/effect/proc_holder/spell/targeted/blesscrop,
-		/obj/effect/proc_holder/spell/invoked/eora_blessing::name			= /obj/effect/proc_holder/spell/invoked/eora_blessing,
-		/datum/action/cooldown/spell/arcyne_forge/miracle::name				= /datum/action/cooldown/spell/arcyne_forge/miracle,
+		/datum/action/cooldown/spell/darkvision/undivided::name		= /datum/action/cooldown/spell/darkvision/undivided,
+		/datum/action/cooldown/spell/noc/invisibility::name			= /datum/action/cooldown/spell/noc/invisibility,
+		/obj/effect/proc_holder/spell/targeted/blesscrop::name		= /obj/effect/proc_holder/spell/targeted/blesscrop,
+		/obj/effect/proc_holder/spell/invoked/eora_blessing::name	= /obj/effect/proc_holder/spell/invoked/eora_blessing,
+		/datum/action/cooldown/spell/arcyne_forge/miracle::name		= /datum/action/cooldown/spell/arcyne_forge/miracle,
 	)
 	var/list/miracle_acolyte_bundle = list(
 		/obj/effect/proc_holder/spell/invoked/diagnose::name			= /obj/effect/proc_holder/spell/invoked/diagnose,
-		/datum/action/cooldown/spell/noc/blindness::name				= /datum/action/cooldown/spell/noc/blindness,
+		/datum/action/cooldown/spell/projectile/moonscorch::name		= /datum/action/cooldown/spell/projectile/moonscorch,
 		/obj/effect/proc_holder/spell/invoked/bless_food::name			= /obj/effect/proc_holder/spell/invoked/bless_food,
 		/obj/effect/proc_holder/spell/invoked/avert::name				= /obj/effect/proc_holder/spell/invoked/avert,
 		/obj/effect/proc_holder/spell/invoked/attach_bodypart::name		= /obj/effect/proc_holder/spell/invoked/attach_bodypart,
 	)
 	var/list/miracle_templar_bundle = list(
-		/obj/effect/proc_holder/spell/invoked/abyssor_undertow::name 		= /obj/effect/proc_holder/spell/invoked/abyssor_undertow,
-		/datum/action/cooldown/spell/ravox/withstand::name 					= /datum/action/cooldown/spell/ravox/withstand,
-		/obj/effect/proc_holder/spell/invoked/heatmetal::name 				= /obj/effect/proc_holder/spell/invoked/heatmetal,
-		/datum/action/cooldown/spell/noc/enlightenment::name 				= /datum/action/cooldown/spell/noc/enlightenment,
-		/obj/effect/proc_holder/spell/invoked/vendetta::name 				= /obj/effect/proc_holder/spell/invoked/vendetta,
+		/obj/effect/proc_holder/spell/invoked/abyssor_undertow::name		= /obj/effect/proc_holder/spell/invoked/abyssor_undertow,
+		/datum/action/cooldown/spell/ravox/withstand::name					= /datum/action/cooldown/spell/ravox/withstand,
+		/datum/action/cooldown/spell/mending/malum::name					= /datum/action/cooldown/spell/mending/malum,
+		/datum/action/cooldown/spell/noc/enlightenment::name				= /datum/action/cooldown/spell/noc/enlightenment,
+		/obj/effect/proc_holder/spell/invoked/vendetta::name				= /obj/effect/proc_holder/spell/invoked/vendetta,
 	)
 
 /datum/action/cooldown/spell/undivided/undivided_spellpack/cast(atom/cast_on)
 	. = ..()
-	
+
 	if(choosing_bundle)
 		return FALSE
 	var/choice = chosen_bundle
@@ -428,7 +426,7 @@
 
 	charge_required = TRUE
 	charge_time = 1 SECONDS
-	charge_drain = 0
+	hold_drain = 0
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/holycharging.ogg'
 	cooldown_time = 1 MINUTES
@@ -472,7 +470,7 @@
 	icon_state = "gallows"
 
 /datum/stressevent/gallowshumor
-	timer = 5 MINUTES 
+	timer = 5 MINUTES
 	stressadd = 6 //Hop Tuah
 	desc = span_undivided("NO NO NO!")
 
@@ -505,7 +503,7 @@
 	sound = 'sound/magic/heal_new.ogg'
 	charge_required = TRUE
 	charge_time = 1 SECONDS
-	charge_drain = 0
+	hold_drain = 0
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/holycharging.ogg'
 
@@ -548,7 +546,7 @@
 		if(istype(target.patron, /datum/patron/divine))
 			target.apply_status_effect(/datum/status_effect/buff/ten_united)
 			continue
-		if(istype(target.patron, /datum/patron/old_god) || istype(target.patron, /datum/patron/inhumen)) 
+		if(istype(target.patron, /datum/patron/old_god) || istype(target.patron, /datum/patron/inhumen))
 			to_chat(target, span_undivided("The divine light leaves me as abruptly as it came."))
 			continue
 		if(!owner.faction_check_mob(target))
@@ -568,3 +566,12 @@
 	name = "Undivided Camaraderie"
 	desc = span_undivided("WE STAND TOGETHER!")
 	icon_state = "ten_united"
+
+/datum/action/cooldown/spell/miracle/anastasis/undivided
+	name = "Lesser Anastasis"
+	desc = "Resurrect a person that is free of rot and decay, deadites (such as lyckers / skeletons) instead explode when it is attempted."
+	fluff_desc = "The greatest feat any priest can manage is reversion of death, a true rebirth unlike the perversion Necromancers aspire to."
+	background_icon = 'icons/mob/actions/undividedmiracles.dmi'
+	button_icon = 'icons/mob/actions/undividedmiracles.dmi'
+	spell_color = GLOW_COLOR_UNDIVIDED
+	cooldown_time = 15 MINUTES

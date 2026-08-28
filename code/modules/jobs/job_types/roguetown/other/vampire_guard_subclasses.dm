@@ -12,7 +12,7 @@
 	tutorial = "You are a seasoned weapon specialist, clad in maille, with years of experience in warfare and battle under your belt, more than any mortal could ever claim."
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/other/vampguardsman
-	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_MEDIUMARMOR)
+	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_MEDIUMARMOR, TRAIT_UNCONVERTIBLE)
 	category_tags = list(CTAG_VAMPGUARD)
 	subclass_stats = list(
 		STATKEY_STR = 2,
@@ -94,11 +94,11 @@
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 		//The Spice of Lyfe
 		var/helmets = list(
-		"Simple Helmet" 	= /obj/item/clothing/head/roguetown/helmet,
-		"Kettle Helmet" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
+		"Simple Helmet"	= /obj/item/clothing/head/roguetown/helmet,
+		"Kettle Helmet"	= /obj/item/clothing/head/roguetown/helmet/kettle,
 		"Bascinet Helmet"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
 		"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-		"Winged Helmet" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+		"Winged Helmet"	= /obj/item/clothing/head/roguetown/helmet/winged,
 		"None"
 		)
 		var/helmchoice = input(H, "Choose your Helm.", "A VISAGE IN THE NITE") as anything in helmets
@@ -206,7 +206,10 @@
 	name = "Vampiric Duelist"
 	tutorial = "You are an professional swordsman and warrior who foregoes armor in exchange for a more nimble fighting style than most mortals could claim. Your lord's will be done."
 	outfit = /datum/outfit/job/roguetown/other/vampduelist
-	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_DODGEEXPERT, TRAIT_DECEIVING_MEEKNESS)
+	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_DODGEEXPERT)
+	subclass_virtues = list(
+		/datum/virtue/combat/guarded
+	)
 	category_tags = list(CTAG_VAMPGUARD)
 	subclass_stats = list(
 		STATKEY_INT = 1,
@@ -285,7 +288,7 @@
 		)
 
 ///////////////////////////////////////////////
-//POTENTALLY PROBLEMATIC CLASSES,  BELOW HERE//
+//POTENTALLY PROBLEMATIC CLASSES,	BELOW HERE//
 //////////////////////////////////////////////
 		////////////////////////////////
 		//////					//////
@@ -298,7 +301,7 @@
 	name = "Vampiric Fyre-Pugilist"
 	tutorial = "There has been nothing more enchanting in unlyfe than the dance of flames upon an inferno of your alchemical mixes and the taste of blood freshly beaten out of a victim with your bare hands. Now your master arises once more and your talents shall see use again. Your lord's will be done."
 	outfit = /datum/outfit/job/roguetown/other/vampbomber
-	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_ALCHEMY_EXPERT, TRAIT_EXPLOSIVE_SUPPLY, TRAIT_MEDIUMARMOR, TRAIT_CIVILIZEDBARBARIAN,  TRAIT_BOMBER_EXPERT)
+	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_ALCHEMY_EXPERT, TRAIT_EXPLOSIVE_SUPPLY, TRAIT_MEDIUMARMOR, TRAIT_CIVILIZEDBARBARIAN,	TRAIT_BOMBER_EXPERT)
 	category_tags = list(CTAG_VAMPGUARD)
 	subclass_stats = list(
 		STATKEY_INT = 2,
@@ -446,7 +449,8 @@
 		// Yeah vampire mages are pretty insanely strong with some clan potencies but rule of cool honestly.
 	)
 	subclass_skills = list(
-		/datum/skill/combat/staves = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/arcyne = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_EXPERT,
 		/datum/skill/magic/arcane = SKILL_LEVEL_EXPERT,
@@ -465,17 +469,17 @@
 	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/wizard] //Every wizzard gotta have the evyl laugh, I don't make the rules, sire.
 	add_verb(H, /mob/proc/haltyell_exhausting) //Halting the charred corpse is too funny, we're keeping it. sovl.
 
-	//UNIQUELY relies on WARDS off-the-bat, vs wretches/advs/mercenaries. Has NO chest armor, or head armor, save for neck. Legs/Feet remain decently armored by intent. Go for their arms instead.
+	//UNIQUELY relies on WARDS off-the-bat, vs wretches/advs/mercenaries. Has NO armor, save for neck/feet, this is intended so you can't speedrun decapitate them on swift intent.
 	cloak = /obj/item/clothing/cloak/tabard/stabard/hoodvamp
 	head = /obj/item/clothing/head/roguetown/witchhat/vamp //EVERY PALLY IN THE KINGDOM ON MA TAIL
 	mask = /obj/item/clothing/mask/rogue/ragmask/black
 	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 	armor = /obj/item/clothing/cloak/tabard/stabard/vamp
-	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
+	pants = /obj/item/clothing/under/roguetown/skirt/vamp
 	neck = /obj/item/clothing/neck/roguetown/gorget/paalloy //No head armor but good anti-decap armor, intended.
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	belt = /obj/item/storage/belt/rogue/leather/battleskirt
-	beltl = /obj/item/book/spellbook
+	beltl = /obj/item/rogueweapon/spellbook/greater
 	backl = /obj/item/storage/backpack/rogue/satchel/black
 	backr = choose_implement(H, "greater")
 
@@ -515,3 +519,8 @@
 
 /obj/item/clothing/head/roguetown/roguehood/studded/vamp
 	color = CLOTHING_RED
+
+/obj/item/clothing/under/roguetown/skirt/vamp
+	name = "silken magos kilt"
+	desc = "A lightly-enchanted fashionable Kilt-like skirting designed to slide under a tabard. Despite seeming impractical as if it would get caught on something, it weaves around it as the fabric moves like it has a lyfe of its own and never gets caught."
+	color = CLOTHING_WHITE

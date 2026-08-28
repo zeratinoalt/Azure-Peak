@@ -14,11 +14,12 @@
 /datum/crafting_recipe/roguetown/survival/flint //custar recipe for flint.
 	name = "flint"
 	result = /obj/item/flint
-	reqs =  list(/obj/item/scrap = 2,
+	reqs =	list(/obj/item/scrap = 2,
 				/obj/item/natural/whetstone = 2,
 				/obj/item/natural/fibers = 1,
 	)
 	craftdiff = 3
+
 
 /datum/crafting_recipe/roguetown/survival/repairkitclothbad
 	name = "fabric patch" //9 fiber
@@ -85,6 +86,7 @@
 	reqs = list(/obj/item/storage/belt/rogue/leather/cloth = 1,
 				/obj/item/storage/belt/rogue/pouch = 1)
 	craftdiff = 1
+	subtype_reqs = TRUE
 	verbage_simple = "tie"
 	verbage = "tie"
 
@@ -125,6 +127,7 @@
 	reqs = list(/obj/item/storage/belt/rogue/leather/rope = 1,
 				/obj/item/storage/belt/rogue/pouch = 1)
 	craftdiff = 1
+	subtype_reqs = TRUE
 	verbage_simple = "tie"
 	verbage = "ties"
 
@@ -163,7 +166,6 @@
 	skillcraft = /datum/skill/craft/sewing
 
 /obj/item/storage/roguebag/crafted
-	sellprice = 4
 
 /datum/crafting_recipe/roguetown/survival/pipe
 	name = "wood pipe"
@@ -171,7 +173,6 @@
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 
 /obj/item/clothing/mask/cigarette/pipe/crafted
-	sellprice = 6
 
 /datum/crafting_recipe/roguetown/survival/broom
 	name = "broom"
@@ -206,6 +207,13 @@
 		)
 	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/survival/zigbox
+	name = "zigbox"
+	result = /obj/item/storage/belt/rogue/pouch/zigarrete
+	reqs = list(/obj/item/paper/scroll = 2)
+	req_table = TRUE
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/survival/prosthetic/woodleftarm
 	name = "wood arm (L)"
@@ -289,13 +297,13 @@
 
 
 /datum/crafting_recipe/hair_dye
-    name = "hair dye cream"
-    display_category = ITEM_CAT_TOOLS_SUNDRIES
-    result = /obj/item/hair_dye_cream
-    reqs = list(
-        /obj/item/reagent_containers/glass/bowl = 1,
-        /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 3,
-    )
+	name = "hair dye cream"
+	display_category = ITEM_CAT_TOOLS_SUNDRIES
+	result = /obj/item/hair_dye_cream
+	reqs = list(
+		/obj/item/reagent_containers/glass/bowl = 1,
+		/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 3,
+	)
 
 // DIE
 
@@ -350,6 +358,7 @@
 		/obj/item/natural/fur = 1
 		)
 	craftdiff = 1
+	subtype_reqs = TRUE
 
 /datum/crafting_recipe/roguetown/survival/whetstone
 	name = "whetstone"
@@ -410,6 +419,25 @@
 		/obj/item/grown/log/tree/stick = 2,
 		)
 	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/survival/hotrock
+	name = "assemble stones into hotrock"
+	result = /obj/item/cooking/pan/stone
+	reqs =	list(/obj/item/natural/stone = 4)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/survival/hotrock_whetstone
+	name = "combine whetstones into hotrock"
+	result = /obj/item/cooking/pan/stone
+	reqs =	list(/obj/item/natural/whetstone = 2)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/survival/hotrock_boulder
+	name = "chisel boulder into hotrock"
+	result = /obj/item/cooking/pan/stone
+	reqs =	list(/obj/item/natural/rock = 1)
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 2
 
 // Unfortunately there's no good category for it, yet.
 // I don't want ration paper to be too expensive, making wrapped food underused

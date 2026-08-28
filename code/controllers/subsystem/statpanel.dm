@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(statpanels)
 			global_data = list("Map: [SSmapping.config.map_name]")
 
 		// if(SSmapping.config?.mapping_url)
-		// 	global_data += list(list("same_line", " | (View in Browser)", "action=openWebMap"))
+		//	global_data += list(list("same_line", " | (View in Browser)", "action=openWebMap"))
 
 		if(cached)
 			global_data += "Next Map: [cached.map_name]"
@@ -109,11 +109,11 @@ SUBSYSTEM_DEF(statpanels)
 			var/update_actions = FALSE
 			// // We're on a spell tab, update the tab so we can see cooldowns progressing and such
 			// if(target.stat_tab in target.spell_tabs)
-			// 	update_actions = TRUE
+			//	update_actions = TRUE
 			// // We're not on a spell tab per se, but we have cooldown actions, and we've yet to
 			// // set up our spell tabs at all
 			// if(!length(target.spell_tabs) && locate(/datum/action/cooldown) in target_mob.actions)
-			// 	update_actions = TRUE
+			//	update_actions = TRUE
 
 			if(update_actions && num_fires % default_wait == 0)
 				set_action_tabs(target, target_mob)
@@ -179,17 +179,16 @@ SUBSYSTEM_DEF(statpanels)
 	// target.spell_tabs.Cut()
 
 	// for(var/action_data in actions)
-	// 	target.spell_tabs |= action_data[1]
+	//	target.spell_tabs |= action_data[1]
 
 	// target.stat_panel.send_message("update_spells", list(spell_tabs = target.spell_tabs, actions = actions))
 
 /datum/controller/subsystem/statpanels/proc/generate_mc_data()
 	mc_data = list(
 		list("", "CPU:", "[world.cpu] ([world.map_cpu] map + [world.cpu - world.map_cpu] process)"),
-		list("", "Maptick Percent:", "[world.cpu ? round((world.map_cpu / world.cpu) * 100) : 0]%"),
+		list("", "TIDI / Maptick:", "[round(SStime_track.time_dilation_current, 1)]% AVG:([round(SStime_track.time_dilation_avg_fast, 1)]%, [round(SStime_track.time_dilation_avg, 1)]%, [round(SStime_track.time_dilation_avg_slow, 1)]%) | [world.cpu ? round((world.map_cpu / world.cpu) * 100) : 0]%"),
 		list("", "Controller Overview:", "Click to view", "", "Controller-Overview"),
-		list("", "Instances:", "[num2text(world.contents.len, 10)]"),
-		list("", "World Time:", "[world.time]"),
+		list("", "Instances / World Time:", "[num2text(world.contents.len, 10)] | [world.time]"),
 		list("", "Globals:", GLOB.stat_entry(), text_ref(GLOB)),
 		list("", "[config]:", config.stat_entry(), text_ref(config)),
 		list("", "Master Controller:", Master.stat_entry(), text_ref(Master)),
@@ -246,7 +245,7 @@ SUBSYSTEM_DEF(statpanels)
 /// Stat panel window declaration
 /client/var/datum/tgui_window/stat/stat_panel
 
-/datum/tgui_window/stat/initialize(strict_mode, fancy, assets, inline_html, inline_js, inline_css)
+/datum/tgui_window/stat/initialize(strict_mode, assets, inline_html, inline_js, inline_css)
 	. = ..()
 	send_message("build_topbar") // This is the best way of doing it... don't @ me
 

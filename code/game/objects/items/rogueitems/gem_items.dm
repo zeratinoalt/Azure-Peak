@@ -10,9 +10,9 @@
 	is_carved = TRUE
 	was_crafted = TRUE
 
-//.....................Shell......................//
+//...........................................//
 
-/obj/item/carvedgem/shell
+/obj/item/carvedgem/
 	name = "shell base"
 	desc = "if you encountered this, it's a bug!"
 	icon = 'icons/roguetown/gems/gem_shell.dmi'
@@ -24,7 +24,6 @@
 	icon_state = "oyster_open"
 	grid_height = 32
 	grid_width = 32
-	sellprice = 10
 
 /obj/item/carvedgem/shell/rawshell
 	name = "clamshell"
@@ -32,7 +31,6 @@
 	icon_state = "raw_shell"
 	grid_height = 32
 	grid_width = 32
-	sellprice = SELLPRICE_CLAMSHELL
 
 /obj/item/carvedgem/shell/cameo
 	name = "shell cameo"
@@ -136,11 +134,10 @@
 
 /obj/item/carvedgem/rose/rawrose
 	name = "rosestone"
-	desc = "Pink and lustrous, these pearls produced by fossilized clamshells are valued by Eorans; and are usually gifted to expecting mothers and newlyweds."
+	desc = "Pink and lustrous, these pearls produced by fossilized clams are valued by Eorans; and are usually gifted to expecting mothers and newlyweds."
 	icon_state = "raw_rose"
 	grid_height = 32
 	grid_width = 32
-	sellprice = SELLPRICE_ROSESTONE
 
 /obj/item/carvedgem/rose/cameo
 	name = "rosestone cameo"
@@ -258,7 +255,7 @@
 
 /obj/item/carvedgem/jade
 	name = "jade base"
-	desc =  "if you are seeing this, it's a bug, report it to coders!"
+	desc =	"if you are seeing this, it's a bug, report it to coders!"
 	icon = 'icons/roguetown/gems/gem_jade.dmi'
 	icon_state = "cutgem_jade"
 	grid_height = 32
@@ -585,13 +582,12 @@
 	grid_height = 64
 	grid_width = 64
 
-/obj/item/ammo_casing/caseless/rogue/javelin/turq
+/obj/item/rogueweapon/spear/turq
 	name = "cerulite spear"
 	desc = "A perfect spear carved out of cerulite, intended for ceremonies over combat. Before the advent of alloys, gemstone-tipped weapons \
 	were seen as the pinnacle of penetration; it didn't take a well-learned man to understand that one who held the shiniest article had the greatest authority."
 	max_integrity = 75
 	max_blade_int = 50
-	icon = 'icons/roguetown/gems/gem_turq.dmi'
 	icon_state = "spear_turq"
 	smeltresult = null
 	anvilrepair = /datum/skill/craft/weaponsmithing

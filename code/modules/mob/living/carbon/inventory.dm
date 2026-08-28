@@ -133,6 +133,10 @@
 		legcuffed = null
 		if(!QDELETED(src))
 			update_inv_legcuffed()
+	else if(I == underwear)
+		underwear = null
+	else if(I == legwear_socks)
+		legwear_socks = null
 
 //handle stuff to update when a mob equips/unequips a mask.
 /mob/living/proc/wear_mask_update(obj/item/I, toggle_off = 1)
@@ -176,7 +180,8 @@
 	var/atom/movable/most_expensive = null
 	var/price = 0
 	for(var/atom/movable/atom in get_all_gear())
-		if(atom.sellprice > price)
+		var/atom_price = atom.get_real_price()
+		if(atom_price > price)
 			most_expensive = atom
-			price = atom.sellprice
+			price = atom_price
 	return most_expensive

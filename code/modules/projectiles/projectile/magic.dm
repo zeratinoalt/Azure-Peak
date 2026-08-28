@@ -11,7 +11,7 @@
 	guard_deflectable = TRUE
 	dam_falloff_factor = 0.5
 	suppress_effects_past_range = TRUE
-	max_range = 7
+	max_range = MAGE_LONG_PROJ_RANGE
 	dismember_by_default = TRUE
 	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
 	var/mob/living/carbon/human/sender
@@ -24,7 +24,7 @@
 /obj/projectile/energy
 	dam_falloff_factor = 0.5
 	suppress_effects_past_range = TRUE
-	max_range = 7
+	max_range = MAGE_LONG_PROJ_RANGE
 	dismember_by_default = TRUE
 
 /obj/projectile/magic/on_hit(atom/target, blocked = FALSE)
@@ -185,7 +185,7 @@
 	var/locker_suck = TRUE
 	var/obj/structure/closet/locker_temp_instance = /obj/structure/closet/decay
 
-/obj/projectile/magic/locker/Initialize()
+/obj/projectile/magic/locker/Initialize(mapload)
 	. = ..()
 	locker_temp_instance = new(src)
 
@@ -226,7 +226,7 @@
 	var/weakened_icon = "decursed"
 	var/auto_destroy = TRUE
 
-/obj/structure/closet/decay/Initialize()
+/obj/structure/closet/decay/Initialize(mapload)
 	. = ..()
 	if(auto_destroy)
 		addtimer(CALLBACK(src, PROC_REF(bust_open)), 5 MINUTES)
@@ -373,7 +373,7 @@
 	damage_type = BRUTE
 	nodamage = FALSE
 	light_color = "#f8af07"
-	light_outer_range =  2
+	light_outer_range =	2
 
 	//explosion values
 	var/exp_heavy = 0

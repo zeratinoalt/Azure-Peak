@@ -107,7 +107,7 @@
 	I.pixel_y = 6
 	I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	I.appearance_flags = RESET_COLOR
-	flick_overlay(I, GLOB.clients, 6)
+	flick_overlay_view(I, A, 6)
 
 /proc/ping_sound_through_walls(turf/T)
 	new /obj/effect/temp_visual/soundping(T)
@@ -415,10 +415,20 @@
 				soundin = pick('sound/combat/hits/bladed/genslash (1).ogg','sound/combat/hits/bladed/genslash (2).ogg','sound/combat/hits/bladed/genslash (3).ogg')
 			if("bladewooshsmall")
 				soundin = pick('sound/combat/wooshes/bladed/wooshsmall (1).ogg','sound/combat/wooshes/bladed/wooshsmall (2).ogg','sound/combat/wooshes/bladed/wooshsmall (3).ogg')
+			if("bladewooshmed")
+				soundin = pick(BLADEWOOSH_MED)
+			if("bladewooshlarge")
+				soundin = pick(BLADEWOOSH_LARGE)
+			if("bladewooshhuge")
+				soundin = pick(BLADEWOOSH_HUGE)
 			if("bluntwooshmed")
 				soundin = pick('sound/combat/wooshes/blunt/wooshmed (1).ogg','sound/combat/wooshes/blunt/wooshmed (2).ogg','sound/combat/wooshes/blunt/wooshmed (3).ogg')
 			if("bluntwooshlarge")
 				soundin = pick('sound/combat/wooshes/blunt/wooshlarge (1).ogg','sound/combat/wooshes/blunt/wooshlarge (2).ogg','sound/combat/wooshes/blunt/wooshlarge (3).ogg')
+			if("bluntwooshhuge")
+				soundin = pick(BLUNTWOOSH_HUGE)
+			if("whipwoosh")
+				soundin = pick(WHIPWOOSH)
 			if("punchwoosh")
 				soundin = pick('sound/combat/wooshes/punch/punchwoosh (1).ogg','sound/combat/wooshes/punch/punchwoosh (2).ogg','sound/combat/wooshes/punch/punchwoosh (3).ogg')
 			if(SFX_CHAIN_STEP)
@@ -451,5 +461,12 @@
 							'sound/foley/footsteps/armor/woodarmor (1).ogg',
 							'sound/foley/footsteps/armor/woodarmor (2).ogg',
 							'sound/foley/footsteps/armor/woodarmor (3).ogg',
+							)
+			if(SFX_HEELS)
+				soundin = pick(
+							'sound/foley/footsteps/highheel1.ogg',
+							'sound/foley/footsteps/highheel2.ogg',
+							'sound/foley/footsteps/highheel3.ogg',
+							'sound/foley/footsteps/highheel4.ogg',
 							)
 	return soundin

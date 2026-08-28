@@ -20,7 +20,7 @@
 
 	charge_required = TRUE
 	charge_time = 1 SECONDS
-	charge_drain = 1
+	hold_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_MEDIUM
 	charge_sound = 'sound/magic/charging.ogg'
 	cooldown_time = 30 SECONDS
@@ -41,6 +41,8 @@
 		"Golden Spectacles" = /obj/item/clothing/mask/rogue/spectacles/golden_lesser_summoned,
 		"Silver Monocle" = /obj/item/clothing/mask/rogue/spectacles/monocle,
 		"Smokey Onyxa Spectacles" = /obj/item/clothing/mask/rogue/spectacles/onyxa_lesser_summoned,
+		"Fancy Spectacles" = /obj/item/clothing/mask/rogue/spectacles/fancy,
+		"Fancy Spectacles, Tinted" = /obj/item/clothing/mask/rogue/spectacles/fancy_dark,
 	)
 
 /datum/action/cooldown/spell/conjure_spectacles/cast(list/targets, mob/living/user = usr)
@@ -54,7 +56,7 @@
 
 	var/obj/item/clothing/mask/rogue/spectacles/R = new spectacles_choice(user.drop_location())
 	if(!QDELETED(R))
-		R.AddComponent(/datum/component/conjured_item, GLOW_COLOR_ARCANE)
+		R.AddComponent(/datum/component/conjured_item, GLOW_COLOR_ARCANE, FALSE, user, src)
 	user.put_in_hands(R)
 	src.conjured_spectacles = R
 	R.sellprice = 0
@@ -62,12 +64,6 @@
 
 /datum/action/cooldown/spell/conjure_spectacles/miracle
 	associated_skill = /datum/skill/magic/holy
-
-/datum/action/cooldown/spell/conjure_spectacles/Destroy()
-	if(src.conjured_spectacles)
-		conjured_spectacles.visible_message(span_warning("The [conjured_spectacles]'s borders begin to shimmer and fade, before it vanishes entirely!"))
-		qdel(src.conjured_spectacles)
-	return ..()
 
 //Sorry, it has to be done. No engineering/night vision for no spellcost. You could probably add crafted varients and axe this codenote though if such is done. Considering mages can make worse things than Nocshades.
 
@@ -87,7 +83,7 @@
 	name = "summoned smokey onyxa spectacles"
 	icon_state = "sglasses"
 	desc = "Death has come to your little town, Sheriff. Now, you can either ignore it, or you can help me to stop it." //KEEPING IT, ITS PEAK SIRE
-		
+
 // Golden spectacles summonable lesser varient - with no mechanical effects
 
 /obj/item/clothing/mask/rogue/spectacles/golden_lesser_summoned

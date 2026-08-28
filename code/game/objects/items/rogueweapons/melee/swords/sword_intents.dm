@@ -52,7 +52,7 @@
 	item_d_type = "stab"
 
 /datum/intent/sword/thrust/short
-	clickcd = 8
+	clickcd = CLICK_CD_FAST
 	damfactor = 1.1
 	penfactor = PEN_LIGHT
 
@@ -147,7 +147,7 @@
 	var/maxrange = 2
 
 /datum/intent/sword/strike/bash/mordhau/smash/spec_on_apply_effect(mob/living/H, mob/living/user, params)
-	var/chungus_khan_str = user.STASTR 
+	var/chungus_khan_str = user.STASTR
 	if(H.has_status_effect(/datum/status_effect/debuff/yeetcd))
 		return // Recently knocked back, cannot be knocked back again yet
 	if(chungus_khan_str < 10)
@@ -195,14 +195,13 @@
 	damfactor = 1.2
 	penfactor = PEN_LIGHT // Master cut — cuts are for damaging armor, not penning it. Leave pen to the stabbin'
 	max_intent_damage = 36
-	min_intent_damage = 31
 	swingdelay = 2 //sure
 
 /datum/intent/sword/thrust/long/master
 	name = "stoccato"
 	icon_state = "instabmaster"
 	desc = "Enter a long guard and thrust forward with your entire upper body while advancing, maximizing the effectiveness of the thrust."
-	attack_verb =  list("skillfully perforates", "artfully punctures", "deftly sticks")
+	attack_verb =	list("skillfully perforates", "artfully punctures", "deftly sticks")
 	damfactor = 1.2
 	max_intent_damage = 36 //they do the same damage. one is for bleeding, the other is for critfishing. feels weird but they get a lot of toys
 
@@ -378,7 +377,7 @@
 	var/maxrange = 3
 
 /datum/intent/sword/chop/cleave/spec_on_apply_effect(mob/living/H, mob/living/user, params)
-	var/chungus_khan_str = user.STASTR 
+	var/chungus_khan_str = user.STASTR
 	if(H.has_status_effect(/datum/status_effect/debuff/yeetcd))
 		return // Recently knocked back, cannot be knocked back again yet
 	if(chungus_khan_str < 10)
