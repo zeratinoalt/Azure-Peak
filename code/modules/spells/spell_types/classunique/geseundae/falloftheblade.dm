@@ -119,7 +119,7 @@
 			continue
 		stuntargets.Immobilize(5.3 SECONDS)
 
-	H.say("Your neck, at least... Will be cut easily.")
+	H.say("Your neck, at least... will be cut easily.")
 	playsound(H, 'sound/foley/geseundae/yourneck.ogg', 100, FALSE)
 	sleep(4.8 SECONDS)
 
