@@ -2,9 +2,9 @@
 /datum/action/cooldown/spell/falloftheblade
 	name = "Fall of the Blade"
 	desc = "tankbuster aoe lol"
-	button_icon = 'icons/mob/actions/classuniquespells/crimsondragon.dmi'
-	button_icon_state = "tanglecleaver"
-	sound = 'sound/foley/crimsondragon/draw.ogg'
+	button_icon = 'icons/mob/actions/classuniquespells/geseundae.dmi'
+	button_icon_state = "falloftheblade"
+	sound = 'sound/foley/geseundae/drawspecial.ogg'
 
 	cast_range = 15
 
