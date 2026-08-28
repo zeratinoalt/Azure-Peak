@@ -3,6 +3,7 @@
 GLOBAL_LIST_EMPTY(gesanchor1)
 GLOBAL_LIST_EMPTY(gesanchor2)
 GLOBAL_LIST_EMPTY(gesaoeanchor)
+GLOBAL_LIST_EMPTY(gesteleanchor)
 
 /obj/effect/temp_visual/geseundaedecoy
 	desc = ""
@@ -32,6 +33,14 @@ GLOBAL_LIST_EMPTY(gesaoeanchor)
 /obj/effect/temp_visual/geseundae/warning/short
 	duration = 15
 
+/obj/effect/temp_visual/geseundae/warning/falloftheblade
+	duration = 92.5
+
+/obj/effect/temp_visual/geseundae/warning/tendril
+	icon_state = "blood_tendril_wiggle"
+	duration = 15
+	color = COLOR_BLACK
+
 /obj/effect/temp_visual/geseundae/warning/big
 	icon = 'icons/effects/160x160.dmi'
 	icon_state = "warning"
@@ -52,6 +61,13 @@ GLOBAL_LIST_EMPTY(gesaoeanchor)
 
 /obj/effect/temp_visual/geseundae/large/bigslash
 	icon_state = "sword big slash"
+
+/obj/effect/temp_visual/geseundae/large/bigslash/black
+	color = COLOR_BLACK
+
+/obj/effect/temp_visual/geseundae/large/smoke_afterdash
+	icon_state = "smoke_afterdash"
+	color = COLOR_BLACK
 
 //attack anchors - they're used by the attacks as refs for spawning tiles & whatnot
 
@@ -106,3 +122,7 @@ GLOBAL_LIST_EMPTY(gesaoeanchor)
 	mouse_opacity = 0
 	opacity = FALSE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+
+/obj/structure/geseundae_attack_teleanchor/Initialize()
+	. = ..()
+	GLOB.gesteleanchor += src

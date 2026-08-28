@@ -23,7 +23,6 @@
 
 	charge_required = TRUE
 	charge_time = CHARGETIME_POKE
-	charge_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/foley/geseundae/drawloop.ogg'
 	cooldown_time = 20 MINUTES
@@ -38,13 +37,6 @@
 	var/base_damage = 80
 	var/hitsounds = list('sound/foley/geseundae/hit1.ogg', 'sound/foley/geseundae/hit2.ogg', 'sound/foley/geseundae/hit3.ogg', 'sound/foley/geseundae/hit4.ogg', 'sound/foley/geseundae/hit5.ogg')
 
-/datum/action/cooldown/spell/slashseries/proc/dash_to(mob/living/owner, turf/destination)
-	var/turf/origin = get_turf(owner)
-	new /obj/effect/temp_visual/decoy/fading/halfsecond(origin, owner)
-	owner.forceMove(destination)
-	owner.setDir(SOUTH)
-	origin.Beam(owner, "flame", time = 2)
-
 /datum/action/cooldown/spell/slashseries/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
@@ -53,6 +45,9 @@
 	var/turf/anchorturf
 	var/list/first_slashing_turfs = list()
 	var/list/second_slashing_turfs = list()
+
+	if(!held_weapon)
+		return FALSE
 
 	for(var/obj/structure/geseundae_attack_anchor/anchor in GLOB.gesanchor1)
 		anchorturf = get_turf(anchor)

@@ -17,7 +17,6 @@
 
 	charge_required = TRUE
 	charge_time = CHARGETIME_POKE
-	charge_drain = 1
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/magic/chargingblood.ogg'
 	cooldown_time = 5.5 SECONDS

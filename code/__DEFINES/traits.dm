@@ -145,7 +145,6 @@
 #define TRAIT_ROOT_WALKER "Root Walker"
 #define TRAIT_WYRD_LABOURER "Wyrd Labourer" // Hag boon
 #define TRAIT_CURSE_SCAR "Curse Scar"
-#define TRAIT_ARMOR_BREAK "Loose Straps"
 #define TRAIT_VENGEANCE "Vengeance"
 
 #define TRAIT_BOGWALKER "Bogwalker"
@@ -735,7 +734,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DUSTRUNNER = span_info("I run dust for the Thieves' Guild. Those in the trade know how to spot one of their own."),
 	TRAIT_INK_AFFINITY = span_info("I can thread sacred abyssorite paint splotches safely, and benefit from them."),
 	TRAIT_REGROW_LIMBS = span_info("I can regrow my limbs in my sleep, but doing so will make me hungry."),
-	TRAIT_VENGEANCE = span_info("..I'm better for this.")
+	TRAIT_VENGEANCE = span_info("..I'm better for this."),
 	TRAIT_MUSES_GRACE = span_info("I feel a sudden and powerful urge to break out into song."),
 	TRAIT_NOHEAL = span_artery("I cannot be healed by supernatural means. Healing magic has no effect."),
 	TRAIT_NOREGEN = span_artery("I cannot be healed by natural means. Rest and potions have no effect."),

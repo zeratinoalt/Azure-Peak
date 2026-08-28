@@ -16,7 +16,6 @@
 	charge_required = TRUE
 	weapon_cast_penalized = FALSE
 	charge_time = CHARGETIME_POKE
-	charge_drain = 0
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = null
 	cooldown_time = 15 SECONDS
@@ -178,7 +177,7 @@
 			if(deflected)
 				base_damage = 10
 		sleep(0.8 SECONDS)
-		owner.face_atom(victim) 
+		owner.face_atom(victim)
 		owner.update_icon()
 		dash_to(owner, get_turf(victim), victim)
 		arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Blasting Scatterslash", skip_animation = TRUE, skip_message = TRUE)

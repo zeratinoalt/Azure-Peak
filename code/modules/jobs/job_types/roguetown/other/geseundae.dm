@@ -33,7 +33,7 @@
 	H.change_stat(STATKEY_PER, 5)
 	H.change_stat(STATKEY_INT, 2)
 	H.change_stat(STATKEY_CON, 8)
-	H.change_stat(STATKEY_WIL, 8) 
+	H.change_stat(STATKEY_WIL, 8)
 	H.change_stat(STATKEY_SPD, 3)
 
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
@@ -44,6 +44,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/slashseries)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/ripplingcuts)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/falloftheblade)
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/shadowpants/geseundae
 	name = "???"
@@ -121,16 +122,16 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/bosses.dmi'
 
 /datum/intent/sword/cut/sabre/geseundae
-	hitsound = list('sound/foley/geseundae/swing1.ogg', 'sound/foley/geseundae/swing2.ogg', 'sound/foley/geseundae/swing3.ogg')
+	hitsound = list('sound/foley/geseundae/hit1.ogg', 'sound/foley/geseundae/hit2.ogg', 'sound/foley/geseundae/hit3.ogg', 'sound/foley/geseundae/hit4.ogg', 'sound/foley/geseundae/hit5.ogg',)
 
 /datum/intent/sword/cut/sabre/heavy/geseundae
-	hitsound = list('sound/foley/geseundae/swing1.ogg', 'sound/foley/geseundae/swing2.ogg', 'sound/foley/geseundae/swing3.ogg')
+	hitsound = list('sound/foley/geseundae/hit1.ogg', 'sound/foley/geseundae/hit2.ogg', 'sound/foley/geseundae/hit3.ogg', 'sound/foley/geseundae/hit4.ogg', 'sound/foley/geseundae/hit5.ogg',)
 
 /datum/intent/sword/thrust/sabre/geseundae
-	hitsound = list('sound/foley/geseundae/swing1.ogg', 'sound/foley/geseundae/swing2.ogg', 'sound/foley/geseundae/swing3.ogg')
+	hitsound = list('sound/foley/geseundae/hit1.ogg', 'sound/foley/geseundae/hit2.ogg', 'sound/foley/geseundae/hit3.ogg', 'sound/foley/geseundae/hit4.ogg', 'sound/foley/geseundae/hit5.ogg',)
 
 /datum/intent/sword/strike/geseundae
-	hitsound = list('sound/foley/geseundae/swing1.ogg', 'sound/foley/geseundae/swing2.ogg', 'sound/foley/geseundae/swing3.ogg')
+	hitsound = list('sound/foley/geseundae/hit1.ogg', 'sound/foley/geseundae/hit2.ogg', 'sound/foley/geseundae/hit3.ogg', 'sound/foley/geseundae/hit4.ogg', 'sound/foley/geseundae/hit5.ogg',)
 
 
 /obj/item/rogueweapon/sword/sabre/geseundae
@@ -148,7 +149,7 @@
 	possible_item_intents = list(/datum/intent/sword/cut/sabre/geseundae, /datum/intent/sword/cut/sabre/heavy/geseundae, /datum/intent/sword/thrust/sabre/geseundae, /datum/intent/sword/strike/geseundae)
 	gripped_intents = null
 	parrysound = list('sound/foley/geseundae/parry1.ogg', 'sound/foley/geseundae/parry2.ogg', 'sound/foley/geseundae/parry3.ogg')
-	swingsound = BLADEWOOSH_SMALL
+	swingsound = list('sound/foley/geseundae/swing1.ogg', 'sound/foley/geseundae/swing2.ogg', 'sound/foley/geseundae/swing3.ogg')
 	max_blade_int = 700
 	max_integrity = 700
 	wbalance = WBALANCE_SWIFT
