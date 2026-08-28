@@ -102,22 +102,22 @@ GLOBAL_LIST_EMPTY(gesteleanchor)
 /obj/structure/geseundae_attack_anchor_aoe
 	name = ""
 	desc = ""
-	icon = 'icons/mob/mob.dmi'
-	icon_state = "marker-blue"
+	icon = null
+	icon_state = ""
 	density = FALSE
 	mouse_opacity = 0
 	opacity = FALSE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
-/obj/structure/geseundae_attack_anchor_secondslash/Initialize()
+/obj/structure/geseundae_attack_anchor_aoe/Initialize()
 	. = ..()
 	GLOB.gesaoeanchor += src
 
 /obj/structure/geseundae_attack_teleanchor
 	name = ""
 	desc = ""
-	icon = 'icons/mob/mob.dmi'
-	icon_state = "marker-red"
+	icon = null
+	icon_state = ""
 	density = FALSE
 	mouse_opacity = 0
 	opacity = FALSE
