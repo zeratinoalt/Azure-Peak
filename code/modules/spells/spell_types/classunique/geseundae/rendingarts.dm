@@ -1,4 +1,4 @@
-//mutliple 4x4 aoes that spring up at random
+//mutliple 5x5 aoes that spring up at random
 //use anchor objs for the attack plotting
 
 /datum/action/cooldown/spell/rendingarts
@@ -6,7 +6,6 @@
 	name = "Rending Arts"
 	desc = "randomized aoes"
 	button_icon_state = "rendingarts"
-	sound = 'sound/foley/geseundae/drawspecial.ogg'
 	spell_color = GLOW_COLOR_GESEUNDAE
 
 	cast_range = SPELL_RANGE_PROJECTILE
@@ -21,7 +20,7 @@
 	charge_time = CHARGETIME_POKE
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/foley/geseundae/drawloop.ogg'
-	cooldown_time = 20 MINUTES
+	cooldown_time = 30 SECONDS
 
 	associated_skill = /datum/skill/combat/swords
 	spell_tier = 6
@@ -40,58 +39,37 @@
 	var/obj/item/rogueweapon/sword/sabre/geseundae/held_weapon = owner.get_active_held_item()
 	var/turf/anchorturf
 	var/list/first_slashing_turfs = list()
-	var/list/second_slashing_turfs = list()
 
 	if(!held_weapon)
 		return FALSE
 
-	for(var/obj/structure/geseundae_attack_anchor_aoe/anchor in GLOB.gesanchor1)
+	for(var/obj/structure/geseundae_attack_anchor_aoe/anchor in GLOB.gesaoeanchor)
 		anchorturf = get_turf(anchor)
-		var/turf/dest = get_ranged_target_turf(anchorturf, SOUTH, 12)
 		new /obj/effect/temp_visual/geseundaedecoy(anchorturf, H)
 
-		var/list/first_hit = getline(anchorturf, dest)
+		var/list/first_hit = range(2, anchorturf)
 		first_slashing_turfs += first_hit
 		for(var/turf/path_turf in first_hit)
-			new /obj/effect/temp_visual/geseundae/warning/short(path_turf)
-
-	for(var/mob/living/dings in range(13, H))
-		dings.playsound_local(dings, 'sound/foley/geseundae/drawspecial2.ogg', 100, FALSE)
+			new /obj/effect/temp_visual/geseundae/warning/big(anchorturf)
 
 	H.visible_message(span_userdanger("[H] creates copies of himself, raising the blade!"))
 
-	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, first_slashing_turfs), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, first_slashing_turfs), 1 SECONDS)
+	playsound(H, 'sound/foley/geseundae/drawspecial.ogg', 100, false, 15)
 
 	sleep(1.5 SECONDS)
 
-	for(var/obj/structure/geseundae_attack_anchor_secondslash/anchor in GLOB.gesanchor2)
-		anchorturf = get_turf(anchor)
-		var/turf/dest = get_ranged_target_turf(anchorturf, SOUTH, 12)
-		new /obj/effect/temp_visual/geseundaedecoy(anchorturf, H)
+	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, first_slashing_turfs), 1 SECONDS)
+	playsound(H, 'sound/foley/geseundae/drawspecial2.ogg', 100, false, 15)
 
-		var/list/second_hit = getline(anchorturf, dest)
-		second_slashing_turfs += second_hit
-		for(var/turf/path_turf in second_hit)
-			new /obj/effect/temp_visual/geseundae/warning(path_turf)
-
-	for(var/mob/living/dings in range(13, H))
-		dings.playsound_local(dings, 'sound/foley/geseundae/drawspecial.ogg', 100, FALSE)
-
-	second_slashing_turfs -= first_slashing_turfs
-	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, second_slashing_turfs), 3 SECONDS)
-
-
-/datum/action/cooldown/spell/slashseries/proc/execute_path_strikes(mob/living/carbon/human/user, obj/item/weapon, def_zone, list/slashturfs)
+/datum/action/cooldown/spell/rendingarts/proc/execute_path_strikes(mob/living/carbon/human/user, obj/item/weapon, def_zone, list/slashturfs)
 	if(!user || QDELETED(user))
 		return
 	user.visible_message(span_userdanger("[user] fells the sword!"))
 	for(var/turf/path_turf in slashturfs)
+		new /obj/effect/temp_visual/geseundae/large(path_turf)
 		for(var/mob/living/target in path_turf)
 			if(target == user)
 				continue
 			arcyne_strike(user, target, weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Slash Series", skip_animation = TRUE, skip_message = TRUE)
 			playsound(target, pick(hitsounds), 100, FALSE)
-		new /obj/effect/temp_visual/geseundae/large(path_turf)
-
-
-

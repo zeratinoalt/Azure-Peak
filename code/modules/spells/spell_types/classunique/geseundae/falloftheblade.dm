@@ -58,7 +58,6 @@
 
 	var/mob/living/victim
 
-
 	if(isliving(cast_on))
 		victim = cast_on
 
@@ -172,7 +171,7 @@
 	owner.face_atom(victim)
 	owner.update_icon()
 	dash_to(owner, dest, victim)
-	playsound(H, 'sound/foley/geseundae/slam.ogg', 120, FALSE)
+	playsound(H, 'sound/foley/geseundae/landsmash.ogg', 120, FALSE)
 	playsound(H, 'sound/foley/crimsondragon/gibs.ogg', 100, FALSE)
 	new /obj/effect/temp_visual/geseundae/large/smoke_afterdash(get_turf(victim))
 	for(var/turf/tendrils in range(3, T))

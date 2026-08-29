@@ -25,7 +25,7 @@
 	charge_time = CHARGETIME_POKE
 	charge_slowdown = CHARGING_SLOWDOWN_NONE
 	charge_sound = 'sound/foley/geseundae/drawloop.ogg'
-	cooldown_time = 20 MINUTES
+	cooldown_time = 2 MINUTES
 
 	associated_skill = /datum/skill/combat/swords
 	spell_tier = 6

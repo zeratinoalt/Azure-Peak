@@ -13,9 +13,10 @@
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors)
 "aF" = (
-/obj/structure/roguemachine/crier,
-/turf/open/floor/rogue/tile/harem,
-/area/rogue/indoors)
+/obj/structure/geseundae_attack_anchor_secondslash,
+/obj/structure/geseundae_attack_teleanchor,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors)
 "aO" = (
 /obj/item/millstone{
 	pixel_y = 12
@@ -288,10 +289,6 @@
 /area)
 "im" = (
 /obj/structure/table/vtable/v2,
-/obj/structure/broadcast_horn/loudmouth/guest{
-	pixel_y = 18;
-	dir = 4
-	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "iq" = (
@@ -605,11 +602,6 @@
 /area/rogue/indoors)
 "pV" = (
 /obj/structure/table/vtable,
-/obj/structure/broadcast_horn/loudmouth{
-	pixel_y = 16;
-	dir = 8;
-	broadcaster_tag = "Golden Mouth"
-	},
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors)
 "qI" = (
@@ -1187,11 +1179,6 @@
 /area/rogue/outdoors/woods/north)
 "DG" = (
 /obj/machinery/light/rogue/candle/r,
-/obj/structure/broadcast_horn/paid{
-	dir = 8;
-	pixel_y = 12;
-	broadcaster_tag = "Test Broadcaster 2"
-	},
 /obj/structure/table/wood,
 /turf/open/floor/rogue/tile/harem,
 /area/rogue/indoors)
@@ -1601,7 +1588,6 @@
 /area/rogue/indoors)
 "Pr" = (
 /obj/machinery/light/rogue/firebowl/stump,
-/obj/structure/dungeon_entry/center,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "Px" = (
@@ -1815,9 +1801,6 @@
 /area/rogue/outdoors)
 "VZ" = (
 /obj/structure/closet/crate/chest/old_crate,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
-/obj/item/reagent_containers/food/snacks/egg,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
 /obj/item/reagent_containers/food/snacks/rogue/meat/steak,
@@ -1863,11 +1846,6 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors)
 "WY" = (
-/obj/structure/broadcast_horn/paid{
-	dir = 4;
-	pixel_y = 12;
-	broadcaster_tag = "Test Broadcaster 1"
-	},
 /obj/machinery/light/rogue/candle/l,
 /obj/structure/table/wood,
 /turf/open/floor/rogue/tile/harem,
@@ -2163,7 +2141,7 @@ AO
 zo
 nk
 Nb
-aF
+Ey
 zo
 WY
 zo
@@ -5866,9 +5844,9 @@ gX
 Eq
 eF
 eF
-eF
-eF
 Wx
+eF
+eF
 eF
 eF
 eF
@@ -6019,7 +5997,7 @@ Cf
 gX
 Eq
 eF
-Wx
+eF
 eF
 eF
 eF
@@ -6094,7 +6072,7 @@ sG
 AO
 Cf
 QR
-Jo
+aF
 eF
 eF
 eF
@@ -6102,7 +6080,7 @@ eF
 eF
 eF
 eF
-Wx
+eF
 eF
 eF
 eF
@@ -6252,7 +6230,7 @@ Jo
 eF
 eF
 eF
-Wx
+eF
 eF
 eF
 eF
@@ -6328,13 +6306,13 @@ gX
 Eq
 eF
 eF
+Wx
 eF
 eF
 eF
 eF
 eF
-eF
-eF
+Wx
 eF
 eF
 yK
@@ -6411,7 +6389,7 @@ eF
 eF
 eF
 eF
-Wx
+eF
 eF
 eF
 yK

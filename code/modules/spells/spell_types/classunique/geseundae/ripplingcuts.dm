@@ -32,7 +32,6 @@
 		var/turf/t = pick_n_take(tentacle_loc)
 		new /obj/effect/temp_visual/blood_tentacle/black(t, owner)
 
-
 /datum/action/cooldown/spell/ripplingcuts/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner

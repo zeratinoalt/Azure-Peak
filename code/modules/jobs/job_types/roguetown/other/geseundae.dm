@@ -43,6 +43,7 @@
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bind)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/slashseries)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/rendingarts)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/ripplingcuts)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/falloftheblade)
 
