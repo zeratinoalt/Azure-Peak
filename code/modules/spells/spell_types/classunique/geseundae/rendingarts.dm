@@ -52,15 +52,18 @@
 		for(var/turf/path_turf in first_hit)
 			new /obj/effect/temp_visual/geseundae/warning/big(anchorturf)
 
+	H.say("'Facing Battle, To Slay The Enemy...'")
+	playsound(H, 'sound/foley/geseundae/yieldmyflesh.ogg', 100, FALSE, 15)
+
 	H.visible_message(span_userdanger("[H] creates copies of himself, raising the blade!"))
 
 	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, first_slashing_turfs), 1 SECONDS)
-	playsound(H, 'sound/foley/geseundae/drawspecial.ogg', 100, false, 15)
+	playsound(H, 'sound/foley/geseundae/drawspecial.ogg', 100, FALSE, 15)
 
 	sleep(1.5 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(execute_path_strikes), H, held_weapon, locked_zone, first_slashing_turfs), 1 SECONDS)
-	playsound(H, 'sound/foley/geseundae/drawspecial2.ogg', 100, false, 15)
+	playsound(H, 'sound/foley/geseundae/drawspecial2.ogg', 100, FALSE, 15)
 
 /datum/action/cooldown/spell/rendingarts/proc/execute_path_strikes(mob/living/carbon/human/user, obj/item/weapon, def_zone, list/slashturfs)
 	if(!user || QDELETED(user))

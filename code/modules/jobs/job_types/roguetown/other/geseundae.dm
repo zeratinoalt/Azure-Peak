@@ -36,6 +36,8 @@
 	H.change_stat(STATKEY_WIL, 8)
 	H.change_stat(STATKEY_SPD, 3)
 
+	H.dna.species.soundpack_m = new /datum/voicepack/male/geseundae()
+
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)

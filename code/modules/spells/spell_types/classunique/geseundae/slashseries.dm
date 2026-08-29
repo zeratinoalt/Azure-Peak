@@ -59,6 +59,8 @@
 		for(var/turf/path_turf in first_hit)
 			new /obj/effect/temp_visual/geseundae/warning/short(path_turf)
 
+	H.say("Haah... Blade Dance Under the Blue Moon.")
+	playsound(H, 'sound/foley/geseundae/blade dance.ogg', 100, FALSE, 15)
 	for(var/mob/living/dings in range(13, H))
 		dings.playsound_local(dings, 'sound/foley/geseundae/drawspecial2.ogg', 100, FALSE)
 
