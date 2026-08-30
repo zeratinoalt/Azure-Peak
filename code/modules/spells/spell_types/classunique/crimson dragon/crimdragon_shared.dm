@@ -75,8 +75,8 @@
 /obj/structure/tangleanchor
 	name = ""
 	desc = ""
-	icon = 'icons/mob/mob.dmi'
-	icon_state = "marker-red"
+	icon = null
+	icon_state = ""
 	density = FALSE
 	mouse_opacity = 0
 	opacity = FALSE

@@ -1559,6 +1559,10 @@
 /obj/item/pestle,
 /turf/open/floor/rogue/blocks/newstone/alt,
 /area/rogue/indoors/town/physician)
+"Oi" = (
+/obj/structure/theme_spawner/geseundae,
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors)
 "Oj" = (
 /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled,
 /turf/open/floor/rogue/hay,
@@ -6078,7 +6082,7 @@ eF
 eF
 eF
 eF
-eF
+Oi
 eF
 eF
 eF

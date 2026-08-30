@@ -77,8 +77,8 @@
 	if(M == user)
 		. = ..()
 		return
-	visible_message(span_danger("[user] begins altruistically channeling the crimson aril's power to restore [M]."),
-		span_info("I begin channeling the crimson aril's power into [M] using my own blood."))
+	visible_message(span_danger("[user] begins to infuse the piece into [M]."),
+		span_info("I begin to implant the aril into [M]'s skin, sacrificing some of my blood."))
 	if(!do_mob(user, M, time = 0.6 SECONDS, double_progress = TRUE, can_move = FALSE))
 		return
 	var/mob/living/carbon/human/eater = M

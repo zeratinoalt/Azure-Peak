@@ -269,9 +269,6 @@
 			var/voice_color = familiar_voice_colors[planar_origin]
 			var/new_voice = tgui_color_picker(user, "Choose your character's voice color:", "Voice Color", voice_color)
 			if(new_voice)
-				if(color_hex2num(new_voice) < 230)
-					to_chat(user, "<font color='red'>This voice color is too dark for mortals.</font>")
-					return
 				voice_color = new_voice
 				familiar_voice_colors[planar_origin] = voice_color
 

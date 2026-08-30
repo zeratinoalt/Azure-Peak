@@ -9,7 +9,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
 	var/status_effect_theme = /datum/status_effect/buff/combat_theme
-	var/aura_range = 14
+	var/aura_range = 8
 	var/list/mob/living/affected_mobs = list()
 
 /obj/structure/theme_spawner/Initialize(mapload)
@@ -66,3 +66,9 @@
 
 /datum/status_effect/buff/combat_theme/yourturn
 	combat_theme = 'sound/music/combat_yourturn.ogg'
+
+/obj/structure/theme_spawner/geseundae
+	status_effect_theme = /datum/status_effect/buff/combat_theme/yourturn
+
+/datum/status_effect/buff/combat_theme/geseundae
+	combat_theme = 'sound/music/combat_geseundae.ogg'

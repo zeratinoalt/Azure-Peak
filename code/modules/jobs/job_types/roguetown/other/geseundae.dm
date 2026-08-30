@@ -22,6 +22,7 @@
 	belt = /obj/item/storage/belt/rogue/leather/black/geseundae
 	mouth = /obj/item/clothing/neck/roguetown/collar/geseundae
 	l_hand = /obj/item/rogueweapon/sword/sabre/geseundae
+	id = /obj/item/clothing/ring/geseundae
 
 	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -157,3 +158,70 @@
 	max_integrity = 700
 	wbalance = WBALANCE_SWIFT
 	special = /datum/special_intent/limbguard
+
+
+#define GESAURA_FIRE_ICON 'icons/effects/effects.dmi'
+#define GESAURA_FIRE_STATE "curse"
+#define GESAURA_FILTER "black_rot_glow"
+#define GESOUTLINE_COLOUR "#3b3d44"
+
+/obj/item/clothing/ring/geseundae
+	name = "Resentment (원망)"
+	desc = ""
+	icon_state = null
+	sellprice = 222
+
+/obj/item/clothing/ring/geseundae/equipped(mob/living/user, slot)
+	. = ..()
+	user.AddComponent(/datum/component/geseundae_aura)
+
+//component start
+/datum/component/geseundae_aura
+	dupe_mode = COMPONENT_DUPE_UNIQUE
+	var/mob/living/parent_mob
+
+/datum/component/geseundae_aura/Initialize()
+	. = ..()
+	if(!isliving(parent))
+		return COMPONENT_INCOMPATIBLE
+	parent_mob = parent
+	apply_visuals()
+
+/datum/component/geseundae_aura/proc/apply_visuals()
+	if(!parent_mob)
+		return
+	if(!parent_mob.get_filter(GESAURA_FILTER))
+		parent_mob.add_filter(GESAURA_FILTER, 2, list(
+			"type" = "outline",
+			"color" = GESOUTLINE_COLOUR,
+			"alpha" = 10,
+			"size" = 1,
+		))
+
+	var/mutable_appearance/new_fire_overlay = mutable_appearance(GESAURA_FIRE_ICON, GESAURA_FIRE_STATE, -BLACK_ROT_LAYER)
+	new_fire_overlay.color = list(0.4,0.15,0.15, 0.15,0.4,0.15, 0.15,0.15,0.4, 0,0,0)
+	new_fire_overlay.appearance_flags = RESET_COLOR
+	parent_mob.overlays_standing[BLACK_ROT_LAYER] = new_fire_overlay
+	parent_mob.apply_overlay(BLACK_ROT_LAYER)
+
+
+/datum/component/geseundae_aura/Destroy()
+	remove_visuals()
+	return ..()
+
+/datum/component/geseundae_aura/proc/remove_visuals()
+	if(!parent_mob)
+		return
+	parent_mob.remove_filter(GESAURA_FILTER)
+	parent_mob.remove_overlay(BLACK_ROT_LAYER)
+
+/obj/item/clothing/ring/geseundae/dropped(mob/living/user)
+	..()
+	var/datum/component/auracom = GetComponent(/datum/component/geseundae_aura)
+	if(auracom)
+		auracom.ClearFromParent()
+
+#undef GESAURA_FIRE_ICON
+#undef GESAURA_FIRE_STATE
+#undef GESAURA_FILTER
+#undef GESOUTLINE_COLOUR

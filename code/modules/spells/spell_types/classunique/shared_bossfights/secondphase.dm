@@ -127,10 +127,10 @@
 	parent_mob.remove_overlay(BLACK_ROT_LAYER)
 
 /obj/item/clothing/ring/aura/dropped(mob/living/user)
-	. = ..()
+	..()
 	var/datum/component/auracom = GetComponent(/datum/component/aura)
 	if(auracom)
-		auracom.Destroy()
+		auracom.ClearFromParent()
 
 #undef AURA_FIRE_ICON
 #undef AURA_FIRE_STATE

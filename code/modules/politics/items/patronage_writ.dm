@@ -23,7 +23,7 @@
 
 /obj/item/patronage_writ/examine(mob/user)
 	. = ..()
-	. += span_info("Signed by [issuer_name || "an unknown hand"], [issuer_year || CALENDAR_EPOCH_YEAR]. Use in hand to claim agency of [faction_label].")
+	. += span_info("Signed by [issuer_name || "an unknown hand"], [issuer_year || CALENDAR_EPOCH_YEAR].")
 
 /obj/item/patronage_writ/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))

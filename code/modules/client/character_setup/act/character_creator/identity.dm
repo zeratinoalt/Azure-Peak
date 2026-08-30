@@ -58,9 +58,6 @@
 		if("voice_color")
 			var/new_voice = tgui_color_picker(user, "Choose your character's voice color:", "Voice Color", voice_color)
 			if(new_voice)
-				if(color_hex2num(new_voice) < 230)
-					to_chat(user, span_warning("This voice color is too dark for mortals."))
-					return
 				verbose_pref_log_change(user, "notice", "Voice Color", voice_color, new_voice)
 				voice_color = new_voice
 			return CHARACTER_ACT_DATA_UPDATE
