@@ -12,6 +12,12 @@
 #define MATERIAL_SOURCE_FOREIGN_EXPORT "Foreign Export"
 #define MATERIAL_SOURCE_BLACK_MARKET "Black Market"
 
+// For material flows
+#define STATS_COMMISSION_MAMMONS_PAID "commission_mammons_paid"
+#define STATS_SCRAP_MAMMONS_PAID "scrap_mammons_paid"
+#define STATS_MATERIAL_UNITS_IN "material_units_in"
+#define STATS_MATERIAL_UNITS_OUT "material_units_out"
+
 GLOBAL_LIST_INIT(material_flow_columns, list(
 	list("code" = "DOM", "label" = MATERIAL_SOURCE_DOMESTIC, "dir" = MATERIAL_FLOW_IN),
 	list("code" = "SCR", "label" = MATERIAL_SOURCE_SCRAP, "dir" = MATERIAL_FLOW_IN),

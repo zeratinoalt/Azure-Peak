@@ -122,11 +122,7 @@
 #define STATS_BLOCKADES_CLEARED "blockades_cleared"
 #define STATS_BLOCKADE_CONTRACTS_FAILED "blockade_contracts_failed"
 #define STATS_BLOCKADE_REWARDS_PAID "blockade_rewards_paid"
-// For material flows
-#define STATS_COMMISSION_MAMMONS_PAID "commission_mammons_paid"
-#define STATS_SCRAP_MAMMONS_PAID "scrap_mammons_paid"
-#define STATS_MATERIAL_UNITS_IN "material_units_in"
-#define STATS_MATERIAL_UNITS_OUT "material_units_out"
+
 
 // Influence related statistics
 
