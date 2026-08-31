@@ -13,6 +13,12 @@
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
+"bx" = (
+/obj/structure/mineral_door/wood/red{
+	name = "Nuanxiangwu Palace"
+	},
+/turf/closed/basic,
+/area/rogue)
 "bM" = (
 /turf/open/floor/rogue/underworld/space/quiet,
 /area/rogue)
@@ -61,7 +67,9 @@
 /turf/open/water/pond,
 /area/rogue)
 "cV" = (
-/obj/structure/fluff/statue/knightalt/r,
+/obj/structure/fluff/statue/knightalt/r{
+	name = "The Right Hand of Orlando"
+	},
 /turf/open/floor/rogue/concrete,
 /area/rogue)
 "dr" = (
@@ -74,6 +82,14 @@
 	pixel_y = -7
 	},
 /turf/open/floor/rogue/herringbone,
+/area/rogue)
+"dL" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/obj/structure/fluff/statue/gargoyle/candles,
+/turf/open/floor/rogue/tile,
 /area/rogue)
 "dM" = (
 /obj/structure/fluff/walldeco/vinez,
@@ -534,8 +550,8 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue)
 "nZ" = (
-/obj/structure/winch{
-	gid = "seaofstars"
+/obj/structure/mineral_door/wood/violet{
+	name = "Dahuating Gate"
 	},
 /turf/closed/basic,
 /area/rogue)
@@ -746,6 +762,10 @@
 "rI" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue)
+"rW" = (
+/obj/machinery/light/rogue/candle/weak,
+/turf/open/floor/rogue/blocks,
+/area/rogue)
 "sa" = (
 /turf/open/floor/rogue/cobble,
 /area/rogue)
@@ -777,8 +797,14 @@
 /turf/open/floor/rogue/grass,
 /area/rogue)
 "tb" = (
-/obj/structure/fluff/statue/knightalt,
+/obj/structure/fluff/statue/knightalt{
+	name = "The Left Hand of Orlando"
+	},
 /turf/open/floor/rogue/concrete,
+/area/rogue)
+"tk" = (
+/obj/machinery/light/rogue/candle/weak,
+/turf/open/floor/rogue/tile,
 /area/rogue)
 "tB" = (
 /obj/structure/stairs/stone{
@@ -929,6 +955,15 @@
 /area/rogue)
 "vi" = (
 /turf/open/floor/rogue/churchrough,
+/area/rogue)
+"vJ" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/obj/structure/fluff/statue/gargoyle/candles,
+/obj/machinery/light/rogue/candle/weak/r,
+/turf/open/floor/rogue/tile,
 /area/rogue)
 "wd" = (
 /obj/effect/decal/edge{
@@ -1158,7 +1193,15 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "Br" = (
-/turf/closed/mineral/rogue/bedrock,
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/tile,
 /area/rogue)
 "Bw" = (
 /obj/effect/decal/edge{
@@ -1215,6 +1258,12 @@
 /area/rogue)
 "Cj" = (
 /turf/open/floor/rogue/herringbone,
+/area/rogue)
+"Cp" = (
+/obj/structure/mineral_door/wood{
+	name = "Yang-Jing District"
+	},
+/turf/open/floor/rogue/tile,
 /area/rogue)
 "CV" = (
 /obj/structure/fluff/walldeco/church/line{
@@ -1514,6 +1563,10 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue)
+"JR" = (
+/obj/machinery/light/rogue/candle/weak,
+/turf/open/floor/carpet/royalblack,
+/area/rogue)
 "JW" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f"
@@ -1528,6 +1581,9 @@
 /obj/effect/decal/edge_corner{
 	color = "#3f3f3f";
 	dir = 8
+	},
+/obj/machinery/light/rogue/candle/weak{
+	pixel_y = -32
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue)
@@ -1702,11 +1758,15 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "OT" = (
-/obj/structure/gate{
-	gid = ssssssss;
-	redstone_id = "seaofstars"
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
 	},
-/turf/closed/basic,
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 1
+	},
+/turf/open/floor/rogue/tile,
 /area/rogue)
 "Pn" = (
 /obj/structure/fluff/statue/knight/r,
@@ -1856,6 +1916,7 @@
 	color = "#3f3f3f";
 	dir = 10
 	},
+/obj/machinery/light/rogue/candle/weak,
 /turf/open/floor/rogue/tile,
 /area/rogue)
 "TK" = (
@@ -2171,6 +2232,7 @@
 	color = "#3f3f3f";
 	dir = 6
 	},
+/obj/machinery/light/rogue/candle/weak,
 /turf/open/floor/rogue/tile,
 /area/rogue)
 "ZM" = (
@@ -3534,10 +3596,10 @@ xP
 bM
 bM
 bM
-yp
-yp
-yp
-yp
+bM
+bM
+bM
+bM
 bM
 "}
 (7,1,1) = {"
@@ -3761,10 +3823,10 @@ bM
 bM
 xP
 bM
-yp
-yp
-yp
-yp
+bM
+bM
+bM
+bM
 bM
 "}
 (8,1,1) = {"
@@ -3988,10 +4050,10 @@ bM
 xP
 mB
 xP
-yp
-yp
-yp
-yp
+bM
+bM
+bM
+bM
 bM
 "}
 (9,1,1) = {"
@@ -4215,10 +4277,10 @@ bM
 bM
 xP
 bM
-yp
-yp
-yp
-yp
+bM
+bM
+bM
+bM
 bM
 "}
 (10,1,1) = {"
@@ -5116,12 +5178,12 @@ HO
 HO
 xf
 xf
-xf
-xf
-xf
-xf
-xf
-xf
+uP
+uP
+bM
+bM
+bM
+bM
 bM
 bM
 bM
@@ -5348,7 +5410,7 @@ bM
 bM
 bM
 bM
-xf
+bM
 bM
 bM
 bM
@@ -5575,7 +5637,7 @@ bM
 bM
 xP
 bM
-xf
+bM
 bM
 bM
 bM
@@ -5802,9 +5864,9 @@ bM
 bM
 bM
 bM
-xf
-xf
-xf
+uP
+uP
+uP
 xf
 xf
 xf
@@ -6034,8 +6096,8 @@ RC
 QX
 xf
 yx
-xf
-Br
+uP
+yp
 "}
 (18,1,1) = {"
 yp
@@ -6236,7 +6298,7 @@ uP
 vi
 vi
 uP
-bM
+yp
 xf
 fC
 LR
@@ -6261,8 +6323,8 @@ nG
 nG
 xf
 yx
-xf
-Br
+uP
+yp
 "}
 (19,1,1) = {"
 yp
@@ -6463,7 +6525,7 @@ uP
 uP
 uP
 uP
-bM
+yp
 xf
 QT
 mk
@@ -6488,8 +6550,8 @@ Xz
 Rg
 Se
 yx
-xf
-Br
+uP
+yp
 "}
 (20,1,1) = {"
 yp
@@ -6686,11 +6748,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 xf
 uW
 Eu
@@ -6714,9 +6776,9 @@ xf
 xf
 xf
 xf
-yx
+JR
 xf
-Br
+yp
 "}
 (21,1,1) = {"
 yp
@@ -6913,11 +6975,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 uP
 pa
 JW
@@ -6943,7 +7005,7 @@ QX
 xf
 yx
 xf
-Br
+yp
 "}
 (22,1,1) = {"
 yp
@@ -7140,11 +7202,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 uP
 nG
 yU
@@ -7164,13 +7226,13 @@ bM
 bM
 bM
 xP
-xf
+uP
 nG
 nG
 xf
 yx
 xf
-Br
+yp
 "}
 (23,1,1) = {"
 yp
@@ -7367,11 +7429,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 xf
 xf
 yU
@@ -7391,13 +7453,13 @@ bM
 bM
 bM
 bM
-xf
+uP
 Xz
 Rg
 Se
 yx
-xf
-Br
+uP
+yp
 "}
 (24,1,1) = {"
 yp
@@ -7594,11 +7656,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 qn
 xf
 ZM
@@ -7618,13 +7680,13 @@ bM
 xP
 bM
 bM
+uP
 xf
 xf
 xf
-xf
-yx
-xf
-Br
+JR
+uP
+yp
 "}
 (25,1,1) = {"
 yp
@@ -7821,11 +7883,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 qn
 gj
 za
@@ -7848,10 +7910,10 @@ bM
 xf
 RC
 QX
-xf
+uP
 yx
-xf
-Br
+uP
+yp
 "}
 (26,1,1) = {"
 yp
@@ -8048,11 +8110,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 xf
 li
 za
@@ -8066,8 +8128,8 @@ FV
 tK
 PS
 xf
-xf
-xf
+qn
+qn
 lU
 lU
 lU
@@ -8075,10 +8137,10 @@ xf
 xf
 nG
 nG
-xf
+uP
 yx
 xf
-Br
+yp
 "}
 (27,1,1) = {"
 yp
@@ -8275,11 +8337,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 aH
 TK
 Cd
@@ -8298,14 +8360,14 @@ dF
 GF
 cH
 or
-xf
-xf
+uP
+uP
 Xz
 Rg
 Se
 yx
 xf
-Br
+yp
 "}
 (28,1,1) = {"
 yp
@@ -8502,11 +8564,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 uP
 Dm
 XZ
@@ -8526,13 +8588,13 @@ Cj
 Cj
 Cj
 Cj
+uP
 xf
 xf
 xf
+JR
 xf
-yx
-xf
-Br
+yp
 "}
 (29,1,1) = {"
 yp
@@ -8729,11 +8791,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 aH
 ui
 Gg
@@ -8756,10 +8818,10 @@ Cj
 xf
 RC
 QX
-xf
+uP
 yx
 xf
-Br
+yp
 "}
 (30,1,1) = {"
 yp
@@ -8956,11 +9018,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 xf
 Of
 za
@@ -8980,13 +9042,13 @@ Cj
 YY
 Iw
 yK
-xf
+qn
 nG
 nG
-xf
+uP
 yx
 xf
-Br
+yp
 "}
 (31,1,1) = {"
 yp
@@ -9183,11 +9245,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 qn
 gj
 za
@@ -9207,13 +9269,13 @@ Cj
 YY
 mc
 ph
-xf
+qn
 Xz
 Rg
 Se
 yx
-xf
-Br
+uP
+yp
 "}
 (32,1,1) = {"
 yp
@@ -9410,11 +9472,11 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
 qn
 uP
 uP
@@ -9434,13 +9496,13 @@ Cj
 YY
 Iw
 yK
+qn
 xf
 xf
 xf
-xf
-yx
-xf
-Br
+JR
+uP
+yp
 "}
 (33,1,1) = {"
 yp
@@ -9637,23 +9699,23 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
 xf
 yO
 JJ
@@ -9661,13 +9723,13 @@ Cj
 YY
 mc
 ph
-xf
+qn
 RC
 QX
 xf
 yx
-xf
-Br
+uP
+yp
 "}
 (34,1,1) = {"
 yp
@@ -9864,24 +9926,24 @@ yp
 yp
 yp
 yp
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
+yp
+yp
+yp
+yp
 xf
+xf
+uP
+uP
+uP
+uP
+xf
+uP
+yp
+yp
+yp
+yp
+yp
+uP
 Cj
 Cj
 Cj
@@ -9893,8 +9955,8 @@ nG
 nG
 xf
 yx
-xf
-Br
+uP
+yp
 "}
 (35,1,1) = {"
 yp
@@ -10095,20 +10157,20 @@ yp
 yp
 yp
 yp
+xf
+Hf
+Hf
+xf
+Hf
+uN
+Hf
+uP
 yp
 yp
-bM
-bM
-bM
-bM
-bM
-bM
-bM
-bM
 xf
 xf
-xf
-xf
+uP
+uP
 Cj
 Cj
 Cj
@@ -10121,7 +10183,7 @@ Rg
 Se
 yx
 xf
-Br
+yp
 "}
 (36,1,1) = {"
 yp
@@ -10322,17 +10384,17 @@ yp
 yp
 yp
 yp
+xf
+Hf
+Hf
+Cp
+Hf
+Hf
+Hf
+xf
 yp
 yp
-xf
-xf
-xf
-xf
-xf
-xf
-bM
-bM
-xf
+uP
 ZL
 NE
 kL
@@ -10341,14 +10403,14 @@ UF
 NY
 Kg
 xf
+qn
+qn
 xf
 xf
 xf
+JR
 xf
-xf
-yx
-xf
-Br
+yp
 "}
 (37,1,1) = {"
 yp
@@ -10549,17 +10611,17 @@ yp
 yp
 yp
 yp
-yp
-yp
+uP
+Hf
+Hf
 xf
+Hf
+Hf
+Hf
+qn
 yp
 yp
-yp
-yp
-xf
-bM
-bM
-xf
+uP
 Ss
 eU
 fB
@@ -10575,7 +10637,7 @@ yx
 yx
 yx
 xf
-Br
+yp
 "}
 (38,1,1) = {"
 yp
@@ -10776,14 +10838,14 @@ yp
 yp
 yp
 yp
-yp
-nZ
+uP
 xf
-nZ
-yp
-yp
-yp
 xf
+xf
+tk
+Hf
+Hf
+qn
 xf
 xf
 xf
@@ -10802,7 +10864,7 @@ yx
 yx
 yx
 xf
-Br
+yp
 "}
 (39,1,1) = {"
 yp
@@ -11003,17 +11065,17 @@ yp
 yp
 yp
 yp
+uP
 yp
 yp
-OT
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+xf
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
 mm
 cV
 AM
@@ -11029,7 +11091,7 @@ xf
 xf
 ly
 xf
-Br
+yp
 "}
 (40,1,1) = {"
 yp
@@ -11230,17 +11292,17 @@ yp
 yp
 yp
 yp
+uP
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+nZ
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
 mm
 nG
 nG
@@ -11256,7 +11318,7 @@ xf
 Md
 wd
 xf
-Br
+yp
 "}
 (41,1,1) = {"
 yp
@@ -11457,17 +11519,17 @@ yp
 yp
 yp
 yp
+xf
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+xf
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
+Hf
 mm
 tb
 fB
@@ -11478,12 +11540,12 @@ RV
 tB
 oH
 oH
-xf
+uP
 xf
 oC
 yx
-xf
-Br
+uP
+yp
 "}
 (42,1,1) = {"
 yp
@@ -11684,17 +11746,17 @@ yp
 yp
 yp
 yp
-yp
-yp
-xf
-yp
-yp
-yp
-yp
 xf
 xf
 xf
 xf
+tk
+Hf
+Hf
+xf
+qn
+qn
+qn
 Ss
 eU
 kU
@@ -11705,12 +11767,12 @@ xe
 DZ
 Si
 Hf
-xf
+uP
 xf
 zd
 ol
-xf
-Br
+uP
+yp
 "}
 (43,1,1) = {"
 yp
@@ -11911,16 +11973,16 @@ yp
 yp
 yp
 yp
+qn
 yp
 yp
 xf
-yp
-yp
-yp
-yp
+Hf
+Hf
+Hf
 xf
-bM
-bM
+yp
+yp
 xf
 Ss
 eU
@@ -11932,12 +11994,12 @@ OR
 FV
 ct
 Hf
+uP
 xf
 xf
 xf
-xf
-xf
-Br
+uP
+yp
 "}
 (44,1,1) = {"
 yp
@@ -12138,25 +12200,25 @@ yp
 yp
 yp
 yp
+qn
 yp
 yp
+bx
+Hf
+Hf
+Hf
 xf
-xf
-xf
-xf
-xf
-xf
-bM
-bM
+yp
+yp
 xf
 Ty
-jw
-jw
+dL
+Br
 kZ
 UX
 kZ
-jw
-jw
+OT
+vJ
 jw
 Hf
 xf
@@ -12164,7 +12226,7 @@ xf
 xf
 xf
 xf
-Br
+yp
 "}
 (45,1,1) = {"
 yp
@@ -12365,33 +12427,33 @@ yp
 yp
 yp
 yp
+qn
 yp
 yp
+xf
+Hf
+hM
+Hf
+xf
 yp
-Br
-bM
-bM
-bM
-bM
-bM
 xf
 xf
-xf
-xf
-xf
+uP
+uP
+uP
 xf
 dr
+qn
+qn
 xf
-xf
-Hf
-Hf
-Hf
+uP
+uP
 xf
 xf
 lV
-Br
-Br
-Br
+yp
+yp
+yp
 "}
 (46,1,1) = {"
 yp
@@ -12592,14 +12654,14 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-Br
-bM
-bM
-bM
-bM
+qn
+qn
+xf
+xf
+qn
+qn
+qn
+xf
 xf
 xP
 xP
@@ -12610,15 +12672,15 @@ dr
 dr
 dr
 xf
-xf
-xf
-xf
+yp
+yp
+yp
 xf
 xP
 xP
 xf
-Br
-Br
+yp
+yp
 "}
 (47,1,1) = {"
 yp
@@ -12822,10 +12884,10 @@ yp
 yp
 yp
 yp
-Br
-bM
-bM
-bM
+yp
+yp
+yp
+yp
 xf
 xP
 xP
@@ -12833,7 +12895,7 @@ xP
 xP
 xP
 xf
-dr
+rW
 dr
 dr
 xf
@@ -12845,7 +12907,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (48,1,1) = {"
 yp
@@ -13049,8 +13111,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xf
 xf
@@ -13072,7 +13134,7 @@ xP
 xP
 xP
 lV
-Br
+yp
 "}
 (49,1,1) = {"
 yp
@@ -13276,8 +13338,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -13299,7 +13361,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (50,1,1) = {"
 yp
@@ -13503,8 +13565,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 lV
 xP
 xP
@@ -13526,7 +13588,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (51,1,1) = {"
 yp
@@ -13730,8 +13792,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -13753,7 +13815,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (52,1,1) = {"
 yp
@@ -13957,8 +14019,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -13980,7 +14042,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (53,1,1) = {"
 yp
@@ -14184,8 +14246,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -14207,7 +14269,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (54,1,1) = {"
 yp
@@ -14411,8 +14473,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -14434,7 +14496,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (55,1,1) = {"
 yp
@@ -14638,8 +14700,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 lV
 xP
 xP
@@ -14661,7 +14723,7 @@ xP
 xP
 xP
 lV
-Br
+yp
 "}
 (56,1,1) = {"
 yp
@@ -14865,8 +14927,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 mg
 xP
 xP
@@ -14888,7 +14950,7 @@ xP
 xP
 xP
 lV
-Br
+yp
 "}
 (57,1,1) = {"
 yp
@@ -15092,8 +15154,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 lV
 xP
 xP
@@ -15115,7 +15177,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (58,1,1) = {"
 yp
@@ -15319,8 +15381,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -15342,7 +15404,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (59,1,1) = {"
 yp
@@ -15546,8 +15608,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -15569,7 +15631,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (60,1,1) = {"
 yp
@@ -15773,8 +15835,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -15796,7 +15858,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (61,1,1) = {"
 yp
@@ -16000,8 +16062,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -16023,7 +16085,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (62,1,1) = {"
 yp
@@ -16227,8 +16289,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 lV
 xP
 xP
@@ -16250,7 +16312,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (63,1,1) = {"
 yp
@@ -16454,8 +16516,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -16477,7 +16539,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (64,1,1) = {"
 yp
@@ -16681,8 +16743,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -16704,7 +16766,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (65,1,1) = {"
 yp
@@ -16908,8 +16970,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -16931,7 +16993,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (66,1,1) = {"
 yp
@@ -17135,8 +17197,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -17158,7 +17220,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (67,1,1) = {"
 yp
@@ -17362,8 +17424,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 lV
 xP
 xP
@@ -17385,7 +17447,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (68,1,1) = {"
 yp
@@ -17589,8 +17651,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -17612,7 +17674,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (69,1,1) = {"
 yp
@@ -17816,8 +17878,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -17839,7 +17901,7 @@ xP
 xP
 xP
 lV
-Br
+yp
 "}
 (70,1,1) = {"
 yp
@@ -18043,8 +18105,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -18066,7 +18128,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (71,1,1) = {"
 yp
@@ -18270,8 +18332,8 @@ yp
 yp
 yp
 yp
-Br
-Br
+yp
+yp
 xf
 xP
 xP
@@ -18293,7 +18355,7 @@ xP
 xP
 xP
 xf
-Br
+yp
 "}
 (72,1,1) = {"
 yp
@@ -18497,9 +18559,9 @@ yp
 yp
 yp
 yp
-Br
-Br
-Br
+yp
+yp
+yp
 xf
 xP
 xP
@@ -18519,8 +18581,8 @@ xP
 xP
 xP
 lV
-Br
-Br
+yp
+yp
 "}
 (73,1,1) = {"
 yp
@@ -18724,10 +18786,10 @@ yp
 yp
 yp
 yp
-Br
-Br
-Br
-Br
+yp
+yp
+yp
+yp
 xf
 xf
 lV
@@ -18745,9 +18807,9 @@ lV
 xf
 xf
 xf
-Br
-Br
-Br
+yp
+yp
+yp
 "}
 (74,1,1) = {"
 yp
@@ -18951,30 +19013,30 @@ yp
 yp
 yp
 yp
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
-Br
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
+yp
 "}
 (75,1,1) = {"
 yp
