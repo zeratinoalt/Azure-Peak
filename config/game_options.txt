@@ -433,12 +433,11 @@ ROUNDSTART_RACES tiefling
 ROUNDSTART_RACES tabaxi
 ROUNDSTART_RACES helf
 ROUNDSTART_RACES elfw
-ROUNDSTART_RACES elfd
 ROUNDSTART_RACES elfc
+ROUNDSTART_RACES elfd
 ROUNDSTART_RACES halforc 
 ROUNDSTART_RACES aasimar
 ROUNDSTART_RACES dullahan
-ROUNDSTART_RACES ooze
 
 ## Races that are a meme and should not be accessible in normal gameplay, unless you are insane
 #ROUNDSTART_RACES goblin
@@ -562,9 +561,6 @@ MICE_ROUNDSTART 0
 
 ## Determines if players are allowed to print integrated circuits, uncomment to allow.
 #IC_PRINTING
-
-## Uncomment to disable human moods.
-DISABLE_HUMAN_MOOD
 
 ## Enable night shifts ##
 ENABLE_NIGHT_SHIFTS

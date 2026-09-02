@@ -71,6 +71,10 @@
 "bW" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue/under/underdark/north)
+"bZ" = (
+/mob/living/carbon/human/species/human/halfelf,
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors)
 "cd" = (
 /obj/structure/table/wood{
 	icon_state = "longtable_mid";
@@ -210,6 +214,10 @@
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/bog/north)
+"fZ" = (
+/mob/living/carbon/human/species/human/halfelf,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue/indoors)
 "gP" = (
 /obj/structure/table/cooling,
 /obj/item/storage/roguebag,
@@ -510,6 +518,7 @@
 /area/rogue/indoors)
 "ov" = (
 /obj/machinery/light/rogue/candle/r,
+/mob/living/carbon/human/species/human/halfelf,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "oC" = (
@@ -974,6 +983,11 @@
 /obj/effect/landmark/quest_spawner/defense,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/bog/north)
+"yI" = (
+/mob/living/carbon/human/species/human/halfelf,
+/obj/structure/theme_spawner,
+/turf/open/floor/rogue/concrete,
+/area/rogue/outdoors/woods/north)
 "yK" = (
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors)
@@ -1560,6 +1574,7 @@
 /turf/open/floor/rogue/blocks/newstone/alt,
 /area/rogue/indoors/town/physician)
 "Oi" = (
+/obj/structure/theme_spawner/geseundae,
 /obj/structure/theme_spawner/geseundae,
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors)
@@ -5004,7 +5019,7 @@ xO
 CZ
 Xs
 CZ
-AX
+bZ
 yK
 yK
 vq
@@ -5081,7 +5096,7 @@ Qg
 CZ
 Nt
 CZ
-CZ
+fZ
 yK
 yK
 cY
@@ -5158,7 +5173,7 @@ Ql
 CZ
 aS
 CZ
-CZ
+fZ
 yK
 yK
 cY
@@ -6101,7 +6116,7 @@ SN
 SN
 SN
 SN
-wp
+yI
 SN
 SN
 SN
