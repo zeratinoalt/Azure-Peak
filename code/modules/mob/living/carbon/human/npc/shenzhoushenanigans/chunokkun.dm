@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(chunokkun_aggro, world.file2list("strings/rt/chunokkunlines.txt
 /mob/living/carbon/human/species/human/northern/chunokkun
 	ai_controller = /datum/ai_controller/human_npc
 	d_intent = INTENT_PARRY
-	faction = list(FACTION_CRIMSON_DRAGON, FACTION_STATION)
+	faction = list(FACTION_CHUNOKKUN, FACTION_STATION)
 	ambushable = FALSE
 	dodgetime = 30
 	blood_toll_bucket = STATS_KILLED_GRONNMEN

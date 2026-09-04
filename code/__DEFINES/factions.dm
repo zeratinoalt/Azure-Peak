@@ -26,6 +26,7 @@
 #define FACTION_MADMEN "madmen"
 #define FACTION_PSY_VAULT_GUARD "psy_vault_guard"
 #define FACTION_CRIMSON_DRAGON "crimson_dragon"
+#define FACTION_CHUNOKKUN "chunokkun"
 
 #define FACTION_INFERNAL "infernal"
 #define FACTION_FAE "fae"

@@ -1,4 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"au" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
 "ay" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/fluff/railing/border/north,
@@ -8,12 +15,23 @@
 /obj/item/roguecoin/copper,
 /turf/open/water/pond,
 /area/rogue)
+"aG" = (
+/obj/machinery/light/rogue/firebowl/off,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "aH" = (
 /obj/structure/roguewindow/harem1,
 /turf/open/floor/rogue/concrete,
 /area/rogue)
 "aY" = (
 /turf/closed/wall/mineral/rogue/decowood/vert,
+/area/rogue)
+"bc" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10
+	},
+/mob/living/carbon/human/species/human/northern/chunokkun,
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "bg" = (
 /obj/effect/decal/edge{
@@ -41,6 +59,12 @@
 /obj/structure/fluff/railing/border/north,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue)
+"bp" = (
+/obj/structure/curtain/brown{
+	pixel_x = 32
+	},
+/turf/closed/basic,
+/area/rogue)
 "bs" = (
 /obj/effect/decal/cleanable/dreamfiend_ichor{
 	pixel_x = 5;
@@ -51,6 +75,13 @@
 "bx" = (
 /obj/structure/mineral_door/wood/red{
 	name = "Nuanxiangwu Palace"
+	},
+/turf/closed/basic,
+/area/rogue)
+"by" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 5
 	},
 /turf/closed/basic,
 /area/rogue)
@@ -66,6 +97,15 @@
 	dir = 4
 	},
 /turf/closed/indestructible/rock,
+/area/rogue)
+"bU" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "Thick, blue smoke.";
+	color = "#323470"
+	},
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "bZ" = (
 /obj/structure/fermentation_keg/water,
@@ -123,6 +163,10 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue)
+"dc" = (
+/obj/machinery/light/rogue/firebowl,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "dr" = (
 /turf/open/floor/rogue/blocks,
 /area/rogue)
@@ -144,6 +188,14 @@
 	pixel_y = -7
 	},
 /turf/open/floor/rogue/herringbone,
+/area/rogue)
+"dK" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-e"
+	},
+/mob/living/carbon/human/species/human/northern/chunokkun,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "dL" = (
 /obj/effect/decal/edge{
@@ -194,6 +246,24 @@
 /obj/structure/flora/roguetree/stump/burnt,
 /turf/open/floor/rogue/dirt,
 /area/rogue)
+"eB" = (
+/obj/effect/decal/cobbleedge{
+	dir = 8
+	},
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue)
+"eF" = (
+/mob/living/carbon/human/species/human/northern/crimsonminion,
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
+"eM" = (
+/obj/machinery/light/rogue/firebowl/off,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "eN" = (
 /obj/structure/fluff/railing/border,
 /turf/open/water/cleanshallow,
@@ -204,6 +274,12 @@
 /area/rogue)
 "eU" = (
 /turf/open/floor/rogue/concrete,
+/area/rogue)
+"fd" = (
+/obj/machinery/light/roguestreet/midlamp{
+	pixel_y = 8
+	},
+/turf/open/floor/rogue/dirt,
 /area/rogue)
 "fg" = (
 /obj/effect/wisp/prestidigitation{
@@ -227,6 +303,13 @@
 	},
 /obj/structure/fluff/psycross/copper,
 /turf/open/floor/rogue/concrete,
+/area/rogue)
+"fA" = (
+/obj/effect/decal/cobbleedge,
+/obj/effect/decal/cobbleedge{
+	dir = 5
+	},
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "fB" = (
 /obj/effect/decal/edge_corner{
@@ -345,6 +428,14 @@
 /obj/structure/fluff/walldeco/vinez,
 /obj/structure/fluff/walldeco/vinez/blue,
 /turf/closed/wall/mineral/rogue/decostone/cand,
+/area/rogue)
+"gX" = (
+/obj/structure/fluff/railing/border/north,
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 6
+	},
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "hm" = (
 /obj/structure/chair/bench/church/r{
@@ -477,6 +568,19 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"iM" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "..Sadly, my dears, we may only have seven fighters at a time. The rest are welcome to spectate, however.";
+	color = "#6b6da0"
+	},
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue)
 "iS" = (
 /obj/structure/roguewindow,
 /obj/structure/bars/passage/shutter{
@@ -544,6 +648,15 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue)
+"jD" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "..Sadly, my dears, we may only have seven fighters at a time. The rest are welcome to spectate, however.";
+	color = "#6b6da0"
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue)
 "jF" = (
 /obj/effect/decal/edge_corner{
 	color = "#3f3f3f";
@@ -590,9 +703,17 @@
 	},
 /turf/open/floor/rogue/tile,
 /area/rogue)
+"kj" = (
+/mob/living/carbon/human/species/human/northern/crimsonminion,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "kn" = (
 /obj/structure/flora/roguegrass/water,
 /obj/structure/fluff/railing/corner,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
+"kr" = (
+/obj/machinery/light/rogue/firebowl/standing,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "kv" = (
@@ -837,6 +958,13 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
+"nn" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/closed/indestructible/rock,
+/area/rogue)
 "nw" = (
 /obj/structure/roguewindow/openclose,
 /turf/closed/indestructible/rock,
@@ -851,6 +979,12 @@
 	},
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/rogue/churchrough,
+/area/rogue)
+"nA" = (
+/obj/effect/decal/cobbleedge{
+	dir = 6
+	},
+/turf/closed/wall/mineral/rogue/decowood/vert,
 /area/rogue)
 "nB" = (
 /turf/open/floor/rogue/church{
@@ -899,6 +1033,13 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
+/area/rogue)
+"od" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "og" = (
 /turf/open/floor/rogue/church{
@@ -1048,6 +1189,13 @@
 "oJ" = (
 /turf/open/floor/rogue/underworld/space/quiet/dense,
 /area/rogue)
+"oP" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 9
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
 "oY" = (
 /obj/structure/roguewindow/openclose/reinforced,
 /turf/closed/indestructible/rock,
@@ -1058,6 +1206,13 @@
 	},
 /obj/structure/fluff/psycross/copper,
 /turf/open/floor/rogue/concrete,
+/area/rogue)
+"pe" = (
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 1
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue)
 "ph" = (
 /obj/effect/decal/cobbleedge{
@@ -1121,6 +1276,13 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
+"pP" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f"
+	},
+/mob/living/carbon/human/species/human/northern/chunokkun,
+/turf/open/floor/rogue/cobble,
+/area/rogue)
 "pZ" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4
@@ -1159,6 +1321,12 @@
 	},
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue)
+"qX" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-n"
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "re" = (
 /obj/effect/decal/cobbleedge{
 	icon_state = "cobbleedge-n"
@@ -1177,10 +1345,24 @@
 "rI" = (
 /turf/open/floor/rogue/dirt,
 /area/rogue)
+"rJ" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 6
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "rL" = (
 /obj/machinery/light/rogue/firebowl/church,
 /obj/structure/fluff/railing/border/west,
 /turf/open/floor/rogue/concrete,
+/area/rogue)
+"rN" = (
+/obj/structure/table/wood/poor,
+/obj/structure/curtain/brown{
+	pixel_y = 32
+	},
+/turf/closed/basic,
 /area/rogue)
 "rP" = (
 /mob/living/carbon/human/species/human/northern/chunokkun,
@@ -1239,6 +1421,19 @@
 	},
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"sx" = (
+/mob/living/carbon/human/species/human/northern/chunokkun,
+/turf/open/floor/rogue/cobblerock{
+	smooth = 0
+	},
+/area/rogue)
+"sD" = (
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "sO" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -1246,6 +1441,10 @@
 	},
 /obj/structure/flora/newtree,
 /turf/open/floor/rogue/grass,
+/area/rogue)
+"sR" = (
+/mob/living/carbon/human/species/human/northern/crimsonminion,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "sT" = (
 /obj/machinery/light/rogue/firebowl/church,
@@ -1261,6 +1460,15 @@
 "tk" = (
 /obj/machinery/light/rogue/candle/weak,
 /turf/open/floor/rogue/tile,
+/area/rogue)
+"tm" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "Thick, blue smoke.";
+	color = "#323470"
+	},
+/turf/open/water/cleanshallow,
 /area/rogue)
 "tB" = (
 /obj/structure/stairs/stone{
@@ -1361,6 +1569,12 @@
 /obj/structure/table/church/end,
 /turf/open/floor/rogue/concrete,
 /area/rogue)
+"uk" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10
+	},
+/turf/closed/wall/mineral/rogue/decowood/vert,
+/area/rogue)
 "uB" = (
 /obj/structure/bars/grille,
 /turf/open/floor/rogue/hexstone,
@@ -1458,6 +1672,13 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
+"wi" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-e"
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "wo" = (
 /obj/structure/flora/roguegrass,
 /obj/structure/flora/ausbushes/brflowers,
@@ -1467,9 +1688,32 @@
 /obj/machinery/light/rogue/candle/l,
 /turf/open/floor/rogue/tile/brick,
 /area/rogue)
+"wv" = (
+/obj/machinery/light/roguestreet{
+	dir = 2
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
 "wB" = (
 /obj/structure/fluff/railing/corner/south_west,
 /turf/open/water/cleanshallow,
+/area/rogue)
+"wD" = (
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-sread";
+	pixel_x = -9;
+	pixel_y = -7
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-sread";
+	pixel_x = 22;
+	pixel_y = -7
+	},
+/obj/effect/decal/cobbleedge{
+	icon_state = "cobbleedge-n";
+	pixel_y = 7
+	},
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "wH" = (
 /obj/structure/table/wood/fancy/green,
@@ -1521,6 +1765,12 @@
 /obj/structure/fluff/railing/border/north,
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"xr" = (
+/obj/effect/decal/cobbleedge{
+	dir = 8
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "xs" = (
 /obj/structure/flagpole,
 /turf/open/floor/rogue/dirt/road,
@@ -1533,6 +1783,14 @@
 "xF" = (
 /obj/structure/flora/roguegrass,
 /turf/open/floor/rogue/dirt,
+/area/rogue)
+"xM" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	pixel_y = 1
+	},
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue)
 "xN" = (
 /obj/structure/table/church/m,
@@ -1694,6 +1952,12 @@
 /obj/item/bedsheet/rogue/fabric_double,
 /turf/open/floor/carpet/royalblack,
 /area/rogue)
+"zn" = (
+/obj/structure/table/wood/poor,
+/obj/structure/mineral_door/wood/deadbolt/shutter,
+/obj/structure/fluff/canopy,
+/turf/closed/indestructible/rock,
+/area/rogue)
 "zr" = (
 /obj/structure/mineral_door/wood/fancywood{
 	locked = 1;
@@ -1737,6 +2001,13 @@
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
+"Ae" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/naturalstone,
+/area/rogue)
 "An" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -1769,6 +2040,13 @@
 /obj/structure/fluff/walldeco/vinez,
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue)
+"Aw" = (
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "AM" = (
 /obj/effect/decal/edge_corner{
 	color = "#3f3f3f";
@@ -1776,9 +2054,26 @@
 	},
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
+"AN" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "AO" = (
 /obj/structure/fluff/littlebanners/bluered,
 /turf/open/floor/rogue/churchmarble,
+/area/rogue)
+"AQ" = (
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 1
+	},
+/obj/machinery/light/roguestreet/midlamp{
+	pixel_y = 8
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue)
 "Bf" = (
 /obj/structure/roguewindow,
@@ -1788,6 +2083,15 @@
 	name = "rusted bars"
 	},
 /turf/open/floor/rogue/concrete,
+/area/rogue)
+"Bi" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "Thick, blue smoke.";
+	color = "#323470"
+	},
+/turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "Bj" = (
 /obj/effect/decal/edge{
@@ -1869,9 +2173,20 @@
 /area/rogue)
 "Cp" = (
 /obj/structure/mineral_door/wood{
-	name = "Yang-Jing District"
+	name = "Yang-Jing Outer District"
 	},
 /turf/open/floor/rogue/tile,
+/area/rogue)
+"Cy" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 5
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue)
+"CB" = (
+/obj/machinery/light/rogue/firebowl,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "CD" = (
 /turf/open/floor/rogue/dark_ice/regular,
@@ -1912,6 +2227,12 @@
 "Db" = (
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/cobble/mossy,
+/area/rogue)
+"Dg" = (
+/obj/structure/fluff/canopy,
+/obj/structure/table/wood/poor,
+/obj/structure/mineral_door/wood/deadbolt/shutter,
+/turf/closed/indestructible/rock,
 /area/rogue)
 "Dm" = (
 /obj/effect/decal/edge{
@@ -2095,6 +2416,13 @@
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
+"Fe" = (
+/obj/structure/mineral_door/wood{
+	lockid = "stall4";
+	name = "stall iv"
+	},
+/turf/closed/indestructible/rock,
+/area/rogue)
 "Fh" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -2138,6 +2466,10 @@
 	},
 /turf/open/floor/rogue/crawl_space,
 /area/rogue)
+"Gc" = (
+/obj/effect/decal/cobbleedge,
+/turf/closed/wall/mineral/rogue/decowood/vert,
+/area/rogue)
 "Gg" = (
 /obj/structure/fluff/pillow/magenta{
 	dir = 8
@@ -2178,9 +2510,24 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/rogue/grass,
 /area/rogue)
+"GM" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/mob/living/carbon/human/species/human/northern/chunokkun,
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "GT" = (
 /obj/structure/roguewindow,
 /turf/open/floor/rogue/concrete,
+/area/rogue)
+"GW" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 9
+	},
+/turf/open/floor/rogue/dirt,
 /area/rogue)
 "He" = (
 /obj/structure/chair/stool/rogue,
@@ -2233,6 +2580,13 @@
 	},
 /turf/open/floor/rogue/blocks,
 /area/rogue)
+"HH" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
 "HI" = (
 /obj/structure/theme_spawner/geseundae,
 /obj/structure/theme_spawner/geseundae,
@@ -2269,6 +2623,23 @@
 "II" = (
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue)
+"IT" = (
+/obj/effect/decal/cobbleedge{
+	dir = 5;
+	pixel_y = 1
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue)
+"IU" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 9
+	},
+/obj/structure/curtain/brown{
+	pixel_x = 32
+	},
+/turf/closed/basic,
+/area/rogue)
 "IX" = (
 /obj/effect/decal/carpet{
 	pixel_x = -2;
@@ -2288,6 +2659,16 @@
 "Ji" = (
 /obj/structure/mineral_door/wood/towner/generic/two_keys/noble,
 /turf/closed/indestructible/rock,
+/area/rogue)
+"Jl" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/obj/structure/stairs{
+	dir = 1
+	},
+/turf/closed/basic,
 /area/rogue)
 "Jr" = (
 /obj/structure/flagpole,
@@ -2335,6 +2716,16 @@
 "JR" = (
 /obj/machinery/light/rogue/candle/weak,
 /turf/open/floor/carpet/royalblack,
+/area/rogue)
+"JV" = (
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/obj/machinery/light/roguestreet/midlamp{
+	pixel_y = 8
+	},
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "JW" = (
 /obj/effect/decal/edge{
@@ -2385,9 +2776,28 @@
 	},
 /turf/open/water/pond,
 /area/rogue)
+"KO" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "Thick, blue smoke.";
+	color = "#323470"
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
+"KR" = (
+/obj/structure/mineral_door/wood/towner/woodworker,
+/turf/closed/indestructible/rock,
+/area/rogue)
 "KU" = (
 /obj/structure/fluff/railing/border/west,
 /turf/open/floor/rogue/dirt/road,
+/area/rogue)
+"Lc" = (
+/obj/effect/decal/cobbleedge{
+	dir = 1
+	},
+/turf/closed/wall/mineral/rogue/decowood/vert,
 /area/rogue)
 "Lf" = (
 /obj/effect/decal/carpet/square/black{
@@ -2398,6 +2808,13 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue)
+"Lq" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/herringbone,
 /area/rogue)
 "LA" = (
 /obj/effect/decal/cleanable/dreamfiend_ichor/large,
@@ -2416,6 +2833,19 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/churchrough,
+/area/rogue)
+"LW" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "..Sadly, my dears, we may only have seven fighters at a time. The rest are welcome to spectate, however.";
+	color = "#6b6da0"
+	},
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/herringbone,
 /area/rogue)
 "LZ" = (
 /obj/structure/fluff/railing/wood/north,
@@ -2444,6 +2874,14 @@
 /obj/item/paper/scroll,
 /obj/item/natural/feather,
 /turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue)
+"Mf" = (
+/obj/effect/decal/cobbleedge{
+	dir = 9;
+	pixel_y = -2
+	},
+/obj/structure/flora/roguegrass,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue)
 "Mj" = (
 /obj/effect/decal/edge{
@@ -2511,6 +2949,10 @@
 	dir = 1
 	},
 /turf/closed/indestructible/rock,
+/area/rogue)
+"ND" = (
+/mob/living/carbon/human/species/human/northern/chunokkun,
+/turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "NE" = (
 /obj/effect/decal/edge{
@@ -2580,8 +3022,11 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "OM" = (
-/obj/structure/fluff/railing/corner,
-/turf/open/floor/rogue/dirt,
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue)
 "OR" = (
 /obj/effect/decal/edge_corner{
@@ -2639,6 +3084,12 @@
 /obj/structure/fluff/walldeco/church/line,
 /turf/open/floor/rogue/concrete,
 /area/rogue)
+"PV" = (
+/obj/structure/curtain/brown{
+	pixel_y = 32
+	},
+/turf/closed/basic,
+/area/rogue)
 "Qi" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -2653,6 +3104,10 @@
 "Ql" = (
 /obj/structure/fluff/railing/corner/south_west,
 /turf/open/floor/rogue/naturalstone,
+/area/rogue)
+"Qn" = (
+/obj/effect/decal/cobbleedge,
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "Qq" = (
 /obj/structure/table/wood/poor,
@@ -2670,10 +3125,26 @@
 	},
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue)
+"Qr" = (
+/obj/machinery/light/rogue/firebowl/off,
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "Qv" = (
 /turf/open/floor/rogue/dirt{
 	dir = 4
 	},
+/area/rogue)
+"QB" = (
+/obj/effect/decal/cobbleedge{
+	dir = 9;
+	pixel_x = 4;
+	pixel_y = -11
+	},
+/obj/effect/decal/cobbleedge{
+	dir = 6;
+	pixel_y = 1
+	},
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue)
 "QD" = (
 /turf/closed/indestructible/rock,
@@ -2751,6 +3222,13 @@
 	dir = 4
 	},
 /turf/open/floor/rogue/blocks,
+/area/rogue)
+"RB" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f"
+	},
+/obj/structure/fluff/railing/corner,
+/turf/open/floor/rogue/cobble,
 /area/rogue)
 "RC" = (
 /obj/structure/closet/crate/roguecloset,
@@ -2930,7 +3408,8 @@
 /obj/effect/oneway/psy_bog{
 	opacity = 1;
 	name = "blue mist";
-	desc = "..Sadly, my dears, we may only have seven fighters at a time."
+	desc = "..Sadly, my dears, we may only have seven fighters at a time. The rest are welcome to spectate, however.";
+	color = "#6b6da0"
 	},
 /turf/closed/basic,
 /area/rogue)
@@ -3019,6 +3498,13 @@
 "Vf" = (
 /turf/closed/wall/mineral/rogue/wooddark,
 /area/rogue)
+"Vl" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/dirt,
+/area/rogue)
 "Vu" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -3036,6 +3522,13 @@
 	locked = 1
 	},
 /turf/open/floor/rogue/ruinedwood/herringbone,
+/area/rogue)
+"VC" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/churchmarble,
 /area/rogue)
 "VF" = (
 /obj/structure/fluff/railing/corner/north_east,
@@ -3057,6 +3550,16 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
+"VX" = (
+/obj/effect/decal/cobbleedge{
+	dir = 8
+	},
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/cobble/mossy,
+/area/rogue)
 "Wa" = (
 /obj/structure/fluff/railing/border/east,
 /obj/structure/fluff/railing/border/west,
@@ -3068,9 +3571,27 @@
 "Wg" = (
 /turf/open/floor/rogue/churchmarble,
 /area/rogue)
+"Wm" = (
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/obj/machinery/light/roguestreet/midlamp{
+	pixel_y = 8
+	},
+/turf/open/floor/rogue/dirt/road,
+/area/rogue)
 "Wu" = (
 /obj/structure/chair/stool/rogue,
 /turf/open/floor/rogue/cobble,
+/area/rogue)
+"Wz" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/mob/living/carbon/human/species/human/northern/chunokkun,
+/turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "WJ" = (
 /turf/closed/wall/mineral/rogue/decowood,
@@ -3230,6 +3751,13 @@
 /obj/structure/bars/grille,
 /turf/open/floor/rogue/blocks,
 /area/rogue)
+"YC" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue)
 "YI" = (
 /obj/structure/mineral_door/wood{
 	locked = 1;
@@ -3259,6 +3787,13 @@
 	pixel_y = -6
 	},
 /turf/open/floor/rogue/herringbone,
+/area/rogue)
+"Za" = (
+/obj/effect/decal/edge_corner{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/cobble,
 /area/rogue)
 "Zd" = (
 /obj/effect/decal/edge{
@@ -3303,6 +3838,13 @@
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue)
+"ZE" = (
+/obj/effect/decal/cobbleedge{
+	dir = 10;
+	icon_state = "cobbleedge-w"
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "ZL" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -3325,6 +3867,9 @@
 	dir = 5
 	},
 /turf/open/floor/rogue/cobble,
+/area/rogue)
+"ZT" = (
+/turf/open/water/swamp,
 /area/rogue)
 "ZY" = (
 /obj/structure/bars/grille,
@@ -4542,10 +5087,10 @@ yp
 yp
 yp
 yp
-QD
-QD
-QD
-QD
+yp
+yp
+yp
+yp
 yp
 yp
 yp
@@ -4767,11 +5312,11 @@ yp
 uM
 yp
 yp
+yp
 QD
 QD
-yp
-yp
-yp
+QD
+QD
 QD
 QD
 QD
@@ -4995,28 +5540,28 @@ uM
 yp
 QD
 QD
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+nn
+QD
+aY
+aY
+aY
+Gc
+TF
+nG
 QD
 QD
 QD
 QD
+Vf
+aY
+bT
+bT
+aY
+bT
+bT
+aY
+Vf
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-QD
-QD
-QD
 yp
 QD
 Vf
@@ -5221,28 +5766,28 @@ yp
 qn
 yp
 QD
+px
+uk
+aY
+aY
+by
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+nA
+TF
+ox
+TF
+TF
+px
+TF
+aY
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aY
 QD
 QD
 QD
@@ -5447,32 +5992,32 @@ yp
 yp
 qn
 QD
+MQ
+px
+aY
 yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+Fe
+rI
+TF
+rI
+px
+TF
+nG
+xf
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+ej
+px
+Sp
+HO
 nw
 DE
 DE
@@ -5484,15 +6029,15 @@ DE
 DE
 DE
 Nq
-yp
+rI
 Vf
 WJ
 WJ
 Vf
-yp
-yp
-yp
-yp
+rI
+rI
+rI
+WJ
 Vf
 WJ
 bT
@@ -5674,32 +6219,32 @@ yp
 yp
 QD
 QD
+MQ
+px
+Rn
+PV
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+Dg
+rI
+TF
+rI
+sR
+TF
+nG
+xf
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aY
+rI
+Sp
+HO
 WJ
 DE
 DE
@@ -5711,15 +6256,15 @@ DE
 DE
 DE
 Nq
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+rI
+px
+px
+px
+rI
+TF
+TF
+rI
+rI
 WJ
 JE
 JE
@@ -5900,33 +6445,33 @@ yp
 yp
 yp
 qn
+MQ
+MQ
+bU
+Rn
+rN
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-Vf
-aY
-bT
-bT
-aY
-bT
-bT
-aY
-Vf
-yp
+zn
+rI
+rI
+rI
+px
+TF
+nG
+xf
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+ej
+TF
+Sp
+HO
 WJ
 DE
 DE
@@ -5938,15 +6483,15 @@ DE
 DE
 DE
 WJ
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+rI
+TF
+TF
+TF
+px
+rI
+TF
+px
+TF
 xf
 JE
 JE
@@ -6127,23 +6672,21 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+tm
+MQ
+px
+Vf
+Vf
+Jl
+IU
+bp
+zn
+TF
+rI
+px
+TF
+rP
+nG
 aY
 DE
 DE
@@ -6153,7 +6696,9 @@ DE
 DE
 DE
 aY
-yp
+rI
+Sp
+HO
 WJ
 DE
 DE
@@ -6165,15 +6710,15 @@ DE
 DE
 DE
 WJ
-yp
-yp
+rI
+TF
 Vf
 WJ
 WJ
 WJ
 Vf
-yp
-yp
+px
+nG
 WJ
 JE
 JE
@@ -6354,24 +6899,22 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-xf
+tm
+MQ
+px
+nG
+Vf
+aY
+Rn
+Rn
+Lc
+TF
+TF
+ND
+nG
+nG
+rI
+Vf
 DE
 DE
 DE
@@ -6379,8 +6922,10 @@ DE
 DE
 DE
 DE
-ej
-yp
+aY
+kr
+Sp
+HO
 Vf
 WJ
 Yc
@@ -6399,8 +6944,8 @@ JE
 JE
 JE
 WJ
-yp
-yp
+rI
+rI
 Vf
 JE
 JE
@@ -6581,41 +7126,41 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-xf
+tm
+MQ
+px
+rI
+TF
+nG
+rI
+rI
+rI
+TF
+px
+nG
+nG
+rI
+nG
+Vf
+Vf
 DE
 DE
 DE
-DE
-DE
-DE
-DE
+Vf
 aY
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-nG
-nG
+aY
+Vf
+TI
+pP
+HO
+eB
+px
+rI
+rI
+rI
+wv
+rI
+rI
 px
 TF
 px
@@ -6626,8 +7171,8 @@ JE
 JE
 JE
 YI
-yp
-yp
+TF
+TF
 WJ
 JE
 JE
@@ -6808,43 +7353,43 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-xf
-DE
-DE
-DE
-DE
+MQ
+tm
+px
+nG
+rI
+TF
+nG
+nG
+nG
+rI
+px
+nG
+rI
+TF
+nG
+wO
+aY
 DE
 DE
 DE
 ej
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-nG
-px
-px
+wq
+cC
+Mc
+gC
+Sp
+HO
+pe
+Cy
 rI
+eF
+px
+TF
+TF
+px
+px
+ox
 TF
 px
 px
@@ -6853,8 +7398,8 @@ JE
 JE
 JE
 WJ
-yp
-yp
+px
+nG
 WJ
 JE
 JE
@@ -7035,53 +7580,53 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+MQ
+MQ
+px
+nG
+rI
+TF
+rI
+TF
+px
+rI
+TF
+nG
+rI
+TF
+nG
+wO
 aY
 DE
 DE
 DE
-DE
-DE
-DE
-DE
-aY
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+zr
+Mu
+wH
+wo
+gC
+Sp
+HO
+HO
+eB
+TF
+px
+rI
+ND
 px
 px
 rI
 rI
 TF
-TF
+ND
 TF
 Vf
 WJ
 WJ
 WJ
 Vf
-yp
-yp
+nG
+nG
 WJ
 JE
 JE
@@ -7262,53 +7807,53 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-Vf
-DE
-DE
-DE
-DE
-DE
-DE
-DE
+tm
+MQ
+px
+nG
+rI
+TF
+rI
+TF
+px
+px
+TF
+rI
+TF
+TF
+rI
+wO
 aY
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+DE
+DE
+DE
+ej
+ei
+NH
+jf
+gX
+Za
+HO
+HO
+Ya
+px
+rI
+TF
+px
 px
 rI
 nG
 TF
 TF
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+rI
+rI
+TF
+rI
+px
+px
+TF
+rI
+nG
 oY
 JE
 JE
@@ -7327,7 +7872,7 @@ TF
 TF
 px
 rI
-TF
+CB
 rI
 eu
 rI
@@ -7489,53 +8034,53 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-Vf
-Vf
-DE
-DE
-DE
-Vf
-aY
-aY
-Vf
-TI
-yp
-yp
+tm
+MQ
+bU
 rI
-yp
-yp
-yp
+nG
+TF
+rI
+TF
+rI
+TF
+rI
+rI
+TF
+rI
+rI
+wO
+Vf
+DE
+DE
+DE
+Vf
+aY
+aY
+Vf
+RB
+sx
+HO
+sx
+Ya
+px
+rI
+TF
+px
 rI
 px
 rP
 TF
 nG
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+rI
+rI
+TF
+TF
+px
+rI
+rI
+rI
+rI
 Rf
 JE
 JE
@@ -7562,7 +8107,7 @@ nG
 nG
 nG
 nG
-nG
+dc
 px
 px
 TF
@@ -7716,53 +8261,53 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+tm
+MQ
+px
+rI
+rI
+TF
+rI
+TF
+rI
+TF
+rI
+px
+TF
+rI
+TF
 wO
 aY
 DE
 DE
 DE
-ej
-wq
-cC
-Mc
-gC
-yp
-yp
+Px
+DE
+DE
+aY
+Sp
+HO
+HO
+VX
+oP
+px
+rI
 TF
-yp
-yp
-yp
+rI
 rI
 px
 rI
 rI
 ox
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+TF
+px
+TF
+px
+rI
+rI
+rI
+TF
+TF
 oY
 JE
 JE
@@ -7943,54 +8488,54 @@ yp
 yp
 yp
 uM
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+tm
+tm
+px
+px
+TF
+px
+px
+rI
+TF
+TF
+rI
+px
+TF
+rI
+TF
 wO
+oY
+DE
+DE
+DE
 aY
 DE
 DE
-DE
-zr
-Mu
-wH
-wo
-gC
-yp
-yp
+ej
+Sp
+HO
+HO
+Ya
 TF
-yp
-yp
-yp
+sR
+rI
+ND
+rI
 TF
 TF
 px
 px
 px
-yp
-yp
+px
+px
 Vf
 WJ
 WJ
 WJ
 Vf
-yp
-yp
-Vf
+rI
+TF
+px
 WJ
 WJ
 Rf
@@ -8170,55 +8715,55 @@ yp
 yp
 yp
 uM
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+tm
+tm
+px
+TF
+rI
+px
+rI
+TF
+TF
+TF
+rI
+px
+px
+rI
+TF
 wO
 aY
 DE
 DE
 DE
-ej
-ei
-NH
-jf
-jK
-yp
-yp
+aY
+DE
+DE
+aY
+Sp
+sx
+HO
+Ya
+TF
+px
+px
 rI
-yp
-yp
-yp
+TF
 TF
 TF
 rI
 TF
 rI
-yp
-yp
+eM
+rI
 WJ
 JE
 JE
 JE
 WJ
-yp
-yp
-yp
-yp
+TF
+px
+px
+TF
 rI
 TF
 rI
@@ -8397,54 +8942,54 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
+tm
+MQ
+px
+TF
+px
+rI
 px
 px
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+nG
+nG
+TF
+rI
+px
+px
+TF
 wO
 Vf
-DE
-DE
-DE
+aY
+uY
+aY
 Vf
 aY
 aY
 Vf
-OM
+Sp
+HO
+HO
+eB
+TF
 px
-yp
-yp
-yp
-yp
-yp
 rI
-rI
+TF
 TF
 rI
 rI
-yp
-yp
+ND
+rI
+rI
+px
+rI
 nw
 JE
 JE
 JE
 YI
-yp
-yp
-yp
+px
+px
+TF
 rI
 TF
 px
@@ -8624,53 +9169,53 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
+tm
+MQ
+px
+rI
 fq
 Wg
-yp
-yp
+TF
+TF
 CD
-yp
+px
 Wg
-yp
-yp
-yp
-yp
-yp
-yp
-wO
-aY
-DE
-DE
-DE
-Px
-DE
-DE
-aY
+rI
 rI
 px
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+TF
+TF
+TF
+rI
+rI
+TF
+TF
+TF
+rJ
+AN
+Za
+HO
+HO
+AQ
+AN
+nG
+AN
+rI
+rI
+au
+rI
+rI
+TF
+TF
+TF
+TF
 WJ
 JE
 JE
 JE
 WJ
-yp
-yp
+px
+TF
 rI
 TF
 px
@@ -8851,9 +9396,9 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
+MQ
+MQ
+px
 fq
 Wg
 og
@@ -8863,41 +9408,41 @@ vi
 Wg
 CD
 Wg
-yp
-yp
-yp
-yp
-yp
-wO
-oY
-DE
-DE
-DE
-aY
-DE
-DE
-ej
-px
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-Vf
-WJ
-WJ
-WJ
-Vf
-yp
 rI
+TF
+rI
+rI
+TF
+TF
+TF
+nG
+rJ
+AN
+Aw
+Cj
+Cj
+Cj
+Cj
+TF
+Cj
+nG
+px
+sR
+TF
+px
+rI
+TF
+TF
+px
+rI
+rI
+Vf
+WJ
+WJ
+WJ
+Vf
+TF
+aG
 TF
 px
 rI
@@ -9078,43 +9623,43 @@ yp
 yp
 yp
 Ua
-yp
-yp
-yp
+MQ
+MQ
+px
 fq
 og
 Wg
-ga
+TF
 Wg
 Wg
 CD
 CD
-yp
-yp
-yp
-yp
-yp
-yp
-wO
-aY
-DE
-DE
-DE
-aY
-DE
-DE
-aY
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+od
+au
+au
+au
+AN
+od
+au
+AN
+au
+JV
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+nG
+nG
+TF
+px
+px
+TF
+rI
+rI
+px
 Vf
 aY
 aY
@@ -9126,7 +9671,7 @@ px
 rI
 rI
 TF
-px
+yJ
 rI
 TF
 nG
@@ -9302,13 +9847,13 @@ eU
 ga
 sT
 MQ
-yp
-yp
-Ua
-yp
-yp
-yp
-yp
+Lq
+Lq
+LW
+Lq
+Lq
+Lq
+Lq
 vi
 og
 vi
@@ -9316,32 +9861,32 @@ CD
 nB
 Wg
 Wg
-yp
-yp
-yp
-yp
-yp
-yp
-wO
-Vf
-aY
-uY
-aY
-Vf
-aY
-aY
-Vf
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+TF
+rI
+nG
+nG
+nG
+Cj
+Cj
+px
+px
+rI
 aY
 JE
 JE
@@ -9350,7 +9895,7 @@ JE
 Rn
 nG
 px
-rI
+ox
 px
 TF
 px
@@ -9529,46 +10074,46 @@ eU
 ga
 ga
 ga
-yp
-yp
-Ua
-yp
-yp
-yp
-yp
-yp
+Cj
+Cj
+jD
+Cj
+Cj
+Cj
+Cj
+Cj
 og
 og
 vi
 Wg
 vi
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+sD
+Wz
+Ae
+fd
+Vl
+rI
+Vl
+HH
+Ae
+HH
+TF
+px
+rI
 aY
 JE
 JE
@@ -9586,7 +10131,7 @@ TF
 px
 rI
 nG
-TF
+ND
 TF
 nG
 TF
@@ -9756,46 +10301,46 @@ eU
 ga
 sT
 MQ
-yp
-yp
-Ua
-yp
-yp
-yp
-yp
+YC
+YC
+iM
+YC
+YC
+YC
+YC
 Wg
 CD
 vi
 CD
 fq
-yp
+TF
 Wg
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-Vf
-aY
-aY
-aY
-aY
-Vf
-Xo
-aY
-aY
-Vf
-yp
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Cj
+Wm
+GM
+GW
+nG
+TF
+TF
+nG
+rI
+px
+px
+px
+TF
+rI
+TF
+rI
 aY
 JE
 JE
@@ -9806,7 +10351,7 @@ nG
 px
 px
 px
-TF
+eF
 px
 px
 rI
@@ -9828,7 +10373,7 @@ TF
 nG
 rI
 rI
-nG
+dc
 nG
 nG
 nG
@@ -9986,9 +10531,9 @@ yp
 yp
 yp
 Ua
-yp
-yp
-yp
+MQ
+MQ
+px
 fq
 CD
 Wg
@@ -9997,32 +10542,32 @@ vi
 Wg
 CD
 CD
-Wg
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-aY
-DE
-DE
-DE
-DE
-DE
-DE
-DE
-DE
-aY
-yp
+VC
+Ae
+HH
+HH
+Vl
+OM
+OM
+OM
+OM
+OM
+OM
+GW
+nG
+rP
+TF
+nG
+nG
+nG
+rI
+TF
+px
+TF
+rI
+rI
+TF
+rI
 Vf
 aY
 JE
@@ -10030,11 +10575,11 @@ aY
 aY
 Vf
 rI
-px
+yJ
 nG
 rI
 nG
-TF
+eF
 TF
 rI
 rI
@@ -10213,9 +10758,9 @@ yp
 yp
 yp
 uM
-yp
-yp
-yp
+tm
+MQ
+px
 fq
 og
 Wg
@@ -10224,10 +10769,10 @@ og
 vi
 CD
 Wg
-yp
-yp
-yp
-yp
+rI
+nG
+nG
+TF
 xf
 xf
 aY
@@ -10235,21 +10780,21 @@ Vf
 aY
 xf
 xf
-yp
-yp
-yp
-yp
-aY
-DE
-DE
-DE
-DE
-DE
-DE
-DE
-DE
-ej
-yp
+nG
+nG
+TF
+nG
+nG
+TF
+rI
+rI
+TF
+TF
+nG
+rI
+px
+px
+px
 aY
 JE
 JE
@@ -10259,9 +10804,9 @@ Nq
 TF
 rI
 nG
+ox
 rI
-rI
-px
+sR
 px
 rI
 TF
@@ -10440,21 +10985,21 @@ yp
 yp
 yp
 uM
-yp
-yp
-yp
-yp
+tm
+MQ
+px
+rI
 Sv
 Sv
 og
-yp
-yp
+rI
+rI
 CD
-yp
-yp
-yp
-yp
-yp
+rI
+rI
+rI
+TF
+px
 xf
 DE
 DE
@@ -10462,21 +11007,21 @@ DE
 DE
 DE
 xf
-yp
-yp
-yp
-yp
+kj
+TF
+nG
+Vf
 aY
-DE
-DE
-DE
-DE
-DE
-DE
-DE
-DE
-ej
-yp
+aY
+aY
+aY
+Vf
+Xo
+aY
+aY
+Vf
+TF
+px
 qn
 JE
 JE
@@ -10488,7 +11033,7 @@ rI
 nG
 nG
 rI
-yp
+nG
 px
 rI
 TF
@@ -10667,21 +11212,21 @@ yp
 yp
 yp
 uM
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+MQ
+MQ
+px
+rI
+TF
+TF
+TF
+rI
+TF
+px
+px
+px
+TF
+TF
+px
 kv
 DE
 DE
@@ -10689,10 +11234,9 @@ DE
 DE
 DE
 kv
-yp
-yp
-yp
-yp
+rI
+TF
+nG
 aY
 DE
 DE
@@ -10703,7 +11247,8 @@ DE
 DE
 DE
 aY
-yp
+px
+rI
 aY
 JE
 JE
@@ -10715,7 +11260,7 @@ nG
 TF
 TF
 TF
-nG
+Qr
 nG
 nG
 rI
@@ -10894,21 +11439,21 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+tm
+MQ
+px
+TF
+rI
+nG
+nG
+TF
+TF
+TF
+rI
+nG
+rI
+TF
+px
 go
 DE
 DE
@@ -10916,21 +11461,21 @@ DE
 DE
 DE
 kv
-yp
-yp
-yp
-yp
-Vf
-DE
-DE
-DE
-DE
-Vf
+rI
+TF
+nG
 aY
-aY
-aY
-Vf
-yp
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+ej
+px
+rI
 Vf
 aY
 aY
@@ -11121,21 +11666,21 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+MQ
+tm
+px
+rI
+TF
+rI
+nG
+px
+px
+nG
+rI
+rI
+rI
+TF
+TF
 kv
 DE
 DE
@@ -11143,10 +11688,9 @@ DE
 DE
 DE
 kv
-yp
-yp
-yp
-yp
+rI
+eF
+nG
 aY
 DE
 DE
@@ -11156,10 +11700,11 @@ DE
 DE
 DE
 DE
-Vf
-yp
-yp
-yp
+ej
+TF
+px
+TF
+nG
 px
 px
 px
@@ -11348,21 +11893,21 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+tm
+tm
+px
+Bi
+TF
+rI
+nG
+px
+nG
+nG
+nG
+rI
+px
+px
+px
 kv
 DE
 DE
@@ -11370,11 +11915,10 @@ DE
 DE
 DE
 aY
-yp
-yp
-yp
-yp
-oY
+TF
+nG
+rI
+aY
 DE
 DE
 DE
@@ -11383,12 +11927,13 @@ DE
 DE
 DE
 DE
-mK
-yp
-yp
-yp
-yp
-yp
+aY
+rI
+TF
+rP
+nG
+rI
+rI
 Vf
 aY
 aY
@@ -11575,21 +12120,21 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+tm
+MQ
+px
+KO
+TF
+rI
+nG
+TF
+rI
+nG
+nG
+rI
+TF
+px
+px
 xf
 DE
 DE
@@ -11597,25 +12142,25 @@ DE
 DE
 DE
 Ji
-yp
-yp
-yp
-yp
-oY
+px
+nG
+rI
+Vf
 DE
 DE
 DE
 DE
-DE
-DE
-DE
-DE
-mK
-yp
-yp
-yp
-yp
-yp
+Vf
+aY
+aY
+aY
+Vf
+rI
+TF
+nG
+rI
+rI
+yJ
 aY
 Cj
 Cj
@@ -11802,21 +12347,21 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+MQ
+MQ
+px
+px
+rI
+TF
+rI
+px
+rI
+rI
+rI
+rI
+TF
+TF
+TF
 xf
 DE
 DE
@@ -11824,11 +12369,10 @@ DE
 DE
 DE
 aY
-yp
-yp
-yp
-yp
-oY
+px
+nG
+rI
+aY
 DE
 DE
 DE
@@ -11837,12 +12381,13 @@ DE
 DE
 DE
 DE
-mK
-yp
-yp
-yp
-yp
-yp
+Vf
+rI
+TF
+nG
+px
+px
+px
 kv
 Cj
 Cj
@@ -12029,21 +12574,21 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+tm
+MQ
+px
+rI
+rI
+TF
+rI
+px
+nG
+nG
+rI
+px
+px
+px
+TF
 xf
 DE
 DE
@@ -12051,11 +12596,10 @@ DE
 DE
 DE
 xf
-yp
-yp
-yp
-yp
-aY
+px
+rI
+rI
+oY
 DE
 DE
 DE
@@ -12064,12 +12608,13 @@ DE
 DE
 DE
 DE
-Vf
-yp
-yp
-yp
-yp
-yp
+mK
+xr
+bc
+rI
+px
+ND
+nG
 kv
 Cj
 Cj
@@ -12084,7 +12629,7 @@ px
 rI
 nG
 rI
-Ql
+px
 nG
 nG
 rI
@@ -12157,8 +12702,8 @@ yp
 yp
 yp
 uP
-yp
-yp
+Hf
+Hf
 xf
 Hf
 Hf
@@ -12256,21 +12801,21 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+MQ
+MQ
+bU
+TF
+rI
+TF
+rI
+nG
+nG
+nG
+TF
+nG
+rI
+rI
+px
 xf
 xf
 aY
@@ -12278,25 +12823,25 @@ Vf
 aY
 xf
 xf
-yp
-yp
-yp
-yp
-Vf
+nG
+sR
+rI
+oY
 DE
 DE
 DE
 DE
-Vf
-aY
-aY
-aY
-Vf
-yp
-yp
-yp
-yp
-yp
+DE
+DE
+DE
+DE
+mK
+sa
+Qn
+TF
+TF
+nG
+px
 aY
 Cj
 Cj
@@ -12384,8 +12929,8 @@ yp
 yp
 yp
 uP
-yp
-yp
+Hf
+Hf
 nZ
 Hf
 Hf
@@ -12483,33 +13028,32 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-aY
+tm
+MQ
+px
+TF
+px
+nG
+TF
+TF
+nG
+px
+TF
+nG
+TF
+TF
+rI
+rI
+TF
+yJ
+px
+rI
+rI
+TF
+nG
+px
+TF
+oY
 DE
 DE
 DE
@@ -12517,13 +13061,14 @@ DE
 DE
 DE
 DE
-aY
-yp
-yp
-yp
-yp
-yp
-yp
+DE
+mK
+fA
+ZE
+ND
+nG
+px
+px
 Vf
 aY
 aY
@@ -12611,8 +13156,8 @@ yp
 yp
 yp
 xf
-yp
-yp
+Hf
+Hf
 xf
 Hf
 Hf
@@ -12710,47 +13255,47 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-xf
-DE
-DE
-DE
-DE
-DE
-DE
-DE
+MQ
+MQ
+px
+rI
+rI
+rI
+nG
+nG
+GW
+nG
+nG
+TF
+rI
+rI
+px
+ox
+TF
+px
+rI
+px
+ox
+TF
+TF
+px
+TF
 aY
-yp
-yp
-yp
-yp
-yp
-yp
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+Vf
+nG
+px
+TF
+nG
+px
+nG
 aY
 Cj
 Cj
@@ -12768,7 +13313,7 @@ px
 px
 px
 px
-rI
+ox
 TF
 px
 TF
@@ -12937,47 +13482,47 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+MQ
+MQ
+px
+TF
+TF
+TF
+rI
+nG
+nG
+nG
+TF
+TF
+rI
+TF
+TF
+Vf
 aY
-DE
-DE
-DE
-DE
-DE
-DE
-DE
+Vf
 aY
-yp
-yp
-yp
-yp
-yp
-yp
+aY
+Vf
+rI
+rI
+px
+TF
+Vf
+DE
+DE
+DE
+DE
+Vf
+aY
+aY
+aY
+Vf
+nG
+px
+px
+TF
+rI
+nG
 kv
 Cj
 Cj
@@ -13065,8 +13610,8 @@ yp
 yp
 yp
 qn
-yp
-yp
+Hf
+Hf
 xf
 Hf
 Hf
@@ -13164,47 +13709,47 @@ yp
 yp
 yp
 qn
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-Vf
+MQ
+MQ
+px
+nG
+px
+rI
+px
+TF
+rI
+TF
+nG
+rI
+TF
+TF
+TF
 aY
-uY
+QD
+QD
+QD
+QD
 aY
-uY
+rI
+TF
+TF
+TF
 aY
+DE
+DE
+DE
+DE
+DE
+DE
+DE
 aY
-aY
-Vf
-yp
-yp
-yp
-yp
-yp
-yp
+ZT
+ZT
+qX
+wi
+rP
+rI
+rI
 aY
 Cj
 Cj
@@ -13292,8 +13837,8 @@ yp
 yp
 yp
 qn
-yp
-yp
+Hf
+Hf
 bx
 Hf
 Hf
@@ -13391,47 +13936,47 @@ yp
 yp
 yp
 qn
+MQ
+MQ
+px
+px
+rI
+px
+TF
+nG
+rI
+TF
+nG
+px
+Vf
+aY
+KR
+Vf
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+QD
+aY
+TF
+TF
+TF
+px
+xf
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aY
+ZT
+xM
+wD
+sa
+nG
+nG
+rI
 aY
 Cj
 Cj
@@ -13519,8 +14064,8 @@ yp
 yp
 yp
 qn
-yp
-yp
+Hf
+Hf
 xf
 Hf
 hM
@@ -13618,47 +14163,47 @@ yp
 yp
 yp
 qn
+MQ
+MQ
+px
+px
+rI
+px
+TF
+nG
+rI
+TF
+nG
+px
+aY
+QD
 yp
 yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+QD
+aY
+TF
+rI
+rI
+px
+aY
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aY
+IT
+QB
+dK
+sa
+nG
+nG
+eF
 aY
 Cj
 Cj
@@ -13850,42 +14395,42 @@ QD
 QD
 QD
 QD
+px
+TF
+nG
+rI
+TF
+px
+TF
+aY
+QD
 yp
 yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+QD
+aY
+rI
+TF
+rI
+px
+Vf
+aY
+uY
+aY
+uY
+aY
+aY
+aY
+Vf
+Mf
+sa
+sa
+sa
+rI
+nG
+TF
 Vf
 aY
 aY
@@ -14079,22 +14624,22 @@ yp
 QD
 QD
 QD
+px
+nG
+px
+px
+TF
+Vf
+QD
 yp
 yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+QD
+Vf
+px
+px
 QD
 QD
 QD
@@ -14109,11 +14654,11 @@ QD
 QD
 QD
 QD
-yp
-yp
-yp
-yp
-yp
+sa
+nG
+nG
+px
+QD
 yp
 yp
 yp
@@ -14312,12 +14857,12 @@ QD
 QD
 QD
 QD
-QD
-QD
-QD
-QD
-QD
-QD
+yp
+yp
+yp
+yp
+yp
+yp
 QD
 QD
 QD
@@ -16343,7 +16888,7 @@ yp
 yp
 yp
 yp
-yp
+px
 yp
 yp
 yp
