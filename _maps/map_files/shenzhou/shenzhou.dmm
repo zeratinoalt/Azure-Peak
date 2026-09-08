@@ -23,6 +23,13 @@
 /obj/structure/roguewindow/harem1,
 /turf/open/floor/rogue/concrete,
 /area/rogue)
+"aI" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue)
 "aY" = (
 /turf/closed/wall/mineral/rogue/decowood/vert,
 /area/rogue)
@@ -242,6 +249,16 @@
 	},
 /turf/closed/indestructible/rock,
 /area/rogue)
+"et" = (
+/obj/structure/fluff/railing/border/east,
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "Thick, blue smoke.";
+	color = "#323470"
+	},
+/turf/open/water/cleanshallow,
+/area/rogue)
 "eu" = (
 /obj/structure/flora/roguetree/stump/burnt,
 /turf/open/floor/rogue/dirt,
@@ -436,6 +453,15 @@
 	dir = 6
 	},
 /turf/open/floor/rogue/naturalstone,
+/area/rogue)
+"hg" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "..Sadly, my dears, we may only have seven fighters at a time. The rest are welcome to spectate, however.";
+	color = "#6b6da0"
+	},
+/turf/open/water/cleanshallow,
 /area/rogue)
 "hm" = (
 /obj/structure/chair/bench/church/r{
@@ -1196,6 +1222,9 @@
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
+"oX" = (
+/turf/open/floor/rogue/grass,
+/area/rogue)
 "oY" = (
 /obj/structure/roguewindow/openclose/reinforced,
 /turf/closed/indestructible/rock,
@@ -1213,6 +1242,15 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/cobble,
+/area/rogue)
+"pg" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "Thick, blue smoke.";
+	color = "#323470"
+	},
+/turf/open/floor/rogue/grass,
 /area/rogue)
 "ph" = (
 /obj/effect/decal/cobbleedge{
@@ -1283,6 +1321,15 @@
 /mob/living/carbon/human/species/human/northern/chunokkun,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"pS" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "..Sadly, my dears, we may only have seven fighters at a time. The rest are welcome to spectate, however.";
+	color = "#6b6da0"
+	},
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue)
 "pZ" = (
 /obj/structure/fluff/walldeco/church/line{
 	dir = 4
@@ -1320,6 +1367,15 @@
 	dir = 4
 	},
 /turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue)
+"qC" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "..Sadly, my dears, we may only have seven fighters at a time. The rest are welcome to spectate, however.";
+	color = "#6b6da0"
+	},
+/turf/open/floor/rogue/grass,
 /area/rogue)
 "qX" = (
 /obj/effect/decal/cobbleedge{
@@ -1931,6 +1987,15 @@
 /obj/machinery/light/rogue/lanternpost,
 /turf/open/floor/rogue/cobble,
 /area/rogue)
+"yS" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "Thick, blue smoke.";
+	color = "#323470"
+	},
+/turf/closed/wall/mineral/rogue/stonebrick,
+/area/rogue)
 "yU" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -2368,6 +2433,10 @@
 "Ef" = (
 /obj/structure/mineral_door/wood/towner/fisher,
 /turf/open/floor/rogue/ruinedwood/herringbone,
+/area/rogue)
+"Ek" = (
+/obj/structure/fluff/statue/small,
+/turf/open/floor/rogue/metal/barograte,
 /area/rogue)
 "Es" = (
 /obj/effect/decal/edge_corner{
@@ -2950,6 +3019,15 @@
 	},
 /turf/closed/indestructible/rock,
 /area/rogue)
+"NC" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "Thick, blue smoke.";
+	color = "#323470"
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue)
 "ND" = (
 /mob/living/carbon/human/species/human/northern/chunokkun,
 /turf/open/floor/rogue/dirt/road,
@@ -2975,7 +3053,6 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "NV" = (
-/obj/machinery/light/rogue/firebowl/church,
 /obj/structure/fluff/railing/border,
 /turf/open/floor/rogue/concrete,
 /area/rogue)
@@ -3313,6 +3390,13 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/herringbone,
+/area/rogue)
+"Tl" = (
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "Tq" = (
 /obj/structure/closet/crate/chest/wicker/bait,
@@ -7329,29 +7413,29 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+yS
+yS
+yS
+uP
+uP
+pS
+pS
+uP
+uP
+uP
+uP
+uP
+uP
 qn
 MQ
 tm
@@ -7556,29 +7640,29 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+MQ
+hg
+hg
+hg
+MQ
+MQ
+tm
+tm
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+hg
+hg
+hg
+MQ
+MQ
+MQ
+MQ
 qn
 MQ
 MQ
@@ -7783,29 +7867,29 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+uP
+hg
+qC
+qC
+oX
+oX
+oX
+pg
+pg
+oX
+oX
+oX
+oX
+oX
+oX
+oX
+oX
+oX
+qC
+oX
+oX
+oX
+oX
 qn
 tm
 MQ
@@ -8010,29 +8094,29 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+pS
+hg
+oX
+oX
+oX
+oX
+oX
+oX
+oX
+oX
+oX
+oX
+pg
+pg
+pg
+oX
+oX
+oX
+oX
+oX
+oX
+oX
+oX
 qn
 tm
 MQ
@@ -8236,30 +8320,30 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+Ua
+uP
+MQ
+oX
+oX
+Ek
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+NC
+NC
+ga
+ga
+ga
+Ek
+qC
+oX
 qn
 tm
 MQ
@@ -8463,12 +8547,12 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
+Ua
+uP
+MQ
+oX
+oX
+ga
 zG
 Jv
 Jv
@@ -8480,13 +8564,13 @@ ue
 Jv
 Jv
 uT
-Jv
-Jv
+et
+et
 Jv
 QZ
-yp
-yp
-yp
+ga
+qC
+oX
 uM
 tm
 tm
@@ -8691,11 +8775,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+oX
+ga
 eN
 vC
 ga
@@ -8711,9 +8795,9 @@ ga
 ga
 ga
 pA
-yp
-yp
-yp
+ga
+qC
+qC
 uM
 tm
 tm
@@ -8918,11 +9002,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+oX
+ga
 eN
 qx
 eU
@@ -8938,9 +9022,9 @@ eU
 eU
 ga
 pA
-yp
-yp
-yp
+ga
+oX
+qC
 qn
 tm
 MQ
@@ -9145,11 +9229,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+qC
+ga
 eN
 vC
 eU
@@ -9165,9 +9249,9 @@ eU
 eU
 ga
 pA
-yp
-yp
-yp
+ga
+oX
+qC
 qn
 tm
 MQ
@@ -9372,11 +9456,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+qC
+oX
+ga
 eN
 qx
 eU
@@ -9392,9 +9476,9 @@ eU
 eU
 ga
 pA
-yp
-yp
-yp
+ga
+oX
+oX
 qn
 MQ
 MQ
@@ -9599,11 +9683,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+qC
+oX
+ga
 eN
 vC
 eU
@@ -9619,9 +9703,9 @@ eU
 eU
 ga
 pA
-yp
-yp
-yp
+Tl
+oX
+oX
 Ua
 MQ
 MQ
@@ -9826,11 +9910,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+LW
+Lq
+Lq
+Lq
+Lq
 eN
 qx
 eU
@@ -10053,11 +10137,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+jD
+Cj
+Cj
+Cj
+Cj
 NV
 my
 eU
@@ -10280,11 +10364,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+iM
+YC
+YC
+YC
+YC
 eN
 qx
 eU
@@ -10507,11 +10591,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+pS
+MQ
+oX
+oX
+ga
 eN
 vC
 eU
@@ -10527,9 +10611,9 @@ eU
 eU
 ga
 pA
-yp
-yp
-yp
+aI
+oX
+oX
 Ua
 MQ
 MQ
@@ -10734,11 +10818,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+qC
+ga
 eN
 qx
 eU
@@ -10754,9 +10838,9 @@ eU
 eU
 ga
 pA
-yp
-yp
-yp
+ga
+oX
+oX
 uM
 tm
 MQ
@@ -10961,11 +11045,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+oX
+ga
 eN
 vC
 eU
@@ -10981,9 +11065,9 @@ eU
 eU
 ga
 pA
-yp
-yp
-yp
+NC
+pg
+oX
 uM
 tm
 MQ
@@ -11188,11 +11272,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+oX
+ga
 eN
 qx
 eU
@@ -11208,9 +11292,9 @@ eU
 eU
 ga
 pA
-yp
-yp
-yp
+ga
+pg
+oX
 uM
 MQ
 MQ
@@ -11415,11 +11499,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+oX
+ga
 eN
 vC
 ga
@@ -11435,9 +11519,9 @@ ga
 ga
 ga
 pA
-yp
-yp
-yp
+ga
+oX
+oX
 qn
 tm
 MQ
@@ -11642,11 +11726,11 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+oX
+ga
 wB
 bF
 bF
@@ -11662,9 +11746,9 @@ bF
 bF
 bF
 pH
-yp
-yp
-yp
+ga
+oX
+oX
 qn
 MQ
 tm
@@ -11869,29 +11953,29 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+qC
+Ek
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+ga
+Ek
+oX
+oX
 qn
 tm
 tm
@@ -12096,29 +12180,29 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+qC
+qC
+oX
+oX
+oX
+oX
+oX
+oX
+pg
+oX
+oX
+oX
+oX
+oX
+oX
+qC
+oX
+oX
+oX
+oX
 qn
 tm
 MQ
@@ -12323,29 +12407,29 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+oX
+oX
+qC
+qC
+oX
+oX
+oX
+oX
+pg
+pg
+oX
+oX
+oX
+oX
+oX
+qC
+oX
+oX
+oX
+oX
+oX
 qn
 MQ
 MQ
@@ -12550,29 +12634,29 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+uP
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
+tm
+tm
+MQ
+MQ
+MQ
+MQ
+hg
+hg
+MQ
+MQ
+MQ
+MQ
+MQ
+MQ
 qn
 tm
 MQ
@@ -12777,29 +12861,29 @@ yp
 yp
 yp
 yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
-yp
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+pS
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+uP
 qn
 MQ
 MQ
