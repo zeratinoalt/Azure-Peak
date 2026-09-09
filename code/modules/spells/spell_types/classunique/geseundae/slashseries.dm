@@ -15,9 +15,6 @@
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_SB_MOBILITY
 
-	invocations = list("I shall cut them down... 'ere I am devoured!")
-	invocation_type = INVOCATION_SHOUT
-
 	click_to_activate = TRUE
 	self_cast_possible = TRUE
 

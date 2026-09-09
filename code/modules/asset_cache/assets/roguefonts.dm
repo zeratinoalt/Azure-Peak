@@ -33,4 +33,6 @@
 		"aavnic.ttf" = 'interface/fonts/languages/aavnic.ttf',
 		"parisienne.ttf" = 'interface/fonts/tegaki/parisienne.ttf',
 		"parisienne_data.json" = 'interface/fonts/tegaki/parisienne_data.json',
+		"baskvl.ttf" = 'interface/fonts/baskvl.ttf',
+		"BMDOHYEON.ttf" = 'interface/fonts/BMDOHYEON.ttf'
 	)
