@@ -1,6 +1,6 @@
 // anything that's related 2 crimson dragon & not a dmi is here (e.g. clothing defines, shell & podao code)
 // obvs doesn't include trait defines (traits.dm) or thrill code (bodypart_wounds.dm)
-// ! be warned - there's a lot here. ive tried my best to document everything using comments & !'s 
+// ! be warned - there's a lot here. ive tried my best to document everything using comments & !'s
 // ! sorry lol
 
 #define PODAOWOOSH list('sound/foley/crimsondragon/draw.ogg', 'sound/foley/crimsondragon/draw2.ogg')
@@ -41,12 +41,12 @@
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 
-	H.change_stat(STATKEY_STR, 5)
-	H.change_stat(STATKEY_PER, 5)
-	H.change_stat(STATKEY_INT, 2)
-	H.change_stat(STATKEY_CON, 8)
-	H.change_stat(STATKEY_WIL, 8) 
-	H.change_stat(STATKEY_SPD, 3)
+	H.change_stat(STATKEY_STR, 10)
+	H.change_stat(STATKEY_PER, 10)
+	H.change_stat(STATKEY_INT, 10)
+	H.change_stat(STATKEY_CON, 10)
+	H.change_stat(STATKEY_WIL, 10)
+	H.change_stat(STATKEY_SPD, 10)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/crimsondragon()
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
@@ -180,7 +180,7 @@
 /datum/intent/sword/cut/zwei/sweep/podao
 	hitsound = list('sound/combat/hits/bladed/crimsontiger/slash1.ogg', 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
 
-/datum/intent/sword/chop/long/podao 
+/datum/intent/sword/chop/long/podao
 	hitsound = list('sound/combat/hits/bladed/crimsontiger/slash1.ogg', 'sound/combat/hits/bladed/crimsontiger/slash2.ogg', 'sound/combat/hits/bladed/crimsontiger/slash3.ogg', 'sound/combat/hits/bladed/crimsontiger/slash4.ogg')
 
 /obj/item/rogueweapon/sword/sabre/podao
