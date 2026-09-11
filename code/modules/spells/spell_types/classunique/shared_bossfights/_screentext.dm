@@ -8,7 +8,6 @@
 	)
 	if(!chosenmob)
 		chosenmob = pick(subtypesof(/mob/living/simple_animal/hostile/distortion))
-	src.playsound_local(src, 'sound/abnormalities/silentgirl/Guilt_Apply.ogg', 15, FALSE)
 	if(!instant)
 		playsound(src, 'sound/distortions/distortion_bell.ogg', 50, FALSE)
 		for(var/i in 1 to 4)
