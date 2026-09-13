@@ -30,7 +30,7 @@
 	playsound(owner, 'sound/foley/geseundae/swing2.ogg', 80, TRUE)
 	for(var/i in 1 to fire_amount)
 		var/turf/t = pick_n_take(fire_loc)
-		new new /obj/effect/hotspot(t)
+		new /obj/effect/hotspot(t)
 
 /datum/action/cooldown/spell/ragingstorm/cast(atom/cast_on)
 	. = ..()
