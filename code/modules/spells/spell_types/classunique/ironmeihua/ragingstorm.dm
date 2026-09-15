@@ -1,8 +1,8 @@
 /datum/action/cooldown/spell/ragingstorm
-	button_icon = 'icons/mob/actions/mage_pyromancy.dmi'
+	button_icon = 'icons/mob/actions/classuniquespells/ironmeihua.dmi'
 	name = "Raging Storm"
 	desc = "light tiles on fire bruh."
-	button_icon_state = "spitfire"
+	button_icon_state = "ragingstorm"
 	spell_color = GLOW_COLOR_CRIMSON
 
 	cast_range = SPELL_RANGE_PROJECTILE
@@ -35,8 +35,9 @@
 /datum/action/cooldown/spell/ragingstorm/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
-	H.visible_message(span_danger("[H] sheathes his blade, and shadows crawl across the floor!"))
-	H.say("|Not one handspan ahead - does this darkness yield...|")
+	H.visible_message(span_danger("[H] blinks just once, and the arena is set ablaze!"))
+	H.say("|A-ah...|")
+	playsound(H, 'sound/foley/ironmeihua/surprised.ogg', 80, TRUE)
 	var/old_time = world.time
 	while(world.time < old_time + 15 SECONDS)
 		spawnfire(H)
