@@ -65,9 +65,6 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/scatterslash)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tanglecleaver)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/tigerslayer)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/emotionalturbulence)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/fleetinglife)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/ragingstorm)
 // unique items defined below, clothing first then shellcode, then vfx/dash helper, then weapon
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/crimdragon
