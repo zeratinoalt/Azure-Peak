@@ -1830,6 +1830,10 @@
 /obj/structure/flora/roguegrass/bush,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
+"Tw" = (
+/obj/structure/dragonanchor,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/woods/north)
 "TN" = (
 /turf/closed/wall/mineral/rogue/stonebrick,
 /area/rogue/indoors)
@@ -6229,7 +6233,7 @@ Cf
 AO
 dF
 db
-rn
+Tw
 SN
 eh
 fK

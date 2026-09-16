@@ -48,9 +48,9 @@
 		return FALSE
 
 	user.visible_message(span_danger("[user] reaches out &clenches her fist - flames sparking across her body."))
-	user.visible_message(span_danger("[user] looks to be in pain, but her eyes are alight with vigor!"))
+	user.visible_message(span_danger("[user] looks to be in pain, yet her eyes light up with vigor!"))
 	user.take_overall_damage(0, 60)
-	playsound(user, 'sound/foley/ironmeihua/hurt2.ogg', 80, FALSE)
+	playsound(user, 'sound/foley/ironmeihua/attack2.ogg', 80, FALSE)
 	user.say("Ngkhk..!!")
 	user.stamina = 0
 	user.energy = user.max_energy

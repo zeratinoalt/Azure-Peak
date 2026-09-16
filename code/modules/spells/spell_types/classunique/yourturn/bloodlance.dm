@@ -12,7 +12,7 @@
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_MINOR_PROJECTILE
 
-	invocations = list("|..Try and dodge this, Constance.|")
+	invocations = list("|..Try and dodge this, Constance.|", "|..Having fun? Watch out.|", "|..I hope you enjoy this.|")
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
@@ -65,8 +65,6 @@
 	var/dir_to_target = get_cardinal_dir(owner, victim)
 
 	var/list/origin_turfs = list()
-	//Give me all the  turfs that are 2 tiles away
-	//Default is EAST
 	var/invert = 1
 	//Ill figure out a way to write this shorter someday
 	if(dir_to_target == WEST || dir_to_target == SOUTH)

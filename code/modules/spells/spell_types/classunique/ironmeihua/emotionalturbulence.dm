@@ -42,8 +42,8 @@ GLOBAL_LIST_EMPTY(meiwall)
 	if(!istype(H))
 		return FALSE
 
-	H.emote("looks like she's losing it..!")
-	playsound(H, 'sound/foley/ironmeihua/losingit.ogg', 80, FALSE)
+	H.say("..How long will you last, replica?")
+	playsound(H, 'sound/foley/ironmeihua/linespecial2.ogg', 80, FALSE)
 	sleep(3 SECONDS)
 
 	for(var/obj/structure/meihua_arena_anchor/anchor in GLOB.meianchor1)

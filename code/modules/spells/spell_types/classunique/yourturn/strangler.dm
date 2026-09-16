@@ -39,7 +39,7 @@
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	H.visible_message(span_danger("[H] raises her arms up, and blood follows!"))
-	H.say("|i honor ser telemachus with this blood...|")
+	H.say("|..Maybe now you'll understand how I feel, hm?|")
 	var/old_time = world.time
 	while(world.time < old_time + 15 SECONDS)
 		spawntentacles(H)
