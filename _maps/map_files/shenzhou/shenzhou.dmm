@@ -24,11 +24,11 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue)
 "aI" = (
-/obj/effect/decal/edge{
-	color = "#3f3f3f";
-	dir = 8
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -530
 	},
-/turf/open/floor/rogue/cobblerock,
+/turf/open/floor/rogue/concrete,
 /area/rogue)
 "aY" = (
 /turf/closed/wall/mineral/rogue/decowood/vert,
@@ -227,6 +227,13 @@
 "dP" = (
 /obj/structure/fermentation_keg/water,
 /turf/open/floor/rogue/blocks/stonered/tiny,
+/area/rogue)
+"dW" = (
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -588
+	},
+/turf/open/floor/rogue/concrete,
 /area/rogue)
 "ef" = (
 /obj/effect/decal/edge{
@@ -481,6 +488,19 @@
 	dir = 8
 	},
 /turf/open/water/pond,
+/area/rogue)
+"ht" = (
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "Thick, blue smoke.";
+	color = "#323470"
+	},
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -588
+	},
+/turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "hv" = (
 /obj/structure/chair/bench/church{
@@ -869,6 +889,18 @@
 	},
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
+"lD" = (
+/obj/structure/fluff/railing/border,
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -530
+	},
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue)
 "lE" = (
 /obj/structure/fluff/littlebanners/bluewhite{
 	pixel_y = -6
@@ -1223,7 +1255,11 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue)
 "oX" = (
-/turf/open/floor/rogue/grass,
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = 402
+	},
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "oY" = (
 /obj/structure/roguewindow/openclose/reinforced,
@@ -1244,13 +1280,11 @@
 /turf/open/floor/rogue/cobble,
 /area/rogue)
 "pg" = (
-/obj/effect/oneway/psy_bog{
-	opacity = 1;
-	name = "blue mist";
-	desc = "Thick, blue smoke.";
-	color = "#323470"
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = 402
 	},
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/concrete,
 /area/rogue)
 "ph" = (
 /obj/effect/decal/cobbleedge{
@@ -1375,7 +1409,7 @@
 	desc = "..Sadly, my dears, we may only have seven fighters at a time. The rest are welcome to spectate, however.";
 	color = "#6b6da0"
 	},
-/turf/open/floor/rogue/grass,
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "qX" = (
 /obj/effect/decal/cobbleedge{
@@ -1409,9 +1443,12 @@
 /turf/open/floor/rogue/hexstone,
 /area/rogue)
 "rL" = (
-/obj/machinery/light/rogue/firebowl/church,
 /obj/structure/fluff/railing/border/west,
-/turf/open/floor/rogue/concrete,
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = 402
+	},
+/turf/open/water/cleanshallow,
 /area/rogue)
 "rN" = (
 /obj/structure/table/wood/poor,
@@ -1503,9 +1540,16 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue)
 "sT" = (
-/obj/machinery/light/rogue/firebowl/church,
 /obj/structure/fluff/railing/border/north,
-/turf/open/floor/rogue/concrete,
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = 402
+	},
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/herringbone,
 /area/rogue)
 "tb" = (
 /obj/structure/fluff/statue/knightalt{
@@ -1574,9 +1618,12 @@
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
 "ue" = (
-/obj/machinery/light/rogue/firebowl/church,
 /obj/structure/fluff/railing/border/east,
-/turf/open/floor/rogue/concrete,
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -530
+	},
+/turf/open/water/cleanshallow,
 /area/rogue)
 "ui" = (
 /obj/effect/decal/edge{
@@ -2169,6 +2216,13 @@
 	},
 /turf/open/floor/rogue/churchrough,
 /area/rogue)
+"Bq" = (
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = 402
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue)
 "Br" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -2666,6 +2720,13 @@
 	smooth = 0
 	},
 /area/rogue)
+"HT" = (
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -567
+	},
+/turf/open/floor/rogue/hexstone,
+/area/rogue)
 "Ic" = (
 /obj/structure/fluff/railing/border/east,
 /obj/machinery/light/rogue/torchholder/r,
@@ -2738,6 +2799,13 @@
 	dir = 1
 	},
 /turf/closed/basic,
+/area/rogue)
+"Jo" = (
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -588
+	},
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "Jr" = (
 /obj/structure/flagpole,
@@ -3053,8 +3121,17 @@
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
 "NV" = (
-/obj/structure/fluff/railing/border,
-/turf/open/floor/rogue/concrete,
+/obj/effect/oneway/psy_bog{
+	opacity = 1;
+	name = "blue mist";
+	desc = "..Sadly, my dears, we may only have seven fighters at a time. The rest are welcome to spectate, however.";
+	color = "#6b6da0"
+	},
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -567
+	},
+/turf/open/floor/rogue/hexstone,
 /area/rogue)
 "NY" = (
 /obj/structure/stairs/stone{
@@ -3392,9 +3469,9 @@
 /turf/open/floor/rogue/herringbone,
 /area/rogue)
 "Tl" = (
-/obj/effect/decal/edge{
-	color = "#3f3f3f";
-	dir = 4
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -588
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue)
@@ -3699,6 +3776,18 @@
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue)
+"WZ" = (
+/obj/structure/fluff/railing/border/north,
+/obj/machinery/light/rogue/candle/blue{
+	pixel_y = 0;
+	pixel_x = -530
+	},
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 8
+	},
+/turf/open/floor/rogue/herringbone,
+/area/rogue)
 "Xi" = (
 /obj/effect/decal/cleanable/dreamfiend_ichor/large,
 /turf/open/floor/rogue/dirt,
@@ -3780,6 +3869,14 @@
 	dir = 1
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
+/area/rogue)
+"XQ" = (
+/obj/structure/fluff/railing/border,
+/obj/effect/decal/edge{
+	color = "#3f3f3f";
+	dir = 4
+	},
+/turf/open/floor/rogue/herringbone,
 /area/rogue)
 "XX" = (
 /turf/open/water/pond,
@@ -7869,27 +7966,27 @@ yp
 yp
 uP
 hg
+jD
 qC
+nG
+nG
+nG
+KO
+KO
+nG
+Jo
+nG
+nG
+nG
+nG
+nG
+nG
+nG
 qC
-oX
-oX
-oX
-pg
-pg
-oX
-oX
-oX
-oX
-oX
-oX
-oX
-oX
-oX
-qC
-oX
-oX
-oX
-oX
+nG
+nG
+nG
+nG
 qn
 tm
 MQ
@@ -8096,27 +8193,27 @@ yp
 yp
 pS
 hg
-oX
-oX
-oX
-oX
-oX
-oX
-oX
-oX
-oX
-oX
-pg
-pg
-pg
-oX
-oX
-oX
-oX
-oX
-oX
-oX
-oX
+nG
+nG
+nG
+nG
+HT
+nG
+nG
+nG
+nG
+nG
+KO
+KO
+KO
+nG
+nG
+nG
+nG
+Jo
+nG
+nG
+nG
 qn
 tm
 MQ
@@ -8323,27 +8420,27 @@ yp
 Ua
 uP
 MQ
-oX
-oX
+HT
+nG
 Ek
 ga
 ga
+Tl
 ga
 ga
 ga
 ga
-ga
-ga
+Tl
 ga
 ga
 NC
-NC
+ht
 ga
 ga
 ga
 Ek
 qC
-oX
+nG
 qn
 tm
 MQ
@@ -8550,8 +8647,8 @@ yp
 Ua
 uP
 MQ
-oX
-oX
+nG
+nG
 ga
 zG
 Jv
@@ -8570,7 +8667,7 @@ Jv
 QZ
 ga
 qC
-oX
+nG
 uM
 tm
 tm
@@ -8777,8 +8874,8 @@ yp
 yp
 uP
 MQ
-oX
-oX
+nG
+nG
 ga
 eN
 vC
@@ -9004,8 +9101,8 @@ yp
 yp
 uP
 MQ
-oX
-oX
+nG
+nG
 ga
 eN
 qx
@@ -9023,7 +9120,7 @@ eU
 ga
 pA
 ga
-oX
+nG
 qC
 qn
 tm
@@ -9231,8 +9328,8 @@ yp
 yp
 uP
 MQ
-oX
-qC
+nG
+NV
 ga
 eN
 vC
@@ -9243,14 +9340,14 @@ eU
 eU
 eU
 eU
-eU
+aI
 eU
 eU
 eU
 ga
 pA
 ga
-oX
+nG
 qC
 qn
 tm
@@ -9459,12 +9556,12 @@ yp
 uP
 MQ
 qC
-oX
+nG
 ga
 eN
 qx
 eU
-eU
+aI
 xh
 eU
 eU
@@ -9477,8 +9574,8 @@ eU
 ga
 pA
 ga
-oX
-oX
+nG
+nG
 qn
 MQ
 MQ
@@ -9686,7 +9783,7 @@ yp
 uP
 MQ
 qC
-oX
+nG
 ga
 eN
 vC
@@ -9703,9 +9800,9 @@ eU
 eU
 ga
 pA
-Tl
-oX
-oX
+ga
+nG
+nG
 Ua
 MQ
 MQ
@@ -9915,13 +10012,13 @@ Lq
 Lq
 Lq
 Lq
-eN
+lD
 qx
 eU
 eU
 eU
 eU
-eU
+aI
 eU
 eU
 eU
@@ -9929,8 +10026,8 @@ eU
 eU
 eU
 ga
-sT
-MQ
+WZ
+Lq
 Lq
 Lq
 LW
@@ -10142,22 +10239,22 @@ Cj
 Cj
 Cj
 Cj
-NV
+Cj
 my
+aI
 eU
 eU
-eU
-eU
+aI
 eU
 HI
 eU
-eU
+aI
 eU
 eU
 eU
 ga
-ga
-ga
+Cj
+Cj
 Cj
 Cj
 jD
@@ -10369,7 +10466,7 @@ YC
 YC
 YC
 YC
-eN
+XQ
 qx
 eU
 eU
@@ -10379,12 +10476,12 @@ eU
 eU
 eU
 eU
-eU
+aI
 eU
 eU
 ga
 sT
-MQ
+YC
 YC
 YC
 iM
@@ -10593,8 +10690,8 @@ yp
 yp
 pS
 MQ
-oX
-oX
+nG
+nG
 ga
 eN
 vC
@@ -10602,7 +10699,7 @@ eU
 eU
 eU
 eU
-eU
+pg
 eU
 eU
 eU
@@ -10611,9 +10708,9 @@ eU
 eU
 ga
 pA
-aI
-oX
-oX
+ga
+nG
+nG
 Ua
 MQ
 MQ
@@ -10820,27 +10917,27 @@ yp
 yp
 uP
 MQ
-oX
+nG
 qC
 ga
 eN
 qx
 eU
-eU
+aI
 xh
 eU
 eU
 eU
-eU
+aI
 eU
 xh
 eU
-eU
+aI
 ga
 pA
 ga
-oX
-oX
+nG
+nG
 uM
 tm
 MQ
@@ -11047,8 +11144,8 @@ yp
 yp
 uP
 MQ
-oX
-oX
+nG
+nG
 ga
 eN
 vC
@@ -11066,8 +11163,8 @@ eU
 ga
 pA
 NC
-pg
-oX
+KO
+nG
 uM
 tm
 MQ
@@ -11274,7 +11371,7 @@ yp
 yp
 uP
 MQ
-oX
+nG
 oX
 ga
 eN
@@ -11282,7 +11379,7 @@ qx
 eU
 eU
 eU
-eU
+dW
 eU
 eU
 eU
@@ -11293,8 +11390,8 @@ eU
 ga
 pA
 ga
-pg
-oX
+KO
+nG
 uM
 MQ
 MQ
@@ -11501,8 +11598,8 @@ yp
 yp
 uP
 MQ
-oX
-oX
+nG
+nG
 ga
 eN
 vC
@@ -11520,8 +11617,8 @@ ga
 ga
 pA
 ga
-oX
-oX
+nG
+nG
 qn
 tm
 MQ
@@ -11728,8 +11825,8 @@ yp
 yp
 uP
 MQ
-oX
-oX
+nG
+nG
 ga
 wB
 bF
@@ -11747,8 +11844,8 @@ bF
 bF
 pH
 ga
-oX
-oX
+nG
+nG
 qn
 MQ
 tm
@@ -11955,10 +12052,15 @@ yp
 yp
 uP
 MQ
-oX
+nG
 qC
 Ek
 ga
+Bq
+ga
+ga
+ga
+Bq
 ga
 ga
 ga
@@ -11966,16 +12068,11 @@ ga
 ga
 ga
 ga
-ga
-ga
-ga
-ga
-ga
-ga
+Bq
 ga
 Ek
-oX
-oX
+nG
+nG
 qn
 tm
 tm
@@ -12185,24 +12282,24 @@ MQ
 oX
 qC
 qC
+nG
+nG
 oX
+nG
+nG
+nG
+KO
+nG
+nG
+nG
 oX
-oX
-oX
-oX
-oX
-pg
-oX
-oX
-oX
-oX
-oX
-oX
+nG
+nG
 qC
-oX
-oX
-oX
-oX
+nG
+nG
+nG
+nG
 qn
 tm
 MQ
@@ -12409,27 +12506,27 @@ yp
 yp
 uP
 MQ
-oX
-oX
+nG
+nG
 qC
 qC
-oX
-oX
-oX
-oX
-pg
-pg
-oX
-oX
-oX
-oX
-oX
+nG
+nG
+nG
+nG
+KO
+KO
+nG
+nG
+nG
+nG
+nG
 qC
-oX
-oX
-oX
-oX
-oX
+nG
+nG
+nG
+nG
+nG
 qn
 MQ
 MQ

@@ -2,7 +2,7 @@
 
 /datum/action/cooldown/spell/fleetinglife
 	button_icon = 'icons/mob/actions/classuniquespells/ironmeihua.dmi'
-	name = "Raging Storm"
+	name = "Fleeting Life"
 	desc = "deal raw burn damage to self to gain stamina/energy"
 	button_icon_state = "fleeting"
 	spell_color = GLOW_COLOR_CRIMSON
@@ -34,7 +34,7 @@
 	charge_required = FALSE
 	cooldown_time = 1 HOURS
 
-	associated_skill = /datum/skill/magic/unarmed
+	associated_skill = /datum/skill/combat/unarmed
 	spell_tier = 6
 	spell_impact_intensity = SPELL_IMPACT_LOW
 
@@ -47,9 +47,10 @@
 	if(!istype(user))
 		return FALSE
 
-	H.visible_message(span_danger("[H] reaches out &clenches her fist - flames sparking across her body."))
-	H.visible_message(span_danger("[H] looks to be in pain, but her eyes are alight with vigor!"))
-	user.adjust_fire_stacks(2, /datum/status_effect/fire_handler/fire_stacks)
-	playsound(H, 'sound/foley/ironmeihua/hurt2.ogg', 80, TRUE)
+	user.visible_message(span_danger("[user] reaches out &clenches her fist - flames sparking across her body."))
+	user.visible_message(span_danger("[user] looks to be in pain, but her eyes are alight with vigor!"))
+	user.take_overall_damage(0, 60)
+	playsound(user, 'sound/foley/ironmeihua/hurt2.ogg', 80, FALSE)
+	user.say("Ngkhk..!!")
 	user.stamina = 0
 	user.energy = user.max_energy

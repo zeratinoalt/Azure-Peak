@@ -36,10 +36,10 @@
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	H.visible_message(span_danger("[H] blinks just once, and the arena is set ablaze!"))
-	H.say("|A-ah...|")
-	playsound(H, 'sound/foley/ironmeihua/surprised.ogg', 80, TRUE)
+	H.say("You - cheap, IMITATION..!!!")
+	playsound(H, 'sound/foley/ironmeihua/jeonbu.ogg', 80, FALSE)
 	var/old_time = world.time
-	while(world.time < old_time + 15 SECONDS)
+	while(world.time < old_time + 6 SECONDS)
 		spawnfire(H)
 		sleep(3 SECONDS)
 		spawnfire(H)
