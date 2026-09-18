@@ -13,9 +13,9 @@
 
 /datum/outfit/job/roguetown/adventurer/ironmeihua/pre_equip(mob/living/carbon/human/H)
 	..()
-	armor = /obj/item/clothing/suit/roguetown/shirt/ironmeihua
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded/ironmeihua
 	shoes = /obj/item/clothing/shoes/roguetown/boots/ironmeihua
-	backr = /obj/item/storage/backpack/rogue/satchel
+// 	backr = /obj/item/storage/backpack/rogue/satchel
 //	l_hand = /obj/item/rogueweapon/sword/sabre/yourturn
 
 	H.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
@@ -47,7 +47,7 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/ragingstorm)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/callofthedragon)
 
-/obj/item/clothing/suit/roguetown/shirt/ironmeihua
+/obj/item/clothing/suit/roguetown/armor/leather/studded/ironmeihua
 	name = "crimson cheongsam"
 	desc = "A dress with gold detailing, long red sleeves, and a slit across the side."
 	body_parts_covered = COVERAGE_FULL_BODY_ACTUAL
@@ -57,6 +57,8 @@
 	icon = 'icons/roguetown/clothing/special/bosses.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/sleeves_bosses.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/bosses.dmi'
+	icon_state = "meihua"
+	sleevetype = "shirt"
 
 /obj/item/clothing/shoes/roguetown/boots/ironmeihua
 	name = "black shoes"

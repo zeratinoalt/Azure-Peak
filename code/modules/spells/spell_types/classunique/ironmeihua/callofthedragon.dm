@@ -91,7 +91,6 @@
 		return
 
 	for(var/mob/living/targets in range(3, T))
-		animate(targets.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 		arcyne_strike(H, targets, null, base_damage, def_zone, BCLASS_CUT, spell_name = "Call of The Dragon", skip_animation = TRUE, skip_message = TRUE)
 		new /obj/effect/temp_visual/crim_dragon/large/tanglecleaver(get_turf(target))
 
