@@ -16,7 +16,7 @@
 	armor = /obj/item/clothing/suit/roguetown/shirt/ironmeihua
 	shoes = /obj/item/clothing/shoes/roguetown/boots/ironmeihua
 	backr = /obj/item/storage/backpack/rogue/satchel
-	l_hand = /obj/item/rogueweapon/sword/sabre/yourturn
+//	l_hand = /obj/item/rogueweapon/sword/sabre/yourturn
 
 	H.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)

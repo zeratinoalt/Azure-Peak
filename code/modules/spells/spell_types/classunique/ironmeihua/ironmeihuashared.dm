@@ -15,6 +15,21 @@ GLOBAL_LIST_EMPTY(dragonanchor)
 	pixel_y = -96
 	duration = 92.5
 
+/obj/effect/temp_visual/meihua/big
+	icon = 'icons/effects/64x64.dmi'
+	icon_state = "double slash"
+	pixel_x = -16 //So the big ol' 96x96 sprite shows up right
+	pixel_y = -16
+	duration = 35
+	light_power = 1.3
+	light_outer_range =  MINIMUM_USEFUL_LIGHT_RANGE
+	light_color = LIGHT_COLOR_FIRE
+
+/obj/effect/temp_visual/meihua/big/scarslash
+	icon_state = "scarslash"
+
+/obj/effect/temp_visual/meihua/big/flurry
+	icon_state = "flurry"
 
 /obj/effect/temp_visual/meihua/dragon
 	icon = 'icons/effects/96x96.dmi'
@@ -24,8 +39,8 @@ GLOBAL_LIST_EMPTY(dragonanchor)
 	layer = FLY_LAYER
 	plane = GAME_PLANE_UPPER
 	randomdir = FALSE
-	duration = 9
-	pixel_z = 60
+	duration = 60
+	pixel_z = 270
 
 /obj/effect/temp_visual/meihua/dragon/Initialize(mapload)
 	. = ..()

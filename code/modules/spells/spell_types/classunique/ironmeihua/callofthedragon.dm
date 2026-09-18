@@ -37,19 +37,6 @@
 	owner.setDir(SOUTH)
 	origin.Beam(owner, "meihua", time = 2)
 
-/datum/action/cooldown/spell/callofthedragon/proc/DeferProjectile(projectile_type, mob/living/target_shoot, turf/T, projectile_telegraph_delay = 3, mob/living/owner)
-	if(!target_shoot || !T)
-		return
-	var/obj/projectile/P = new projectile_type(T)
-	P.starting = T
-	P.firer = owner
-	P.fired_from = T
-	P.yo = target_shoot.y - T.y
-	P.xo = target_shoot.x - T.x
-	P.original = target_shoot
-	P.preparePixelProjectile(target_shoot, T)
-	addtimer(CALLBACK (P, TYPE_PROC_REF(/obj/projectile, fire)), projectile_telegraph_delay)
-
 /datum/action/cooldown/spell/callofthedragon/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
@@ -58,7 +45,6 @@
 	var/divisor = 1
 	var/turf/anchorturf
 	var/turf/dragonturf
-	var/our_projectile_path = /obj/projectile/magic/dragoncall
 
 	if(isliving(cast_on))
 		victim = cast_on
@@ -86,19 +72,15 @@
 
 	for(var/mob/living/dings in range(7, T))
 		dings.playsound_local(dings, 'sound/foley/ding.ogg', 100, FALSE)
+		dings.playsound_local(dings, 'sound/foley/ironmeihua/roar.ogg', 120, FALSE)
 	victim.Immobilize(10.1 SECONDS)
 
 	H.say("..Tianya Star! Descend upon the World and burn all +THAT STANDS BEFORE YOU!+")
 	playsound(H, 'sound/foley/ironmeihua/linespecial6.ogg', 100, FALSE)
-	playsound(victim, 'sound/foley/ironmeihua/roar.ogg', 120, FALSE)
 	H.visible_message(span_userdanger("[H] is about to hit [victim] with an insanely powerful attack!!"))
 	H.visible_message(span_suicide("At least +FIVE+ players must surround [victim] to divide the damage or they will DIE."))
 
-
-	dragonturf = get_ranged_target_turf(victim, NORTH, 3)
-
-	DeferProjectile(our_projectile_path, victim, dragonturf, 60)
-
+	new /obj/effect/temp_visual/meihua/dragon(T)
 
 	sleep(6 SECONDS)
 
@@ -109,26 +91,17 @@
 	if(divisor == 0)
 		return
 
+	for(var/mob/living/targets in range(3, T))
+		animate(targets.client, pixel_y = 3, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+		arcyne_strike(H, targets, null, base_damage, def_zone, BCLASS_CUT, spell_name = "Call of The Dragon", skip_animation = TRUE, skip_message = TRUE)
+		new /obj/effect/temp_visual/crim_dragon/large/tanglecleaver(get_turf(target))
+
+	var/vfx_amount = 7
+	var/vfx_loc = spiral_range_turfs(3, get_turf(T))
+	for(var/i in 1 to vfx_amount)
+		var/vfx = pick(/obj/effect/temp_visual/crim_dragon/large/upright_boom, /obj/effect/temp_visual/crim_dragon/large/second_boom, /obj/effect/temp_visual/meihua/big/scarslash, /obj/effect/temp_visual/meihua/big/flurry)
+		var/turf/vfxturf = pick_n_take(vfx_loc)
+		new vfx(vfxturf)
 
 	H.status_flags &= ~GODMODE
 	REMOVE_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
-
-// arcyne_strike(owner, target, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Tigerslayer", skip_animation = TRUE, skip_message = TRUE)
-
-/obj/projectile/magic/dragoncall
-	name = "fierce dragon"
-	icon = 'icons/effects/96x96.dmi'
-	icon_state = "southdragon"
-	guard_deflectable = FALSE
-	damage = 1
-	damage_type = BURN
-	woundclass = BCLASS_PIERCE
-	npc_simple_damage_mult = 1.5
-	nodamage = FALSE
-	speed = 0.625
-	armor_penetration = PEN_HEAVY
-	movement_type = UNSTOPPABLE
-	range = SPELL_RANGE_PROJECTILE
-	flag = "stab"
-	pixel_x = -32
-	pixel_y = -32
