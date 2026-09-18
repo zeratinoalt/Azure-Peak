@@ -8,7 +8,7 @@
  * * timeout - The timeout of the picker, after which the modal will close and qdel itself. Set to zero for no timeout.
  * * autofocus - The bool that controls if this picker should grab window focus.
  */
-/proc/tgui_color_picker(mob/user, message, title, default = "#000000", timeout = 0, autofocus = TRUE, desired_format = 6, include_crunch = TRUE, list/named_presets)
+/proc/tgui_color_picker(mob/user, message, title, default = "#000000", timeout = 0, autofocus = TRUE, ui_state = GLOB.tgui_always_state, list/named_presets)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -21,7 +21,7 @@
 	if(isnull(user.client))
 		return null
 
-	var/datum/tgui_color_picker/picker = new(user, message, title, default, timeout, autofocus, desired_format, include_crunch, named_presets)
+	var/datum/tgui_color_picker/picker = new(user, message, title, default, timeout, autofocus, ui_state, named_presets)
 	picker.ui_interact(user)
 	picker.wait()
 	if (picker)
@@ -50,20 +50,19 @@
 	var/autofocus
 	/// Boolean field describing if the tgui_color_picker was closed by the user.
 	var/closed
-	/// Argument to pass to sanitize_hexcolor, length of hex
-	var/desired_format = null
-	/// Argument to pass to sanitize_hexcolor, include or do not include the # at the start
-	var/include_crunch = null
+	/// The user's presets
+	var/preset_colors
 	/// Named preset colors (assoc list of name = hex), shown as a labeled grid in the picker
 	var/list/named_presets
+	/// The TGUI UI state that will be returned in ui_state(). Default: always_state
+	var/datum/ui_state/state
 
-/datum/tgui_color_picker/New(mob/user, message, title, default, timeout, autofocus, desired_format, include_crunch, list/named_presets)
+/datum/tgui_color_picker/New(mob/user, message, title, default, timeout, autofocus, ui_state, list/named_presets)
 	src.autofocus = autofocus
 	src.title = title
 	src.default = default
 	src.message = message
-	src.desired_format = desired_format
-	src.include_crunch = include_crunch
+	src.state = ui_state
 	src.named_presets = named_presets
 	if (timeout)
 		src.timeout = timeout
@@ -72,6 +71,7 @@
 
 /datum/tgui_color_picker/Destroy(force)
 	SStgui.close_uis(src)
+	state = null
 	. = ..()
 
 /**
@@ -90,25 +90,31 @@
 		ui.set_autoupdate(timeout > 0)
 
 /datum/tgui_color_picker/ui_close(mob/user)
+	/*if(user)
+		user.write_preference_directly(/datum/preference/text/preset_colors, preset_colors)*/
 	. = ..()
 	closed = TRUE
 
 /datum/tgui_color_picker/ui_state(mob/user)
-	return GLOB.always_state
+	return state
 
 /datum/tgui_color_picker/ui_static_data(mob/user)
 	. = list()
 	.["autofocus"] = autofocus
-	.["large_buttons"] = FALSE // !user.client?.prefs || user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
-	.["swapped_buttons"] = FALSE // !user.client?.prefs || user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_swapped)
+	//TODO: Implement proper tgui prefs
+	/*.["large_buttons"] = !user.client?.prefs || user.client.prefs.read_preference(/datum/preference/toggle/tgui_large_buttons)
+	.["swapped_buttons"] = !user.client?.prefs || user.client.prefs.read_preference(/datum/preference/toggle/tgui_swapped_buttons)*/
 	.["title"] = title
 	.["default_color"] = default
 	.["message"] = message
-	.["named_presets"] = named_presets || null
+	if(named_presets)
+		.["named_presets"] = named_presets
 
 /datum/tgui_color_picker/ui_data(mob/user)
 	. = list()
-	.["timeout"] = timeout ? CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS)) : null
+	if(timeout)
+		.["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
+	.["presets"] = preset_colors
 
 /datum/tgui_color_picker/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -117,7 +123,7 @@
 	switch(action)
 		if("submit")
 			var/raw_data = LOWER_TEXT(params["entry"])
-			var/hex = sanitize_hexcolor(raw_data, desired_format, include_crunch)
+			var/hex = sanitize_hexcolor(raw_data)
 			if (!hex)
 				return
 			set_choice(hex)
@@ -127,6 +133,24 @@
 		if("cancel")
 			closed = TRUE
 			SStgui.close_uis(src)
+			return TRUE
+		if("null")
+			set_choice(null)
+			SStgui.close_uis(src)
+			return TRUE
+		if("preset")
+			var/raw_data = LOWER_TEXT(params["color"])
+			var/index = LOWER_TEXT(params["index"])
+			var/list/entries = splittext(preset_colors, ";")
+			while(LAZYLEN(entries) < 20)
+				entries += "#FFFFFF"
+			if(LAZYLEN(entries) > 20)
+				entries.Cut(21)
+			var/hex = sanitize_hexcolor(raw_data)
+			if (!hex || !isnum(index) || entries[index] == hex)
+				return
+			entries[index] = hex
+			preset_colors = entries.Join(";")
 			return TRUE
 
 /datum/tgui_color_picker/proc/set_choice(choice)

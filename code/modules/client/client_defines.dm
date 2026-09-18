@@ -122,13 +122,8 @@
 	///these persist between logins/logouts during the same round.
 	var/datum/player_details/player_details
 
-	/**
-	 * Assoc list with all the active maps - when a screen obj is added to
-	 * a map, it's put in here as well.
-	 *
-	 * Format: list(<mapname> = list(/atom/movable/screen))
-	 */
-	var/list/screen_maps = list()
+	///Should only be a key-value list of north/south/east/west = atom/movable/screen.
+	var/list/char_render_holders
 
 	///Amount of keydowns in the last keysend checking interval
 	var/client_keysend_amount = 0

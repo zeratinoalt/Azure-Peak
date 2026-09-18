@@ -44,7 +44,6 @@
 	var/mob/living/victim
 	var/divisor = 1
 	var/turf/anchorturf
-	var/turf/dragonturf
 
 	if(isliving(cast_on))
 		victim = cast_on

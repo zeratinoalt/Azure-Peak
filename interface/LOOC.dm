@@ -64,6 +64,10 @@
 	if(!msg)
 		return
 
+	if(!(prefs.chat_toggles & CHAT_OOC))
+		to_chat(src, span_danger("You have OOC muted."))
+		return
+
 	if(!holder)
 		if(findtext(msg, "byond://"))
 			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
@@ -120,7 +124,7 @@
 			if(get_dist(get_turf(M), get_turf(S)) > limit)
 				continue
 			var/client/C = M.client
-			if(!C)
+			if(!C || !(C.prefs.chat_toggles & CHAT_OOC))
 				continue
 
 			seen[C] = TRUE
@@ -132,18 +136,18 @@
 			to_chat(src, span_boldwarning("The subtle LOOC target moved out of view, try again."))
 			return
 		var/client/target_client = target?.client
-		if(target_client)
+		if(target_client && (target_client.prefs.chat_toggles & CHAT_OOC))
 			seen[target_client] = TRUE
 			var/target_msg = ((target_client in GLOB.admins) && (target_client.prefs.admin_chat_toggles & CHAT_ADMINLOOC)) ? msg_adm : msg_reg
 			to_chat(target_client, target_msg, type = MESSAGE_TYPE_OOC)
 
-		if(!(src in seen))
+		if((prefs.chat_toggles & CHAT_OOC) && !(src in seen))
 			seen[src] = TRUE
 			var/self_msg = ((src in GLOB.admins) && (prefs.admin_chat_toggles & CHAT_ADMINLOOC)) ? msg_adm : msg_reg
 			to_chat(src, self_msg, type = MESSAGE_TYPE_OOC)
 
 	for(var/client/C in GLOB.admins)
-		if(seen[C] || !(C.prefs.admin_chat_toggles & CHAT_ADMIN_SLOOC))
+		if(seen[C] || !(C.prefs.admin_chat_toggles & CHAT_ADMIN_SLOOC) || !(C.prefs.chat_toggles & CHAT_OOC))
 			continue
 
 		to_chat(C, msg_rem, type = MESSAGE_TYPE_OOC)
@@ -186,11 +190,16 @@
 		do_subtlelooc(slooc_msg)
 		return
 
+	if(!(prefs.chat_toggles & CHAT_OOC))
+		to_chat(src, span_danger("You have OOC muted."))
+		return
+
 	if(!holder)
 		if(findtext(msg, "byond://"))
 			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
+
 
 	//msg = emoji_parse(msg)
 
@@ -215,11 +224,12 @@
 			added_text += " ([mob.ckey]) [ADMIN_FLW(mob)]"
 			is_admin = 1
 		mobs += C
-		var/turf/speakturf = get_turf(M)
-		var/turf/sourceturf = get_turf(usr)
-		if(wp == 1 && (M in range (7, src)))
-			to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name][added_text]:</EM> <span class='message'>[msg]</span></b></font>")
-		else if(speakturf in get_hear(7, sourceturf))
-			to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name][added_text]:</EM> <span class='message'>[msg]</span></b></font>")
-		else if(is_admin == 1)
-			to_chat(C, "<font color='["#6699CC"]'><b>(R) <span class='prefix'>[prefix]:</span> <EM>[src.mob.name][added_text]:</EM> <span class='message'>[msg]</span></b></font>")
+		if(C.prefs.chat_toggles & CHAT_OOC)
+			var/turf/speakturf = get_turf(M)
+			var/turf/sourceturf = get_turf(usr)
+			if(wp == 1 && (M in range (7, src)))
+				to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name][added_text]:</EM> <span class='message'>[msg]</span></b></font>", type = MESSAGE_TYPE_OOC)
+			else if(speakturf in get_hear(7, sourceturf))
+				to_chat(C, "<font color='["#6699CC"]'><b><span class='prefix'>[prefix]:</span> <EM>[src.mob.name][added_text]:</EM> <span class='message'>[msg]</span></b></font>", type = MESSAGE_TYPE_OOC)
+			else if(is_admin == 1)
+				to_chat(C, "<font color='["#6699CC"]'><b>(R) <span class='prefix'>[prefix]:</span> <EM>[src.mob.name][added_text]:</EM> <span class='message'>[msg]</span></b></font>", type = MESSAGE_TYPE_OOC)

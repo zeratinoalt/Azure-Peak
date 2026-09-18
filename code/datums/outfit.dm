@@ -503,5 +503,4 @@
 			for(var/L in player.prefs.virtue_origin.last_origin.added_languages)
 				if(L != player.prefs.extra_language)
 					H.remove_language(L)
-		if(player.prefs.extra_language != "None")
-			H.grant_language(player.prefs.extra_language)
+		H.grant_language(player.prefs.extra_language)

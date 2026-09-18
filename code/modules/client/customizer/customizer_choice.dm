@@ -12,8 +12,6 @@
 	var/allows_accessory_color_customization = TRUE
 	/// Whether to pick a random accessory from all possible ones in `sprite_accessories` rather than use the proc for randomization
 	var/generic_random_pick = FALSE
-	/// Set to a key in FEATURE_CHOICE_LIST to have a unique tgui template loaded
-	var/tgui_template = null
 
 /datum/customizer_choice/New()
 	. = ..()
@@ -56,73 +54,92 @@
 /datum/customizer_choice/proc/get_random_color(datum/customizer_entry/entry, datum/preferences/prefs, accessory_type)
 	return
 
-// TGUI
-/datum/customizer_choice/proc/tgui_pref_choices(datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
-	var/list/data = list()
+/datum/customizer_choice/proc/show_pref_choices(datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
+	var/list/dat = list()
+	generate_pref_choices(dat, prefs, entry, customizer_type)
+	return dat
 
+/datum/customizer_choice/proc/generate_pref_choices(list/dat, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	var/datum/sprite_accessory/accessory
 	if(sprite_accessories && entry.accessory_type)
 		accessory = SPRITE_ACCESSORY(entry.accessory_type)
 
-	data["name"] = name
-	data["template"] = tgui_template
-
 	if(accessory)
-		var/list/accessory_data = list(
-			"name" = accessory.name,
-			"colors" = null,
-		)
+		var/accessory_link
+		var/arrows_string
+		if(length(sprite_accessories) > 1)
+			accessory_link = "href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=choose_acc'"
+			arrows_string = "<a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=rotate;rotate=prev''><</a><a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=rotate;rotate=next''>></a>"
+		else
+			accessory_link = "class='linkOff'"
+			arrows_string = "<a class='linkOff'><</a><a class='linkOff'>></a>"
+		if(length(sprite_accessories) > 1)
+			dat += "<br>[arrows_string]<a [accessory_link]>[accessory.name]</a>"
 
 		if(allows_accessory_color_customization && !(accessory.color_disabled))
-			var/list/color_data = list()
+			dat += "<br><a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=reset_colors'>Reset colors</a>"
 			var/list/color_list = color_string_to_list(entry.accessory_colors)
 			for(var/index in 1 to accessory.color_keys)
 				var/named_index = (accessory.color_keys == 1) ? accessory.color_key_name : accessory.color_key_names[index]
-				UNTYPED_LIST_ADD(color_data, list(
-					"name" = named_index,
-					"index" = index,
-					"color" = color_list[index],
-				))
-			accessory_data["colors"] = color_data
+				dat += "<br>[named_index]: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=acc_color;color_index=[index]''><span class='color_holder_box' style='background-color:[color_list[index]]'></span></a>"
 
-		data["accessory"] = accessory_data
-	else
-		data["accessory"] = null
+/datum/customizer_choice/proc/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
+	switch(href_list["customizer_task"])
+		if("choose_acc")
+			if(!sprite_accessories)
+				return
+			var/list/choice_list = list()
+			for(var/choice_type in sprite_accessories)
+				var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(choice_type)
+				choice_list[accessory.name] = choice_type
+			var/chosen_input = tgui_input_list(user, "Choose your [LOWER_TEXT(name)] appearance:", "Character Preference",choice_list)
+			if(!chosen_input)
+				return
+			var/choice_type = choice_list[chosen_input]
+			set_accessory_type(prefs, choice_type, entry)
 
-	return data
+		if("rotate")
+			if(!sprite_accessories)
+				return
+			var/current_index
+			var/i = 0
+			for(var/accessory_type in sprite_accessories)
+				i++
+				if(entry.accessory_type != accessory_type)
+					continue
+				current_index = i
+				break
+			var/target_index = current_index
 
-/datum/customizer_choice/proc/handle_tgui_act(list/params, datum/tgui/ui, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
-	var/mob/user = ui.user
+			switch(href_list["rotate"])
+				if("next")
+					target_index++
+				if("prev")
+					target_index--
+			if(target_index > sprite_accessories.len)
+				target_index = 1
+			else if (target_index <= 0)
+				target_index = sprite_accessories.len
+			var/datum/customizer_choice/customizer_choice = CUSTOMIZER_CHOICE(entry.customizer_choice_type)
+			customizer_choice.set_accessory_type(prefs, sprite_accessories[target_index], entry)
 
-	switch(params["customizer_task"])
 		if("acc_color")
 			if(!sprite_accessories || !allows_accessory_color_customization)
-				return TRUE
-			var/index = text2num(params["color_index"])
+				return
+			var/index = text2num(href_list["color_index"])
 			var/datum/sprite_accessory/accessory = SPRITE_ACCESSORY(entry.accessory_type)
 			if(index > accessory.color_keys)
-				return TRUE
+				return
 			var/list/color_list = color_string_to_list(entry.accessory_colors)
-			var/new_color = tgui_color_picker(user, "Choose your accessory color:", "Accessory Color", "[color_list[index]]")
+			var/new_color = color_pick_sanitized(user, "Choose your accessory color:", "Character Preference","[color_list[index]]")
 			if(!new_color)
-				return TRUE
-			prefs.verbose_pref_log_change(user, "notice", "Feature \"[name]\"", color_list[index], new_color)
-			color_list[index] = new_color
+				return
+			color_list[index] = sanitize_hexcolor(new_color, 6, TRUE)
 			entry.accessory_colors = color_list_to_string(color_list)
-			return TRUE
-
 		if("reset_colors")
 			if(!sprite_accessories || !allows_accessory_color_customization)
-				return TRUE
-			prefs.verbose_pref_log_notification(user, "warning", "Feature \"[name]\" colors reset")
+				return
 			reset_accessory_colors(prefs, entry)
-			return TRUE
-
-/datum/customizer_choice/proc/constant_ui_data()
-	return list(
-		"name" = name,
-		"sprite_accessories" = sprite_accessories,
-	)
 
 /datum/customizer_choice/proc/validate_entry(datum/preferences/prefs, datum/customizer_entry/entry)
 	/// Validate chosen accessory

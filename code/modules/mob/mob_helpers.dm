@@ -970,7 +970,8 @@
 		if(source)
 			var/atom/movable/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
 			if(A)
-				A.icon = 'icons/mob/roguehud.dmi'
+				if(O.client.prefs && O.client.prefs.UI_style)
+					A.icon = ui_style2icon(O.client.prefs.UI_style)
 				if (header)
 					A.name = header
 				A.desc = message

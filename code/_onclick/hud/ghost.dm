@@ -161,7 +161,10 @@
 	if(!.)
 		return
 	var/mob/screenmob = viewmob || mymob
-	screenmob.client.screen += static_inventory
+	if(!screenmob.client.prefs.ghost_hud)
+		screenmob.client.screen -= static_inventory
+	else
+		screenmob.client.screen += static_inventory
 
 /datum/hud/eye/New(mob/owner)
 	..()
@@ -194,7 +197,10 @@
 	if(!.)
 		return
 	var/mob/screenmob = viewmob || mymob
-	screenmob.client.screen += static_inventory
+	if(!screenmob.client.prefs.ghost_hud)
+		screenmob.client.screen -= static_inventory
+	else
+		screenmob.client.screen += static_inventory
 
 /datum/hud/obs/New(mob/owner)
 	..()
