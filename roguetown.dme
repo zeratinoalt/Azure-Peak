@@ -2578,6 +2578,7 @@
 #include "code\modules\mob\living\carbon\human\voicepacks\female\elf.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\female\goblin.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\female\haughty.dm"
+#include "code\modules\mob\living\carbon\human\voicepacks\female\ironmeihua.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\female\warrior.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\male\crimsondragon.dm"
 #include "code\modules\mob\living\carbon\human\voicepacks\male\dwarf.dm"

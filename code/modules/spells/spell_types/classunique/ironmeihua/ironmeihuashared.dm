@@ -40,11 +40,11 @@ GLOBAL_LIST_EMPTY(dragonanchor)
 	plane = GAME_PLANE_UPPER
 	randomdir = FALSE
 	duration = 60
-	pixel_z = 270
+	pixel_z = 180
 
 /obj/effect/temp_visual/meihua/dragon/Initialize(mapload)
 	. = ..()
-	animate(src, pixel_z = 0, time = duration)
+	animate(src, pixel_z = 0, time = 3, delay = 57, easing = SINE_EASING | EASE_OUT)
 
 //attack anchors - they're used by the attacks as refs for spawning tiles & whatnot
 

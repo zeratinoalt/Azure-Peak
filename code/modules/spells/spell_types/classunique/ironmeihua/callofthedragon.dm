@@ -36,6 +36,7 @@
 	owner.forceMove(destination)
 	owner.setDir(SOUTH)
 	origin.Beam(owner, "meihua", time = 2)
+	playsound(owner, 'sound/foley/ironmeihua/dash.ogg', 100, FALSE)
 
 /datum/action/cooldown/spell/callofthedragon/cast(atom/cast_on)
 	. = ..()
@@ -93,8 +94,14 @@
 	for(var/mob/living/targets in range(3, T))
 		arcyne_strike(H, targets, null, base_damage, def_zone, BCLASS_CUT, spell_name = "Call of The Dragon", skip_animation = TRUE, skip_message = TRUE)
 		new /obj/effect/temp_visual/crim_dragon/large/tanglecleaver(get_turf(target))
+		targets.playsound_local(targets, 'sound/foley/ironmeihua/hitslashstrong.ogg', 120, FALSE)
 
-	var/vfx_amount = 7
+	playsound(T, 'sound/foley/ironmeihua/mountainlean.ogg', 120, FALSE)
+
+	if(divisor >= 4)
+		victim.death()
+
+	var/vfx_amount = 20
 	var/vfx_loc = spiral_range_turfs(3, get_turf(T))
 	for(var/i in 1 to vfx_amount)
 		var/vfx = pick(/obj/effect/temp_visual/crim_dragon/large/upright_boom, /obj/effect/temp_visual/crim_dragon/large/second_boom, /obj/effect/temp_visual/meihua/big/scarslash, /obj/effect/temp_visual/meihua/big/flurry)
