@@ -71,7 +71,6 @@
 	dash_to(owner, anchorturf)
 
 	for(var/mob/living/dings in range(7, T))
-		dings.playsound_local(dings, 'sound/foley/ding.ogg', 100, FALSE)
 		dings.playsound_local(dings, 'sound/foley/ironmeihua/roar.ogg', 120, FALSE)
 	victim.Immobilize(10.1 SECONDS)
 
@@ -94,9 +93,10 @@
 	for(var/mob/living/targets in range(3, T))
 		arcyne_strike(H, targets, null, base_damage, def_zone, BCLASS_CUT, spell_name = "Call of The Dragon", skip_animation = TRUE, skip_message = TRUE)
 		new /obj/effect/temp_visual/crim_dragon/large/tanglecleaver(get_turf(target))
-		targets.playsound_local(targets, 'sound/foley/ironmeihua/hitslashstrong.ogg', 120, FALSE)
 
-	playsound(T, 'sound/foley/ironmeihua/mountainlean.ogg', 120, FALSE)
+	for(var/mob/living/hits in range(7, T))
+		hits.playsound_local(hits, 'sound/foley/ironmeihua/hitslashstrong.ogg', 120, FALSE)
+		hits.playsound_local(hits, 'sound/foley/ironmeihua/mountainlean.ogg', 120, FALSE)
 
 	if(divisor >= 4)
 		victim.death()
