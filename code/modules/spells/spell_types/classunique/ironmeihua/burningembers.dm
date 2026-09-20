@@ -115,3 +115,19 @@
 
 	H.status_flags &= ~GODMODE
 	REMOVE_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
+
+
+	for(var/mob/living/targets in range(7, H))
+		targets.apply_status_effect(/datum/status_effect/debuff/burning_embers)
+
+/datum/status_effect/debuff/burning_embers
+	id = "coordinated_assault"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/burning_embers
+	effectedstats = list(STATKEY_LCK = -1, STATKEY_CON = -1, STATKEY_WIL = -1, STATKEY_INT = -2)
+	duration = 5 MINUTES
+
+
+/atom/movable/screen/alert/status_effect/debuff/burning_embers
+	name = "Burning Embers"
+	desc = "I'm scorched by the flames surrounding me, I need to be careful."
+	icon_state = "permadeath"
