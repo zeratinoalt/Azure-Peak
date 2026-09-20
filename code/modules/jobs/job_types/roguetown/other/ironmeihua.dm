@@ -50,6 +50,7 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/fleetinglife)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/ragingstorm)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/callofthedragon)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/burningembers)
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/ironmeihua
 	name = "HuàLóngLèiGǒu"

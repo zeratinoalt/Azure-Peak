@@ -26,6 +26,7 @@
 	spell_impact_intensity = SPELL_IMPACT_LOW
 	spell_requirements = SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	var/base_damage = 1875 //lol
+	sound = 'sound/silence.ogg'
 
 /datum/action/cooldown/spell/callofthedragon/cast(atom/cast_on)
 	. = ..()
@@ -33,7 +34,6 @@
 	var/def_zone = owner.zone_selected || BODY_ZONE_CHEST
 	var/mob/living/victim
 	var/divisor = 1
-	var/turf/anchorturf
 
 	if(isliving(cast_on))
 		victim = cast_on
@@ -55,9 +55,9 @@
 
 	for(var/mob/living/dings in range(7, T))
 		dings.playsound_local(dings, 'sound/foley/ironmeihua/roar.ogg', 120, FALSE)
-	victim.Immobilize(10.1 SECONDS)
+	victim.Immobilize(7 SECONDS)
 
-	H.say("..Tianya Star! Descend upon the World and burn all +THAT STANDS BEFORE YOU!+")
+	H.say("Tianya Star..! Descend, burn all +THAT EVER DARED TO STAND BEFORE YOU!!!+")
 	playsound(H, 'sound/foley/ironmeihua/linespecial6.ogg', 100, FALSE)
 	H.visible_message(span_userdanger("[H] is about to hit [victim] with an insanely powerful attack!!"))
 	H.visible_message(span_suicide("At least +FIVE+ players must surround [victim] to divide the damage or they will DIE."))
@@ -83,7 +83,7 @@
 		hits.playsound_local(hits, 'sound/foley/ironmeihua/mountainlean.ogg', 120, FALSE)
 
 	if(divisor >= 4)
-		victim.visible_message(span_userdanger("[victim] succumbs to the overwhelming heat, burning to DEATH."))
+		victim.visible_message(span_userdanger("[victim] succumbs to the overwhelming heat, burning to death."))
 		victim.death()
 
 	var/vfx_amount = 20

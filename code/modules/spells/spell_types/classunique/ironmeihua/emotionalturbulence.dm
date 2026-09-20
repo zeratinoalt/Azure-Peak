@@ -20,6 +20,7 @@ GLOBAL_LIST_EMPTY(meiwall)
 	cooldown_time = 30 SECONDS
 	associated_skill = /datum/skill/combat/unarmed
 	spell_requirements = SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	sound = 'sound/silence.ogg'
 
 /datum/action/cooldown/spell/emotionalturbulence/proc/dash_to(mob/living/owner, turf/destination)
 	var/turf/origin = get_turf(owner)
@@ -42,7 +43,7 @@ GLOBAL_LIST_EMPTY(meiwall)
 	if(!istype(H))
 		return FALSE
 
-	H.say("..How long will you last, replica?")
+	H.say("..How long will you last?")
 	playsound(H, 'sound/foley/ironmeihua/linespecial2.ogg', 80, FALSE)
 	sleep(3 SECONDS)
 

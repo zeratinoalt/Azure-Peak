@@ -39,7 +39,7 @@
 	spell_impact_intensity = SPELL_IMPACT_LOW
 
 	spell_requirements =  SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
-
+	sound = 'sound/silence.ogg'
 
 /datum/action/cooldown/spell/fleetinglife/cast(atom/cast_on)
 	. = ..()
@@ -51,6 +51,6 @@
 	user.visible_message(span_danger("[user] looks to be in pain, yet her eyes light up with vigor!"))
 	user.take_overall_damage(0, 60)
 	playsound(user, 'sound/foley/ironmeihua/attack2.ogg', 80, FALSE)
-	user.say("Ngkhk..!!")
+	user.say("GHKH--!!")
 	user.stamina = 0
 	user.energy = user.max_energy
