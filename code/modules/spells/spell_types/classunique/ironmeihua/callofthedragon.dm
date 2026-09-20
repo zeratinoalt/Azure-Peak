@@ -27,17 +27,6 @@
 	spell_requirements = SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	var/base_damage = 1875 //lol
 
-/datum/action/cooldown/spell/callofthedragon/proc/dash_to(mob/living/owner, turf/destination)
-	var/turf/origin = get_turf(owner)
-	var/list/first_hit = getline(origin, destination)
-	for(var/turf/path_turf in first_hit)
-		new /obj/effect/temp_visual/decoy/fading/halfsecond(path_turf)
-		sleep(0.25 DECISECONDS)
-	owner.forceMove(destination)
-	owner.setDir(SOUTH)
-	origin.Beam(owner, "meihua", time = 2)
-	playsound(owner, 'sound/foley/ironmeihua/dash.ogg', 100, FALSE)
-
 /datum/action/cooldown/spell/callofthedragon/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
@@ -61,14 +50,8 @@
 
 	new /obj/effect/temp_visual/meihua/warning/biggest(T)
 
-	for(var/obj/structure/dragonanchor/anchor in GLOB.dragonanchor)
-		anchorturf = get_turf(anchor)
-
 	H.status_flags |= GODMODE
 	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
-
-	H.visible_message(span_userdanger("[H] vanishes in a flurry of flames."))
-	dash_to(owner, anchorturf)
 
 	for(var/mob/living/dings in range(7, T))
 		dings.playsound_local(dings, 'sound/foley/ironmeihua/roar.ogg', 120, FALSE)
@@ -93,12 +76,14 @@
 	for(var/mob/living/targets in range(3, T))
 		arcyne_strike(H, targets, null, base_damage, def_zone, BCLASS_CUT, spell_name = "Call of The Dragon", skip_animation = TRUE, skip_message = TRUE)
 		new /obj/effect/temp_visual/crim_dragon/large/tanglecleaver(get_turf(target))
+		targets.apply_burn(15)
 
 	for(var/mob/living/hits in range(7, T))
 		hits.playsound_local(hits, 'sound/foley/ironmeihua/hitslashstrong.ogg', 120, FALSE)
 		hits.playsound_local(hits, 'sound/foley/ironmeihua/mountainlean.ogg', 120, FALSE)
 
 	if(divisor >= 4)
+		victim.visible_message(span_userdanger("[victim] succumbs to the overwhelming heat, burning to DEATH."))
 		victim.death()
 
 	var/vfx_amount = 20

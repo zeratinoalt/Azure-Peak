@@ -30,6 +30,8 @@
 	var/visual_update_tick = 0
 	var/life = 20
 	var/firelevel = 1 //RTD new firehotspot mechanics
+	var/burnstacker = FALSE // whenever or not this hotspot applies the burn status effect instead of normal fire lol
+	var/burnstacks = 0 //if burnstacker's true, this is the number of stacks of burn to apply to mobs that cross it
 
 //obj/effect/hotspot/extinguish() handled in other_reagents
 //	if(isturf(loc))
@@ -161,9 +163,14 @@
 
 /obj/effect/hotspot/Crossed(atom/movable/AM, oldLoc)
 	..()
-	if(isliving(AM))
-		var/mob/living/L = AM
-		try_fire_act(L, 1, 20)
+	if(!burnstacker)
+		if(isliving(AM))
+			var/mob/living/L = AM
+			try_fire_act(L, 1, 20)
+	else
+		if(isliving(AM))
+			var/mob/living/L = AM
+			L.apply_burn(burnstacks)
 
 /obj/effect/dummy/lighting_obj/moblight/fire
 	name = "fire"

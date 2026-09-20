@@ -330,9 +330,9 @@
 		target.safe_throw_at(throwtarget, CLAMP(1, 2, 5), 1, owner, force = MOVE_FORCE_EXTREMELY_STRONG)
 		shake_camera(target, 5, 3)
 	arcyne_strike(owner, victim, held_weapon, base_damage, def_zone, BCLASS_CUT, spell_name = "Tigerslayer", skip_animation = TRUE, skip_message = TRUE)
-	if(base_damage == 146) //i mean you left them for dead
-		victim.gib()
-
+	if(divisor >= 4)
+		victim.visible_message(span_userdanger("[victim] succumbs to the overwhelming force of the attack, outright DYING."))
+		victim.death()
 
 	held_weapon.spent += 6
 	held_weapon.shells -= 6

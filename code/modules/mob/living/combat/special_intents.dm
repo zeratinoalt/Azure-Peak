@@ -1703,7 +1703,7 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 /datum/special_intent/podao_cleave/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-	
+
 			if(L.mobility_flags & MOBILITY_STAND)
 
 				addtimer(CALLBACK(src, PROC_REF(apply_effect), L), 0.1 SECONDS)	//We need to count them all up first so this is an unfortunate (& janky) requirement.
@@ -1778,4 +1778,36 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 			L.apply_status_effect(/datum/status_effect/debuff/vulnerable, 3 SECONDS)
 			sleep(0.2 SECONDS)
 			playsound(src, 'sound/foley/crimsonminions/reloadend.ogg')
+	..()
+
+/datum/special_intent/meihua_spear
+	name = "Flash of Sunup"
+	desc = "columns of 3x1 attacks in front of u"
+	tile_coordinates = list(list(0,0,2), list(1,0,1),list(-1,0,3), list(0,1,2),list(1,1,1),list(-1,1,3), list(0,2,2),list(1,2,1),list(-1,2,3), list(0,0,6), list(1,0,5), list(-1,0,7), list(0,1,6), list(1,1,5), list(-1,1,7), list(0,2,6), list(1,2,5), list(-1,2,7), list(0,0,9), list(1,0,10), list(-1,0,8), list(0,1,9), list(1,1,10), list(-1,1,8), list(0,2,9), list(1,2,10), list(-1,2,8), list(0,0,12), list(1,0,13), list(-1,0,11), list(0,1,12), list(1,1,13), list(-1,1,11), list(0,2,12), list(1,2,13), list(-1,2,11), list(0,0,15), list(1,0,15), list(-1,0,15), list(0,1,15), list(1,1,15), list(-1,1,15), list(0,2,15), list(1,2,15), list(-1,2,15), list(0,3,15), list(1,3,15), list(-1,3,15), list(0,4,15), list(1,4,15), list(-1,4,15))
+	post_icon_state = "strike"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
+	sfx_pre_delay = 'sound/foley/ironmeihua/prep.ogg'
+	respect_adjacency = FALSE
+	use_clickloc = TRUE
+	delay = 0.4 SECONDS
+	cooldown = 15 SECONDS
+	range = 4
+	stamcost = 20	//Stamina cost
+	var/immob_dur = 3.5 SECONDS
+	var/dam = 10
+
+/datum/special_intent/meihua_spear/apply_hit(turf/T)
+	var/whiffed = TRUE
+	for(var/mob/living/L in get_hearers_in_view(0, T))
+		if(L != howner)
+
+			L.Immobilize(immob_dur)
+			apply_generic_weapon_damage(L, dam, "stab", pick(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_R_FOOT), bclass = BCLASS_PIERCE)
+			whiffed = FALSE
+			L.apply_burn(30)
+	if(!whiffed)
+		playsound(T, 'sound/foley/ironmeihua/whit2.ogg', 100, TRUE)
+	else
+		playsound(T, 'sound/combat/sp_whip_whiff.ogg', 100, TRUE)
 	..()

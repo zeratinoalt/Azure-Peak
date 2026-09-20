@@ -68,7 +68,13 @@
 	combat_theme = 'sound/music/combat_yourturn.ogg'
 
 /obj/structure/theme_spawner/geseundae
-	status_effect_theme = /datum/status_effect/buff/combat_theme/yourturn
+	status_effect_theme = /datum/status_effect/buff/combat_theme/geseundae
 
 /datum/status_effect/buff/combat_theme/geseundae
 	combat_theme = 'sound/music/combat_geseundae.ogg'
+
+/obj/structure/theme_spawner/zhiren
+	status_effect_theme = /datum/status_effect/buff/combat_theme/zhiren
+
+/datum/status_effect/buff/combat_theme/zhiren
+	combat_theme = 'sound/music/combat_zhiren.ogg'

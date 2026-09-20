@@ -30,16 +30,20 @@
 	playsound(owner, 'sound/foley/ironmeihua/hitslash.ogg', 80, TRUE)
 	for(var/i in 1 to fire_amount)
 		var/turf/t = pick_n_take(fire_loc)
-		new /obj/effect/hotspot(t)
+		new /obj/effect/hotspot/meihua(t)
 
 /datum/action/cooldown/spell/ragingstorm/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	H.visible_message(span_danger("[H] blinks just once, and the arena is set ablaze!"))
-	H.say("You think you can get away with this?! Answer me - you cheap IMITAITON!")
+	H.say("You think you're really them?! Answer me - you cheap IMITAITON!")
 	playsound(H, 'sound/foley/ironmeihua/linespecial4.ogg', 80, FALSE)
 	var/old_time = world.time
 	while(world.time < old_time + 6 SECONDS)
 		spawnfire(H)
 		sleep(3 SECONDS)
 		spawnfire(H)
+
+/obj/effect/hotspot/meihua
+	burnstacker = TRUE
+	burnstacks = 20

@@ -37,7 +37,7 @@
 	H.change_stat(STATKEY_PER, 7)
 	H.change_stat(STATKEY_INT, 8)
 	H.change_stat(STATKEY_CON, 5)
-	H.change_stat(STATKEY_WIL, 5) 
+	H.change_stat(STATKEY_WIL, 5)
 	H.change_stat(STATKEY_SPD, 8)
 
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
