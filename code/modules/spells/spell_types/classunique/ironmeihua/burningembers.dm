@@ -118,6 +118,8 @@
 
 
 	for(var/mob/living/targets in range(7, H))
+		if(target == H)
+			continue
 		targets.apply_status_effect(/datum/status_effect/debuff/burning_embers)
 
 /datum/status_effect/debuff/burning_embers
