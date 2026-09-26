@@ -1,5 +1,4 @@
-#define WEAPON_SWORD /obj/item/rogueweapon/sword/sabre/meihua
-#define WEAPON_SPEAR /obj/item/rogueweapon/spear/partizan/meihua
+// to do: grab mang sfx and apply it
 
 /datum/action/cooldown/spell/ardor
 	button_icon = 'icons/mob/actions/classuniquespells/crimsondragon.dmi'
@@ -39,13 +38,3 @@
 	var/obj/item/rogueweapon/newweapon = new weapontype(get_turf(owner))
 	weapontosummon = newweapon
 	owner.put_in_active_hand(newweapon)
-
-/datum/component/martyrweapon/proc/summon_weapon(obj/item/rogueweapon/weapon)
-	var/weapontype = pick(WEAPON_SWORD, WEAPON_MACE, WEAPON_TRIDENT,WEAPON_AXE)
-	var/obj/item/rogueweapon/newweapon = new weapontype(get_turf(weapon))
-
-	newweapon.visible_message(span_danger("[newweapon] hardens itself, finally."))
-	SSroguemachine.martyrweapon = newweapon
-
-	QDEL_NULL(weapon)
-	return
