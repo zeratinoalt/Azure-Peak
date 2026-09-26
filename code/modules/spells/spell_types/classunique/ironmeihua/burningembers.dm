@@ -50,7 +50,7 @@
 /datum/action/cooldown/spell/burningembers/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
-	var/obj/item/rogueweapon/sword/sabre/podao/held_weapon = H.get_active_held_item()
+	var/obj/item/rogueweapon/sword/sabre/meihua/held_weapon = H.get_active_held_item()
 	var/mob/living/victim
 
 	if(isliving(cast_on))
@@ -124,7 +124,7 @@
 
 /datum/status_effect/debuff/burning_embers
 	id = "coordinated_assault"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/burning_embers
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/burning_embers
 	effectedstats = list(STATKEY_LCK = -1, STATKEY_CON = -1, STATKEY_WIL = -1, STATKEY_INT = -2)
 	duration = 5 MINUTES
 

@@ -18,6 +18,7 @@
 // 	backr = /obj/item/storage/backpack/rogue/satchel
 //	l_hand = /obj/item/rogueweapon/sword/sabre/yourturn
 	mask = /obj/item/clothing/mask/rogue/blindfold/fake/meihua
+	id = /obj/item/clothing/ring/ruby
 
 	H.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
