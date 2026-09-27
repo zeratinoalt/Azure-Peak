@@ -19,6 +19,7 @@
 //	l_hand = /obj/item/rogueweapon/sword/sabre/yourturn
 	mask = /obj/item/clothing/mask/rogue/blindfold/fake/meihua
 	id = /obj/item/clothing/ring/ruby
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/dark
 
 	H.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
@@ -52,6 +53,8 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/ragingstorm)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/callofthedragon)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/burningembers)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/burningflash)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/ardor)
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/ironmeihua
 	name = "HuàLóngLèiGǒu"
@@ -158,3 +161,7 @@
 		switch(tag)
 			if("gen")
 				return list("shrink" = 0.6,"sx" = 4,"sy" = -2,"nx" = -3,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+
+
+/obj/item/clothing/under/roguetown/heavy_leather_pants/dark
+	color = COLOR_BLACK
