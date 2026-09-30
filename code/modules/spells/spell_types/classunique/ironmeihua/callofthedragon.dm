@@ -48,7 +48,7 @@
 	if(!T)
 		return FALSE
 
-	new /obj/effect/temp_visual/meihua/warning/biggest(T)
+	new /obj/effect/temp_visual/meihua/warning/biggest/stackup(T)
 
 	H.status_flags |= GODMODE
 	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)

@@ -15,6 +15,9 @@ GLOBAL_LIST_EMPTY(dragonanchor)
 	pixel_y = -96
 	duration = 92.5
 
+/obj/effect/temp_visual/meihua/warning/biggest/stackup
+	icon_state = "stackup"
+
 /obj/effect/temp_visual/meihua/big
 	icon = 'icons/effects/64x64.dmi'
 	icon_state = "double slash"

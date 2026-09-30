@@ -81,7 +81,7 @@
 	ADD_TRAIT(H, TRAIT_NOPAIN, TRAIT_GENERIC)
 
 	//warning
-	new /obj/effect/temp_visual/crim_dragon/warning/biggest(T)
+	new /obj/effect/temp_visual/crim_dragon/warning/biggest/stackup(T)
 
 	H.visible_message(span_userdanger("[H] stops for a moment, preparing a stance..."))
 	for(var/mob/living/dings in range(7, T))

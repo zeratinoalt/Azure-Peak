@@ -72,6 +72,9 @@
 	pixel_y = -96
 	duration = 92.5
 
+/obj/effect/temp_visual/crim_dragon/warning/biggest/stackup
+	icon_state = "stackup"
+
 /obj/structure/tangleanchor
 	name = ""
 	desc = ""
