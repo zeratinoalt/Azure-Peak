@@ -24,8 +24,8 @@
 	spell_requirements = SPELL_REQUIRES_HUMAN
 
 /datum/action/cooldown/spell/ragingstorm/proc/spawnfire(mob/living/owner)
-	var/fire_amount = 15
-	var/fire_loc = spiral_range_turfs(5, get_turf(owner))
+	var/fire_amount = 5
+	var/fire_loc = spiral_range_turfs(5, get_turf(owner), orange = 1)
 	owner.visible_message(span_danger("Flames spark around the arena!"))
 	playsound(owner, 'sound/foley/ironmeihua/hitslash.ogg', 80, TRUE)
 	for(var/i in 1 to fire_amount)
@@ -36,7 +36,7 @@
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	H.visible_message(span_danger("[H] blinks just once, and the arena is set ablaze!"))
-	H.say("You think you're really them?! Answer me - you cheap IMITAITON!")
+	H.say("Pathetic fucking Elders! What - do you really think these imitations fool me?!")
 	playsound(H, 'sound/foley/ironmeihua/linespecial4.ogg', 80, FALSE)
 	var/old_time = world.time
 	while(world.time < old_time + 6 SECONDS)
