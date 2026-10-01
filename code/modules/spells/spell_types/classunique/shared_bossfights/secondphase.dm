@@ -4,13 +4,13 @@
 #define OUTLINE_COLOUR "#FFD84E"
 
 
-
+//crimdragon then iron meihua
 /datum/action/cooldown/spell/secondphase
 	button_icon = 'icons/mob/actions/classuniquespells/crimsondragon.dmi'
 	name = "Second Phase"
 	desc = "Click to cast. Instantly and completely heals you, while repairing everything on your person."
 	button_icon_state = "tigerslayer"
-	sound = 'sound/magic/whiteflame.ogg'
+	sound = 'sound/silence.ogg'
 	spell_color = GLOW_COLOR_CRIMSON
 	glow_intensity = GLOW_INTENSITY_VERY_HIGH
 
@@ -130,7 +130,92 @@
 	..()
 	var/datum/component/auracom = GetComponent(/datum/component/aura)
 	if(auracom)
+		auracom.Destroy
 		auracom.ClearFromParent()
+
+
+
+
+
+// ! zhiren second phase start !
+// yuuup. it's a mess.
+/datum/action/cooldown/spell/zhirensecondphase
+	button_icon = 'icons/mob/actions/classuniquespells/crimsondragon.dmi'
+	name = "Second Phase"
+	desc = "Click to cast. Instantly and completely heals you, while repairing everything on your person."
+	button_icon_state = "tigerslayer"
+	sound = 'sound/foley/crimsondragon/bigprep.ogg'
+
+	click_to_activate = TRUE
+	self_cast_possible = TRUE
+
+	primary_resource_type = SPELL_COST_STAMINA
+	primary_resource_cost = SPELLCOST_MINOR_PROJECTILE
+
+	charge_required = FALSE
+	cooldown_time = 1 HOURS
+
+	associated_skill = /datum/skill/magic/arcane
+	spell_tier = 6
+	spell_impact_intensity = SPELL_IMPACT_LOW
+
+	spell_requirements =  SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+
+	var/objtoequip = /obj/item/clothing/ring/aura
+	var/slottoequip = SLOT_RING
+	var/obj/item/clothing/conjured_armor = null
+	var/checkspot = "ring"
+	var/cooldown_on_dissipate = TRUE
+	var/summondelay = 0
+
+
+/datum/action/cooldown/spell/zhirensecondphase/cast(atom/cast_on)
+	. = ..()
+	var/mob/living/user = owner
+	if(!istype(user))
+		return FALSE
+
+	user.fully_heal(TRUE, TRUE)
+
+	conjured_armor = new objtoequip(user)
+	user.equip_to_slot_or_del(conjured_armor, slottoequip)
+
+	for(var/obj/item/I in user.held_items)
+		if(I && I.obj_integrity < I.max_integrity)
+			if(I.obj_broken)
+				I.obj_fix(null, TRUE)
+			else
+				I.obj_integrity = I.max_integrity
+			I.update_icon()
+		// Also restore sharpness
+		if(I && I.max_blade_int > 0 && I.blade_int < I.max_blade_int)
+			I.blade_int = I.max_blade_int
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		for(var/obj/item/I in H.GetAllContents())
+			if(I.obj_integrity < I.max_integrity)
+				if(I.obj_broken)
+					I.obj_fix(null, TRUE)
+				else
+					I.obj_integrity = I.max_integrity
+				I.update_icon()
+			// Also restore sharpness
+			if(I.max_blade_int > 0 && I.blade_int < I.max_blade_int)
+				I.blade_int = I.max_blade_int
+
+	if(!(user.mobility_flags & MOBILITY_STAND))
+		user.set_resting(FALSE)
+	user.say("I'll.. Kill every one last of you. Before the ashes of Nuanxiangwu smother me out.. I shall bear the weight of a Star.. +Burn-+, slay and +HEW!+")
+	playsound(user, 'sound/foley/ironmeihua/secondphase.ogg', 80, FALSE)
+
+	var/turf/spawerturf
+
+	for(var/obj/structure/theme_spawner/zhiren/spawnertoreplace in GLOB.zhirentheme)
+		spawnerturf = get_turf(spawnertoreplace)
+		spawnertoreplace.Destroy()
+
+	new /obj/structure/theme_spawner/zhirentwo(spawnerturf)
 
 #undef AURA_FIRE_ICON
 #undef AURA_FIRE_STATE

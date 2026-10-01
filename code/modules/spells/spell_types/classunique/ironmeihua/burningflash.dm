@@ -77,7 +77,7 @@
 
 	sleep(1 SECONDS)
 
-	H.say("Desperately, have I clawed..")
+	H.say("Desperately, have I cut..")
 	playsound(H, 'sound/foley/ironmeihua/linespecial3.ogg', 80, FALSE)
 
 	dash_to(H, dest, victim)

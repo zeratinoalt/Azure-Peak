@@ -45,6 +45,7 @@
 	ADD_TRAIT(H, TRAIT_NOHARDCRIT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSOFTCRIT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_INFINITE_STAMINA, TRAIT_GENERIC)
 
 
 	if(H.mind)
@@ -55,6 +56,7 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/burningembers)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/burningflash)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/ardor)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/zhirensecondphase)
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/ironmeihua
 	name = "HuàLóngLèiGǒu"

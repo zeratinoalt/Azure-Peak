@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(zhirentheme)
+
 //structure first, then proc, then status effects
 /obj/structure/theme_spawner
 	name = ""
@@ -11,6 +13,7 @@
 	var/status_effect_theme = /datum/status_effect/buff/combat_theme
 	var/aura_range = 8
 	var/list/mob/living/affected_mobs = list()
+	var/list/current_mobs = list()
 
 /obj/structure/theme_spawner/Initialize(mapload)
 	. = ..()
@@ -18,7 +21,6 @@
 
 /obj/structure/theme_spawner/process(delta_time)
 
-	var/list/current_mobs = list()
 	var/atom/A = src
 	var/list/mobs_in_range
 	mobs_in_range = view(aura_range, A)
@@ -33,6 +35,13 @@
 	for(var/mob/living/L in affected_mobs - current_mobs)
 		remove_effects(L)
 		affected_mobs -= L
+
+/obj/structure/theme_spawner/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	for(var/mob/living/L in affected_mobs - current_mobs)
+		remove_effects(L)
+		affected_mobs -= L
+	..()
 
 /obj/structure/theme_spawner/proc/apply_effects(mob/living/target)
 	target.apply_status_effect(status_effect_theme, src)
@@ -73,8 +82,25 @@
 /datum/status_effect/buff/combat_theme/geseundae
 	combat_theme = 'sound/music/combat_geseundae.ogg'
 
+
+//unique case below, first obj code then intialize code & then datum code
 /obj/structure/theme_spawner/zhiren
 	status_effect_theme = /datum/status_effect/buff/combat_theme/zhiren
 
+/obj/structure/theme_spawner/zhiren/Initialize(mapload)
+	. = ..()
+	GLOB.zhirentheme += src
+
+/obj/structure/theme_spawner/zhiren/Destroy()
+	. = ..()
+	GLOB.zhirentheme -= src
+
 /datum/status_effect/buff/combat_theme/zhiren
 	combat_theme = 'sound/music/combat_zhiren.ogg'
+
+
+/obj/structure/theme_spawner/zhirentwo
+	status_effect_theme = /datum/status_effect/buff/combat_theme/zhirentwo
+
+/datum/status_effect/buff/combat_theme/zhirentwo
+	combat_theme = 'sound/music/combat_zhiren2.ogg'

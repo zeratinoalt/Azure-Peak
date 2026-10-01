@@ -691,3 +691,17 @@
 /obj/effect/decal/shadow_floor/corner
 	icon_state = "shad_floorcorn"
 
+/obj/structure/fluff/walldeco/gatestatue
+	name = "statue"
+	desc = "What a fat guy."
+	icon = 'icons/effects/128x160.dmi'
+	pixel_x = -64
+	icon_state = "gatestatue_l"
+
+/obj/structure/fluff/walldeco/gatestatue/r
+	icon_state = "gatestatue_r"
+
+/obj/structure/fluff/walldeco/gate
+	desc = "Let's find Zhiren."
+	icon = 'icons/effects/352x160.dmi'
+	icon_state = "gate"

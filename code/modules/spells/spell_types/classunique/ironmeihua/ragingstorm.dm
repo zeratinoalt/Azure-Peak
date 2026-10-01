@@ -36,7 +36,7 @@
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	H.visible_message(span_danger("[H] blinks just once, and the arena is set ablaze!"))
-	H.say("Pathetic fucking Elders! What - do you really think these imitations fool me?!")
+	H.say("Pathetic fucking Elders! What - do you really think these cheap copies'll fool me?!")
 	playsound(H, 'sound/foley/ironmeihua/linespecial4.ogg', 80, FALSE)
 	var/old_time = world.time
 	while(world.time < old_time + 6 SECONDS)
