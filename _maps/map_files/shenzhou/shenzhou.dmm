@@ -3706,6 +3706,12 @@
 	icon_state = "stonewindow"
 	},
 /area/rogue)
+"Km" = (
+/obj/effect/landmark/observer_start,
+/turf/open/floor/rogue/cobblerock{
+	smooth = 0
+	},
+/area/rogue)
 "Kw" = (
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -6356,7 +6362,7 @@ xP
 bM
 tJ
 HO
-HO
+Km
 Ya
 sa
 sb
