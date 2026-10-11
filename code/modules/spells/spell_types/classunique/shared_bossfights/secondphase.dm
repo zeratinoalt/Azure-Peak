@@ -130,7 +130,7 @@
 	..()
 	var/datum/component/auracom = GetComponent(/datum/component/aura)
 	if(auracom)
-		auracom.Destroy
+		auracom.Destroy()
 		auracom.ClearFromParent()
 
 
@@ -209,7 +209,7 @@
 	user.say("I'll.. Kill every one last of you. Before the ashes of Nuanxiangwu smother me out.. I shall bear the weight of a Star.. +Burn-+, slay and +HEW!+")
 	playsound(user, 'sound/foley/ironmeihua/secondphase.ogg', 80, FALSE)
 
-	var/turf/spawerturf
+	var/turf/spawnerturf
 
 	for(var/obj/structure/theme_spawner/zhiren/spawnertoreplace in GLOB.zhirentheme)
 		spawnerturf = get_turf(spawnertoreplace)
