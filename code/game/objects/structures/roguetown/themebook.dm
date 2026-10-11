@@ -1,3 +1,5 @@
+//this is highkey super buggy and requires you to turn it on and off again to work, but i dont really care to rework it lol
+
 /datum/status_effect/buff/combat_theme/area1
 	combat_theme = 'sound/music/shenzhou/ledger_combat/bladelineage.ogg'
 
